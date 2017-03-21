@@ -1,0 +1,33 @@
+th input {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 0;
+    border-bottom: 1px solid black;
+    font-size: 20pt;
+}
+
+html {
+    margin: 20px;
+}
+
+.margin {
+    vertical-align: top;
+}
+
+textarea {
+    width: 550px;
+    height: 150px;
+    resize: none;
+}
+
+input, textarea {
+    border: 1px solid black;
+}
+
+table {
+    width: 700px;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 1px;
+    float: left;
+}
