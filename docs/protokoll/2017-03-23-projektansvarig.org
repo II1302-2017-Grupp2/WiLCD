@@ -1,0 +1,13 @@
+* Projektledarmöte 2017-03-23
+
+kom på stories inför nästa sprint, sätt upp på product backlog, på sprintmöte flyttar vi över stories till sprint backlogen som sedan ska genomföras under sprinten.
+Viktigt att kravansvarig får upp stories kring produkten, user stories etc.
+
+man kan sätta upp en regel att det endast får finnsa ett x antal task i varje kolumn på sprint backlogen.
+
+skapa administrativa stories som måste göras innan de övriga storiesen, t.ex. sätta upp github, läsa boken etc.
+
+estimera en 50% fokusfaktor i början.
+
+
+Scrum, kanban, s-work
