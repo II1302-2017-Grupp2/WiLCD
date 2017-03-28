@@ -1,0 +1,18 @@
+* Arkitektmöte <2017-03-28 Tue>
+
+- Börja köra dagligt SCRUM-möte
+- Analytiker
+- Exemplet hemautomatisering är "conceptkarta"
+  - Fritt så länge syftet går att förstå
+  - Kondensera m.h.a. arv, aggregering, association
+- Ska ge en utgångpunkt, men modifiera efteråt efter behov
+- Olika "vyer" för olika intressenter
+  - Logisk visar olika komponenter, samt hur de interagerar
+  - Utvecklingsvy
+  - Processvy visar hur systemet fungerar dynamiskt
+  - Fysisk vy
+  - Scenarios: Use-cases/krav
+- Fixa detaljerad arkitektur för webbapplikationen
+- En release per sprint?
+- Experimentera med olika branch-metoder, utvecklingsansvarigs ansvar
+- Utvärdera alternativ för att skala upp vid fler användare
