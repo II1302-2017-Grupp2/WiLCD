@@ -15,7 +15,7 @@ class HomeControllerIntegrationSpec extends OurPlaySpec with GuiceOneServerPerTe
       textField(name("message")).value = "Hello, World"
       submit()
       eventually {
-        find("body").get.text must contain("DONE")
+        find(tagName("body")).get.text must include("DONE")
       }
 
       val messageUpdater = app.injector.instanceOf[MessageUpdater]
