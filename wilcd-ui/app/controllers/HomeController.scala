@@ -5,6 +5,7 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 import services.MessageUpdater
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -25,5 +26,9 @@ class HomeController @Inject() (messageUpdater: MessageUpdater) extends Controll
     Ok(views.html.index())
   }
 
-  def submitNewMessage = TODO
+  def submitNewMessage = Action.async {
+    for {
+      () <- messageUpdater.setMessage("HELLO, WORLD!")
+    } yield Ok("DONE")
+  }
 }
