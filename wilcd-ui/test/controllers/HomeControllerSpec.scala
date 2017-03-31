@@ -64,7 +64,8 @@ class HomeControllerSpec extends OurPlaySpec with MockitoSugar {
         .overrides(bind[MessageUpdater].toInstance(messageUpdaterMock))
         .build()) { app =>
 
-        val request = FakeRequest(routes.HomeController.submitNewMessage())
+        val call = routes.HomeController.submitNewMessage()
+        val request = FakeRequest(call.method, s"${call.url}?message=HELLO,%20WORLD!")
         val result = Await.result(route(app, request).get, Duration.Inf)
 
         Mockito.verify(messageUpdaterMock).setMessage("HELLO, WORLD!")
