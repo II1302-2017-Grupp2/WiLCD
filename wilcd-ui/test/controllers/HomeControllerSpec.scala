@@ -1,16 +1,26 @@
 package controllers
 
+import org.mockito.Mockito
+import org.scalatest.mockito.MockitoSugar
 import org.scalatestplus.play._
-import play.api.test._
+import play.api.inject._
+import play.api.inject.guice._
 import play.api.test.Helpers._
+import play.api.test._
+import play.api.{Application, Play}
+import services.MessageUpdater
 
-/**
- * Add your spec here.
- * You can mock out a whole application including requests, plugins etc.
- *
- * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
- */
-class HomeControllerSpec extends PlaySpec with OneAppPerTest {
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration.Duration
+
+/*/**
+  * Add your spec here.
+  * You can mock out a whole application including requests, plugins etc.
+  *
+  * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
+  */
+class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest {
+
 
   "HomeController GET" should {
 
@@ -29,7 +39,7 @@ class HomeControllerSpec extends PlaySpec with OneAppPerTest {
 
       status(home) mustBe OK
       contentType(home) mustBe Some("text/html")
-      contentAsString(home) must include ("Welcome to Play")
+      contentAsString(home) must include("Welcome to Play")
     }
 
     "render the index page from the router" in {
@@ -39,13 +49,28 @@ class HomeControllerSpec extends PlaySpec with OneAppPerTest {
 
       status(home) mustBe OK
       contentType(home) mustBe Some("text/html")
-      contentAsString(home) must include ("Welcome to Play")
+      contentAsString(home) must include("Welcome to Play")
     }
   }
 
+}*/
+
+class HomeControllerSpec extends OurPlaySpec with MockitoSugar {
   "HomeController.submitNewMessage" should {
     "invoke the MessageUpdater" in {
-      pending
+      val messageUpdaterMock = mock[MessageUpdater]
+      Mockito.when(messageUpdaterMock.setMessage("HELLO, WORLD!")).thenReturn(Future.successful(()))
+      withApp(new GuiceApplicationBuilder()
+        .overrides(bind[MessageUpdater].toInstance(messageUpdaterMock))
+        .build()) { app =>
+
+        val request = FakeRequest(routes.HomeController.submitNewMessage())
+        val result = Await.result(route(app, request).get, Duration.Inf)
+
+        Mockito.verify(messageUpdaterMock).setMessage("HELLO, WORLD!")
+        result.header.status mustBe OK
+      }
     }
   }
+
 }
