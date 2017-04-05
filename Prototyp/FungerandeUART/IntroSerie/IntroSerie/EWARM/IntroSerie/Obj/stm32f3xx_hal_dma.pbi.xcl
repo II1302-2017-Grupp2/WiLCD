@@ -1,16 +1,16 @@
-"C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_dma.c"
+"C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_dma.c"
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\EWARM/../Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\EWARM/../Inc
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\EWARM/../Drivers/CMSIS/Device/ST/STM32F3xx/Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\EWARM/../Drivers/CMSIS/Device/ST/STM32F3xx/Include
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\EWARM/../Drivers/CMSIS/Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\EWARM/../Drivers/CMSIS/Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\CMSIS\Include
 -I
@@ -18,15 +18,15 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc\c
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Inc
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Inc
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Drivers\CMSIS\Device\ST\STM32F3xx\Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Drivers\CMSIS\Device\ST\STM32F3xx\Include
 -I
-C:\Users\Yobart\Desktop\IS1300\IntroSerie\IntroSerie\Drivers\CMSIS\Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\FungerandeUART\IntroSerie\IntroSerie\Drivers\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\CMSIS\Include
 -DUSE_HAL_DRIVER=1
