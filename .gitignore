@@ -1,5 +1,6 @@
 .~*#
 .#.*
+target
 docs/protokoll/*.tex
 docs/protokoll/*.pdf
 docs/**/*.toc
