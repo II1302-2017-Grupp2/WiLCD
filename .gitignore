@@ -2,3 +2,8 @@
 .#.*
 docs/protokoll/*.tex
 docs/protokoll/*.pdf
+docs/**/*.toc
+docs/**/*.log
+docs/**/*.synctex.gz
+docs/**/*.aux
+docs/Rapporter och def/latexExempel.pdf
