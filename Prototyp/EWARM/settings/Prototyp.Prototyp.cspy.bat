@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.general.xcl" --backend -f "C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.general.xcl" --backend -f "C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM\settings\Prototyp.Prototyp.driver.xcl" 
 
 @echo off 
 :end
