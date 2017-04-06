@@ -1,16 +1,16 @@
-"C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Src\i2c.c"
+"C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Src\i2c.c"
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM/../Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM/../Inc
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM/../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM/../Drivers/CMSIS/Device/ST/STM32F3xx/Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM/../Drivers/CMSIS/Device/ST/STM32F3xx/Include
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\EWARM/../Drivers/CMSIS/Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\EWARM/../Drivers/CMSIS/Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\CMSIS\Include
 -I
@@ -18,15 +18,15 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc\c
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Inc
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Drivers\STM32F3xx_HAL_Driver\Inc
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Drivers\STM32F3xx_HAL_Driver\Inc
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Drivers\CMSIS\Device\ST\STM32F3xx\Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Drivers\CMSIS\Device\ST\STM32F3xx\Include
 -I
-C:\Users\Yobart\Documents\GitHub\Projekt\WiLCD\Prototyp\Drivers\CMSIS\Include
+C:\Users\Druxel\Desktop\Projekt och projektmetoder\WiLCD\Prototyp\Drivers\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\CMSIS\Include
 -DUSE_HAL_DRIVER=1
