@@ -71,7 +71,7 @@ void SysTick_Handler(void)
 /* USER CODE BEGIN 1 */
 void USART3_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&huart1);
+ HAL_UART_IRQHandler(&huart3);
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
