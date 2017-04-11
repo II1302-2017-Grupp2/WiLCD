@@ -1,0 +1,10 @@
+Debug
+Release
+Drivers
+.mxproject
+.cproject
+.project
+STM32F303VCTx_FLASH.ld
+Prototyp-teo.xml
+.settings
+Prototyp-teo.cfg
