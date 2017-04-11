@@ -41,6 +41,7 @@
 /* USER CODE BEGIN Includes */
 #define BUFFERSIZE 22 
 ITStatus UartReady = RESET;
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -58,28 +59,14 @@ void Error_Handler(void);
 /* Private function prototypes -----------------------------------------------*/
 
 /* USER CODE END PFP */
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
-{
- /* Set transmission flag: transfer complete*/
- UartReady = SET;
 
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
-{
- /* Set transmission flag: trasfer complete*/
- UartReady = SET;
-
-}
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
 
 int main(void)
 {
- 	uint8_t Tecken;
-  char *hello = "Hello world!\n\r";
-  uint8_t Buffer[] = "Hello World interrupt!";
+
   /* USER CODE BEGIN 1 */
  
   /* USER CODE END 1 */
@@ -96,56 +83,21 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_RTC_Init();
-  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
 
   /* USER CODE BEGIN 2 */
 
-	displayInit();
+	//displayInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+	while (1)
+	{
   /* USER CODE END WHILE */
-if(HAL_UART_Receive(&huart1,&Tecken,1,5000) != HAL_OK){
-    Error_Handler();
-  }
-  if(HAL_UART_Transmit(&huart1,&Tecken,1,5000) != HAL_OK){
-    Error_Handler();
-  }
-  
-  
-  /* Start the transmission process */
-   if(HAL_UART_Transmit_IT(&huart1, (uint8_t *)Buffer, BUFFERSIZE)!= HAL_OK)
-  {
-  Error_Handler();
-  }
 
-  /* Wait for the end of the transfer */
-  while (UartReady != SET)
-  {
-  }
-  /* Reset transmission flag */
-  UartReady = RESET;
-  
-  
-  /* Put UART peripheral in reception process */
-  if(HAL_UART_Receive_IT(&huart1, (uint8_t *)Buffer, BUFFERSIZE) != HAL_OK)
-  {
-  Error_Handler();
-  }
-
-  /* Wait for the end of the transfer */
-  while (UartReady != SET)
-  {
-  }
-
-  /* Reset transmission flag */
-  UartReady = RESET;
   /* USER CODE BEGIN 3 */
-		displayMsg();
-  }
+	}
   /* USER CODE END 3 */
 
 }
@@ -188,9 +140,9 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_I2C1
                               |RCC_PERIPHCLK_RTC;
-  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_HSE_DIV32;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
@@ -223,7 +175,6 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler */
   /* User can add his own implementation to report the HAL error return state */
-  HAL_GPIO_WritePin(LD10_GPIO_Port, LD10_Pin, GPIO_PIN_SET);
   while(1) 
   {
   }

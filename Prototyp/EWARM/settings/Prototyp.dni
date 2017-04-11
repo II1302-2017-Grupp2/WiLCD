@@ -6,7 +6,7 @@ LeaveTargetRunning=_ 0
 stlinkResetStyle=0
 stlinkResetStrategy=1
 [DebugChecksum]
-Checksum=1851382632
+Checksum=-1896703499
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
