@@ -34,6 +34,7 @@
 #include "main.h"
 #include "stm32f3xx_hal.h"
 #include "i2c.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -78,9 +79,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
+  MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
-  int ctr = 0;
   Display_Init();
   /* USER CODE END 2 */
 
@@ -88,11 +89,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if (++ctr >= 1000000) {
-		  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
-		  Display_Msg();
-		  ctr = 0;
+	  uint8_t chr;
+	  if (HAL_UART_Receive(&huart1, &chr, 1, 1000) != HAL_OK) {
+		  continue;
 	  }
+	  Display_Char(chr);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -136,7 +137,8 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {

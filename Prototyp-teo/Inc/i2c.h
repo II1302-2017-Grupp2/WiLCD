@@ -60,6 +60,8 @@ void MX_I2C1_Init(void);
 
 void Display_Init();
 void Display_Msg();
+void Display_Str(char* msg);
+void Display_Char(char msg);
 
 /* USER CODE END Prototypes */
 
