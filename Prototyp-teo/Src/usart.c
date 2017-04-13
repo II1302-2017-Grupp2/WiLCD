@@ -61,23 +61,36 @@ char *espErrorMsg = "ERROR";
 char *espFailMsg = "FAIL";
 char *espIpDataMsg = "+IPD,";
 
+int8_t ESP_WaitForMsg(char *msg, uint8_t loop);
+
 void ESP_Init() {
 	uart1Pos = 0;
 	uart2Pos = 0;
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // ESP GPIO0 LOW = reprogramming mode
-	HAL_Delay(1000);
+	HAL_Delay(2000);
 	HAL_UART_Receive_DMA(&huart1, uart1Buf, 2);
 	HAL_UART_Receive_DMA(&huart2, uart2Buf, 2);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
 
 	UART_DebugLog("ESP BOOTING");
-	ESP_WaitForMsg(espReadyMsg);
+	uint8_t bootOk = 0;
+	for (int i = 0; i < 200; i++) {
+		if (ESP_WaitForMsg(espReadyMsg, 0) == 1) {
+			bootOk = 1;
+			break;
+		}
+		HAL_Delay(10);
+	}
+	if (bootOk == 0) {
+		UART_DebugLog("ESP BOOT TIMEOUT, RESETTING MCU...");
+		HAL_NVIC_SystemReset();
+	}
 	UART_DebugLog("ESP RESETTING");
 	ESP_SendCommand("AT+RESTORE"); // Factory reset
-	ESP_WaitForMsg(espReadyMsg);
+	ESP_WaitForMsg(espReadyMsg, 1);
 	UART_DebugLog("ESP CONFIG");
 	ESP_SendCommand("AT");
 	ESP_SendCommand("ATE0"); // Disable command echo
@@ -88,12 +101,12 @@ void ESP_Init() {
 	UART_DebugLog("ESP WIFI CONNECTING");
 	if (ESP_SendCommand("AT+CWJAP_CUR=\""WIFI_SSID"\",\""WIFI_PSK"\"") == 0) {
 		UART_DebugLog("ESP WIFI CONNECT FAILED");
-		Error_Handler();
+		HAL_NVIC_SystemReset();
 	}
 	UART_DebugLog("ESP TCP CONNECTING");
 	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"192.168.0.252\",9797") == 0) {
 		UART_DebugLog("ESP TCP CONNECT FAILED");
-		Error_Handler();
+		HAL_NVIC_SystemReset();
 	}
 	UART_DebugLog("ESP RUNNING");
 }
@@ -113,18 +126,22 @@ uint16_t ESP_ReadLine(uint8_t *buf) {
 		}
 	}
 	if (eolFound) {
+		if (j == 6 && strncmp((char *)buf, "CLOSED", j) == 0) {
+			UART_DebugLog("ESP DISCONNECTED, RESETTING MCU...");
+			HAL_NVIC_SystemReset();
+		}
 		return j;
 	} else {
 		return 0;
 	}
 }
 
-uint8_t ESP_WaitForMsg(char *msg) {
+int8_t ESP_WaitForMsg(char *msg, uint8_t loop) {
 	int msgLen = strlen(msg);
 	int errLen = strlen(espErrorMsg);
 	int failLen = strlen(espFailMsg);
 	uint8_t buf[ESP_BUF_SIZE];
-	while (1) {
+	do {
 		int recvLen = ESP_ReadLine(buf);
 		if (recvLen >= 1 && buf[0] == '+') {
 			HAL_UART_Transmit(&huart1, buf, recvLen, 1000);
@@ -139,14 +156,15 @@ uint8_t ESP_WaitForMsg(char *msg) {
 			UART_DebugLog("");
 			return 0;
 		}
-	}
+	} while(loop);
+	return -1;
 }
 
-uint8_t ESP_WaitForOk() {
-	return ESP_WaitForMsg(espOkMsg);
+int8_t ESP_WaitForOk() {
+	return ESP_WaitForMsg(espOkMsg, 1);
 }
 
-uint8_t ESP_SendCommand(char *msg) {
+int8_t ESP_SendCommand(char *msg) {
 	HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
 	HAL_UART_Transmit(&huart2, (uint8_t *)"\r\n", 2, 1000);
 	return ESP_WaitForOk();

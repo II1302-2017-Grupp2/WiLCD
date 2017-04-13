@@ -63,9 +63,8 @@ void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN Prototypes */
 
 void ESP_Init();
-uint8_t ESP_WaitForMsg(char *msg);
-uint8_t ESP_WaitForOk();
-uint8_t ESP_SendCommand(char *msg);
+int8_t ESP_WaitForOk();
+int8_t ESP_SendCommand(char *msg);
 uint16_t ESP_ReadLine(uint8_t *buf);
 int16_t ESP_TCP_ReadLine(uint8_t *buf);
 
