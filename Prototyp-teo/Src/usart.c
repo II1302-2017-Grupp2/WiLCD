@@ -47,8 +47,8 @@
 #include "secrets.h"
 
 uint8_t espReceiveBuffer[ESP_BUF_SIZE];
-uint8_t espReceiveBufferLo = 0;
-uint8_t espReceiveBufferHi = 0;
+uint16_t espReceiveBufferLo = 0;
+uint16_t espReceiveBufferHi = 0;
 
 uint8_t uart1Buf[2];
 uint8_t uart1Pos = 0;
@@ -73,12 +73,15 @@ void ESP_Init() {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
 
+	UART_DebugLog("ESP BOOTING");
 	ESP_WaitForMsg(espReadyMsg);
+	UART_DebugLog("ESP RESETTING");
 	ESP_SendCommand("AT+RESTORE"); // Factory reset
 	ESP_WaitForMsg(espReadyMsg);
+	UART_DebugLog("ESP CONFIG");
 	ESP_SendCommand("AT");
 	ESP_SendCommand("ATE0"); // Disable command echo
-	ESP_SendCommand("AT+RFPOWER=20");
+	ESP_SendCommand("AT+RFPOWER=5");
 	ESP_SendCommand("AT+CIPMUX=0");
 	ESP_SendCommand("AT+CWMODE_DEF=1");
 
@@ -210,21 +213,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 		value = uart2Buf[uart2Pos];
 		uart2Pos = (uart2Pos + 1) % 2;
 	}
-	uint8_t newHi = (espReceiveBufferHi + 1) % ESP_BUF_SIZE;
 	espReceiveBuffer[espReceiveBufferHi] = value;
-	espReceiveBufferHi = newHi;
-
-	/*if (value == '\r' || value == '\n') {
-		if (1 || huart->Instance == USART2) {
-			HAL_UART_Transmit(&huart1, espReceiveBuffer, espReceiveBufferHi, 1000);
-			HAL_UART_Transmit(&huart1, "\r\n", 2, 1000);
-		} else {
-			/*HAL_UART_Transmit(&huart2, espReceiveBuffer, espReceiveBufferHi, 1000);
-			HAL_UART_Transmit(&huart2, "\r\n", 2, 1000);*/
-		/*}
-		espReceiveBufferHi = 0;
-	}*/
-	//HAL_UART_Transmit(&huart1, uart1Buf, 5, 1000);
+	espReceiveBufferHi = (espReceiveBufferHi + 1) % ESP_BUF_SIZE;
 }
 
 /* USER CODE END 0 */
