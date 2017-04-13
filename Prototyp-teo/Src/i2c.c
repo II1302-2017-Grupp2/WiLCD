@@ -92,10 +92,16 @@ void Display_Char(char msg) {
 	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, buf, size + kerning + 1, 1000);
 }
 
-void Display_Str(char* msg) {
+void Display_Str(char *msg) {
 	while (*msg != 0) {
 		Display_Char(*msg);
 		++msg;
+	}
+}
+
+void Display_Strn(uint8_t *msg, uint16_t len) {
+	for (uint16_t i = 0; i < len; i++) {
+		Display_Char(msg[i]);
 	}
 }
 

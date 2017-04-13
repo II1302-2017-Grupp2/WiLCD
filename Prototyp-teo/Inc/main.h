@@ -41,6 +41,21 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define Debug_UART_TX_Pin GPIO_PIN_4
+#define Debug_UART_TX_GPIO_Port GPIOC
+#define Debug_UART_RX_Pin GPIO_PIN_5
+#define Debug_UART_RX_GPIO_Port GPIOC
+#define ESP_RESET_Pin GPIO_PIN_9
+#define ESP_RESET_GPIO_Port GPIOE
+#define ESP_ENABLE_Pin GPIO_PIN_11
+#define ESP_ENABLE_GPIO_Port GPIOE
+#define ESP_GPIO0_Pin GPIO_PIN_13
+#define ESP_GPIO0_GPIO_Port GPIOE
+#define ESP_UART_TX_Pin GPIO_PIN_3
+#define ESP_UART_TX_GPIO_Port GPIOB
+#define ESP_UART_RX_Pin GPIO_PIN_4
+#define ESP_UART_RX_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -61,6 +61,7 @@ void MX_I2C1_Init(void);
 void Display_Init();
 void Display_Msg();
 void Display_Str(char* msg);
+void Display_Strn(uint8_t *msg, uint16_t len);
 void Display_Char(char msg);
 
 /* USER CODE END Prototypes */

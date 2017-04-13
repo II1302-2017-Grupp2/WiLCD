@@ -33,6 +33,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f3xx_hal.h"
+#include "dma.h"
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
@@ -78,22 +79,43 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_I2C1_Init();
   MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
   Display_Init();
+  ESP_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uint8_t chr;
+	  uint8_t buf[ESP_BUF_SIZE];
+	  int16_t len;
+	  if ((len = ESP_TCP_ReadLine(buf)) > 0) {
+		  HAL_UART_Transmit(&huart1, buf, len, 1000);
+		  HAL_UART_Transmit(&huart1, "\r\n", 2, 1000);
+		  Display_Strn(buf, len);
+	  } else if (len == -1 && (len = ESP_ReadLine(buf)) != 0) {
+		  HAL_UART_Transmit(&huart1, buf, len, 1000);
+		  HAL_UART_Transmit(&huart1, "\r\n", 2, 1000);
+		  Display_Strn(buf, len);
+	  }
+	  /*uint8_t chr;
 	  if (HAL_UART_Receive(&huart1, &chr, 1, 1000) != HAL_OK) {
 		  continue;
 	  }
-	  Display_Char(chr);
+	  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
+	  if (HAL_GPIO_ReadPin(GPIOE, GPIO_PIN_9) == GPIO_PIN_SET) {
+		  chr = '1';
+	  } else {
+		  chr = '0';
+	  }
+	  HAL_UART_Transmit(&huart1, &chr, 1, 1000);
+	  Display_Char(chr);*/
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -137,8 +159,10 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2
+                              |RCC_PERIPHCLK_I2C1;
   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
