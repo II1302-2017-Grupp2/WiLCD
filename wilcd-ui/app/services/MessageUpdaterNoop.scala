@@ -13,6 +13,9 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
 
   private var message = ""
 
+
+  override def isDeviceConnected: Future[Boolean] = Future.successful(true)
+
   override def getMessage: Future[String] = Future {
     lock.synchronized {
       message

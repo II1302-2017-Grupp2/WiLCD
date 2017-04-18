@@ -5,7 +5,7 @@ import java.net.InetSocketAddress
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.io.{IO, Tcp}
 import Tcp._
-import actors.TcpDisplayUpdater.Update
+import actors.TcpDisplayUpdater.{IsDeviceConnected, Update}
 import akka.util.ByteString
 
 import scala.collection.mutable
@@ -39,9 +39,13 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
       for (client <- clients) {
         client ! Write(bs)
       }
+
+    case IsDeviceConnected =>
+      sender() ! clients.nonEmpty
   }
 }
 
 object TcpDisplayUpdater {
   case class Update(msg: String)
+  case object IsDeviceConnected
 }
