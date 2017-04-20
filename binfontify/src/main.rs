@@ -94,7 +94,6 @@ impl Font {
 
     fn to_c(&self) -> String {
         let mut out = String::new();
-        out += "#include \"font.h\"\n\n";
         let mut names = HashMap::new();
         let mut char_pairs = vec::Vec::from_iter(self.chars.iter());
         char_pairs.sort_by_key(|x| x.0);

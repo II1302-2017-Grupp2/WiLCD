@@ -8,6 +8,8 @@ cat > $TARGET <<EOF
  * and then rerun Prototyp-teo/regen-font.sh
  */
 
+#include "font.h"
+
 EOF
 
 cargo run --release WiLCD-Sans.txt >> $TARGET
