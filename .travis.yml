@@ -13,6 +13,11 @@ script:
   - pushd binfontify
   - cargo test
   - popd
+  - pushd Prototyp-teo
+  - mv Src/font.c Src/font-git.c
+  - ./regen-font.sh
+  - cmp Src/font.c Src/font-git.c
+  - popd
   - pushd uartd
   - cargo test
   - popd
