@@ -104,7 +104,7 @@ void ESP_Init() {
 		HAL_NVIC_SystemReset();
 	}
 	UART_DebugLog("ESP TCP CONNECTING");
-	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"192.168.0.252\",9797") == 0) {
+	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797") == 0) {
 		UART_DebugLog("ESP TCP CONNECT FAILED");
 		HAL_NVIC_SystemReset();
 	}
