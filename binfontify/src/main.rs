@@ -2,7 +2,7 @@ use std::{fs, env, vec};
 use std::io::Read;
 use std::iter::FromIterator;
 use std::collections::HashMap;
-use std::str::Lines;
+use std::str::{Lines, FromStr};
 
 #[derive(Debug)]
 struct Character {
@@ -15,10 +15,13 @@ struct Font {
 }
 
 impl Character {
-    fn from_txtfont_lines(txtchar: &mut Lines) -> Character {
+    fn from_txtfont_lines(txtchar: &mut Lines, length: Option<u8>) -> Character {
         let mut font_char = Character {
             bytes: vec![]
         };
+        if let Some(length) = length {
+            font_char.bytes.resize(length as usize, 0);
+        }
         for i in 0..8 {
             let line = match txtchar.next() {
                 Some(x) => x,
@@ -35,7 +38,10 @@ impl Character {
                 } << i;
             }
         };
-        assert!(font_char.bytes.len() <= 255);
+        if let Some(length) = length {
+            assert_eq!(font_char.bytes.len(), length as usize);
+        }
+        assert!(font_char.bytes.len() <= 128);
         font_char
     }
 
@@ -69,8 +75,11 @@ impl Font {
                 let mut chars = line.chars();
                 assert_eq!(Some(':'), chars.next());
                 let chr = chars.next().unwrap();
-                assert_eq!(None, chars.next());
-                font.chars.insert(chr, Character::from_txtfont_lines(&mut lines));
+                let length = match chars.as_str() {
+                    "" => None,
+                    len => Some(u8::from_str(len).unwrap())
+                };
+                font.chars.insert(chr, Character::from_txtfont_lines(&mut lines, length));
             } else {
                 break;
             }
