@@ -1,0 +1,17 @@
+language: scala
+scala:
+  - 2.11.8
+sudo: required
+
+before_install:
+  - curl https://sh.rustup.rs -sSf | sh
+script:
+  - pushd binfontify
+  - cargo test
+  - popd
+  - pushd uartd
+  - cargo test
+  - popd
+  - pushd wilcd-ui
+  - sbt test
+  - popd
