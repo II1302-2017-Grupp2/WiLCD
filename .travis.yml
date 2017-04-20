@@ -4,7 +4,7 @@ scala:
 sudo: required
 
 before_install:
-  - curl https://sh.rustup.rs -sSf | sh
+  - curl https://sh.rustup.rs -sSf | sh - -y
 script:
   - pushd binfontify
   - cargo test
