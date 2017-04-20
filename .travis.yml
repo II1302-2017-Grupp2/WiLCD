@@ -5,6 +5,11 @@ language: scala
 scala:
   - 2.11.8
 
+addons:
+  apt:
+    packages:
+    - realpath
+
 before_install:
   - curl https://sh.rustup.rs -sSf > rustup.sh
   - sh rustup.sh -y
