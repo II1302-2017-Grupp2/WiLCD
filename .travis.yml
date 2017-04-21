@@ -1,0 +1,31 @@
+sudo: false
+dist: trusty
+
+language: scala
+scala:
+  - 2.11.8
+
+addons:
+  apt:
+    packages:
+    - realpath
+
+before_install:
+  - curl https://sh.rustup.rs -sSf > rustup.sh
+  - sh rustup.sh -y
+  - export PATH=~/.cargo/bin:$PATH
+script:
+  - pushd binfontify
+  - cargo test
+  - popd
+  - pushd Prototyp-teo
+  - mv Src/font.c Src/font-git.c
+  - ./regen-font.sh
+  - cmp Src/font.c Src/font-git.c
+  - popd
+  - pushd uartd
+  - cargo test
+  - popd
+  - pushd wilcd-ui
+  - sbt test
+  - popd
