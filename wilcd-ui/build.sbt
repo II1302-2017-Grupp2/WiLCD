@@ -9,6 +9,7 @@ scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   filters,
+  "org.webjars.npm" % "bootstrap" % "3.3.7",
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,
   "org.mockito" % "mockito-core" % "2.7.20" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "3.3.1" % Test,
