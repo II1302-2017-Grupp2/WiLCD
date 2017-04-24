@@ -45,14 +45,51 @@
 #define DISPLAY_SHOW (0x40)
 
 uint8_t displayAddress = 0x3C << 1;
+uint8_t displayCurrentPage = 0;
+uint8_t displayCurrentCol = 0;
+
+void Display_UpdatePos() {
+	uint8_t setDisplayPosSequence[] = {
+		DISPLAY_CMD,
+		0x10 | (displayCurrentCol >> 4), // Page column upper nibble
+		0x00 | (displayCurrentCol & 0x0F), // Page column lower nibble
+		0xB0 | (displayCurrentPage & 0x07) // Page
+	};
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, setDisplayPosSequence, sizeof(setDisplayPosSequence), 1000);
+}
+
+void Display_ClearPage(uint8_t page) {
+	displayCurrentPage = page;
+	displayCurrentCol = 0;
+	uint8_t displayClearSixteenSequence[] = {
+		DISPLAY_SHOW,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0
+	};
+
+	Display_UpdatePos();
+	for (int i = 0; i < 8; i++) {
+		HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayClearSixteenSequence, sizeof(displayClearSixteenSequence), 1000);
+	}
+}
+
+void Display_Clear() {
+	for (int i = 0; i < 8; i++) {
+		Display_ClearPage(i);
+	}
+	displayCurrentPage = 0;
+	displayCurrentCol = 0;
+}
 
 void Display_Init() {
 	uint8_t displayInitSequence[] = {
 		DISPLAY_CMD,
 		0xAE, // Disable display
-		0x20, // Memory mode
-		0x10, 0xB0, 0xC8, // High column
-		0x00, 0x10, 0x40, // Low column
+
+		0x20, 0x02, // Memory mode: PAGE
+		0x2E, // Disable scrolling
 
 		0xA8, 0x3F, // MUX Ratio
 		0xD3, 0x00, // Display offset
@@ -72,6 +109,17 @@ void Display_Init() {
 	};
 
 	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayInitSequence, sizeof(displayInitSequence), 1000);
+	Display_Clear();
+}
+
+void Display_Newline() {
+	Display_ClearPage((displayCurrentPage + 1) % 8);
+
+	uint8_t displayRemapSequence[] = {
+		DISPLAY_CMD,
+		0x40 | (((displayCurrentPage + 1) * 8) & 0x3F)
+	};
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayRemapSequence, sizeof(displayRemapSequence), 1000);
 }
 
 void Display_Char(char msg) {
@@ -81,6 +129,13 @@ void Display_Char(char msg) {
 	}
 	uint8_t size = *fontChar;
 	uint8_t kerning = 1;
+
+	if (displayCurrentCol + size + kerning >= 128) {
+		Display_Newline();
+	}
+	Display_UpdatePos();
+	displayCurrentCol += size + kerning;
+
 	uint8_t buf[150];
 	buf[0] = DISPLAY_SHOW;
 	for (int i = 1; i <= size; i++) {
@@ -93,6 +148,7 @@ void Display_Char(char msg) {
 }
 
 void Display_Str(char *msg) {
+	Display_Newline();
 	while (*msg != 0) {
 		Display_Char(*msg);
 		++msg;
@@ -100,6 +156,7 @@ void Display_Str(char *msg) {
 }
 
 void Display_Strn(uint8_t *msg, uint16_t len) {
+	Display_Newline();
 	for (uint16_t i = 0; i < len; i++) {
 		Display_Char(msg[i]);
 	}

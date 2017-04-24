@@ -77,7 +77,7 @@ void ESP_Init() {
 
 	UART_DebugLog("ESP BOOTING");
 	uint8_t bootOk = 0;
-	for (int i = 0; i < 200; i++) {
+	for (int i = 0; i < 400; i++) {
 		if (ESP_WaitForMsg(espReadyMsg, 0) == 1) {
 			bootOk = 1;
 			break;
@@ -88,15 +88,15 @@ void ESP_Init() {
 		UART_DebugLog("ESP BOOT TIMEOUT, RESETTING MCU...");
 		HAL_NVIC_SystemReset();
 	}
-	UART_DebugLog("ESP RESETTING");
+	/*UART_DebugLog("ESP RESETTING");
 	ESP_SendCommand("AT+RESTORE"); // Factory reset
-	ESP_WaitForMsg(espReadyMsg, 1);
+	ESP_WaitForMsg(espReadyMsg, 1);*/
 	UART_DebugLog("ESP CONFIG");
 	ESP_SendCommand("AT");
 	ESP_SendCommand("ATE0"); // Disable command echo
 	ESP_SendCommand("AT+RFPOWER=5");
 	ESP_SendCommand("AT+CIPMUX=0");
-	ESP_SendCommand("AT+CWMODE_DEF=1");
+	ESP_SendCommand("AT+CWMODE_CUR=1");
 
 	UART_DebugLog("ESP WIFI CONNECTING");
 	if (ESP_SendCommand("AT+CWJAP_CUR=\""WIFI_SSID"\",\""WIFI_PSK"\"") == 0) {
@@ -104,7 +104,7 @@ void ESP_Init() {
 		HAL_NVIC_SystemReset();
 	}
 	UART_DebugLog("ESP TCP CONNECTING");
-	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"192.168.0.252\",9797") == 0) {
+	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797") == 0) {
 		UART_DebugLog("ESP TCP CONNECT FAILED");
 		HAL_NVIC_SystemReset();
 	}
