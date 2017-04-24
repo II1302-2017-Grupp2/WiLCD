@@ -2,7 +2,9 @@
 
 @main("Welcome to Play") {
     @helper.form(routes.HomeController.submitNewMessage) {
-        <input name="message"/>
-        <input type="submit"/>
+        <div class="messageBox">
+            <input class="form-control" placeholder="Message" name="message"/>
+            <input type="submit" class="btn-default"/>
+        </div>
     }
 }
