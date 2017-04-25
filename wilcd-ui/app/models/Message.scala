@@ -47,6 +47,7 @@ object Messages {
     tq
       .filter(_.displayFrom < Instant.now())
       .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
-      .sorted(_.displayFrom)
+      .sorted(_.displayFrom.desc)
+      .take(1)
       .result.headOption
 }

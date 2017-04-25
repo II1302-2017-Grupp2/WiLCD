@@ -21,7 +21,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
   "org.postgresql" % "postgresql" % "42.0.0",
   //  "org.postgresql" % "postgreqsl" % "9.4.1212",
-  "com.github.tminglei" %% "slick-pg" % "0.15.0-RC"
+  "com.github.tminglei" %% "slick-pg" % "0.15.0-RC",
+  "org.abstractj.kalium" % "kalium" % "0.5.0"
 )
 
 // Adds additional packages into Twirl

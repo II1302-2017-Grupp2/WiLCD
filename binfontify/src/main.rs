@@ -98,7 +98,7 @@ impl Font {
         if !last {
             *out += ",";
         }
-        *out += format!("\t\t/* {:?} ({}) */\n", chr, chr_num).as_ref();
+        *out += format!("\t\t/* {:?} ({}) */\n", chr, u32::from(chr)).as_ref();
     }
 
     fn to_c(&self) -> String {

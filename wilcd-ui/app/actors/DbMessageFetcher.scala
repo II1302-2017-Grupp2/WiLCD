@@ -4,6 +4,7 @@ import javax.inject.{Inject, Named}
 
 import actors.DbMessageFetcher.{CurrentMessage, Refresh}
 import akka.actor.{Actor, ActorRef}
+import akka.pattern.pipe
 import services.MessageUpdater
 
 import scala.concurrent.duration._
@@ -17,7 +18,7 @@ class DbMessageFetcher @Inject() (@Named("tcp-display-updater") updater: ActorRe
 
   override def receive: Receive = {
     case Refresh =>
-      self ! messageUpdater.getMessage.map(CurrentMessage)
+      messageUpdater.getMessage.map(CurrentMessage) pipeTo self
     case CurrentMessage(newMessage) =>
       if (newMessage != lastMessage) {
         updater ! TcpDisplayUpdater.Update(newMessage)
