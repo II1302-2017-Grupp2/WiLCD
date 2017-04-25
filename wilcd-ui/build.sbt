@@ -3,7 +3,7 @@ organization := "se.kth.wilcd"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, JDebPackaging, SystemdPlugin)
+lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, JDebPackaging, SystemdPlugin)
 
 scalaVersion := "2.11.8"
 
