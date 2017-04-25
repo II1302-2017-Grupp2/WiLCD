@@ -27,6 +27,16 @@ class HomeController @Inject() (messageUpdater: MessageUpdater) extends Controll
     Ok(views.html.index())
   }
 
+  def signIn = Action { implicit request =>
+    messageUpdater.setMessage("hello")
+    Ok(views.html.signIn())
+  }
+
+  def signUp = Action { implicit request =>
+    messageUpdater.setMessage("hello")
+    Ok(views.html.signUp())
+  }
+
   def submitNewMessage = Action.async { request =>
     for {
       () <- messageUpdater.setMessage(request.getQueryString("message").get)

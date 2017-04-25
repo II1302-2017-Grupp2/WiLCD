@@ -1,10 +1,10 @@
 @()
 
-@main("Welcome to Play") {
-    @helper.form(routes.HomeController.submitNewMessage) {
-        <div class="messageBox">
-            <input class="form-control" placeholder="Message" name="message"/>
-            <input type="submit" class="btn-default"/>
+@main("Home", currentPage = "Index") {
+    <div class="infoBox">
+        <h2 class="cover-heading">Welcome to Displaimer</h2>
+            <div class="formBox">
+            <p>Please sign in or register to be a part of the amazing community that makes up Disclaimer.</p>
+            </div>
         </div>
-    }
 }
