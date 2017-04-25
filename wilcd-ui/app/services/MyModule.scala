@@ -9,6 +9,7 @@ class MyModule extends AbstractModule with AkkaGuiceSupport {
     //    bind(classOf[MessageUpdater]).to(classOf[MessageUpdaterNoop])
     //    bind(classOf[MessageUpdater]).to(classOf[MessageUpdaterNetwork])
     bind(classOf[MessageUpdater]).to(classOf[MessageUpdaterDatabase])
+    bind(classOf[UserService]).to(classOf[UserServiceDatabase])
     bindActor[TcpDisplayUpdater]("tcp-display-updater")
     bindActor[DbMessageFetcher]("db-message-fetcher")
   }
