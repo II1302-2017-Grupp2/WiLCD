@@ -20,7 +20,6 @@ class DbMessageFetcher @Inject() (@Named("tcp-display-updater") updater: ActorRe
     case Refresh =>
       messageUpdater.getMessage.map(CurrentMessage) pipeTo self
     case CurrentMessage(newMessage) =>
-      println(newMessage)
       if (newMessage != lastMessage) {
         updater ! TcpDisplayUpdater.Update(newMessage)
         lastMessage = newMessage
