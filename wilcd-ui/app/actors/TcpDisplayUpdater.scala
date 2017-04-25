@@ -38,7 +38,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
       clients -= sender()
 
     case Update(msg) =>
-      val bs = ByteString(msg+"\r\n")
+      val bs = ByteString(msg+"\r\n", "ISO-8859-1")
       for (client <- clients) {
         client ! Write(bs)
       }
