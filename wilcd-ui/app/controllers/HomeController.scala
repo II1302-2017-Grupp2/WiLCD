@@ -23,7 +23,6 @@ class HomeController @Inject() (messageUpdater: MessageUpdater) extends Controll
    * a path of `/`.
    */
   def index = Action { implicit request =>
-    messageUpdater.setMessage("hello")
     Ok(views.html.index())
   }
 
