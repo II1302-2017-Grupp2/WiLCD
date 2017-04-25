@@ -16,6 +16,8 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
   private val io = IO(Tcp)
   private val clients = mutable.Set[ActorRef]()
 
+  private var lastMessage = ByteString("")
+
   io ! Bind(self, new InetSocketAddress(9797))
 
   override def receive: Receive = {
@@ -27,6 +29,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
       log.info(s"Connection from $remote")
       clients += conn
       conn ! Register(self)
+      conn ! Write(lastMessage)
 
     case Received(_) =>
 
@@ -39,6 +42,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
       for (client <- clients) {
         client ! Write(bs)
       }
+      lastMessage = bs
 
     case IsDeviceConnected =>
       sender() ! clients.nonEmpty
