@@ -51,6 +51,8 @@ extern UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN Private defines */
 
+#define ESP_BUF_SIZE (400)
+
 /* USER CODE END Private defines */
 
 extern void Error_Handler(void);
@@ -59,6 +61,14 @@ void MX_USART1_UART_Init(void);
 void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+
+void ESP_Init();
+int8_t ESP_WaitForOk();
+int8_t ESP_SendCommand(char *msg);
+uint16_t ESP_ReadLine(uint8_t *buf);
+int16_t ESP_TCP_ReadLine(uint8_t *buf);
+
+void UART_DebugLog(char *msg);
 
 /* USER CODE END Prototypes */
 
