@@ -1,6 +1,13 @@
 @(elements: helper.FieldElements)
 
-<div class="form-group label-floating">
+<div class="form-group label-floating @if(elements.hasErrors) { has-error }">
     <label for="@elements.id" class="control-label">@elements.label</label>
     @elements.input
+    @if(elements.hasErrors) {
+        <ul>
+            @for(error <- elements.errors) {
+                <li>@error</li>
+            }
+        </ul>
+    }
 </div>

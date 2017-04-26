@@ -3,7 +3,7 @@ package controllers
 import java.net.InetAddress
 import javax.inject._
 
-import controllers.HomeController.SignupData
+import controllers.HomeController.{SigninData, SignupData}
 import play.api.data.Forms._
 import play.api.data._
 import play.api.i18n.{I18nSupport, MessagesApi}
@@ -21,6 +21,12 @@ import scala.concurrent.Future
 @Singleton
 class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: UserService, val messagesApi: MessagesApi) extends Controller with I18nSupport with AuthSupport {
 
+  val signinForm = Form(
+    mapping(
+      "email" -> email,
+      "password" -> nonEmptyText
+    )(SigninData.apply)(SigninData.unapply)
+  )
   val signupForm = Form(
     mapping(
       "email" -> email,
@@ -40,7 +46,20 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
   }
 
   def signIn = UserAction { implicit request =>
-    Ok(views.html.signIn())
+    Ok(views.html.signIn(signinForm))
+  }
+
+  def doSignIn = UserAction.async { implicit request =>
+    val form = signinForm.bindFromRequest()
+    form.fold(
+      formWithErrors => Future.successful(BadRequest(views.html.signIn(formWithErrors))),
+      formData => for {
+        maybeSession <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
+      } yield maybeSession match {
+        case Some(session) => setUserSession(Redirect(routes.HomeController.index()), session)
+        case None => BadRequest(views.html.signIn(form.withError("password", "Wrong email and/or password")))
+      }
+    )
   }
 
   def signUp = UserAction { implicit request =>
@@ -52,7 +71,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
       formWithErrors => Future.successful(BadRequest(views.html.signUp(formWithErrors))),
       formData => for {
         user <- userService.create(formData.email, formData.password)
-        Some((_, session)) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
+        Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
       } yield setUserSession(Redirect(routes.HomeController.index()), session)
     )
   }
@@ -74,6 +93,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
 
 object HomeController {
 
+  case class SigninData(email: String, password: String)
   case class SignupData(email: String, password: String)
 
 }

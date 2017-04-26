@@ -4,12 +4,13 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                    controllers.HomeController.index
-GET         /update              controllers.HomeController.submitNewMessage
-GET         /login               controllers.HomeController.signIn
-GET         /register            controllers.HomeController.signUp
-POST        /register            controllers.HomeController.doSignUp
-GET        /instantMessage       controllers.HomeController.instantMessage
-GET        /scheduleMessage      controllers.HomeController.scheduleMessage
+GET         /                       controllers.HomeController.index
+GET         /update                 controllers.HomeController.submitNewMessage
+GET         /login                  controllers.HomeController.signIn
+POST        /login                  controllers.HomeController.doSignIn
+GET         /register               controllers.HomeController.signUp
+POST        /register               controllers.HomeController.doSignUp
+GET         /instantMessage         controllers.HomeController.instantMessage
+GET         /scheduleMessage        controllers.HomeController.scheduleMessage
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)

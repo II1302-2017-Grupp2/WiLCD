@@ -13,15 +13,17 @@ import scala.concurrent.Future
 class UserServiceDatabase @Inject()(val dbConfigProvider: DatabaseConfigProvider) extends UserService with HasDatabaseConfigProvider[PgProfile] {
   override def create(email: String, password: String): Future[WithId[User]] = db.run(Users.createUser(email, password))
 
-  override def logIn(email: String, password: String, ip: InetAddress): Future[Option[(WithId[User], WithId[UserSession])]] = db.run(
+  override def logIn(email: String, password: String, ip: InetAddress): Future[Option[WithId[UserSession]]] = db.run(
     Users.findByUsernameWithPassword(email, password).flatMap(userM =>
       DBIO.sequenceOption(
         userM.map(user =>
-          UserSessions.create(user, ip).map(session => (user, session))
+          UserSessions.create(user, ip)
         )
       )
     )
   )
+
+  override def logOut(id: Id[UserSession]): Future[Unit] = db.run(UserSessions.destroy(id))
 
   override def findSession(id: Id[UserSession]): Future[Option[(WithId[User], WithId[UserSession])]] = db.run(UserSessions.find(id).result.headOption)
 }
