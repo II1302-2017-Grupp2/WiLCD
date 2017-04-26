@@ -23,7 +23,11 @@ libraryDependencies ++= Seq(
   //  "org.postgresql" % "postgreqsl" % "9.4.1212",
   "com.github.tminglei" %% "slick-pg" % "0.15.0-RC",
   "org.abstractj.kalium" % "kalium" % "0.5.0",
-  "org.scala-lang.modules" %% "scala-async" % "0.9.6"
+  "org.scala-lang.modules" %% "scala-async" % "0.9.6",
+  "org.webjars.npm" % "jquery" % "3.2.1",
+  "org.webjars.npm" % "moment" % "2.18.1",
+  "org.webjars.bower" % "bootstrap-material-datetimepicker" % "2.7.1"
+  //"org.webjars.bower" % "bootstrap-material-design" % "4.0.2"
 )
 
 // Adds additional packages into Twirl

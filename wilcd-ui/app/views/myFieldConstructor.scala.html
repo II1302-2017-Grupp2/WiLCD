@@ -1,4 +1,6 @@
 @(elements: helper.FieldElements)
 
-<label for="@elements.id" class="sr-only">@elements.label</label>
-@elements.input
+<div class="form-group label-floating">
+    <label for="@elements.id" class="control-label">@elements.label</label>
+    @elements.input
+</div>

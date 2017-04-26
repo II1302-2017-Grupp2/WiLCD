@@ -57,6 +57,14 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     )
   }
 
+  def instantMessage = UserAction { implicit request =>
+    Ok(views.html.instantMessage())
+  }
+
+  def scheduleMessage = UserAction { implicit request =>
+    Ok(views.html.scheduleMessage())
+  }
+
   def submitNewMessage = UserAction.async { request =>
     for {
       () <- messageUpdater.setMessage(request.getQueryString("message").get)

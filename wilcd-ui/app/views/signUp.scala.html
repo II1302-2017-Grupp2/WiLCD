@@ -1,4 +1,4 @@
-@(signupForm: Form[HomeController.SignupData])(implicit messages: play.api.i18n.Messages, req: RequestHeader)
+@(signupForm: Form[HomeController.SignupData])(implicit messages: play.api.i18n.Messages, req: UserRequest[_])
 
     @import helper._
     @import views.MyHelpers._

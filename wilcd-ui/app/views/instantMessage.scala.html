@@ -1,6 +1,6 @@
-@()
+@()(implicit req: UserRequest[_])
 
-@main("Home", currentPage = "signedInIndex") {
+@main("Home", currentPage = "instantMessage") {
 <div class="messageBox">
     <h2 class="cover-heading">Enter your message</h2>
     @helper.form(routes.HomeController.submitNewMessage) {
