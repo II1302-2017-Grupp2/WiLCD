@@ -1,0 +1,10 @@
+@(field: play.api.data.Field, args: (Symbol,Any)*)(implicit handler: helper.FieldConstructor, messages: play.api.i18n.Messages)
+
+@import helper._
+
+@inputType = @{ args.toMap.get('type).map(_.toString).getOrElse("text") }
+@label = @{ args.toMap.get('_label).map(_.toString).getOrElse(field.label) }
+
+@input(field, args.filter(f => f._1 != 'type):_*) { (id, name, value, htmlArgs) =>
+    <input type="@inputType" class="form-control" id="@id" name="@name" value="@value" placeholder="@label" @toHtmlArgs(htmlArgs)/>
+}

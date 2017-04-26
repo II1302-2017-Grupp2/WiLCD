@@ -1,12 +1,14 @@
-@()
+@(signupForm: Form[HomeController.SignupData])(implicit messages: play.api.i18n.Messages, req: RequestHeader)
+
+    @import helper._
+    @import views.MyHelpers._
 
 @main("Sign Up", currentPage = "signUp") {
-    <form class="form-signin">
+    @form(routes.HomeController.doSignUp(), 'class -> "form-signin") {
+        @CSRF.formField
         <h2 class="form-signin-heading">Please enter credentials</h2>
-        <label for="inputEmail" class="sr-only">Desired Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Desired email address" required="" autofocus="" data-cip-id="inputEmail">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Desired password" required="" data-cip-id="inputPassword">
+        @myInputText(signupForm("email"), 'required -> true, 'type -> "email", '_label -> "Desired email address")
+        @myInputText(signupForm("password"), 'required -> true, 'type -> "password", '_label -> "Desired password")
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-    </form>
+    }
 }

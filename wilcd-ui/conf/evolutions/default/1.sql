@@ -2,8 +2,16 @@
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL UNIQUE,
   password BYTEA NOT NULL
+);
+
+CREATE TABLE sessions (
+  id UUID PRIMARY KEY,
+  "user" INTEGER NOT NULL REFERENCES users(id),
+  ip INET NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT now(),
+  valid BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 CREATE TABLE messages (
@@ -18,4 +26,5 @@ CREATE TABLE messages (
 # --- !Downs
 
 DROP TABLE messages;
+DROP TABLE sessions;
 DROP TABLE users;

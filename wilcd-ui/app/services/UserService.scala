@@ -1,10 +1,13 @@
 package services
 
-import models.{User, WithId}
+import java.net.InetAddress
+
+import models.{User, UserSession, WithId}
 
 import scala.concurrent.Future
 
 trait UserService {
-  def create(username: String, password: String): Future[WithId[User]]
-  def logIn(username: String, password: String): Future[Option[WithId[User]]]
+  def create(email: String, password: String): Future[WithId[User]]
+
+  def logIn(email: String, password: String, ip: InetAddress): Future[Option[(WithId[User], WithId[UserSession])]]
 }

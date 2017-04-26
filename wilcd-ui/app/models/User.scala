@@ -8,25 +8,23 @@ import org.abstractj.kalium.encoders.Encoder
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.lifted.ProvenShape
 
-case class User(username: String) extends HasId {
+case class User(email: String) extends HasId {
   override type IdType = Long
 }
 
-class Users(tag: Tag) extends Table[WithId[User]](tag, "users") {
-  def id = column[Id[User]]("id", O.PrimaryKey)
-
-  def username = column[String]("username")
+class Users(tag: Tag) extends IdTable[User](tag, "users") {
+  def email = column[String]("email")
 
   def password = column[ByteString]("password")
 
-  def all = username <> (User.apply, User.unapply)
+  def all = email <> (User.apply, User.unapply)
 
   def withId = (id, all) <> ((WithId.apply[User] _).tupled, WithId.unapply[User])
 
   override def * : ProvenShape[WithId[User]] = withId
 }
 
-object User {
+object Users {
   private[models] def tq = TableQuery[Users]
 
   private def hashPassword(password: String): ByteString = {
@@ -44,9 +42,9 @@ object User {
     hasher.verify(hashed.toArray, plaintext.getBytes("UTF-8"))
   }
 
-  def findByUsernameWithPassword(username: String, password: String): DBIO[Option[WithId[User]]] =
+  def findByUsernameWithPassword(email: String, password: String): DBIO[Option[WithId[User]]] =
     tq
-      .filter(_.username === username)
+      .filter(_.email === email)
       .map(u => (u.withId, u.password))
       .result.headOption
       .map(_
@@ -54,9 +52,9 @@ object User {
         .map(_._1)
       )
 
-  def createUser(username: String, password: String): DBIO[WithId[User]] =
+  def createUser(email: String, password: String): DBIO[WithId[User]] =
     (for {
-      id <- tq.map(u => (u.all, u.password)).returning(tq.map(_.id)) += (User(username), hashPassword(password))
+      id <- tq.map(u => (u.all, u.password)).returning(tq.map(_.id)) += (User(email), hashPassword(password))
       user <- tq.filter(_.id === id).result.head
     } yield user).transactionally
 }
