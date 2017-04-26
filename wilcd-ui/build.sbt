@@ -22,7 +22,8 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "42.0.0",
   //  "org.postgresql" % "postgreqsl" % "9.4.1212",
   "com.github.tminglei" %% "slick-pg" % "0.15.0-RC",
-  "org.abstractj.kalium" % "kalium" % "0.5.0"
+  "org.abstractj.kalium" % "kalium" % "0.5.0",
+  "org.scala-lang.modules" %% "scala-async" % "0.9.6"
 )
 
 // Adds additional packages into Twirl

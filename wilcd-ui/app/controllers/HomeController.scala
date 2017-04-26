@@ -19,7 +19,7 @@ import scala.concurrent.Future
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(messageUpdater: MessageUpdater, userService: UserService, val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: UserService, val messagesApi: MessagesApi) extends Controller with I18nSupport with AuthSupport {
 
   val signupForm = Form(
     mapping(
@@ -35,29 +35,29 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, userService: User
     * will be called when the application receives a `GET` request with
     * a path of `/`.
     */
-  def index = Action { implicit request =>
+  def index = UserAction { implicit request =>
     Ok(views.html.index())
   }
 
-  def signIn = Action { implicit request =>
+  def signIn = UserAction { implicit request =>
     Ok(views.html.signIn())
   }
 
-  def signUp = Action { implicit request =>
+  def signUp = UserAction { implicit request =>
     Ok(views.html.signUp(signupForm))
   }
 
-  def doSignUp = Action.async { implicit request =>
+  def doSignUp = UserAction.async { implicit request =>
     signupForm.bindFromRequest().fold(
       formWithErrors => Future.successful(BadRequest(views.html.signUp(formWithErrors))),
       formData => for {
         user <- userService.create(formData.email, formData.password)
         Some((_, session)) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
-      } yield Redirect(routes.HomeController.index()).withSession("session" -> session.id.id.toString)
+      } yield setUserSession(Redirect(routes.HomeController.index()), session)
     )
   }
 
-  def submitNewMessage = Action.async { request =>
+  def submitNewMessage = UserAction.async { request =>
     for {
       () <- messageUpdater.setMessage(request.getQueryString("message").get)
     } yield Ok(Html("<body>DONE</body>"))

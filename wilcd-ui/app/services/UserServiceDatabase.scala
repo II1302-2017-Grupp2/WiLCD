@@ -4,7 +4,7 @@ import java.net.InetAddress
 import javax.inject.Inject
 
 import models.PgProfile.api._
-import models.{PgProfile, User, UserSession, UserSessions, Users, WithId}
+import models.{Id, PgProfile, User, UserSession, UserSessions, Users, WithId}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
@@ -22,4 +22,6 @@ class UserServiceDatabase @Inject()(val dbConfigProvider: DatabaseConfigProvider
       )
     )
   )
+
+  override def findSession(id: Id[UserSession]): Future[Option[(WithId[User], WithId[UserSession])]] = db.run(UserSessions.find(id).result.headOption)
 }

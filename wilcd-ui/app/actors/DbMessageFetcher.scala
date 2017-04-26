@@ -14,7 +14,7 @@ class DbMessageFetcher @Inject() (@Named("tcp-display-updater") updater: ActorRe
 
   private var lastMessage: String = ""
 
-//  context.system.scheduler.schedule(0.seconds, 1.second, self, Refresh)
+  context.system.scheduler.schedule(0.seconds, 1.second, self, Refresh)
 
   override def receive: Receive = {
     case Refresh =>
