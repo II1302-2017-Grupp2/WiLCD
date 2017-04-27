@@ -87,13 +87,41 @@ int main(void)
   MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
-
+  
+  HAL_GPIO_WritePin(Led_1_GPIO_Port, Led_1_Pin, GPIO_PIN_RESET);
+  Display_Init();
+  ESP_Init();
+  HAL_GPIO_WritePin(Led_1_GPIO_Port, Led_1_Pin, GPIO_PIN_SET);
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  uint8_t buf[ESP_BUF_SIZE];
+	  int16_t len;
+	  if ((len = ESP_TCP_ReadLine(buf)) > 0) {
+		  HAL_UART_Transmit(&huart2, buf, len, 1000);
+		  HAL_UART_Transmit(&huart2, "\r\n", 2, 1000);
+		  Display_Strn(buf, len);
+	  } else if (len == -1 && (len = ESP_ReadLine(buf)) != 0) {
+		  HAL_UART_Transmit(&huart2, buf, len, 1000);
+		  HAL_UART_Transmit(&huart2, "\r\n", 2, 1000);
+		  Display_Strn(buf, len);
+	  }
+	  /*uint8_t chr;
+	  if (HAL_UART_Receive(&huart1, &chr, 1, 1000) != HAL_OK) {
+		  continue;
+	  }
+	  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
+	  if (HAL_GPIO_ReadPin(GPIOE, GPIO_PIN_9) == GPIO_PIN_SET) {
+		  chr = '1';
+	  } else {
+		  chr = '0';
+	  }
+	  HAL_UART_Transmit(&huart1, &chr, 1, 1000);
+	  Display_Char(chr);*/
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */

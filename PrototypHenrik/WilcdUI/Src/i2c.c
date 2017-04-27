@@ -39,6 +39,133 @@
 
 /* USER CODE BEGIN 0 */
 
+#include "font.h"
+
+#define DISPLAY_CMD (0x00)
+#define DISPLAY_SHOW (0x40)
+
+uint8_t displayAddress = 0x3C << 1;
+uint8_t displayCurrentPage = 0;
+uint8_t displayCurrentCol = 0;
+
+void Display_UpdatePos() {
+	uint8_t setDisplayPosSequence[] = {
+		DISPLAY_CMD,
+		0x10 | (displayCurrentCol >> 4), // Page column upper nibble
+		0x00 | (displayCurrentCol & 0x0F), // Page column lower nibble
+		0xB0 | (displayCurrentPage & 0x07) // Page
+	};
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, setDisplayPosSequence, sizeof(setDisplayPosSequence), 1000);
+}
+
+void Display_ClearPage(uint8_t page) {
+	displayCurrentPage = page;
+	displayCurrentCol = 0;
+	uint8_t displayClearSixteenSequence[] = {
+		DISPLAY_SHOW,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0
+	};
+
+	Display_UpdatePos();
+	for (int i = 0; i < 8; i++) {
+		HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayClearSixteenSequence, sizeof(displayClearSixteenSequence), 1000);
+	}
+}
+
+void Display_Clear() {
+	for (int i = 0; i < 8; i++) {
+		Display_ClearPage(i);
+	}
+	displayCurrentPage = 0;
+	displayCurrentCol = 0;
+}
+
+void Display_Init() {
+	uint8_t displayInitSequence[] = {
+		DISPLAY_CMD,
+		0xAE, // Disable display
+
+		0x20, 0x02, // Memory mode: PAGE
+		0x2E, // Disable scrolling
+
+		0xA8, 0x3F, // MUX Ratio
+		0xD3, 0x00, // Display offset
+		0x40, // Display start line
+		0xA0, // Segment remap
+		0xC0, // Scan direction
+		0xDA, 0x12, // Pin HW configuration
+		0x81, 0x7F, // Contrast control
+		0xA4, // Entire display on
+		0xA6, // Normal display
+		0xD5, 0x80, // Osc freq
+		0x8D, 0x14, // Charge pump regulator
+		0xD9, 0xF1, // Precharge
+		0xDB, 0x40, // Vcom detect
+		0xAF, // Enable display
+		0x81, 0xCF // Contrast
+	};
+
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayInitSequence, sizeof(displayInitSequence), 1000);
+	Display_Clear();
+}
+
+void Display_Newline() {
+	Display_ClearPage((displayCurrentPage + 1) % 8);
+
+	uint8_t displayRemapSequence[] = {
+		DISPLAY_CMD,
+		0x40 | (((displayCurrentPage + 1) * 8) & 0x3F)
+	};
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, displayRemapSequence, sizeof(displayRemapSequence), 1000);
+}
+
+void Display_Char(char msg) {
+	uint8_t *fontChar = font[(uint8_t)msg];
+	if (fontChar == NULL) {
+		return;
+	}
+	uint8_t size = *fontChar;
+	uint8_t kerning = 1;
+
+	if (displayCurrentCol + size + kerning >= 128) {
+		Display_Newline();
+	}
+	Display_UpdatePos();
+	displayCurrentCol += size + kerning;
+
+	uint8_t buf[150];
+	buf[0] = DISPLAY_SHOW;
+	for (int i = 1; i <= size; i++) {
+		buf[i] = fontChar[i];
+	}
+	for (int i = size + 1; i <= size + kerning; i++) {
+		buf[i] = 0;
+	}
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, buf, size + kerning + 1, 1000);
+}
+
+void Display_Str(char *msg) {
+	Display_Newline();
+	while (*msg != 0) {
+		Display_Char(*msg);
+		++msg;
+	}
+}
+
+void Display_Strn(uint8_t *msg, uint16_t len) {
+	Display_Newline();
+	for (uint16_t i = 0; i < len; i++) {
+		Display_Char(msg[i]);
+	}
+}
+
+void Display_Msg() {
+	Display_Str("HELLOWORLD");
+}
+
 /* USER CODE END 0 */
 
 I2C_HandleTypeDef hi2c1;
