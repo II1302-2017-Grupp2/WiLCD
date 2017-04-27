@@ -30,11 +30,19 @@
                             <h3 class="masthead-brand"><a href="@routes.HomeController.index()">Displaimer</a></h3>
                             <nav>
                                 <ul class="nav masthead-nav">
-                                    <li class="@if(currentPage == "index") { active }"><a href="@routes.HomeController.index()">
-                                        Home</a></li>
                                     @if(req.user.isDefined) {
-                                        blah
+                                        <li class="@if(currentPage == "instantMessage") { active }"><a href="@routes.HomeController.instantMessage()">
+                                            Instant message</a></li>
+                                        <li class="@if(currentPage == "scheduleMessage") { active }"><a href="@routes.HomeController.scheduleMessage()">
+                                            Schedule message</a></li>
+                                        <li class="@if(currentPage == "signUp") { active }"><a href="@routes.HomeController.signUp()">
+                                            Settings</a></li>
+                                        <li class="@if(currentPage == "signOut") { active }"><a href="@routes.HomeController.signOut()">
+                                            Sign out</a></li>
+
                                     } else {
+                                        <li class="@if(currentPage == "index") { active }"><a href="@routes.HomeController.index()">
+                                            Home</a></li>
                                         <li class="@if(currentPage == "signIn") { active }"><a href="@routes.HomeController.signIn()">
                                             Sign in</a></li>
                                         <li class="@if(currentPage == "signUp") { active }"><a href="@routes.HomeController.signUp()">

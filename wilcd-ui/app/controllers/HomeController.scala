@@ -76,6 +76,10 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     )
   }
 
+  def signOut = UserAction.async { implicit request =>
+    userService.logOut(request.userSession.get).map(_ => Redirect(routes.HomeController.index()))
+  }
+
   def instantMessage = UserAction { implicit request =>
     Ok(views.html.instantMessage())
   }
