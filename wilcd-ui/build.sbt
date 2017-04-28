@@ -1,3 +1,6 @@
+import com.typesafe.sbt.web.PathMapping
+import com.typesafe.sbt.web.pipeline.Pipeline
+
 name := """wilcd-ui"""
 organization := "se.kth.wilcd"
 
@@ -6,6 +9,16 @@ version := "1.0-SNAPSHOT"
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, JDebPackaging, SystemdPlugin)
 
 scalaVersion := "2.11.8"
+
+resolvers += "webjars" at "https://dl.bintray.com/webjars/maven"
+
+val webpackWebTask = taskKey[Seq[File]]("Sbt-Webpack adapter for sbt-web")
+
+webpackWebTask := Def.task {
+  Seq(WebKeys.webTarget.value / "webpack" / "main.packed.js")
+}.dependsOn(webpack.toTask("")).value
+
+sourceGenerators in Assets += webpackWebTask.taskValue
 
 libraryDependencies ++= Seq(
   filters,
@@ -26,9 +39,12 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-async" % "0.9.6",
   "org.webjars.npm" % "jquery" % "3.2.1",
   "org.webjars.npm" % "moment" % "2.18.1",
+  "org.webjars.npm" % "material-datetime-picker" % "2.3.0",
   "org.webjars.bower" % "bootstrap-material-datetimepicker" % "2.7.1"
-  //"org.webjars.bower" % "bootstrap-material-design" % "4.0.2"
+//  "org.webjars.bower" % "bootstrap-material-design" % "4.0.2"
 )
+
+dependencyOverrides += "org.webjars.npm" % "github-com-jwhitfieldseed-rome" % "2.1.22"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "se.kth.wilcd.controllers._"

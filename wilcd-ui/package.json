@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "webpack": "^2.3.3"
+  },
+  "dependencies": {
+    "material-datetime-picker": "2.3.0",
+    "underscore": "^1.8.3"
+  }
+}
