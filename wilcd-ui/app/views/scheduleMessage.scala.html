@@ -1,11 +1,11 @@
 @()(implicit req: UserRequest[_])
 
 @main("Home", currentPage = "scheduleMessage") {
-    <div class="col-sm-4">
+    <div class="form-group col-sm-4">
         <label class="schedulerLabel control-label" for="startDate">Start Date</label>
         <input class="form-control" type="datetime" id="startDate" placeholder="Date">
     </div>
-    <div class="col-sm-4">
+    <div class="form-group col-sm-4">
         <label class="schedulerLabel control-label" for="endDate">End Date</label>
         <input class="form-control " type="datetime" id="endDate" placeholder="Date">
     </div>
