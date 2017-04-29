@@ -15,9 +15,7 @@ resolvers += "webjars" at "https://dl.bintray.com/webjars/maven"
 val webpackWebTask = taskKey[Seq[File]]("Sbt-Webpack adapter for sbt-web")
 
 webpackWebTask := Def.task {
-  val dir = WebKeys.webTarget.value / "webpack"
-  Seq(dir / "main.packed.js", dir / "main.packed.js.map",
-  dir / "styles.packed.css", dir / "styles.packed.css.map")
+  (WebKeys.webTarget.value / "webpack").listFiles().toSeq
 }.dependsOn(webpack.toTask("")).value
 
 sourceGenerators in Assets += webpackWebTask.taskValue
