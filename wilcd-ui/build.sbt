@@ -15,7 +15,9 @@ resolvers += "webjars" at "https://dl.bintray.com/webjars/maven"
 val webpackWebTask = taskKey[Seq[File]]("Sbt-Webpack adapter for sbt-web")
 
 webpackWebTask := Def.task {
-  Seq(WebKeys.webTarget.value / "webpack" / "main.packed.js")
+  val dir = WebKeys.webTarget.value / "webpack"
+  Seq(dir / "main.packed.js", dir / "main.packed.js.map",
+  dir / "styles.packed.css", dir / "styles.packed.css.map")
 }.dependsOn(webpack.toTask("")).value
 
 sourceGenerators in Assets += webpackWebTask.taskValue
@@ -36,15 +38,10 @@ libraryDependencies ++= Seq(
   //  "org.postgresql" % "postgreqsl" % "9.4.1212",
   "com.github.tminglei" %% "slick-pg" % "0.15.0-RC",
   "org.abstractj.kalium" % "kalium" % "0.5.0",
-  "org.scala-lang.modules" %% "scala-async" % "0.9.6",
-  "org.webjars.npm" % "jquery" % "3.2.1",
-  "org.webjars.npm" % "moment" % "2.18.1",
-  "org.webjars.npm" % "material-datetime-picker" % "2.3.0",
-  "org.webjars.bower" % "bootstrap-material-datetimepicker" % "2.7.1"
-//  "org.webjars.bower" % "bootstrap-material-design" % "4.0.2"
+  "org.scala-lang.modules" %% "scala-async" % "0.9.6"
 )
 
-dependencyOverrides += "org.webjars.npm" % "github-com-jwhitfieldseed-rome" % "2.1.22"
+//dependencyOverrides += "org.webjars.npm" % "github-com-jwhitfieldseed-rome" % "2.1.22"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "se.kth.wilcd.controllers._"
