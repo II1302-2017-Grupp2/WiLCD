@@ -6,6 +6,7 @@ import javax.inject.Qualifier
 
 import akka.actor.ActorRef
 import controllers.OurPlaySpec
+import models.{Id, User}
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
 import play.api.inject.{BindingKey, QualifierAnnotation}
 import services.MessageUpdaterNetwork
@@ -24,7 +25,7 @@ class TcpDisplayUpdaterSpec extends OurPlaySpec with GuiceOneAppPerTest with Eve
       eventually {
         Await.result(updater.isDeviceConnected, Duration.Inf) mustBe true
       }
-      updater.setMessage("blah")
+      updater.setMessage(Id[User](-1), "blah")
       val inputStream = socket.getInputStream
       val scanner = new Scanner(inputStream)
       scanner.nextLine() mustBe "blah"

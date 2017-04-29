@@ -90,7 +90,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
 
   def submitNewMessage = UserAction.async { request =>
     for {
-      () <- messageUpdater.setMessage(request.getQueryString("message").get)
+      () <- messageUpdater.setMessage(request.user.get, request.getQueryString("message").get)
     } yield Ok(Html("<body>DONE</body>"))
   }
 }

@@ -6,6 +6,7 @@ import actors.TcpDisplayUpdater
 import akka.actor.ActorRef
 import akka.pattern.ask
 import akka.util.Timeout
+import models.{Id, User}
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -21,7 +22,7 @@ class MessageUpdaterNetwork @Inject()(@Named("tcp-display-updater") tcpDisplayUp
 
   override def getMessage: Future[String] = ???
 
-  override def setMessage(msg: String): Future[Unit] = Future.successful {
+  override def setMessage(user: Id[User], msg: String): Future[Unit] = Future.successful {
     tcpDisplayUpdater ! TcpDisplayUpdater.Update(msg)
   }
 }

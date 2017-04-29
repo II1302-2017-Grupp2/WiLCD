@@ -29,9 +29,9 @@ class Messages(tag: Tag) extends IdTable[Message](tag, "messages") {
 }
 
 object Messages {
-  def create(message: String): DBIO[Unit] =
+  def create(user: Id[User], message: String): DBIO[Unit] =
     (tq.map(_.all) += Message(
-      createdBy = Id[User](1),
+      createdBy = user,
       createdAt = Instant.now(),
       displayFrom = Instant.now(),
       displayUntil = None,
