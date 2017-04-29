@@ -22,7 +22,6 @@ sourceGenerators in Assets += webpackWebTask.taskValue
 
 libraryDependencies ++= Seq(
   filters,
-  "org.webjars.npm" % "bootstrap" % "3.3.7",
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,
   "org.mockito" % "mockito-core" % "2.7.20" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "3.3.1" % Test,
@@ -38,8 +37,6 @@ libraryDependencies ++= Seq(
   "org.abstractj.kalium" % "kalium" % "0.5.0",
   "org.scala-lang.modules" %% "scala-async" % "0.9.6"
 )
-
-//dependencyOverrides += "org.webjars.npm" % "github-com-jwhitfieldseed-rome" % "2.1.22"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "se.kth.wilcd.controllers._"
