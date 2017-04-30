@@ -43,8 +43,8 @@ class Messages(tag: Tag) extends IdTable[Message](tag, "messages") {
 }
 
 object Messages {
-  def create(message: Message): DBIO[Unit] =
-    (tq.map(_.all) += message).map(_ => ())
+  def create(message: Message): DBIO[WithId[Message]] =
+    (tq.map(_.all).returning(tq.map(_.id)) += message).map(WithId(_, message))
 
   def allMessages: Query[Messages, WithId[Message], Seq] =
     tq

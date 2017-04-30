@@ -20,12 +20,13 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
   override def getMessage: Future[String] =
     getScheduledMessages.map(_.headOption.map(_.message).getOrElse(""))
 
-  override def scheduleMessage(msg: Message): Future[Unit] = {
+  override def scheduleMessage(msg: Message): Future[WithId[Message]] = {
     Future {
       logger.warn(s"Updated message: $msg")
       lock.synchronized {
         message = Some(msg)
       }
+      WithId(Id[Message](-1), msg)
     }
   }
 

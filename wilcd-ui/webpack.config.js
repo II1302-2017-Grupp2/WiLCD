@@ -19,11 +19,7 @@ module.exports = {
                 })
             },
             {
-                test: /\.svg$/,
-                use: 'svg-inline-loader'
-            },
-            {
-                test: [/\.ttf$/, /\.woff2?$/, /\.eot$/],
+                test: [/\.svg$/, /\.ttf$/, /\.woff2?$/, /\.eot$/],
                 use: 'file-loader'
             }
         ]

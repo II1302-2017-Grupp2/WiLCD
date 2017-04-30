@@ -5,7 +5,7 @@ import java.time.{Instant, LocalDateTime, ZoneId}
 import javax.inject._
 
 import controllers.HomeController.{SigninData, SignupData, UpdateMessageData}
-import models.{Message, User}
+import models.{Id, Message, User}
 import play.api.data.Forms._
 import play.api.data._
 import play.api.data.format.Formats._
@@ -97,16 +97,20 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     Ok(views.html.instantMessage())
   }
 
-  def scheduleMessage = UserAction { implicit request =>
-    Ok(views.html.scheduleMessage(updateMessageForm))
+  def scheduleMessage = UserAction.async { implicit request =>
+    for {
+      scheduledMessages <- messageUpdater.getScheduledMessages
+    } yield Ok(views.html.scheduleMessage(updateMessageForm, scheduledMessages))
   }
 
   def submitNewMessage = UserAction.async { implicit request =>
     val user = request.user.get
     updateMessageForm.bindFromRequest().fold(
-      formWithErrors => Future.successful(BadRequest(views.html.scheduleMessage(formWithErrors))),
+      formWithErrors => for {
+        scheduledMessages <- messageUpdater.getScheduledMessages
+      } yield BadRequest(views.html.scheduleMessage(formWithErrors, scheduledMessages)),
       formData => for {
-        () <- messageUpdater.scheduleMessage(Message(
+        message <- messageUpdater.scheduleMessage(Message(
           user,
           formData.message,
           displayFrom = formData.displayFrom
@@ -116,9 +120,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
             .map(_.atZone(user.timezone).toInstant),
           occurrence = formData.occurrence
         ))
-      } yield Ok(Html("<body>DONE</body>"))
+      } yield Redirect(routes.HomeController.scheduleMessage().withFragment(s"message-${message.id.id}"))
     )
   }
+
+  def deleteMessage(id: Id[Message]) = TODO
+  def doDeleteMessage(id: Id[Message]) = TODO
 }
 
 object HomeController {

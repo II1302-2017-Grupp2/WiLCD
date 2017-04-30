@@ -14,7 +14,13 @@ import scala.concurrent.Future
 class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFetcher: ActorRef, val dbConfigProvider: DatabaseConfigProvider) extends MessageUpdater with HasDatabaseConfigProvider[PgProfile] {
   override def isDeviceConnected: Future[Boolean] = Future.successful(true)
 
-  override def scheduleMessage(msg: Message): Future[Unit] = db.run(Messages.create(msg)).map(_ => dbMessageFetcher ! DbMessageFetcher.Refresh)
+  override def scheduleMessage(msg: Message): Future[WithId[Message]] =
+    for {
+      created <- db.run(Messages.create(msg))
+    } yield {
+      dbMessageFetcher ! DbMessageFetcher.Refresh
+      created
+    }
 
   override def getMessage: Future[String] = db.run(Messages.currentMessage.result.headOption.map(_.map(_.value.message).getOrElse("")))
 

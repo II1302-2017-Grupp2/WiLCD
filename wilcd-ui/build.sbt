@@ -45,3 +45,5 @@ libraryDependencies ++= Seq(
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "se.kth.wilcd.binders._"
+
+routesImport ++= Seq("models._", "utils.ExtraBinders._")
