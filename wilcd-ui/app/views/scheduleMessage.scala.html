@@ -1,23 +1,28 @@
 @()(implicit req: UserRequest[_])
 
 @main("Home", currentPage = "scheduleMessage") {
-    <div class="form-group col-sm-4">
-        <label class="schedulerLabel control-label" for="startDate">Start Date</label>
-        <input class="form-control" type="datetime" id="startDate" placeholder="Date">
+    <div class="col-sm-4">
+        <div class="form-group label-floating">
+            <label class="schedulerLabel control-label" for="startDate">Start Date</label>
+            <input class="form-control" type="datetime" id="startDate">
+        </div>
     </div>
-    <div class="form-group col-sm-4">
-        <label class="schedulerLabel control-label" for="endDate">End Date</label>
-        <input class="form-control " type="datetime" id="endDate" placeholder="Date">
+    <div class="col-sm-4">
+        <div class="form-group label-floating">
+            <label class="schedulerLabel control-label" for="endDate">End Date</label>
+            <input class="form-control " type="datetime" id="endDate">
+        </div>
     </div>
-    <div class="form-group col-sm-4">
-        <label class="control-label" for="sel1">Occurrence</label>
-        <select class="form-control" id="sel1">
-            <option>Once</option>
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-        </select>
+    <div class="col-sm-4">
+        <div class="form-group label-floating">
+            <label class="control-label" for="sel1">Occurrence</label>
+            <select class="form-control" id="sel1">
+                <option>Once</option>
+                <option>Daily</option>
+                <option>Weekly</option>
+                <option>Monthly</option>
+                <option>Yearly</option>
+            </select>
+        </div>
     </div>
-
 }

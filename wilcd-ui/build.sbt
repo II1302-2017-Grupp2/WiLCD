@@ -20,6 +20,8 @@ webpackWebTask := Def.task {
 
 sourceGenerators in Assets += webpackWebTask.taskValue
 
+pipelineStages := Seq(digest, gzip)
+
 libraryDependencies ++= Seq(
   filters,
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,

@@ -1,12 +1,15 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-//@import "lib/bootstrap/dist/css/bootstrap-theme.css";
-@import "cover";
-//@import "signIn";
+@import "~bootstrap/less/bootstrap";
 @import "scheduler";
 @import "~bootstrap-material-design/less/bootstrap-material-design";
-//@import "lib/bootstrap-material-design/less/ripples";
+@import "~bootstrap-material-design/less/ripples";
 @import "~bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css";
 @import "~dropdown.js/jquery.dropdown.css";
+
+@brand-primary: @blue-grey-700;
+
+.js-only {
+  display: none;
+}
 
 html {
   min-height: 100%;

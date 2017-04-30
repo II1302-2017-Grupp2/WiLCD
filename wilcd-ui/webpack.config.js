@@ -15,7 +15,7 @@ module.exports = {
             {
                 test: /\.(le|c)ss$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', "less-loader"]
+                    use: ['css-loader?sourceMap', "less-loader?sourceMap"]
                 })
             },
             {
