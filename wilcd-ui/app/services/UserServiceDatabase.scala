@@ -11,7 +11,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import scala.concurrent.Future
 
 class UserServiceDatabase @Inject()(val dbConfigProvider: DatabaseConfigProvider) extends UserService with HasDatabaseConfigProvider[PgProfile] {
-  override def create(email: String, password: String): Future[WithId[User]] = db.run(Users.createUser(email, password))
+  override def create(user: User, password: String): Future[WithId[User]] = db.run(Users.createUser(user, password))
 
   override def logIn(email: String, password: String, ip: InetAddress): Future[Option[WithId[UserSession]]] = db.run(
     Users.findByUsernameWithPassword(email, password).flatMap(userM =>

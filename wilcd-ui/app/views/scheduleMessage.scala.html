@@ -1,28 +1,24 @@
-@()(implicit req: UserRequest[_])
+@(updateMessageForm: Form[HomeController.UpdateMessageData])(implicit req: UserRequest[_], messages: play.api.i18n.Messages)
+
+    @import views.MyHelpers.myFields
 
 @main("Home", currentPage = Page.ScheduleMessage) {
-    <div class="col-sm-4">
-        <div class="form-group label-floating">
-            <label class="schedulerLabel control-label" for="startDate">Start Date</label>
-            <input class="form-control" type="datetime" id="startDate">
+    @helper.form(routes.HomeController.submitNewMessage()) {
+        @helper.CSRF.formField
+        <div class="col-sm-12">
+        @myInputText(updateMessageForm("message"), '_label -> "Message")
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group label-floating">
-            <label class="schedulerLabel control-label" for="endDate">End Date</label>
-            <input class="form-control " type="datetime" id="endDate">
+        <div class="col-sm-4">
+        @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group label-floating">
-            <label class="control-label" for="sel1">Occurrence</label>
-            <select class="form-control" id="sel1">
-                <option>Once</option>
-                <option>Daily</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-                <option>Yearly</option>
-            </select>
+        <div class="col-sm-4">
+        @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
         </div>
-    </div>
+        <div class="col-sm-4">
+            @myInputSelect(updateMessageForm("occurrence"), '_label -> "Occurrence", '_options -> Message.Occurrence.values.toSeq.sorted)
+        </div>
+        <div class="col-sm-12">
+            <input class="btn btn-lg btn-block btn-primary" type="submit"/>
+        </div>
+    }
 }

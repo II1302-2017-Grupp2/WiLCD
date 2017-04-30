@@ -1,16 +1,20 @@
 package controllers
 
 import java.net.InetAddress
+import java.time.{Instant, LocalDateTime, ZoneId}
 import javax.inject._
 
-import controllers.HomeController.{SigninData, SignupData}
+import controllers.HomeController.{SigninData, SignupData, UpdateMessageData}
+import models.{Message, User}
 import play.api.data.Forms._
 import play.api.data._
+import play.api.data.format.Formats._
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.mvc._
 import play.twirl.api.Html
 import services.{MessageUpdater, UserService}
+import utils.ExtraFormatters._
 
 import scala.concurrent.Future
 
@@ -30,8 +34,17 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
   val signupForm = Form(
     mapping(
       "email" -> email,
-      "password" -> nonEmptyText
+      "password" -> nonEmptyText,
+      "timezone" -> of[ZoneId]
     )(SignupData.apply)(SignupData.unapply)
+  )
+  val updateMessageForm = Form(
+    mapping(
+      "message" -> text,
+      "displayFrom" -> optional(localDateTime("yyyy-MM-dd HH:mm")),
+      "displayUntil" -> optional(localDateTime("yyyy-MM-dd HH:mm")),
+      "occurrence" -> default(of[Message.Occurrence](enumFormatter(Message.Occurrence)), Message.Occurrence.Once)
+    )(UpdateMessageData.apply)(UpdateMessageData.unapply)
   )
 
   /**
@@ -70,7 +83,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     signupForm.bindFromRequest().fold(
       formWithErrors => Future.successful(BadRequest(views.html.signUp(formWithErrors))),
       formData => for {
-        user <- userService.create(formData.email, formData.password)
+        user <- userService.create(User(formData.email, formData.timezone), formData.password)
         Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
       } yield setUserSession(Redirect(routes.HomeController.index()), session)
     )
@@ -85,13 +98,25 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
   }
 
   def scheduleMessage = UserAction { implicit request =>
-    Ok(views.html.scheduleMessage())
+    Ok(views.html.scheduleMessage(updateMessageForm))
   }
 
-  def submitNewMessage = UserAction.async { request =>
-    for {
-      () <- messageUpdater.setMessage(request.user.get, request.getQueryString("message").get)
-    } yield Ok(Html("<body>DONE</body>"))
+  def submitNewMessage = UserAction.async { implicit request =>
+    val user = request.user.get
+    updateMessageForm.bindFromRequest().fold(
+      formWithErrors => Future.successful(BadRequest(views.html.scheduleMessage(formWithErrors))),
+      formData => for {
+        () <- messageUpdater.scheduleMessage(Message(
+          user,
+          formData.message,
+          displayFrom = formData.displayFrom
+            .map(_.atZone(user.timezone).toInstant)
+            .getOrElse(Instant.now()),
+          displayUntil = formData.displayUntil
+            .map(_.atZone(user.timezone).toInstant)
+        ))
+      } yield Ok(Html("<body>DONE</body>"))
+    )
   }
 }
 
@@ -99,6 +124,8 @@ object HomeController {
 
   case class SigninData(email: String, password: String)
 
-  case class SignupData(email: String, password: String)
+  case class SignupData(email: String, password: String, timezone: ZoneId)
+
+  case class UpdateMessageData(message: String, displayFrom: Option[LocalDateTime], displayUntil: Option[LocalDateTime], occurrence: Message.Occurrence)
 
 }

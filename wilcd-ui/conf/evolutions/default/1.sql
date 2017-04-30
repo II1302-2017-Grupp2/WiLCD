@@ -3,7 +3,8 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email TEXT NOT NULL UNIQUE,
-  password BYTEA NOT NULL
+  password BYTEA NOT NULL,
+  timezone TEXT NOT NULL
 );
 
 CREATE TABLE sessions (

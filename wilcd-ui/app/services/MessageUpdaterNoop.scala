@@ -1,7 +1,7 @@
 package services
 import javax.inject.{Inject, Singleton}
 
-import models.{Id, User}
+import models.{Id, Message, User}
 import play.api.Logger
 
 import scala.concurrent.Future
@@ -23,11 +23,11 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
     }
   }
 
-  override def setMessage(user: Id[User], msg: String): Future[Unit] = {
+  override def scheduleMessage(msg: Message): Future[Unit] = {
     Future {
       logger.warn(s"Updated message: $msg")
       lock.synchronized {
-        message = msg
+        message = msg.message
       }
     }
   }

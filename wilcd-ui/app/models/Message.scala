@@ -12,10 +12,18 @@ case class Message(createdBy: Id[User], message: String,
   override type IdType = Long
 }
 
+object Message {
+  type Occurrence = Occurrence.Value
+  object Occurrence extends Enumeration {
+    val Once, Daily, Weekly, Monthly, Yearly = Value
+  }
+}
+
+
 class Messages(tag: Tag) extends IdTable[Message](tag, "messages") {
   def * : ProvenShape[WithId[Message]] = (id, all) <> ((WithId.apply[Message] _).tupled, WithId.unapply[Message])
 
-  def all = (createdBy, message, createdAt, displayFrom, displayUntil) <> (Message.tupled, Message.unapply)
+  def all = (createdBy, message, createdAt, displayFrom, displayUntil) <> ((Message.apply _).tupled, Message.unapply)
 
   def createdBy = column[Id[User]]("created_by")
 
@@ -29,14 +37,8 @@ class Messages(tag: Tag) extends IdTable[Message](tag, "messages") {
 }
 
 object Messages {
-  def create(user: Id[User], message: String): DBIO[Unit] =
-    (tq.map(_.all) += Message(
-      createdBy = user,
-      createdAt = Instant.now(),
-      displayFrom = Instant.now(),
-      displayUntil = None,
-      message = message
-    )).map(_ => ())
+  def create(message: Message): DBIO[Unit] =
+    (tq.map(_.all) += message).map(_ => ())
 
   private[models] def tq = TableQuery[Messages]
 
