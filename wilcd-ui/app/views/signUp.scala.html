@@ -4,6 +4,7 @@
     @import views.MyHelpers._
 
 @main("Sign Up", currentPage = Page.SignUp) {
+    <h2>Sign Up</h2>
     @form(routes.HomeController.doSignUp(), 'class -> "form-signup") {
         @CSRF.formField
         <h2 class="form-signin-heading">Please enter credentials</h2>

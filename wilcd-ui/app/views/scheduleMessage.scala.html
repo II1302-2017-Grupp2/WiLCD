@@ -2,23 +2,24 @@
 
     @import views.MyHelpers.myFields
 
-@main("Home", currentPage = Page.ScheduleMessage) {
-    @helper.form(routes.HomeController.submitNewMessage()) {
-        @helper.CSRF.formField
-        <div class="col-sm-12">
-        @myInputText(updateMessageForm("message"), '_label -> "Message")
-        </div>
-        <div class="col-sm-4">
-        @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
-        </div>
-        <div class="col-sm-4">
-        @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
-        </div>
-        <div class="col-sm-4">
+    @main("Home", currentPage = Page.ScheduleMessage) {
+        <h2>Schedule-A-Message-O-Tron</h2>
+        @helper.form(routes.HomeController.submitNewMessage()) {
+            @helper.CSRF.formField
+            <div class="col-sm-12">
+            @myInputText(updateMessageForm("message"), '_label -> "Message")
+            </div>
+            <div class="col-sm-4">
+            @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
+            </div>
+            <div class="col-sm-4">
+            @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
+            </div>
+            <div class="col-sm-4">
             @myInputSelect(updateMessageForm("occurrence"), '_label -> "Occurrence", '_options -> Message.Occurrence.values.toSeq.sorted)
-        </div>
-        <div class="col-sm-12">
-            <input class="btn btn-lg btn-block btn-primary" type="submit"/>
-        </div>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+        }
     }
-}
