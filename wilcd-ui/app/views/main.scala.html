@@ -1,4 +1,4 @@
-@(title: String, currentPage: String = "")(content: Html)(implicit req: UserRequest[_])
+@(title: String, currentPage: Page)(content: Html)(implicit req: UserRequest[_])
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,21 +29,21 @@
                 <div class="collapse navbar-collapse in" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                     @if(req.user.isDefined) {
-                        <li class="@if(currentPage == "instantMessage") { active }"><a href="@routes.HomeController.instantMessage()">
+                        <li class="@if(currentPage == Page.InstantMessage) { active }"><a href="@routes.HomeController.instantMessage()">
                             Instant message</a></li>
-                        <li class="@if(currentPage == "scheduleMessage") { active }"><a href="@routes.HomeController.scheduleMessage()">
+                        <li class="@if(currentPage == Page.ScheduleMessage) { active }"><a href="@routes.HomeController.scheduleMessage()">
                             Schedule message</a></li>
-                        <li class="@if(currentPage == "signUp") { active }"><a href="@routes.HomeController.signUp()">
+                        <li class="@if(currentPage == Page.Settings) { active }"><a href="@routes.HomeController.signUp()">
                             Settings</a></li>
-                        <li class="@if(currentPage == "signOut") { active }"><a href="@routes.HomeController.signOut()">
+                        <li class="@if(currentPage == Page.SignOut) { active }"><a href="@routes.HomeController.signOut()">
                             Sign out</a></li>
 
                     } else {
-                        <li class="@if(currentPage == "index") { active }"><a href="@routes.HomeController.index()">
+                        <li class="@if(currentPage == Page.Index) { active }"><a href="@routes.HomeController.index()">
                             Home</a></li>
-                        <li class="@if(currentPage == "signIn") { active }"><a href="@routes.HomeController.signIn()">
+                        <li class="@if(currentPage == Page.SignIn) { active }"><a href="@routes.HomeController.signIn()">
                             Sign in</a></li>
-                        <li class="@if(currentPage == "signUp") { active }"><a href="@routes.HomeController.signUp()">
+                        <li class="@if(currentPage == Page.SignUp) { active }"><a href="@routes.HomeController.signUp()">
                             Sign up</a></li>
                     }
                     </ul>

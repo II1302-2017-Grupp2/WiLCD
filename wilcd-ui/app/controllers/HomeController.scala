@@ -98,6 +98,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
 object HomeController {
 
   case class SigninData(email: String, password: String)
+
   case class SignupData(email: String, password: String)
 
 }

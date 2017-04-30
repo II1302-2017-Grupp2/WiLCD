@@ -3,7 +3,7 @@
 @import helper._
 @import views.MyHelpers._
 
-    @main("Sign In", currentPage = "signIn") {
+    @main("Sign In", currentPage = Page.SignIn) {
         @form(routes.HomeController.doSignIn()) {
             @CSRF.formField
             <h2 class="form-signin-heading">Please sign in</h2>
