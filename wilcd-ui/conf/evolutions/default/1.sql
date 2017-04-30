@@ -21,7 +21,8 @@ CREATE TABLE messages (
   created_at TIMESTAMP NOT NULL DEFAULT now(),
   display_from TIMESTAMP NOT NULL,
   display_until TIMESTAMP,
-  message TEXT NOT NULL
+  message TEXT NOT NULL,
+  occurrence TEXT NOT NULL
 );
 
 # --- !Downs

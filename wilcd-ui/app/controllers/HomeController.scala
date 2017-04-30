@@ -113,7 +113,8 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
             .map(_.atZone(user.timezone).toInstant)
             .getOrElse(Instant.now()),
           displayUntil = formData.displayUntil
-            .map(_.atZone(user.timezone).toInstant)
+            .map(_.atZone(user.timezone).toInstant),
+          occurrence = formData.occurrence
         ))
       } yield Ok(Html("<body>DONE</body>"))
     )

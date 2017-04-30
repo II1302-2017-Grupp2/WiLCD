@@ -1,10 +1,10 @@
 package models
 
-import com.github.tminglei.slickpg.{ExPostgresProfile, PgDate2Support, PgNetSupport}
+import com.github.tminglei.slickpg.{ExPostgresProfile, PgDate2Support, PgEnumSupport, PgNetSupport}
 import slick.basic.Capability
 import slick.jdbc.JdbcCapabilities
 
-class PgProfile extends ExPostgresProfile with PgDate2Support with PgNetSupport {
+class PgProfile extends ExPostgresProfile with PgDate2Support with PgNetSupport with PgEnumSupport {
   override val api = MyAPI
 
   override protected def computeCapabilities: Set[Capability] =
@@ -12,7 +12,9 @@ class PgProfile extends ExPostgresProfile with PgDate2Support with PgNetSupport 
 
   object MyAPI extends API
     with DateTimeImplicits
-    with NetImplicits
+    with NetImplicits {
+    implicit val messageOccurrenceTypeMapper = createEnumJdbcType("message_occurrence", Message.Occurrence)
+  }
 
 }
 
