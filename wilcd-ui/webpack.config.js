@@ -15,15 +15,11 @@ module.exports = {
             {
                 test: /\.(le|c)ss$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', "less-loader"]
+                    use: ['css-loader?sourceMap', "less-loader?sourceMap"]
                 })
             },
             {
-                test: /\.svg$/,
-                use: 'svg-inline-loader'
-            },
-            {
-                test: [/\.ttf$/, /\.woff2?$/, /\.eot$/],
+                test: [/\.svg$/, /\.ttf$/, /\.woff2?$/, /\.eot$/],
                 use: 'file-loader'
             }
         ]
@@ -33,7 +29,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-            moment: 'moment'
+            moment: 'moment-timezone'
         })
     ]
 };

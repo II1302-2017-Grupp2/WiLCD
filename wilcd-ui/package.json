@@ -14,6 +14,7 @@
     "bootstrap-material-datetimepicker": "^2.7.3",
     "bootstrap-material-design": "^0.5.10",
     "dropdown.js": "git+https://github.com/FezVrasta/dropdown.js.git#868eb974c06808127341ba9294d6c9044a689a7b",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "moment-timezone": "^0.5.13-2017b"
   }
 }

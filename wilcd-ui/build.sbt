@@ -20,6 +20,8 @@ webpackWebTask := Def.task {
 
 sourceGenerators in Assets += webpackWebTask.taskValue
 
+pipelineStages := Seq(digest, gzip)
+
 libraryDependencies ++= Seq(
   filters,
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,
@@ -43,3 +45,5 @@ libraryDependencies ++= Seq(
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "se.kth.wilcd.binders._"
+
+routesImport ++= Seq("models._", "utils.ExtraBinders._")

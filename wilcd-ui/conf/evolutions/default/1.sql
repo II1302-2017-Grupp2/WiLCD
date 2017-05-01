@@ -3,7 +3,8 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email TEXT NOT NULL UNIQUE,
-  password BYTEA NOT NULL
+  password BYTEA NOT NULL,
+  timezone TEXT NOT NULL
 );
 
 CREATE TABLE sessions (
@@ -20,7 +21,8 @@ CREATE TABLE messages (
   created_at TIMESTAMP NOT NULL DEFAULT now(),
   display_from TIMESTAMP NOT NULL,
   display_until TIMESTAMP,
-  message TEXT NOT NULL
+  message TEXT NOT NULL,
+  occurrence TEXT NOT NULL
 );
 
 # --- !Downs
