@@ -1,23 +1,52 @@
-@()(implicit req: UserRequest[_])
+@(updateMessageForm: Form[HomeController.UpdateMessageData], scheduledMessages: Seq[WithId[Message]])(implicit req: UserRequest[_], messages: play.api.i18n.Messages)
 
-@main("Home", currentPage = "scheduleMessage") {
-    <div class="col-sm-4">
-        <label class="schedulerLabel" for="startDate">Start Date</label>
-        <input class="form-control" type="datetime" id="startDate" placeholder="Date">
-    </div>
-    <div class="col-sm-4">
-        <label class="schedulerLabel" for="endDate">End Date</label>
-        <input class="form-control " type="datetime" id="endDate" placeholder="Date">
-    </div>
-    <div class="form-group col-sm-4">
-        <label class="control-label" for="sel1">Occurrence</label>
-        <select class="form-control" id="sel1">
-            <option>Once</option>
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-        </select>
-    </div>
+    @import views.MyHelpers.myFields
+    @import java.time.format.DateTimeFormatter
 
-}
+    @userTz = @{ req.user.get.timezone }
+    @dtFormatter = @{ DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm") }
+
+    @main("Home", currentPage = Page.ScheduleMessage) {
+        <h2>Schedule-A-Message-O-Tron</h2>
+        @helper.form(routes.HomeController.submitNewMessage()) {
+            @helper.CSRF.formField
+            <div class="col-sm-12">
+            @myInputText(updateMessageForm("message"), '_label -> "Message")
+            </div>
+            <div class="col-sm-4">
+            @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
+            </div>
+            <div class="col-sm-4">
+            @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
+            </div>
+            <div class="col-sm-4">
+            @myInputSelect(updateMessageForm("occurrence"), '_label -> "Occurrence", '_options -> Message.Occurrence.values.toSeq.sorted)
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+        }
+
+        <h2>Old Messages</h2>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Message</th>
+                <th>Display From</th>
+                <th>Display Until</th>
+                <th>Occurrence</th>
+                <th>Actions</th>
+            </tr>
+            @for(message <- scheduledMessages) {
+                <tr id="message-@message.id.id">
+                    <td>@message.id.id</td>
+                    <td>@message.message</td>
+                    <td>@message.displayFrom.atZone(userTz).format(dtFormatter)</td>
+                    <td>@message.displayUntil.map(_.atZone(userTz).format(dtFormatter)).getOrElse("Forever")</td>
+                    <td>@message.occurrence</td>
+                    <td><a href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+                </tr>
+            }
+        </table>
+
+    }

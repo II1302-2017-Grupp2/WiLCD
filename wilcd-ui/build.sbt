@@ -1,3 +1,6 @@
+import com.typesafe.sbt.web.PathMapping
+import com.typesafe.sbt.web.pipeline.Pipeline
+
 name := """wilcd-ui"""
 organization := "se.kth.wilcd"
 
@@ -7,9 +10,20 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, JDebPack
 
 scalaVersion := "2.11.8"
 
+resolvers += "webjars" at "https://dl.bintray.com/webjars/maven"
+
+val webpackWebTask = taskKey[Seq[File]]("Sbt-Webpack adapter for sbt-web")
+
+webpackWebTask := Def.task {
+  (WebKeys.webTarget.value / "webpack").listFiles().toSeq
+}.dependsOn(webpack.toTask("")).value
+
+sourceGenerators in Assets += webpackWebTask.taskValue
+
+pipelineStages := Seq(digest, gzip)
+
 libraryDependencies ++= Seq(
   filters,
-  "org.webjars.npm" % "bootstrap" % "3.3.7",
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,
   "org.mockito" % "mockito-core" % "2.7.20" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "3.3.1" % Test,
@@ -23,11 +37,7 @@ libraryDependencies ++= Seq(
   //  "org.postgresql" % "postgreqsl" % "9.4.1212",
   "com.github.tminglei" %% "slick-pg" % "0.15.0-RC",
   "org.abstractj.kalium" % "kalium" % "0.5.0",
-  "org.scala-lang.modules" %% "scala-async" % "0.9.6",
-  "org.webjars.npm" % "jquery" % "3.2.1",
-  "org.webjars.npm" % "moment" % "2.18.1",
-  "org.webjars.bower" % "bootstrap-material-datetimepicker" % "2.7.1"
-  //"org.webjars.bower" % "bootstrap-material-design" % "4.0.2"
+  "org.scala-lang.modules" %% "scala-async" % "0.9.6"
 )
 
 // Adds additional packages into Twirl
@@ -35,3 +45,5 @@ libraryDependencies ++= Seq(
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "se.kth.wilcd.binders._"
+
+routesImport ++= Seq("models._", "utils.ExtraBinders._")

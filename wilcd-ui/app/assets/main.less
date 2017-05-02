@@ -1,11 +1,15 @@
-@import "lib/bootstrap/dist/css/bootstrap.css";
-//@import "lib/bootstrap/dist/css/bootstrap-theme.css";
-@import "cover";
-//@import "signIn";
+@import "~bootstrap/less/bootstrap";
 @import "scheduler";
-@import "lib/bootstrap-material-design/less/material";
-//@import "lib/bootstrap-material-design/less/ripples";
-@import "lib/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css";
+@import "~bootstrap-material-design/less/bootstrap-material-design";
+@import "~bootstrap-material-design/less/ripples";
+@import "~bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css";
+@import "~dropdown.js/jquery.dropdown.css";
+
+@brand-primary: @blue-grey-700;
+
+.js-only {
+  display: none;
+}
 
 html {
   min-height: 100%;
@@ -18,46 +22,6 @@ body {
 
 h2 {
   color: black;
-}
-
-/*.formBox > .form-control {
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 10px;
-  height:auto;
-}*/
-
-.messageBox {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-
-.inner > .infoBox {
-
-}
-
-.masthead-brand > a{
-  color: black;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
-
-.masthead-nav > li > a {
-  color: #5a5a5a;
-}
-
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: #5a5a5a;
-  text-shadow: none;
-}
-
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #262126;
-  border-bottom-color:#262126;
 }
 
 .checkbox > label {

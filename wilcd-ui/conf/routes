@@ -4,13 +4,16 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                       controllers.HomeController.index
-GET         /update                 controllers.HomeController.submitNewMessage
-GET         /login                  controllers.HomeController.signIn
-POST        /login                  controllers.HomeController.doSignIn
-GET         /register               controllers.HomeController.signUp
-POST        /register               controllers.HomeController.doSignUp
-GET         /instantMessage         controllers.HomeController.instantMessage
-GET         /scheduleMessage        controllers.HomeController.scheduleMessage
+GET         /                          controllers.HomeController.index
+GET         /login                     controllers.HomeController.signIn
+POST        /login                     controllers.HomeController.doSignIn
+GET         /register                  controllers.HomeController.signUp
+POST        /register                  controllers.HomeController.doSignUp
+GET         /message/instant           controllers.HomeController.instantMessage
+GET         /message                   controllers.HomeController.scheduleMessage
+POST        /message                   controllers.HomeController.submitNewMessage
+GET         /message/delete/:id        controllers.HomeController.deleteMessage(id: Id[Message])
+POST        /message/delete/:id        controllers.HomeController.doDeleteMessage(id: Id[Message])
+GET         /logout                    controllers.HomeController.signOut
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file              controllers.Assets.versioned(path="/public", file: Asset)

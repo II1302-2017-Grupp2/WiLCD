@@ -1,5 +1,6 @@
 package controllers
 
+import models.{Id, User}
 import org.mockito.Mockito
 import org.scalatest.mockito.MockitoSugar
 import org.scalatestplus.play._
@@ -59,7 +60,8 @@ class HomeControllerSpec extends OurPlaySpec with MockitoSugar {
   "HomeController.submitNewMessage" should {
     "invoke the MessageUpdater" in {
       val messageUpdaterMock = mock[MessageUpdater]
-      Mockito.when(messageUpdaterMock.setMessage("HELLO, WORLD!")).thenReturn(Future.successful(()))
+      val userId = Id[User](-1)
+      Mockito.when(messageUpdaterMock.setMessage(userId, "HELLO, WORLD!")).thenReturn(Future.successful(()))
       withApp(new GuiceApplicationBuilder()
         .overrides(bind[MessageUpdater].toInstance(messageUpdaterMock))
         .build()) { app =>
@@ -68,7 +70,7 @@ class HomeControllerSpec extends OurPlaySpec with MockitoSugar {
         val request = FakeRequest(call.method, s"${call.url}?message=HELLO,%20WORLD!")
         val result = Await.result(route(app, request).get, Duration.Inf)
 
-        Mockito.verify(messageUpdaterMock).setMessage("HELLO, WORLD!")
+        Mockito.verify(messageUpdaterMock).setMessage(userId, "HELLO, WORLD!")
         result.header.status mustBe OK
       }
     }

@@ -1,19 +1,20 @@
 @(signinForm: Form[HomeController.SigninData])(implicit messages: play.api.i18n.Messages, req: UserRequest[_])
 
-@import helper._
-@import views.MyHelpers._
+    @import helper._
+    @import views.MyHelpers._
 
-    @main("Sign In", currentPage = "signIn") {
-        @form(routes.HomeController.doSignIn()) {
-            @CSRF.formField
-            <h2 class="form-signin-heading">Please sign in</h2>
-            @myInputText(signinForm("email"), 'required -> true, 'type -> "email", '_label -> "Email address")
-            @myInputText(signinForm("password"), 'required -> true, 'type -> "password", '_label -> "Password")
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        }
+@main("Sign In", currentPage = Page.SignIn) {
+    <h2>Sign In</h2>
+    @form(routes.HomeController.doSignIn()) {
+        @CSRF.formField
+        <h2 class="form-signin-heading">Please sign in</h2>
+        @myInputText(signinForm("email"), 'required -> true, 'type -> "email", '_label -> "Email address")
+        @myInputText(signinForm("password"), 'required -> true, 'type -> "password", '_label -> "Password")
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     }
+}

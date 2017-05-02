@@ -2,9 +2,14 @@
 
 @import helper._
 
-@inputType = @{ args.toMap.get('type).map(_.toString).getOrElse("text") }
-@label = @{ args.toMap.get('_label).map(_.toString).getOrElse(field.label) }
+@argsMap = @{ args.toMap }
+@inputType = @{ argsMap.getOrElse('type, "text") }
+@value = @{ field.value.orElse(argsMap.get('_default).map(_.toString)) }
+@classes = @{ args.toMap.getOrElse('class, Seq()) match {
+    case x: Seq[_] => x
+    case x => Seq(x)
+} }
 
-@input(field, args.filter(f => f._1 != 'type):_*) { (id, name, value, htmlArgs) =>
-    <input type="@inputType" class="form-control" id="@id" name="@name" value="@value" @toHtmlArgs(htmlArgs)/>
+@input(field, args.filter(f => f._1 != 'type && f._1 != 'class):_*) { (id, name, _, htmlArgs) =>
+    <input type="@inputType" value="@value" class="form-control @classes.mkString(" ")" id="@id" name="@name" @toHtmlArgs(htmlArgs)/>
 }

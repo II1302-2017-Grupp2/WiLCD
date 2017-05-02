@@ -1,6 +1,7 @@
 package services
 import javax.inject.{Inject, Singleton}
 
+import models.{Id, Message, User, WithId}
 import play.api.Logger
 
 import scala.concurrent.Future
@@ -11,23 +12,27 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
   private lazy val logger = Logger(getClass)
   private val lock = new Object
 
-  private var message = ""
+  private var message: Option[Message] = None
 
 
   override def isDeviceConnected: Future[Boolean] = Future.successful(true)
 
-  override def getMessage: Future[String] = Future {
-    lock.synchronized {
-      message
-    }
-  }
+  override def getMessage: Future[String] =
+    getScheduledMessages.map(_.headOption.map(_.message).getOrElse(""))
 
-  override def setMessage(msg: String): Future[Unit] = {
+  override def scheduleMessage(msg: Message): Future[WithId[Message]] = {
     Future {
       logger.warn(s"Updated message: $msg")
       lock.synchronized {
-        message = msg
+        message = Some(msg)
       }
+      WithId(Id[Message](-1), msg)
+    }
+  }
+
+  override def getScheduledMessages: Future[Seq[WithId[Message]]] = Future {
+    lock.synchronized {
+      message.map(WithId(Id[Message](-1), _)).toSeq
     }
   }
 }

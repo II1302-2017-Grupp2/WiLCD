@@ -1,13 +1,13 @@
 @()(implicit req: UserRequest[_])
 
-@main("Home", currentPage = "instantMessage") {
-<div class="messageBox">
-    <h2 class="cover-heading">Enter your message</h2>
-    @helper.form(routes.HomeController.submitNewMessage) {
-    <div class="formBox">
-        <input class="form-control" placeholder="Message" name="message"/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </div>
+    @main("Home", currentPage = Page.InstantMessage) {
+        <h2>Instant Message</h2>
+        @helper.form(routes.HomeController.submitNewMessage) {
+            @helper.CSRF.formField
+            <div class="form-group label-floating">
+                <label class="control-label" for="message">Message</label>
+                <input class="form-control" id="message" name="message"/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+        }
     }
-</div>
-}
