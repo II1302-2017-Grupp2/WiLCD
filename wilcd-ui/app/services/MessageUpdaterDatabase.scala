@@ -22,7 +22,13 @@ class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFet
       created
     }
 
-  override def getMessage: Future[String] = db.run(Messages.currentMessage.result.headOption.map(_.map(_.value.message).getOrElse("")))
+  override def getMessage: Future[String] = db.run(for {
+    _ <- Messages.updateReoccurring()
+    message <- Messages.currentMessage.result.headOption.map(_.map(_.value.message).getOrElse(""))
+  } yield message)
 
-  override def getScheduledMessages: Future[Seq[WithId[Message]]] = db.run(Messages.allMessages.result)
+  override def getScheduledMessages: Future[Seq[WithId[Message]]] = db.run(for {
+    _ <- Messages.updateReoccurring()
+    messages <- Messages.allMessages.result
+  } yield messages)
 }

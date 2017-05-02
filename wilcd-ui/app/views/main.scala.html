@@ -24,7 +24,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    @if(req.user.isDefined) {
+                        <a class="navbar-brand" href="@routes.HomeController.instantMessage()">Displaimer</a>
+                    } else {
                     <a class="navbar-brand" href="@routes.HomeController.index()">Displaimer</a>
+                    }
                 </div>
                 <div class="collapse navbar-collapse in" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

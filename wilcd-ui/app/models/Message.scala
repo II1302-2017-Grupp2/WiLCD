@@ -1,6 +1,7 @@
 package models
 
-import java.time.Instant
+import java.time.{Instant, Period}
+import java.time.temporal.TemporalAmount
 
 import models.Message.Occurrence
 import models.PgProfile.api._
@@ -19,6 +20,14 @@ object Message {
 
   object Occurrence extends Enumeration {
     val Once, Daily, Weekly, Monthly, Yearly = Value
+
+    def delta(occurrence: Value): TemporalAmount = occurrence match {
+      case Once => throw new UnsupportedOperationException
+      case Daily => Period.ofDays(1)
+      case Weekly => Period.ofWeeks(1)
+      case Monthly => Period.ofMonths(1)
+      case Yearly => Period.ofYears(1)
+    }
   }
 
 }
@@ -45,6 +54,22 @@ class Messages(tag: Tag) extends IdTable[Message](tag, "messages") {
 object Messages {
   def create(message: Message): DBIO[WithId[Message]] =
     (tq.map(_.all).returning(tq.map(_.id)) += message).map(WithId(_, message))
+
+  def updateReoccurring(): DBIO[Unit] =
+    (for {
+      pastMessages <- tq
+          .filter(_.displayFrom < Instant.now())
+          .filter(_.occurrence =!= Message.Occurrence.Once)
+          .forUpdate
+          .result
+      _ <- DBIO.seq(pastMessages.map(message => for {
+        _ <- tq.filter(_.id === message.id).map(_.occurrence).update(Message.Occurrence.Once)
+        _ <- tq.map(_.all) += message.value.copy(
+          displayFrom = message.displayFrom.plus(Occurrence.delta(message.occurrence)),
+          displayUntil = message.displayUntil.map(_.plus(Occurrence.delta(message.occurrence)))
+        )
+      } yield ()): _*)
+    } yield ()).transactionally
 
   def allMessages: Query[Messages, WithId[Message], Seq] =
     tq
