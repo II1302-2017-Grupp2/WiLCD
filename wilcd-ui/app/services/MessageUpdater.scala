@@ -10,5 +10,6 @@ trait MessageUpdater {
   final def setMessage(user: Id[User], msg: String): Future[Unit] = scheduleMessage(Message(user, msg)).map(_ => ())
   def scheduleMessage(msg: Message): Future[WithId[Message]]
   def getScheduledMessages: Future[Seq[WithId[Message]]]
-  def getMessage: Future[String]
+  def getNextMessage: Future[Option[WithId[Message]]]
+  def getMessage: Future[Option[WithId[Message]]]
 }

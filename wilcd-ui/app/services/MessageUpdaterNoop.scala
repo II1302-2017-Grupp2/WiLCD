@@ -17,8 +17,10 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
 
   override def isDeviceConnected: Future[Boolean] = Future.successful(true)
 
-  override def getMessage: Future[String] =
-    getScheduledMessages.map(_.headOption.map(_.message).getOrElse(""))
+  override def getMessage: Future[Option[WithId[Message]]] =
+    getScheduledMessages.map(_.headOption)
+
+  override def getNextMessage: Future[Option[WithId[Message]]] = Future.successful(None)
 
   override def scheduleMessage(msg: Message): Future[WithId[Message]] = {
     Future {
