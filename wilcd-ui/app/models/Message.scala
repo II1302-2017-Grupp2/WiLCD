@@ -71,23 +71,27 @@ object Messages {
       } yield ()): _*)
     } yield ()).transactionally
 
-  def allMessages: Query[Messages, WithId[Message], Seq] =
-    tq
-      .sorted(_.displayFrom.desc)
-
-  def futureMessages: Query[Messages, WithId[Message], Seq] =
-    allMessages
-      .filter(_.displayFrom < Instant.now())
-      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
+  private[models] def tq = TableQuery[Messages]
 
   def currentMessage: Query[Messages, WithId[Message], Seq] =
-    futureMessages
+    notYetDiscardedMessages
+      .filter(_.displayFrom <= Instant.now())
       .take(1)
 
   def nextMessage: Query[Messages, WithId[Message], Seq] =
     futureMessages
-      .drop(1)
       .take(1)
 
-  private[models] def tq = TableQuery[Messages]
+  def futureMessages: Query[Messages, WithId[Message], Seq] =
+    notYetDiscardedMessages
+      .filter(_.displayFrom > Instant.now())
+      .sorted(_.displayFrom.asc)
+
+  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
+    allMessages
+      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
+
+  def allMessages: Query[Messages, WithId[Message], Seq] =
+    tq
+      .sorted(_.displayFrom.desc)
 }
