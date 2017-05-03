@@ -69,7 +69,9 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
       formData => for {
         maybeSession <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
       } yield maybeSession match {
-        case Some(session) => setUserSession(Redirect(routes.HomeController.index()), session)
+        case Some(session) =>
+          setUserSession(Redirect(routes.HomeController.index()), session)
+            .flashing("message" -> "You have been signed in")
         case None => BadRequest(views.html.signIn(form.withError("password", "Wrong email and/or password")))
       }
     )
@@ -86,29 +88,34 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
         user <- userService.create(User(formData.email, formData.timezone), formData.password)
         Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
       } yield setUserSession(Redirect(routes.HomeController.index()), session)
+        .flashing("message" -> "Your account has been created")
     )
   }
 
   def signOut = UserAction.async { implicit request =>
-    userService.logOut(request.userSession.get).map(_ => Redirect(routes.HomeController.index()))
+    for {
+      _ <- userService.logOut(request.userSession.get)
+    } yield Redirect(routes.HomeController.index())
+      .flashing("message" -> "You have been signed out")
   }
 
   def instantMessage = UserAction { implicit request =>
     Ok(views.html.instantMessage())
   }
 
-  def scheduleMessage = UserAction.async { implicit request =>
+  private def scheduleMessagePage(form: Form[UpdateMessageData])(implicit request: UserRequest[_]): Future[Html] =
     for {
-      scheduledMessages <- messageUpdater.getScheduledMessages
-    } yield Ok(views.html.scheduleMessage(updateMessageForm, scheduledMessages))
+      (deviceConnected, scheduledMessages) <- messageUpdater.isDeviceConnected.zip(messageUpdater.getScheduledMessages)
+    } yield views.html.scheduleMessage(form, scheduledMessages, deviceConnected = deviceConnected)
+
+  def scheduleMessage = UserAction.async { implicit request =>
+    scheduleMessagePage(updateMessageForm).map(Ok(_))
   }
 
   def submitNewMessage = UserAction.async { implicit request =>
     val user = request.user.get
     updateMessageForm.bindFromRequest().fold(
-      formWithErrors => for {
-        scheduledMessages <- messageUpdater.getScheduledMessages
-      } yield BadRequest(views.html.scheduleMessage(formWithErrors, scheduledMessages)),
+      formWithErrors => scheduleMessagePage(formWithErrors).map(BadRequest(_)),
       formData => for {
         message <- messageUpdater.scheduleMessage(Message(
           user,
@@ -121,10 +128,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
           occurrence = formData.occurrence
         ))
       } yield Redirect(routes.HomeController.scheduleMessage().withFragment(s"message-${message.id.id}"))
+        .flashing("message" -> "Your message has been scheduled")
     )
   }
 
   def deleteMessage(id: Id[Message]) = TODO
+
   def doDeleteMessage(id: Id[Message]) = TODO
 }
 

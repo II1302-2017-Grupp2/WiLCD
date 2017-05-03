@@ -27,7 +27,7 @@
                     @if(req.user.isDefined) {
                         <a class="navbar-brand" href="@routes.HomeController.instantMessage()">Displaimer</a>
                     } else {
-                    <a class="navbar-brand" href="@routes.HomeController.index()">Displaimer</a>
+                        <a class="navbar-brand" href="@routes.HomeController.index()">Displaimer</a>
                     }
                 </div>
                 <div class="collapse navbar-collapse in" id="navbar-collapse">
@@ -38,7 +38,7 @@
                         <li class="@if(currentPage == Page.ScheduleMessage) { active }"><a href="@routes.HomeController.scheduleMessage()">
                             Schedule message</a></li>
                         @*<li class="@if(currentPage == Page.Settings) { active }"><a href="@routes.HomeController.signUp()">*@
-                            @*Settings</a></li>*@
+                        @*Settings</a></li>*@
                         <li class="@if(currentPage == Page.SignOut) { active }"><a href="@routes.HomeController.signOut()">
                             Sign out</a></li>
 
@@ -54,7 +54,12 @@
                 </div>
             </nav>
             <div>
-            @content
+                @req.flash.get("message").map { message =>
+                  <div class="alert alert-info">
+                      @message
+                  </div>
+                }
+                @content
             </div>
             <div class="footer">
                 <p>© 2017 The Displaimer team. Some icons by <a href="http://glyphicons.com/">Glyphicons</a>.</p>

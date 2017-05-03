@@ -1,4 +1,4 @@
-@(updateMessageForm: Form[HomeController.UpdateMessageData], scheduledMessages: Seq[WithId[Message]])(implicit req: UserRequest[_], messages: play.api.i18n.Messages)
+@(updateMessageForm: Form[HomeController.UpdateMessageData], scheduledMessages: Seq[WithId[Message]], deviceConnected: Boolean)(implicit req: UserRequest[_], messages: play.api.i18n.Messages)
 
     @import views.MyHelpers.myFields
     @import java.time.format.DateTimeFormatter
@@ -8,6 +8,18 @@
 
     @main("Home", currentPage = Page.ScheduleMessage) {
         <h2>Schedule-A-Message-O-Tron</h2>
+
+        @if(!deviceConnected) {
+            <div class="alert alert-warning">
+                <h3>No display connected</h3>
+                <p>
+                    No display is currently connected,
+                    your message won't be displayed anywhere
+                    unless the device is reconnected.
+                </p>
+            </div>
+        }
+
         @helper.form(routes.HomeController.submitNewMessage()) {
             @helper.CSRF.formField
             <div class="col-sm-12">
