@@ -1,8 +1,8 @@
 difference() {
     union() {
-        cube([89, 84, 10]);
+        cube([99, 84, 10]);
         
-        translate([-12, 40, 0]) {
+        translate([-12, 45, 0]) {
             cube([20, 30, 10]);
         }
         
@@ -11,7 +11,7 @@ difference() {
         }
     }
     
-    translate([-10, 42, 3]) {
+    translate([-10, 47, 3]) {
         cube([20, 26, 30]);
     }
     translate([50, 80, 3]) {
@@ -19,7 +19,7 @@ difference() {
     }
     
     translate([2,2,3]) {
-        cube([85, 80, 30]);
+        cube([95, 80, 30]);
     }
     translate([60,47,-10]){
         cube([5,15,30]);

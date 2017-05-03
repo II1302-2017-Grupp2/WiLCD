@@ -1,7 +1,7 @@
 package models
 
-import java.time.{Instant, Period}
 import java.time.temporal.TemporalAmount
+import java.time.{Instant, Period}
 
 import models.Message.Occurrence
 import models.PgProfile.api._
@@ -58,10 +58,10 @@ object Messages {
   def updateReoccurring(): DBIO[Unit] =
     (for {
       pastMessages <- tq
-          .filter(_.displayFrom < Instant.now())
-          .filter(_.occurrence =!= Message.Occurrence.Once)
-          .forUpdate
-          .result
+        .filter(_.displayFrom < Instant.now())
+        .filter(_.occurrence =!= Message.Occurrence.Once)
+        .forUpdate
+        .result
       _ <- DBIO.seq(pastMessages.map(message => for {
         _ <- tq.filter(_.id === message.id).map(_.occurrence).update(Message.Occurrence.Once)
         _ <- tq.map(_.all) += message.value.copy(
@@ -71,15 +71,27 @@ object Messages {
       } yield ()): _*)
     } yield ()).transactionally
 
+  private[models] def tq = TableQuery[Messages]
+
+  def currentMessage: Query[Messages, WithId[Message], Seq] =
+    notYetDiscardedMessages
+      .filter(_.displayFrom <= Instant.now())
+      .take(1)
+
+  def nextMessage: Query[Messages, WithId[Message], Seq] =
+    futureMessages
+      .take(1)
+
+  def futureMessages: Query[Messages, WithId[Message], Seq] =
+    notYetDiscardedMessages
+      .filter(_.displayFrom > Instant.now())
+      .sorted(_.displayFrom.asc)
+
+  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
+    allMessages
+      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
+
   def allMessages: Query[Messages, WithId[Message], Seq] =
     tq
       .sorted(_.displayFrom.desc)
-
-  def currentMessage: Query[Messages, WithId[Message], Seq] =
-    allMessages
-      .filter(_.displayFrom < Instant.now())
-      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
-      .take(1)
-
-  private[models] def tq = TableQuery[Messages]
 }
