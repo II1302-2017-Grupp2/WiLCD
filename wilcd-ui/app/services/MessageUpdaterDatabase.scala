@@ -7,7 +7,7 @@ import akka.actor.ActorRef
 import akka.pattern.ask
 import akka.util.Timeout
 import models.PgProfile.api._
-import models.{Message, Messages, PgProfile, WithId}
+import models.{Id, Message, Messages, PgProfile, User, WithId}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
@@ -23,6 +23,9 @@ class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFet
     implicit val timeout = Timeout(1.second)
     (tcpDisplayUpdater ? TcpDisplayUpdater.IsDeviceConnected).mapTo[Boolean]
   }
+
+  override def deleteMessage(user: Id[User], msg: Id[Message]): Future[MessageUpdater.DeleteResult] =
+    db.run(Messages.delete(user, msg))
 
   override def scheduleMessage(msg: Message): Future[WithId[Message]] =
     for {

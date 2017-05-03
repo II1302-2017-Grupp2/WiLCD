@@ -13,6 +13,7 @@ import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.mvc._
 import play.twirl.api.Html
+import services.MessageUpdater.DeleteResult
 import services.{MessageUpdater, UserService}
 import utils.ExtraFormatters._
 
@@ -127,14 +128,32 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
             .map(_.atZone(user.timezone).toInstant),
           occurrence = formData.occurrence
         ))
-      } yield Redirect(routes.HomeController.scheduleMessage().withFragment(s"message-${message.id.id}"))
+      } yield Redirect(routes.HomeController.scheduleMessage()
+        .withFragment(s"message-${message.id.id}"))
         .flashing("message" -> "Your message has been scheduled")
     )
   }
 
-  def deleteMessage(id: Id[Message]) = TODO
+  def deleteMessage(id: Id[Message]) = UserAction { implicit request =>
+    Ok(views.html.deleteMessage(id))
+  }
 
-  def doDeleteMessage(id: Id[Message]) = TODO
+  def doDeleteMessage(id: Id[Message]) = UserAction.async { implicit request =>
+    messageUpdater.deleteMessage(request.user.get, id).map {
+      case DeleteResult.Success =>
+        Seq("message" -> "The message has been deleted")
+      case DeleteResult.Archived =>
+        Seq(
+          "message" -> "That message has been archived and could not be deleted",
+          "message.status" -> "danger"
+        )
+      case DeleteResult.NoPermission =>
+        Seq(
+          "message" -> "You are not authorized to delete that",
+          "message.status" -> "danger"
+        )
+    }.map(Redirect(routes.HomeController.scheduleMessage()).flashing(_: _*))
+  }
 }
 
 object HomeController {

@@ -6,7 +6,7 @@
     @userTz = @{ req.user.get.timezone }
     @dtFormatter = @{ DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm") }
 
-    @main("Home", currentPage = Page.ScheduleMessage) {
+    @main("Home", currentPage = Some(Page.ScheduleMessage)) {
         <h2>Schedule-A-Message-O-Tron</h2>
 
         @if(!deviceConnected) {

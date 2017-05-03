@@ -1,0 +1,10 @@
+@(id: Id[Message])(implicit req: UserRequest[_])
+
+@main("Delete message", None) {
+    <p>Are you sure you want to delete this message?</p>
+    @helper.form(routes.HomeController.doDeleteMessage(id)) {
+        @helper.CSRF.formField
+        <button class="btn btn-large btn-primary" type="submit">Yes</button>
+        <a class="btn btn-large" href="@routes.HomeController.scheduleMessage()">No</a>
+    }
+}
