@@ -71,7 +71,7 @@ object Messages {
         DBIO.successful(DeleteResult.Archived)
       case Some(msg) =>
         msgQuery.delete.map(_ => DeleteResult.Success)
-    }
+    }.transactionally
   }
 
   def updateReoccurring(): DBIO[Unit] =
