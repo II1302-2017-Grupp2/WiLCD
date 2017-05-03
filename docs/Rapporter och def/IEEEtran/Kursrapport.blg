@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Kursrapport.aux
+The style file: plain.bst
+Database file #1: sources.bib
+You're missing a field name---line 22 of file sources.bib
+ :  
+ :  %journal = {Commun. ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty journal in Jacobson16
+Warning--empty year in Jacobson16
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            524 strings with 4486 characters,
+and the built_in function-call counts, 1169 in all, are:
+= -- 102
+> -- 46
+< -- 1
++ -- 19
+- -- 14
+* -- 60
+:= -- 212
+add.period$ -- 14
+call.type$ -- 5
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 58
+empty$ -- 106
+format.name$ -- 14
+if$ -- 240
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 9
+newline$ -- 27
+num.names$ -- 10
+pop$ -- 39
+preamble$ -- 1
+purify$ -- 17
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 25
+swap$ -- 5
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 2
+while$ -- 10
+width$ -- 6
+write$ -- 52
+(There was 1 error message)
