@@ -83,13 +83,19 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
   }
 
   def doSignUp = UserAction.async { implicit request =>
-    signupForm.bindFromRequest().fold(
+    val form = signupForm.bindFromRequest()
+    form.fold(
       formWithErrors => Future.successful(BadRequest(views.html.signUp(formWithErrors))),
-      formData => for {
-        user <- userService.create(User(formData.email, formData.timezone), formData.password)
-        Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
-      } yield setUserSession(Redirect(routes.HomeController.index()), session)
-        .flashing("message" -> "Your account has been created")
+      formData =>
+        userService.create(User(formData.email, formData.timezone), formData.password).flatMap {
+          case None =>
+            Future.successful(BadRequest(views.html.signUp(form.withError("email", "That email address is already in use"))))
+          case Some(user) =>
+            for {
+              Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
+            } yield setUserSession(Redirect(routes.HomeController.index()), session)
+              .flashing("message" -> "Your account has been created")
+        }
     )
   }
 
@@ -103,11 +109,6 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
   def instantMessage = UserAction { implicit request =>
     Ok(views.html.instantMessage())
   }
-
-  private def scheduleMessagePage(form: Form[UpdateMessageData])(implicit request: UserRequest[_]): Future[Html] =
-    for {
-      (deviceConnected, scheduledMessages) <- messageUpdater.isDeviceConnected.zip(messageUpdater.getScheduledMessages)
-    } yield views.html.scheduleMessage(form, scheduledMessages, deviceConnected = deviceConnected)
 
   def scheduleMessage = UserAction.async { implicit request =>
     scheduleMessagePage(updateMessageForm).map(Ok(_))
@@ -133,6 +134,11 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
         .flashing("message" -> "Your message has been scheduled")
     )
   }
+
+  private def scheduleMessagePage(form: Form[UpdateMessageData])(implicit request: UserRequest[_]): Future[Html] =
+    for {
+      (deviceConnected, scheduledMessages) <- messageUpdater.isDeviceConnected.zip(messageUpdater.getScheduledMessages)
+    } yield views.html.scheduleMessage(form, scheduledMessages, deviceConnected = deviceConnected)
 
   def deleteMessage(id: Id[Message]) = UserAction { implicit request =>
     Ok(views.html.deleteMessage(id))
