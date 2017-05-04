@@ -3,52 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Kursrapport.aux
 The style file: plain.bst
 Database file #1: sources.bib
-You're missing a field name---line 22 of file sources.bib
- :  
- :  %journal = {Commun. ACM},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--empty journal in Jacobson16
-Warning--empty year in Jacobson16
 You've used 5 entries,
             2118 wiz_defined-function locations,
-            524 strings with 4486 characters,
-and the built_in function-call counts, 1169 in all, are:
-= -- 102
+            530 strings with 4525 characters,
+and the built_in function-call counts, 1185 in all, are:
+= -- 106
 > -- 46
 < -- 1
 + -- 19
 - -- 14
-* -- 60
-:= -- 212
-add.period$ -- 14
+* -- 63
+:= -- 216
+add.period$ -- 15
 call.type$ -- 5
 change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 7
+cite$ -- 5
 duplicate$ -- 58
-empty$ -- 106
+empty$ -- 107
 format.name$ -- 14
-if$ -- 240
+if$ -- 245
 int.to.chr$ -- 0
 int.to.str$ -- 5
 missing$ -- 9
-newline$ -- 27
+newline$ -- 28
 num.names$ -- 10
-pop$ -- 39
+pop$ -- 33
 preamble$ -- 1
 purify$ -- 17
 quote$ -- 0
-skip$ -- 31
+skip$ -- 33
 stack$ -- 0
 substring$ -- 25
-swap$ -- 5
+swap$ -- 6
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 12
-warning$ -- 2
+warning$ -- 0
 while$ -- 10
 width$ -- 6
-write$ -- 52
-(There was 1 error message)
+write$ -- 56
