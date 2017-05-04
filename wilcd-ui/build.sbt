@@ -43,6 +43,9 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-async" % "0.9.6"
 )
 
+// https://youtrack.jetbrains.com/issue/SCL-11141
+managedResourceDirectories in Test += baseDirectory.value / "target/web/public/test"
+
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "se.kth.wilcd.controllers._"
 
