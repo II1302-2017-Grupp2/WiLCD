@@ -3,6 +3,7 @@ package services
 import java.net.{InetSocketAddress, Socket}
 
 import controllers.OurPlaySpec
+import models.{Id, User}
 import org.scalatest.concurrent.Eventually
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
 
@@ -30,7 +31,7 @@ class MessageUpdaterSpec extends OurPlaySpec with GuiceOneAppPerTest with Eventu
   "MessageUpdater.setMessage" should {
     "update the message on the display" in {
       val messageUpdater = app.injector.instanceOf[MessageUpdater]
-      val msg = messageUpdater.setMessage(1,"hej")
+      val msg = messageUpdater.setMessage(Id[User](1),"hej")
     }
   }
 }

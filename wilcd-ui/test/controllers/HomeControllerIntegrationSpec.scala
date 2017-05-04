@@ -8,7 +8,7 @@ import services.MessageUpdater
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-class HomeControllerIntegrationSpec extends OurPlaySpec with GuiceOneServerPerTest with MockitoSugar with OneBrowserPerSuite with ChromeFactory {
+class HomeControllerIntegrationSpec extends OurPlaySpec with DbOneServerPerTest with MockitoSugar with OneBrowserPerSuite with ChromeFactory {
   "Setting a new message" must {
     "update the current message" in {
       go to s"http://localhost:$port/"
