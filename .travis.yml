@@ -24,6 +24,7 @@ before_install:
   - make
   - sudo make install
   - popd
+  - sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
 script:
   - pushd binfontify
   - cargo test
