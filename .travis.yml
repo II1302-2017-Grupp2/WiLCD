@@ -24,7 +24,7 @@ before_install:
   - make
   - sudo make install
   - popd
-  - sudo cp chromedriver.sh /usr/local/bin/chromedriver
+  - sudo cp wilcd-ui/chromedriver.sh /usr/local/bin/chromedriver
 script:
   - pushd binfontify
   - cargo test
