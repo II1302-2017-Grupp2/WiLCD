@@ -28,4 +28,15 @@ trait AuthSupport {
       UserRequest(session.map(_._1), session.map(_._2), request)
     }
   }
+
+  object UserRequiredAction extends ActionFilter[UserRequest] {
+    override protected def filter[A](request: UserRequest[A]): Future[Option[Result]] = Future.successful {
+      request.user match {
+        case None =>
+          Some(Results.Redirect(routes.HomeController.signIn()))
+        case Some(_) =>
+          None
+      }
+    }
+  }
 }

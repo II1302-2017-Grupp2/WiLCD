@@ -1,6 +1,6 @@
 @()(implicit req: UserRequest[_])
 
-    @main("Home", currentPage = Some(Page.InstantMessage)) {
+    @main("Home", currentPage = Some(Page.Index)) {
         <h2>Instant Message</h2>
         @helper.form(routes.HomeController.submitNewMessage) {
             @helper.CSRF.formField

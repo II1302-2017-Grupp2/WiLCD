@@ -56,7 +56,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     * a path of `/`.
     */
   def index = UserAction { implicit request =>
-    Ok(views.html.index())
+    request.user match {
+      case None =>
+        Ok(views.html.index())
+      case Some(_) =>
+        Ok(views.html.instantMessage())
+    }
   }
 
   def signIn = UserAction { implicit request =>
@@ -99,22 +104,18 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     )
   }
 
-  def signOut = UserAction.async { implicit request =>
+  def signOut = UserAction.andThen(UserRequiredAction).async { implicit request =>
     for {
       _ <- userService.logOut(request.userSession.get)
     } yield Redirect(routes.HomeController.index())
       .flashing("message" -> "You have been signed out")
   }
 
-  def instantMessage = UserAction { implicit request =>
-    Ok(views.html.instantMessage())
-  }
-
-  def scheduleMessage = UserAction.async { implicit request =>
+  def scheduleMessage = UserAction.andThen(UserRequiredAction).async { implicit request =>
     scheduleMessagePage(updateMessageForm).map(Ok(_))
   }
 
-  def submitNewMessage = UserAction.async { implicit request =>
+  def submitNewMessage = UserAction.andThen(UserRequiredAction).async { implicit request =>
     val user = request.user.get
     updateMessageForm.bindFromRequest().fold(
       formWithErrors => scheduleMessagePage(formWithErrors).map(BadRequest(_)),
@@ -140,11 +141,11 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
       (deviceConnected, scheduledMessages) <- messageUpdater.isDeviceConnected.zip(messageUpdater.getScheduledMessages)
     } yield views.html.scheduleMessage(form, scheduledMessages, deviceConnected = deviceConnected)
 
-  def deleteMessage(id: Id[Message]) = UserAction { implicit request =>
+  def deleteMessage(id: Id[Message]) = UserAction.andThen(UserRequiredAction) { implicit request =>
     Ok(views.html.deleteMessage(id))
   }
 
-  def doDeleteMessage(id: Id[Message]) = UserAction.async { implicit request =>
+  def doDeleteMessage(id: Id[Message]) = UserAction.andThen(UserRequiredAction).async { implicit request =>
     messageUpdater.deleteMessage(request.user.get, id).map {
       case DeleteResult.Success =>
         Seq("message" -> "The message has been deleted")
