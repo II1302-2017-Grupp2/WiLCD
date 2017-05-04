@@ -4,7 +4,6 @@ sealed trait Page
 
 object Page {
   case object Index extends Page
-  case object InstantMessage extends Page
   case object ScheduleMessage extends Page
   case object Settings extends Page
   case object SignIn extends Page

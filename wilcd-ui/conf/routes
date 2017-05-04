@@ -9,7 +9,6 @@ GET         /login                     controllers.HomeController.signIn
 POST        /login                     controllers.HomeController.doSignIn
 GET         /register                  controllers.HomeController.signUp
 POST        /register                  controllers.HomeController.doSignUp
-GET         /message/instant           controllers.HomeController.instantMessage
 GET         /message                   controllers.HomeController.scheduleMessage
 POST        /message                   controllers.HomeController.submitNewMessage
 GET         /message/delete/:id        controllers.HomeController.deleteMessage(id: Id[Message])

@@ -24,16 +24,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @if(req.user.isDefined) {
-                        <a class="navbar-brand" href="@routes.HomeController.instantMessage()">Displaimer</a>
-                    } else {
-                        <a class="navbar-brand" href="@routes.HomeController.index()">Displaimer</a>
-                    }
+                    <a class="navbar-brand" href="@routes.HomeController.index()">Displaimer</a>
                 </div>
                 <div class="collapse navbar-collapse in" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                     @if(req.user.isDefined) {
-                        <li class="@if(currentPage contains Page.InstantMessage) { active }"><a href="@routes.HomeController.instantMessage()">
+                        <li class="@if(currentPage contains Page.Index) { active }"><a href="@routes.HomeController.index()">
                             Instant message</a></li>
                         <li class="@if(currentPage contains Page.ScheduleMessage) { active }"><a href="@routes.HomeController.scheduleMessage()">
                             Schedule message</a></li>
