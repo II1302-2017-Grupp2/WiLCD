@@ -4,16 +4,19 @@ import java.net.InetSocketAddress
 
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.io.{IO, Tcp}
+import akka.pattern.pipe
 import Tcp._
-import actors.TcpDisplayUpdater.{IsDeviceConnected, Update}
+import actors.TcpDisplayUpdater.{IsDeviceConnected, NotifyBound, NowBound, Update}
 import akka.util.ByteString
 
 import scala.collection.mutable
+import scala.concurrent.Promise
 
 class TcpDisplayUpdater extends Actor with ActorLogging {
-  import context.system
+  import context.{dispatcher, system}
 
   private val io = IO(Tcp)
+  private val bindPromise = Promise[NowBound.type]()
   private val clients = mutable.Set[ActorRef]()
 
   private var lastMessage = ByteString("")
@@ -23,6 +26,10 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
   override def receive: Receive = {
     case Bound(addr) =>
       log.info(s"Listening on $addr")
+      bindPromise.success(NowBound)
+
+    case NotifyBound =>
+      bindPromise.future pipeTo sender()
 
     case Connected(remote, local) =>
       val conn = sender()
@@ -53,4 +60,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
 object TcpDisplayUpdater {
   case class Update(msg: String)
   case object IsDeviceConnected
+
+  case object NotifyBound
+  case object NowBound
 }

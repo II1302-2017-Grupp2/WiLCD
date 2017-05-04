@@ -28,7 +28,6 @@ pipelineStages := Seq(digest, gzip)
 libraryDependencies ++= Seq(
   filters,
   "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test,
-  "org.mockito" % "mockito-core" % "2.7.20" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "3.3.1" % Test,
   "org.seleniumhq.selenium" % "selenium-support" % "3.3.1" % Test,
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % "3.3.1" % Test,

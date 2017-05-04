@@ -15,6 +15,8 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
   private var message: Option[Message] = None
 
 
+  override def ready: Future[Unit] = Future.successful(())
+
   override def isDeviceConnected: Future[Boolean] = Future.successful(true)
 
   override def getMessage: Future[Option[WithId[Message]]] =

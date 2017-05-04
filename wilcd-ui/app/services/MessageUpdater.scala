@@ -8,6 +8,7 @@ import services.MessageUpdater.DeleteResult
 
 trait MessageUpdater {
   def isDeviceConnected: Future[Boolean]
+  def ready: Future[Unit]
   final def setMessage(user: Id[User], msg: String): Future[Unit] = scheduleMessage(Message(user, msg)).map(_ => ())
   def scheduleMessage(msg: Message): Future[WithId[Message]]
   def deleteMessage(user: Id[User], msg: Id[Message]): Future[DeleteResult]

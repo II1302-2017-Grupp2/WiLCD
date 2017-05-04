@@ -3,7 +3,7 @@ package actors
 import java.net.{InetSocketAddress, Socket}
 import java.util.Scanner
 
-import actors.TcpDisplayUpdater.{IsDeviceConnected, Update}
+import actors.TcpDisplayUpdater.{IsDeviceConnected, NotifyBound, Update}
 import akka.actor.ActorRef
 import akka.pattern.ask
 import controllers.{DbOneAppPerTest, OurPlaySpec}
@@ -20,6 +20,7 @@ class TcpDisplayUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventu
     "Send the updated message to all clients" in {
       implicit val timeout = akka.util.Timeout(1.second)
       val updater = app.injector.instanceOf(BindingKey(classOf[ActorRef]).qualifiedWith("tcp-display-updater"))
+      Await.result(updater ? NotifyBound, 1.second)
       val socket = new Socket()
       socket.setSoTimeout(1000)
       socket.connect(new InetSocketAddress("127.0.0.1", 9797))

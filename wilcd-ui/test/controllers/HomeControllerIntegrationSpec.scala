@@ -1,14 +1,12 @@
 package controllers
 
-import org.scalatest.mockito.MockitoSugar
-import org.scalatestplus.play.guice.GuiceOneServerPerTest
 import org.scalatestplus.play.{ChromeFactory, OneBrowserPerSuite}
 import services.MessageUpdater
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-class HomeControllerIntegrationSpec extends OurPlaySpec with DbOneServerPerTest with MockitoSugar with OneBrowserPerSuite with ChromeFactory {
+class HomeControllerIntegrationSpec extends OurPlaySpec with DbOneServerPerTest with OneBrowserPerSuite with ChromeFactory {
   "The basic user flow" must {
     "work" in {
       go to s"http://localhost:$port/"

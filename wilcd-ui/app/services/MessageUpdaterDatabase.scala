@@ -2,6 +2,7 @@ package services
 
 import javax.inject.{Inject, Named}
 
+import actors.TcpDisplayUpdater.NotifyBound
 import actors.{DbMessageFetcher, TcpDisplayUpdater}
 import akka.actor.ActorRef
 import akka.pattern.ask
@@ -19,10 +20,13 @@ class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFet
                                        val dbConfigProvider: DatabaseConfigProvider)
   extends MessageUpdater with HasDatabaseConfigProvider[PgProfile] {
 
-  override def isDeviceConnected: Future[Boolean] = {
-    implicit val timeout = Timeout(1.second)
+  private implicit val akkaTimeout = Timeout(1.second)
+
+  override def ready: Future[Unit] =
+    (tcpDisplayUpdater ? NotifyBound).map(_ => ())
+
+  override def isDeviceConnected: Future[Boolean] =
     (tcpDisplayUpdater ? TcpDisplayUpdater.IsDeviceConnected).mapTo[Boolean]
-  }
 
   override def deleteMessage(user: Id[User], msg: Id[Message]): Future[MessageUpdater.DeleteResult] =
     db.run(Messages.delete(user, msg))
