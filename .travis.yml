@@ -9,6 +9,7 @@ addons:
   apt:
     packages:
     - realpath
+    - libsodium18
 
 before_install:
   - curl https://sh.rustup.rs -sSf > rustup.sh
