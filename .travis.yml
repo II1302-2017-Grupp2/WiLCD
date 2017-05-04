@@ -38,5 +38,5 @@ script:
   - cargo test
   - popd
   - pushd wilcd-ui
-  - xvfb-run sbt test
+  - xvfb-run env LD_LIBRARY_PATH=/usr/lib/chromium-browser/libs sbt test
   - popd
