@@ -10,6 +10,7 @@ addons:
     packages:
     - realpath
     - chromium-chromedriver
+    - xvfb
 
 before_install:
   - curl https://sh.rustup.rs -sSf > rustup.sh
@@ -36,5 +37,5 @@ script:
   - cargo test
   - popd
   - pushd wilcd-ui
-  - sbt test
+  - xvfb-run sbt test
   - popd
