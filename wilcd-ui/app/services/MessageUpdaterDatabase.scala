@@ -2,17 +2,30 @@ package services
 
 import javax.inject.{Inject, Named}
 
-import actors.DbMessageFetcher
+import actors.{DbMessageFetcher, TcpDisplayUpdater}
 import akka.actor.ActorRef
-import models.{Message, Messages, PgProfile, WithId}
+import akka.pattern.ask
+import akka.util.Timeout
+import models.PgProfile.api._
+import models.{Id, Message, Messages, PgProfile, User, WithId}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import PgProfile.api._
 
 import scala.concurrent.Future
+import scala.concurrent.duration._
 
-class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFetcher: ActorRef, val dbConfigProvider: DatabaseConfigProvider) extends MessageUpdater with HasDatabaseConfigProvider[PgProfile] {
-  override def isDeviceConnected: Future[Boolean] = Future.successful(true)
+class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFetcher: ActorRef,
+                                       @Named("tcp-display-updater") tcpDisplayUpdater: ActorRef,
+                                       val dbConfigProvider: DatabaseConfigProvider)
+  extends MessageUpdater with HasDatabaseConfigProvider[PgProfile] {
+
+  override def isDeviceConnected: Future[Boolean] = {
+    implicit val timeout = Timeout(1.second)
+    (tcpDisplayUpdater ? TcpDisplayUpdater.IsDeviceConnected).mapTo[Boolean]
+  }
+
+  override def deleteMessage(user: Id[User], msg: Id[Message]): Future[MessageUpdater.DeleteResult] =
+    db.run(Messages.delete(user, msg))
 
   override def scheduleMessage(msg: Message): Future[WithId[Message]] =
     for {

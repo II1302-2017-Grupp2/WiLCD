@@ -6,6 +6,7 @@ import java.time.{Instant, Period}
 import models.Message.Occurrence
 import models.PgProfile.api._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import services.MessageUpdater.DeleteResult
 import slick.lifted.ProvenShape
 
 case class Message(createdBy: Id[User], message: String,
@@ -55,9 +56,27 @@ object Messages {
   def create(message: Message): DBIO[WithId[Message]] =
     (tq.map(_.all).returning(tq.map(_.id)) += message).map(WithId(_, message))
 
+  def delete(user: Id[User], msgId: Id[Message]): DBIO[DeleteResult] = {
+    val msgQuery =
+      allMessages
+        .filter(_.id === msgId)
+    msgQuery
+      .forUpdate
+      .result.headOption.flatMap {
+      case None =>
+        DBIO.successful(DeleteResult.Success)
+      case Some(msg) if msg.createdBy != user =>
+        DBIO.successful(DeleteResult.NoPermission)
+      case Some(msg) if msg.displayFrom isBefore Instant.now() =>
+        DBIO.successful(DeleteResult.Archived)
+      case Some(msg) =>
+        msgQuery.delete.map(_ => DeleteResult.Success)
+    }.transactionally
+  }
+
   def updateReoccurring(): DBIO[Unit] =
     (for {
-      pastMessages <- tq
+      pastMessages <- allMessages
         .filter(_.displayFrom < Instant.now())
         .filter(_.occurrence =!= Message.Occurrence.Once)
         .forUpdate
@@ -71,12 +90,20 @@ object Messages {
       } yield ()): _*)
     } yield ()).transactionally
 
-  private[models] def tq = TableQuery[Messages]
-
   def currentMessage: Query[Messages, WithId[Message], Seq] =
     notYetDiscardedMessages
       .filter(_.displayFrom <= Instant.now())
       .take(1)
+
+  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
+    allMessages
+      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
+
+  def allMessages: Query[Messages, WithId[Message], Seq] =
+    tq
+      .sorted(_.displayFrom.desc)
+
+  private[models] def tq = TableQuery[Messages]
 
   def nextMessage: Query[Messages, WithId[Message], Seq] =
     futureMessages
@@ -86,12 +113,4 @@ object Messages {
     notYetDiscardedMessages
       .filter(_.displayFrom > Instant.now())
       .sorted(_.displayFrom.asc)
-
-  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
-    allMessages
-      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
-
-  def allMessages: Query[Messages, WithId[Message], Seq] =
-    tq
-      .sorted(_.displayFrom.desc)
 }

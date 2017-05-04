@@ -1,5 +1,6 @@
 import com.typesafe.sbt.web.PathMapping
 import com.typesafe.sbt.web.pipeline.Pipeline
+import com.jamesward.play.BrowserNotifierKeys
 
 name := """wilcd-ui"""
 organization := "se.kth.wilcd"
@@ -11,6 +12,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, JDebPack
 scalaVersion := "2.11.8"
 
 resolvers += "webjars" at "https://dl.bintray.com/webjars/maven"
+
+BrowserNotifierKeys.shouldOpenBrowser := false
 
 val webpackWebTask = taskKey[Seq[File]]("Sbt-Webpack adapter for sbt-web")
 

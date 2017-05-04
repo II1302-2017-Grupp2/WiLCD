@@ -20,6 +20,8 @@ class MessageUpdaterNoop @Inject() extends MessageUpdater {
   override def getMessage: Future[Option[WithId[Message]]] =
     getScheduledMessages.map(_.headOption)
 
+  override def deleteMessage(user: Id[User], msg: Id[Message]): Future[MessageUpdater.DeleteResult] = ???
+
   override def getNextMessage: Future[Option[WithId[Message]]] = Future.successful(None)
 
   override def scheduleMessage(msg: Message): Future[WithId[Message]] = {

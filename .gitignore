@@ -1,4 +1,5 @@
 .~*#
+*~
 .#.*
 target
 docs/protokoll/*.tex
@@ -8,3 +9,4 @@ docs/**/*.log
 docs/**/*.synctex.gz
 docs/**/*.aux
 docs/Rapporter och def/latexExempel.pdf
+docs/Rapporter och def/IEEEtran/Kursrapport.pdf

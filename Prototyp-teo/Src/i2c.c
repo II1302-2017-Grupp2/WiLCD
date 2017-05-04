@@ -123,6 +123,11 @@ void Display_Newline() {
 }
 
 void Display_Char(char msg) {
+	if (msg == '\n') {
+		Display_Newline();
+		return;
+	}
+
 	uint8_t *fontChar = font[(uint8_t)msg];
 	if (fontChar == NULL) {
 		return;
@@ -156,7 +161,6 @@ void Display_Str(char *msg) {
 }
 
 void Display_Strn(uint8_t *msg, uint16_t len) {
-	Display_Newline();
 	for (uint16_t i = 0; i < len; i++) {
 		Display_Char(msg[i]);
 	}

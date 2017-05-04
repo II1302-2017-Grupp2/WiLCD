@@ -7,7 +7,7 @@ import models.{Id, User, UserSession, WithId}
 import scala.concurrent.Future
 
 trait UserService {
-  def create(user: User, password: String): Future[WithId[User]]
+  def create(user: User, password: String): Future[Option[WithId[User]]]
 
   def logIn(email: String, password: String, ip: InetAddress): Future[Option[WithId[UserSession]]]
 

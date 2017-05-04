@@ -1,6 +1,6 @@
 @()(implicit req: UserRequest[_])
 
-    @main("Home", currentPage = Page.Index) {
+    @main("Home", currentPage = Some(Page.Index)) {
         <div class="infoBox">
             <h2 class="cover-heading">Welcome to Displaimer</h2>
             <div class="formBox">
