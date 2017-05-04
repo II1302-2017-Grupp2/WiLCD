@@ -56,7 +56,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     * a path of `/`.
     */
   def index = UserAction { implicit request =>
-    Ok(views.html.index())
+    request.user match {
+      case None =>
+        Ok(views.html.index())
+      case Some(_) =>
+        Ok(views.html.instantMessage())
+    }
   }
 
   def signIn = UserAction { implicit request =>
@@ -104,10 +109,6 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
       _ <- userService.logOut(request.userSession.get)
     } yield Redirect(routes.HomeController.index())
       .flashing("message" -> "You have been signed out")
-  }
-
-  def instantMessage = UserAction { implicit request =>
-    Ok(views.html.instantMessage())
   }
 
   def scheduleMessage = UserAction.async { implicit request =>
