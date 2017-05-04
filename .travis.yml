@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 dist: trusty
 
 language: scala
@@ -9,7 +9,6 @@ addons:
   apt:
     packages:
     - realpath
-    - libsodium18
     - chromium-chromedriver
 
 before_install:
@@ -17,6 +16,13 @@ before_install:
   - sh rustup.sh -y
   - export PATH=~/.cargo/bin:$PATH
   - createdb wilcd
+  - wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.12.tar.gz
+  - tar xvf libsodium-1.0.12.tar.gz
+  - pushd libsodium-1.0.12
+  - ./configure
+  - make
+  - sudo make install
+  - popd
 script:
   - pushd binfontify
   - cargo test
