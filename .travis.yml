@@ -24,7 +24,7 @@ before_install:
   - make
   - sudo make install
   - popd
-  - sudo cp chromedriver.sh /usr/local/bin/chromedriver
+  - sudo cp wilcd-ui/chromedriver.sh /usr/local/bin/chromedriver
 script:
   - pushd binfontify
   - cargo test
@@ -38,5 +38,5 @@ script:
   - cargo test
   - popd
   - pushd wilcd-ui
-  - xvfb-run sbt test
+  - xvfb-run env LD_LIBRARY_PATH=/usr/lib/chromium-browser/libs sbt test
   - popd
