@@ -1,13 +1,16 @@
 package actors
 
 import java.net.{InetSocketAddress, Socket}
-import java.time.ZoneId
 import java.util.Scanner
 
+import actors.TcpDisplayUpdater.{IsDeviceConnected, Update}
+import akka.actor.ActorRef
+import akka.pattern.ask
 import controllers.{DbOneAppPerTest, OurPlaySpec}
-import models.User
 import org.scalatest.concurrent.Eventually
-import services.{MessageUpdater, UserService}
+import org.scalatest.concurrent.PatienceConfiguration.Timeout
+import org.scalatest.time.{Seconds, Span}
+import play.api.inject.BindingKey
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -15,16 +18,16 @@ import scala.concurrent.duration._
 class TcpDisplayUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventually {
   "TcpDisplayUpdater ! Update" should {
     "Send the updated message to all clients" in {
-      val updater = app.injector.instanceOf[MessageUpdater]
-      val users = app.injector.instanceOf[UserService]
-      val user = Await.result(users.create(User("a@a", ZoneId.of("UTC")), ""), 1.second).get
+      implicit val timeout = akka.util.Timeout(1.second)
+      val updater = app.injector.instanceOf(BindingKey(classOf[ActorRef]).qualifiedWith("tcp-display-updater"))
       val socket = new Socket()
       socket.setSoTimeout(1000)
       socket.connect(new InetSocketAddress("127.0.0.1", 9797))
-      eventually {
-        Await.result(updater.isDeviceConnected, Duration.Inf) mustBe true
+      eventually(Timeout(Span(4, Seconds))) {
+        Await.result(updater ? IsDeviceConnected, 1.second) mustBe true
       }
-      Await.result(updater.setMessage(user, "blah"), 1.second)
+      updater ! Update("blah")
+
       val inputStream = socket.getInputStream
       val scanner = new Scanner(inputStream)
       eventually {

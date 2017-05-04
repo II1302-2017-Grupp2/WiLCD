@@ -1,6 +1,7 @@
 package services
 
 import java.net.{InetSocketAddress, Socket}
+import java.util.Scanner
 
 import controllers.{DbOneAppPerTest, OurPlaySpec}
 import models.{Id, Message, User}
@@ -37,7 +38,16 @@ class MessageUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventuall
     "schedule the entered message" in {
       val messageUpdater = app.injector.instanceOf[MessageUpdater]
       val msg = Await.result(messageUpdater.scheduleMessage(Message(user, "hej")), Duration.Inf).message
+      val socket = new Socket()
+      socket.setSoTimeout(1000)
+      socket.connect(new InetSocketAddress("127.0.0.1", 9797))
       Await.result(messageUpdater.getScheduledMessages, Duration.Inf).head.message mustBe "hej"
+      val inputStream = socket.getInputStream
+      val scanner = new Scanner(inputStream)
+      eventually {
+        val line = scanner.nextLine()
+        line mustBe "hej"
+      }
     }
   }
   override protected val createUser = true
