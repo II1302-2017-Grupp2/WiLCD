@@ -8,5 +8,8 @@ docs/**/*.toc
 docs/**/*.log
 docs/**/*.synctex.gz
 docs/**/*.aux
+docs/**/*.bbl
+docs/**/*.blg
+docs/**/*.dvi
 docs/Rapporter och def/latexExempel.pdf
 docs/Rapporter och def/IEEEtran/Kursrapport.pdf
