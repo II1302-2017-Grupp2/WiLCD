@@ -42,6 +42,8 @@
 /* Private define ------------------------------------------------------------*/
 #define IS_DISCOVERY 1
 
+#define EPAPER_CS_Pin GPIO_PIN_4
+#define EPAPER_CS_GPIO_Port GPIOA
 #define Debug_UART_TX_Pin GPIO_PIN_4
 #define Debug_UART_TX_GPIO_Port GPIOC
 #define Debug_UART_RX_Pin GPIO_PIN_5
