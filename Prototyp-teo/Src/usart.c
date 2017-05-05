@@ -40,6 +40,7 @@
 
 /* USER CODE BEGIN 0 */
 
+#include "i2c.h"
 #include <string.h>
 
 /* Should define WIFI_SSID and WIFI_PSK
@@ -86,6 +87,7 @@ void ESP_Init() {
 	}
 	if (bootOk == 0) {
 		UART_DebugLog("ESP BOOT TIMEOUT, RESETTING MCU...");
+		HAL_Delay(1000);
 		HAL_NVIC_SystemReset();
 	}
 	/*UART_DebugLog("ESP RESETTING");
@@ -213,6 +215,7 @@ int16_t ESP_TCP_ReadLine(uint8_t *buf) {
 void UART_DebugLog(char *msg) {
 	HAL_UART_Transmit(&huart1, (uint8_t *)msg, strlen(msg), 1000);
 	HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, 1000);
+	Display_Str(msg);
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {

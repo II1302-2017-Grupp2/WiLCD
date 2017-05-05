@@ -40,6 +40,7 @@
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
+#define IS_DISCOVERY 1
 
 #define Debug_UART_TX_Pin GPIO_PIN_4
 #define Debug_UART_TX_GPIO_Port GPIOC
