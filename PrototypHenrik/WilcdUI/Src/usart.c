@@ -41,6 +41,7 @@
 /* USER CODE BEGIN 0 */
 
 #include "main.h"
+#include "i2c.h"
 #include <string.h>
 
 /* Should define WIFI_SSID and WIFI_PSK
@@ -87,6 +88,7 @@ void ESP_Init() {
 	}
 	if (bootOk == 0) {
 		UART_DebugLog("ESP BOOT TIMEOUT, RESETTING MCU...");
+		HAL_Delay(1000);
 		HAL_NVIC_SystemReset();
 	}
 	/*UART_DebugLog("ESP RESETTING");
@@ -214,6 +216,7 @@ int16_t ESP_TCP_ReadLine(uint8_t *buf) {
 void UART_DebugLog(char *msg) {
 	HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
 	HAL_UART_Transmit(&huart2, (uint8_t *)"\r\n", 2, 1000);
+	Display_Str(msg);
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
@@ -257,7 +260,8 @@ void MX_USART1_UART_Init(void)
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_SWAP_INIT;
+  huart1.AdvancedInit.Swap = UART_ADVFEATURE_SWAP_ENABLE;
   if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
