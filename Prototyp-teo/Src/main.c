@@ -40,7 +40,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "epaper.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -89,6 +89,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_RESET);
   Display_Init();
+  Epaper_Init();
   ESP_Init();
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_SET);
   /* USER CODE END 2 */
