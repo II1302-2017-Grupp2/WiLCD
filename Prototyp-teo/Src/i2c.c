@@ -39,6 +39,7 @@
 
 /* USER CODE BEGIN 0 */
 
+#include "epaper.h"
 #include "font.h"
 
 #define DISPLAY_CMD (0x00)
@@ -153,6 +154,8 @@ void Display_Char(char msg) {
 }
 
 void Display_Str(char *msg) {
+	Epaper_Write_StrLine(2, msg);
+	Epaper_Flush();
 	Display_Newline();
 	while (*msg != 0) {
 		Display_Char(*msg);

@@ -13,8 +13,10 @@ void Epaper_Send_Byte(uint8_t reg, uint8_t data);
 
 void Epaper_Clear();
 void Epaper_Flush();
-void Epaper_Write_Raw_Line(uint8_t y, uint8_t *line);
-void Epaper_Write_Raw_8Lines(uint8_t y, uint8_t *line);
+void Epaper_Write_Raw_Line(uint8_t y, uint8_t *line, uint8_t invert);
+void Epaper_Write_Raw_8Lines(uint8_t y, uint8_t *line, uint8_t invert);
 void Epaper_Write_StrLine(uint8_t y, char *msg);
+void Epaper_Write_Nothing_Frame();
+void Epaper_Write_Dummy_Line();
 
 #endif
