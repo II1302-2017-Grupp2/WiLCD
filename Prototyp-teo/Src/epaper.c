@@ -5,14 +5,10 @@
 #define EPAPER_LINE_BUFFER_SIZE (1 + 33 + 44 + 33)
 
 #define EPAPER_COMP_STAGE1_REPEAT (2)
-#define EPAPER_COMP_STAGE1_STEP (4)
-#define EPAPER_COMP_STAGE1_BLOCK (32)
-#define EPAPER_COMP_STAGE2_REPEAT (4)
+#define EPAPER_COMP_STAGE2_REPEAT (2)
 #define EPAPER_COMP_STAGE2_T1 (196)
 #define EPAPER_COMP_STAGE2_T2 (196)
-#define EPAPER_COMP_STAGE3_REPEAT (4)
-#define EPAPER_COMP_STAGE3_STEP (4)
-#define EPAPER_COMP_STAGE3_BLOCK (32)
+#define EPAPER_COMP_STAGE3_REPEAT (3)
 
 typedef struct {
 	uint8_t border_byte;
@@ -100,7 +96,7 @@ void Epaper_Init() {
 	for (int i = 0; i < 4; ++i) {
 		// Positive Voltage
 		Epaper_Send_Byte(0x05, 0x01);
-		HAL_Delay(240);
+		HAL_Delay(150);
 		// Negative Voltage
 		Epaper_Send_Byte(0x05, 0x03);
 		HAL_Delay(100);
@@ -123,7 +119,7 @@ void Epaper_Init() {
 void Epaper_Shutdown() {
 	Epaper_Write_Nothing_Frame();
 	Epaper_Write_Dummy_Line();
-	HAL_Delay(250);
+	HAL_Delay(150);
 
 	Epaper_Send_Byte(0x0B, 0x00);
 	// Latch Reset
@@ -221,7 +217,7 @@ void _Epaper_Clear_LineBuffer() {
 	}
 }
 
-void Epaper_Write_Raw_Line(uint8_t y, uint8_t *line, uint8_t invert) {
+void Epaper_Write_Raw_Line(int y, uint8_t *line, uint8_t invert) {
 	_Epaper_Clear_LineBuffer();
 
 	if (invert) {
@@ -293,7 +289,7 @@ void Epaper_Write_Dummy_Line() {
 	Epaper_Write_Raw_Frame();
 }
 
-void Epaper_Write_Raw_8Lines(uint8_t y, uint8_t *line, uint8_t invert) {
+void Epaper_Write_Raw_8Lines(int y, uint8_t *line, uint8_t invert) {
 	uint8_t lineBuf[EPAPER_COLS];
 	for (int i = 0; i < 16; ++i) {
 		for (int j = 0; j < EPAPER_COLS; ++j) {
@@ -309,16 +305,21 @@ void Epaper_Clear_Line(uint8_t y) {
 	}
 }
 
-void Epaper_Write_StrLine(uint8_t y, char *msg) {
-	uint8_t *lineBuf = epaperScreenBuffer[y];
+void Epaper_Draw_Horiz_Line(int y, uint8_t height) {
+	for (int i = 0; i < EPAPER_COLS; i++) {
+		epaperScreenBuffer[y][i] |= 0x1 << height;
+	}
+}
+
+void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 	int pos = 0;
 
 	Epaper_Clear_Line(y);
 
-	while (*msg != '\0') {
-		uint8_t *fontChar = font[(uint8_t)(*msg)];
+	for (int i = 0; i < len; ++i) {
+		uint8_t *fontChar = font[msg[i]];
 		if (fontChar == NULL) {
-			return;
+			continue;
 		}
 		uint8_t size = *fontChar;
 		uint8_t kerning = 2;
@@ -330,12 +331,15 @@ void Epaper_Write_StrLine(uint8_t y, char *msg) {
 		}
 
 		pos += kerning;
-		for (int i = 1; i <= size; i++) {
-			epaperScreenBuffer[y][pos++] = fontChar[i];
-			epaperScreenBuffer[y][pos++] = fontChar[i];
+		for (int j = 1; j <= size; j++) {
+			epaperScreenBuffer[y][pos++] = fontChar[j];
+			epaperScreenBuffer[y][pos++] = fontChar[j];
 		}
-		++msg;
 	}
+}
+
+void Epaper_Write_StrLine(int y, char *msg) {
+	Epaper_Write_StrnLine(y, (uint8_t *)msg, strlen(msg));
 }
 
 void Epaper_Flush() {
@@ -351,10 +355,8 @@ void Epaper_Flush() {
 		Epaper_Write_Mono_Frame(1, EPAPER_COMP_STAGE2_T1);
 		Epaper_Write_Mono_Frame(0, EPAPER_COMP_STAGE2_T2);
 	}
-
+	//Epaper_Write_Frame(0, EPAPER_COMP_STAGE1_REPEAT);
 	Epaper_Write_Frame(1, EPAPER_COMP_STAGE3_REPEAT);
-
-	HAL_Delay(200);
 
 	Epaper_Shutdown();
 }
@@ -365,6 +367,31 @@ void Epaper_Clear() {
 			epaperScreenBuffer[y][i] = 0;
 		}
 	}
-	Epaper_Flush();
+}
+
+void Epaper_Demo() {
+	while (1) {
+		Epaper_Clear();
+		Epaper_Write_StrLine(0, "Anders Sj\xF6gren");
+		Epaper_Draw_Horiz_Line(1, 1);
+		Epaper_Write_StrLine(2, "P\xE5 semester, \xE5ter 05-13");
+		Epaper_Draw_Horiz_Line(9, 6);
+		Epaper_Write_StrLine(10, "2017-05-09 19:57");
+
+		Epaper_Flush();
+
+		Epaper_Clear();
+		Epaper_Write_StrLine(1, "THE BROWN-FOX JUMPED OVER THE LAZY DOG");
+		Epaper_Write_StrLine(3, "the brown-fox jumped over the lazy dog");
+		Epaper_Write_StrLine(5, "ABCDEFGHIJKLMNOPQRSTYVWXYZ\xC5\xC4\xD6");
+		Epaper_Write_StrLine(7, "abcdefghijklmnopqrstuvwxyz\xE5\xE4\xF6");
+		Epaper_Write_StrLine(9, "0123456789  ,.:-_!?\"'/\\()[]{}");
+		Epaper_Flush();
+
+		Epaper_Clear();
+		Epaper_Write_StrLine(2, "Welcome to an incredible new experience!");
+		Epaper_Write_StrLine(5, "To get started, give me your credit card");
+		Epaper_Flush();
+	}
 }
 

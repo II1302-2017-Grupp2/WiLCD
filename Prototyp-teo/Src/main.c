@@ -92,6 +92,8 @@ int main(void)
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_RESET);
   Display_Init();
   Epaper_Clear();
+  Epaper_Flush();
+  Epaper_Demo();
   ESP_Init();
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_SET);
   /* USER CODE END 2 */
