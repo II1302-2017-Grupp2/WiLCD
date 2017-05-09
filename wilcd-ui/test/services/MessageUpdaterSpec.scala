@@ -4,7 +4,7 @@ import java.net.{InetSocketAddress, Socket}
 import java.util.Scanner
 
 import controllers.{DbOneAppPerTest, OurPlaySpec}
-import models.Message
+import models.{Id, Message}
 import org.scalatest.concurrent.Eventually
 
 import scala.concurrent.Await
@@ -50,6 +50,13 @@ class MessageUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventuall
         val line = scanner.nextLine()
         line mustBe "hej"
       }
+    }
+  }
+  "MessageUpdater.deleteMessage" should {
+    "delete the entered message" in {
+      val messageUpdater = app.injector.instanceOf[MessageUpdater]
+      Await.result(messageUpdater.setMessage(user,"hej"), Duration.Inf)
+      Await.result(messageUpdater.deleteMessage(user,Id[Message](1)), Duration.Inf)
     }
   }
   override protected val createUser = true
