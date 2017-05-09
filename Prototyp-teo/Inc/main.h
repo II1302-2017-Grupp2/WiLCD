@@ -40,7 +40,20 @@
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
+#define IS_DISCOVERY 1
 
+#define EPAPER_POWER_Pin GPIO_PIN_0
+#define EPAPER_POWER_GPIO_Port GPIOA
+#define EPAPER_BUSY_Pin GPIO_PIN_1
+#define EPAPER_BUSY_GPIO_Port GPIOA
+#define EPAPER_FLASH_CS_Pin GPIO_PIN_2
+#define EPAPER_FLASH_CS_GPIO_Port GPIOA
+#define EPAPER_RESET_Pin GPIO_PIN_3
+#define EPAPER_RESET_GPIO_Port GPIOA
+#define EPAPER_DISCHARGE_Pin GPIO_PIN_4
+#define EPAPER_DISCHARGE_GPIO_Port GPIOF
+#define EPAPER_CS_Pin GPIO_PIN_4
+#define EPAPER_CS_GPIO_Port GPIOA
 #define Debug_UART_TX_Pin GPIO_PIN_4
 #define Debug_UART_TX_GPIO_Port GPIOC
 #define Debug_UART_RX_Pin GPIO_PIN_5

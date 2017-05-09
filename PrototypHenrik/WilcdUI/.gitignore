@@ -5,8 +5,9 @@ Drivers
 .cproject
 .project
 STM32F303VCTx_FLASH.ld
-Prototyp-teo.xml
+STM32F303C6Tx_FLASH.ld
+WilcdUI.xml
 .settings
-Prototyp-teo.cfg
+WilcdUI.cfg
 secrets.h
 EWARM

@@ -45,6 +45,8 @@
 #define ESP_RESET_GPIO_Port GPIOA
 #define ESP_ENABLE_Pin GPIO_PIN_6
 #define ESP_ENABLE_GPIO_Port GPIOA
+#define ESP_GPIO2_Pin GPIO_PIN_7
+#define ESP_GPIO2_GPIO_Port GPIOA
 #define Led_1_Pin GPIO_PIN_11
 #define Led_1_GPIO_Port GPIOB
 #define ESP_GPIO0_Pin GPIO_PIN_8
