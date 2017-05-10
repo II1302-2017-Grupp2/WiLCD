@@ -33,7 +33,7 @@ class TcpDisplayUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventu
       val scanner = new Scanner(inputStream)
       eventually {
         val line = scanner.nextLine()
-        line mustBe "blah"
+        line mustBe "Mblah"
       }
     }
   }
