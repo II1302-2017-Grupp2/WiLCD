@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "rtc.h"
+#include "font.h"
 
 #define YEAR_PREFIX "20"
 
@@ -65,4 +66,15 @@ void setDateTime(uint8_t *str, uint16_t len) {
 
 	HAL_RTC_SetTime(&hrtc, &time, RTC_FORMAT_BCD);
 	HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BCD);
+}
+
+int16_t wordSize(uint8_t *str, int16_t len) {
+	int16_t total = 0;
+	for (int i = 0; i < len && str[i] != ' '; ++i) {
+		uint8_t *fontCharSize = font[str[i]];
+		if (fontCharSize != NULL) {
+			total += *fontCharSize + FONT_KERNING;
+		}
+	}
+	return total;
 }

@@ -321,6 +321,7 @@ void Epaper_Draw_HorizLine(int y, uint8_t yPos) {
 
 void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 	int pos = 0;
+	int wordStartPos = 0;
 
 	Epaper_Clear_Line(y);
 
@@ -330,18 +331,22 @@ void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 			continue;
 		}
 		uint8_t size = *fontChar;
-		uint8_t kerning = 2;
 
-		if (pos + size * 2 + kerning >= EPAPER_COLS) {
-			pos = 0;
+		if (pos + wordSize(msg + i, wordStartPos == 0 ? 1 : len - i) * 2 >= EPAPER_COLS) {
+ 			pos = 0;
+ 			wordStartPos = 0;
 			++y;
 			Epaper_Clear_Line(y);
 		}
 
-		pos += kerning;
+		pos += FONT_KERNING;
 		for (int j = 1; j <= size; j++) {
 			epaperScreenBuffer[y][pos++] = fontChar[j];
 			epaperScreenBuffer[y][pos++] = fontChar[j];
+		}
+
+		if (msg[i] == ' ') {
+			wordStartPos = pos;
 		}
 	}
 }
