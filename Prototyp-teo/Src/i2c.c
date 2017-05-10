@@ -154,8 +154,7 @@ void Display_Char(char msg) {
 }
 
 void Display_Str(char *msg) {
-	Epaper_Write_StrLine(2, msg);
-	Epaper_Flush();
+	Epaper_Splash_Status(msg);
 	Display_Newline();
 	while (*msg != 0) {
 		Display_Char(*msg);
@@ -164,8 +163,6 @@ void Display_Str(char *msg) {
 }
 
 void Display_Strn(uint8_t *msg, uint16_t len) {
-	Epaper_Write_StrnLine(2, msg, len);
-	Epaper_Flush();
 	for (uint16_t i = 0; i < len; i++) {
 		Display_Char(msg[i]);
 	}

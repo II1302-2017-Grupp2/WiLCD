@@ -35,6 +35,7 @@
 #include "stm32f3xx_hal.h"
 #include "dma.h"
 #include "i2c.h"
+#include "rtc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -42,6 +43,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "epaper.h"
+#include "utils.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -87,14 +89,15 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   MX_TIM2_Init();
+  MX_RTC_Init();
 
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_RESET);
   Display_Init();
-  Epaper_Clear();
-  Epaper_Flush();
-  Epaper_Demo();
+  Epaper_Splash_Init();
+  //Epaper_Demo();
   ESP_Init();
+  Epaper_Splash_Shutdown();
   HAL_GPIO_WritePin(READY_LED_GPIO_Port, READY_LED_Pin, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
@@ -106,11 +109,20 @@ int main(void)
 	  int16_t len;
 	  if ((len = ESP_TCP_ReadLine(buf)) > 0) {
 		  HAL_UART_Transmit(&huart1, buf, len, 1000);
-		  HAL_UART_Transmit(&huart1, "\r\n", 2, 1000);
-		  Display_Strn(buf, len);
+		  HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, 1000);
+
+		  switch(buf[0]) {
+		  case 'M':
+			  Display_Strn(buf+1, len-1);
+			  Epaper_MessageCard_Display(buf+1, len-1);
+			  break;
+		  case 'T':
+			  setDateTime(buf+1, len-1);
+			  break;
+		  }
 	  } else if (len == -1 && (len = ESP_ReadLine(buf)) != 0) {
 		  HAL_UART_Transmit(&huart1, buf, len, 1000);
-		  HAL_UART_Transmit(&huart1, "\r\n", 2, 1000);
+		  HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, 1000);
 		  Display_Strn(buf, len);
 	  }
 	  /*uint8_t chr;
@@ -145,9 +157,10 @@ void SystemClock_Config(void)
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = 16;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -169,10 +182,11 @@ void SystemClock_Config(void)
   }
 
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2
-                              |RCC_PERIPHCLK_I2C1;
+                              |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_RTC;
   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
