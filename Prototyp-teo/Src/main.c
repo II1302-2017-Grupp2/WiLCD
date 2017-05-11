@@ -124,6 +124,8 @@ int main(void)
 		  HAL_UART_Transmit(&huart1, buf, len, 1000);
 		  HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, 1000);
 		  Display_Strn(buf, len);
+	  } else {
+		  ESP_SleepUntilMessage();
 	  }
 	  /*uint8_t chr;
 	  if (HAL_UART_Receive(&huart1, &chr, 1, 1000) != HAL_OK) {
