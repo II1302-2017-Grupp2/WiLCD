@@ -2,8 +2,7 @@
 #include "rtc.h"
 #include "font.h"
 
-#define YEAR_PREFIX "20"
-
+char *yearPrefix = "00";
 char dateTimeStrBuf[17];
 
 char bcdToChar(uint8_t bcd) {
@@ -20,8 +19,8 @@ char *dateTimeStr() {
 	HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BCD);
 	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BCD);
 
-	dateTimeStrBuf[0] = YEAR_PREFIX[0];
-	dateTimeStrBuf[1] = YEAR_PREFIX[1];
+	dateTimeStrBuf[0] = yearPrefix[0];
+	dateTimeStrBuf[1] = yearPrefix[1];
 	dateTimeStrBuf[2] = bcdToChar(date.Year >> 4);
 	dateTimeStrBuf[3] = bcdToChar(date.Year);
 	dateTimeStrBuf[4] = '-';
@@ -49,6 +48,9 @@ void setDateTime(uint8_t *str, uint16_t len) {
 	RTC_DateTypeDef date;
 	HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BCD);
 	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BCD);
+
+  yearPrefix[0] = str[0];
+  yearPrefix[1] = str[1];
 
 	date.Year = charToBcd(str[2]) << 4
 			| charToBcd(str[3]);
