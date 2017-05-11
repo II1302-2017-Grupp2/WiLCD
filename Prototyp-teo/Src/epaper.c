@@ -1,14 +1,17 @@
 #include "epaper.h"
+#include "usart.h"
 #include "spi.h"
 #include "tim.h"
+#include "utils.h"
+#include <stdlib.h>
 
 #define EPAPER_LINE_BUFFER_SIZE (1 + 33 + 44 + 33)
 
 #define EPAPER_COMP_STAGE1_REPEAT (2)
-#define EPAPER_COMP_STAGE2_REPEAT (2)
+#define EPAPER_COMP_STAGE2_REPEAT (3)
 #define EPAPER_COMP_STAGE2_T1 (196)
 #define EPAPER_COMP_STAGE2_T2 (196)
-#define EPAPER_COMP_STAGE3_REPEAT (3)
+#define EPAPER_COMP_STAGE3_REPEAT (2)
 
 typedef struct {
 	uint8_t border_byte;
@@ -27,10 +30,15 @@ typedef union {
 #define EPAPER_8LINES (EPAPER_LINES/8/2)
 
 uint8_t epaperScreenBuffer[EPAPER_8LINES][EPAPER_COLS];
+epaperLine epaperLineBuffer;
 
 uint8_t epaperOn = 0;
+uint8_t epaperSplashOn = 0;
+uint8_t epaperMessageCardOn = 0;
 
-epaperLine epaperLineBuffer;
+uint8_t epaperMessageCardBuf[ESP_BUF_SIZE];
+int16_t epaperMessageCardBufLen;
+uint8_t epaperMessageCardUpdating = 0;
 
 void Epaper_Init() {
 	HAL_GPIO_WritePin(EPAPER_FLASH_CS_GPIO_Port, EPAPER_FLASH_CS_Pin, GPIO_PIN_SET);
@@ -305,15 +313,19 @@ void Epaper_Clear_Line(uint8_t y) {
 	}
 }
 
-void Epaper_Draw_Horiz_Line(int y, uint8_t height) {
+void Epaper_Draw_HorizLine(int y, uint8_t yPos) {
 	for (int i = 0; i < EPAPER_COLS; i++) {
-		epaperScreenBuffer[y][i] |= 0x1 << height;
+		epaperScreenBuffer[y][i] |= 0x1 << yPos;
 	}
 }
 
 void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 	int pos = 0;
+	int wordStartPos = 0;
 
+	if (y >= EPAPER_8LINES) {
+		return;
+	}
 	Epaper_Clear_Line(y);
 
 	for (int i = 0; i < len; ++i) {
@@ -322,18 +334,25 @@ void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 			continue;
 		}
 		uint8_t size = *fontChar;
-		uint8_t kerning = 2;
 
-		if (pos + size * 2 + kerning >= EPAPER_COLS) {
-			pos = 0;
+		if (pos + wordSize(msg + i, wordStartPos == 0 ? 1 : len - i) * 2 >= EPAPER_COLS) {
+ 			pos = 0;
+ 			wordStartPos = 0;
 			++y;
+			if (y >= EPAPER_8LINES) {
+				return;
+			}
 			Epaper_Clear_Line(y);
 		}
 
-		pos += kerning;
+		pos += FONT_KERNING;
 		for (int j = 1; j <= size; j++) {
 			epaperScreenBuffer[y][pos++] = fontChar[j];
 			epaperScreenBuffer[y][pos++] = fontChar[j];
+		}
+
+		if (msg[i] == ' ') {
+			wordStartPos = pos;
 		}
 	}
 }
@@ -349,14 +368,14 @@ void Epaper_Flush() {
 		return;
 	}
 
-	Epaper_Write_Frame(0, EPAPER_COMP_STAGE1_REPEAT);
+	Epaper_Write_Frame(1, EPAPER_COMP_STAGE1_REPEAT);
 
 	for (int round = 0; round < EPAPER_COMP_STAGE2_REPEAT; ++round) {
-		Epaper_Write_Mono_Frame(1, EPAPER_COMP_STAGE2_T1);
-		Epaper_Write_Mono_Frame(0, EPAPER_COMP_STAGE2_T2);
+		Epaper_Write_Mono_Frame(0, EPAPER_COMP_STAGE2_T1);
+		Epaper_Write_Mono_Frame(1, EPAPER_COMP_STAGE2_T2);
 	}
 	//Epaper_Write_Frame(0, EPAPER_COMP_STAGE1_REPEAT);
-	Epaper_Write_Frame(1, EPAPER_COMP_STAGE3_REPEAT);
+	Epaper_Write_Frame(0, EPAPER_COMP_STAGE3_REPEAT);
 
 	Epaper_Shutdown();
 }
@@ -371,22 +390,21 @@ void Epaper_Clear() {
 
 void Epaper_Demo() {
 	while (1) {
-		Epaper_Clear();
-		Epaper_Write_StrLine(0, "Anders Sj\xF6gren");
-		Epaper_Draw_Horiz_Line(1, 1);
-		Epaper_Write_StrLine(2, "P\xE5 semester, \xE5ter 05-13");
-		Epaper_Draw_Horiz_Line(9, 6);
-		Epaper_Write_StrLine(10, "2017-05-09 19:57");
+		char *msg = "P\xE5 semester, \xE5ter 05-13";
+		Epaper_MessageCard_Display((uint8_t *)msg, strlen(msg));
+		epaperMessageCardOn = 0;
 
-		Epaper_Flush();
+		//Error_Handler();
 
 		Epaper_Clear();
-		Epaper_Write_StrLine(1, "THE BROWN-FOX JUMPED OVER THE LAZY DOG");
-		Epaper_Write_StrLine(3, "the brown-fox jumped over the lazy dog");
+		Epaper_Write_StrLine(0, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG");
+		Epaper_Write_StrLine(3, "the quick brown fox jumps over the lazy dog");
 		Epaper_Write_StrLine(5, "ABCDEFGHIJKLMNOPQRSTYVWXYZ\xC5\xC4\xD6");
 		Epaper_Write_StrLine(7, "abcdefghijklmnopqrstuvwxyz\xE5\xE4\xF6");
 		Epaper_Write_StrLine(9, "0123456789  ,.:-_!?\"'/\\()[]{}");
 		Epaper_Flush();
+
+		//Error_Handler();
 
 		Epaper_Clear();
 		Epaper_Write_StrLine(2, "Welcome to an incredible new experience!");
@@ -395,3 +413,48 @@ void Epaper_Demo() {
 	}
 }
 
+void Epaper_Splash_Init() {
+	epaperSplashOn = 1;
+	Epaper_Splash_Status("");
+}
+
+void Epaper_Splash_Shutdown() {
+	epaperSplashOn = 0;
+	Epaper_Clear();
+	Epaper_Flush();
+}
+
+void Epaper_Splash_Status(char *msg) {
+	if (epaperSplashOn) {
+		Epaper_Clear();
+		Epaper_Write_StrLine(2, "Displaimer v0.1 Booting...");
+		Epaper_Draw_HorizLine(3, 1);
+		Epaper_Write_StrLine(4, msg);
+		Epaper_Flush();
+	}
+}
+
+void Epaper_MessageCard_Display(uint8_t *msg, int16_t len) {
+	epaperMessageCardBufLen = len;
+	for (int i = 0; i < len; ++i) {
+		epaperMessageCardBuf[i] = msg[i];
+	}
+	epaperMessageCardOn = 1;
+	Epaper_MessageCard_Update();
+}
+
+void Epaper_MessageCard_Update() {
+	if (epaperMessageCardUpdating || !epaperMessageCardOn) {
+		return;
+	}
+
+	epaperMessageCardUpdating = 1;
+	Epaper_Clear();
+	Epaper_Write_StrLine(0, "Anders Sj\xF6gren");
+	Epaper_Draw_HorizLine(1, 1);
+	Epaper_Write_StrnLine(2, epaperMessageCardBuf, epaperMessageCardBufLen);
+	Epaper_Draw_HorizLine(9, 6);
+	Epaper_Write_StrLine(10, dateTimeStr());
+	Epaper_Flush();
+	epaperMessageCardUpdating = 0;
+}

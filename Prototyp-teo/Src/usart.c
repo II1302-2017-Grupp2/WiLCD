@@ -76,7 +76,7 @@ void ESP_Init() {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
 
-	UART_DebugLog("ESP BOOTING");
+	UART_DebugLog("Wi-Fi Booting");
 	uint8_t bootOk = 0;
 	for (int i = 0; i < 400; i++) {
 		if (ESP_WaitForMsg(espReadyMsg, 0) == 1) {
@@ -86,31 +86,31 @@ void ESP_Init() {
 		HAL_Delay(10);
 	}
 	if (bootOk == 0) {
-		UART_DebugLog("ESP BOOT TIMEOUT, RESETTING MCU...");
+		UART_DebugLog("Wi-Fi Boot Timeout, Resetting MCU...");
 		HAL_Delay(1000);
 		HAL_NVIC_SystemReset();
 	}
-	/*UART_DebugLog("ESP RESETTING");
+	/*UART_DebugLog("Wi-Fi Resetting");
 	ESP_SendCommand("AT+RESTORE"); // Factory reset
 	ESP_WaitForMsg(espReadyMsg, 1);*/
-	UART_DebugLog("ESP CONFIG");
+	ESP_SendCommand("AT+RFPOWER=5"); // Send ASAP to prevent brownout
+	UART_DebugLog("Wi-Fi Configuring");
 	ESP_SendCommand("AT");
 	ESP_SendCommand("ATE0"); // Disable command echo
-	ESP_SendCommand("AT+RFPOWER=5");
 	ESP_SendCommand("AT+CIPMUX=0");
 	ESP_SendCommand("AT+CWMODE_CUR=1");
 
-	UART_DebugLog("ESP WIFI CONNECTING");
+	UART_DebugLog("Wi-Fi Connecting");
 	if (ESP_SendCommand("AT+CWJAP_CUR=\""WIFI_SSID"\",\""WIFI_PSK"\"") == 0) {
-		UART_DebugLog("ESP WIFI CONNECT FAILED");
+		UART_DebugLog("Wi-Fi Failed");
 		HAL_NVIC_SystemReset();
 	}
-	UART_DebugLog("ESP TCP CONNECTING");
+	UART_DebugLog("Wi-Fi TCP Connecting");
 	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797") == 0) {
-		UART_DebugLog("ESP TCP CONNECT FAILED");
+		UART_DebugLog("Wi-Fi TCP Failed");
 		HAL_NVIC_SystemReset();
 	}
-	UART_DebugLog("ESP RUNNING");
+	UART_DebugLog("Wi-Fi Connected");
 }
 
 uint16_t ESP_ReadLine(uint8_t *buf) {

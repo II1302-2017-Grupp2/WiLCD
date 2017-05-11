@@ -134,28 +134,26 @@ void Display_Char(char msg) {
 		return;
 	}
 	uint8_t size = *fontChar;
-	uint8_t kerning = 1;
 
-	if (displayCurrentCol + size + kerning >= 128) {
+	if (displayCurrentCol + size + FONT_KERNING >= 128) {
 		Display_Newline();
 	}
 	Display_UpdatePos();
-	displayCurrentCol += size + kerning;
+	displayCurrentCol += size + FONT_KERNING;
 
 	uint8_t buf[150];
 	buf[0] = DISPLAY_SHOW;
 	for (int i = 1; i <= size; i++) {
 		buf[i] = fontChar[i];
 	}
-	for (int i = size + 1; i <= size + kerning; i++) {
+	for (int i = size + 1; i <= size + FONT_KERNING; i++) {
 		buf[i] = 0;
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, buf, size + kerning + 1, 1000);
+	HAL_I2C_Master_Transmit(&hi2c1, displayAddress, buf, size + FONT_KERNING + 1, 1000);
 }
 
 void Display_Str(char *msg) {
-	Epaper_Write_StrLine(2, msg);
-	Epaper_Flush();
+	Epaper_Splash_Status(msg);
 	Display_Newline();
 	while (*msg != 0) {
 		Display_Char(*msg);
@@ -164,8 +162,6 @@ void Display_Str(char *msg) {
 }
 
 void Display_Strn(uint8_t *msg, uint16_t len) {
-	Epaper_Write_StrnLine(2, msg, len);
-	Epaper_Flush();
 	for (uint16_t i = 0; i < len; i++) {
 		Display_Char(msg[i]);
 	}

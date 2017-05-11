@@ -1,19 +1,24 @@
 package actors
 
 import java.net.InetSocketAddress
+import java.time.{Instant, ZoneId}
 
+import actors.TcpDisplayUpdater._
 import akka.actor.{Actor, ActorLogging, ActorRef}
+import akka.io.Tcp._
 import akka.io.{IO, Tcp}
 import akka.pattern.pipe
-import Tcp._
-import actors.TcpDisplayUpdater.{IsDeviceConnected, NotifyBound, NowBound, Update}
 import akka.util.ByteString
 
 import scala.collection.mutable
 import scala.concurrent.Promise
 
 class TcpDisplayUpdater extends Actor with ActorLogging {
+
   import context.{dispatcher, system}
+
+  private val charset = "ISO-8859-1"
+  private val timeZone = ZoneId.of("Europe/Stockholm")
 
   private val io = IO(Tcp)
   private val bindPromise = Promise[NowBound.type]()
@@ -36,6 +41,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
       log.info(s"Connection from $remote")
       clients += conn
       conn ! Register(self)
+      conn ! Write(ByteString("T" + Instant.now().atZone(timeZone).toLocalDateTime + "\r\n"))
       conn ! Write(lastMessage)
 
     case Received(_) =>
@@ -46,7 +52,7 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
 
     case Update(msg) =>
       log.info(s"Updating message to $msg")
-      val bs = ByteString("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"+msg, "ISO-8859-1")
+      val bs = ByteString("M" + msg + "\r\n", charset)
       for (client <- clients) {
         client ! Write(bs)
       }
@@ -58,9 +64,13 @@ class TcpDisplayUpdater extends Actor with ActorLogging {
 }
 
 object TcpDisplayUpdater {
+
   case class Update(msg: String)
+
   case object IsDeviceConnected
 
   case object NotifyBound
+
   case object NowBound
+
 }
