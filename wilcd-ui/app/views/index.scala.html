@@ -1,6 +1,16 @@
-@()(implicit req: UserRequest[_])
+@(scheduledMessages: Seq[WithId[Message]])(implicit req: UserRequest[_])
 
     @main("Home", currentPage = Some(Page.Index)) {
+        <div class="outerMsgBox">
+            <h2 class="msgBox-heading">
+                Current message
+            </h2>
+            <div class="currentMsgBox">
+                @for(message <- scheduledMessages){
+                <h3>@message.message</h3>
+                }
+            </div>
+        </div>
         <div class="infoBox">
             <h2 class="cover-heading">Welcome to Displaimer</h2>
             <div class="formBox">

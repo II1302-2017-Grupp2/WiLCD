@@ -1,6 +1,15 @@
 @()(implicit req: UserRequest[_])
 
     @main("Home", currentPage = Some(Page.Index)) {
+    <div class="outerMsgBox">
+        <h2 class="msgBox-heading">
+            Current message
+        </h2>
+        <div class="currentMsgBox">
+        @for(message <- scheduledMessages){
+            <h3>@message.message</h3>
+        }
+        </div>
         <h2>Instant Message</h2>
         @helper.form(routes.HomeController.submitNewMessage) {
             @helper.CSRF.formField
