@@ -56,6 +56,8 @@ object Messages {
   def create(message: Message): DBIO[WithId[Message]] =
     (tq.map(_.all).returning(tq.map(_.id)) += message).map(WithId(_, message))
 
+  private[models] def tq = TableQuery[Messages]
+
   def delete(user: Id[User], msgId: Id[Message]): DBIO[DeleteResult] = {
     val msgQuery =
       allMessages
@@ -72,9 +74,13 @@ object Messages {
     }.transactionally
   }
 
+  def allMessages: Query[Messages, WithId[Message], Seq] =
+    tq
+      .sorted(_.displayFrom.desc)
+
   def updateReoccurring(): DBIO[Unit] =
     (for {
-      pastMessages <- allMessages
+      pastMessages <- tq
         .filter(_.displayFrom < Instant.now())
         .filter(_.occurrence =!= Message.Occurrence.Once)
         .forUpdate
@@ -93,16 +99,6 @@ object Messages {
       .filter(_.displayFrom <= Instant.now())
       .take(1)
 
-  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
-    allMessages
-      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
-
-  def allMessages: Query[Messages, WithId[Message], Seq] =
-    tq
-      .sorted(_.displayFrom.desc)
-
-  private[models] def tq = TableQuery[Messages]
-
   def nextMessage: Query[Messages, WithId[Message], Seq] =
     futureMessages
       .take(1)
@@ -111,4 +107,8 @@ object Messages {
     notYetDiscardedMessages
       .filter(_.displayFrom > Instant.now())
       .sorted(_.displayFrom.asc)
+
+  def notYetDiscardedMessages: Query[Messages, WithId[Message], Seq] =
+    allMessages
+      .filter(_.displayUntil.map(_ > Instant.now()) getOrElse true)
 }
