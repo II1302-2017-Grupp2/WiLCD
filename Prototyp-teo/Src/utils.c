@@ -2,7 +2,7 @@
 #include "rtc.h"
 #include "font.h"
 
-char *yearPrefix = "00";
+char yearPrefix[2] = { '0', '0' };
 char dateTimeStrBuf[17];
 
 char bcdToChar(uint8_t bcd) {

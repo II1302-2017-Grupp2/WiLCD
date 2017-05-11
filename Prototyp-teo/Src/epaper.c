@@ -323,6 +323,9 @@ void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
 	int pos = 0;
 	int wordStartPos = 0;
 
+	if (y >= EPAPER_8LINES) {
+		return;
+	}
 	Epaper_Clear_Line(y);
 
 	for (int i = 0; i < len; ++i) {
@@ -336,6 +339,9 @@ void Epaper_Write_StrnLine(int y, uint8_t *msg, int len) {
  			pos = 0;
  			wordStartPos = 0;
 			++y;
+			if (y >= EPAPER_8LINES) {
+				return;
+			}
 			Epaper_Clear_Line(y);
 		}
 
