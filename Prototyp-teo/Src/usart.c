@@ -105,6 +105,7 @@ void ESP_Init() {
 		UART_DebugLog("Wi-Fi Failed");
 		HAL_NVIC_SystemReset();
 	}
+	ESP_SendCommand("AT+SLEEP=1"); // Allow sleeping
 	UART_DebugLog("Wi-Fi TCP Connecting");
 	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797") == 0) {
 		UART_DebugLog("Wi-Fi TCP Failed");
@@ -209,6 +210,14 @@ int16_t ESP_TCP_ReadLine(uint8_t *buf) {
 		return len;
 	} else {
 		return 0;
+	}
+}
+
+void ESP_SleepUntilMessage() {
+	if (espReceiveBufferHi == espReceiveBufferLo) {
+		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFE);
+		__WFI();
+		HAL_Delay(200);
 	}
 }
 

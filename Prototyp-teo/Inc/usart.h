@@ -67,6 +67,7 @@ int8_t ESP_WaitForOk();
 int8_t ESP_SendCommand(char *msg);
 uint16_t ESP_ReadLine(uint8_t *buf);
 int16_t ESP_TCP_ReadLine(uint8_t *buf);
+void ESP_SleepUntilMessage();
 
 void UART_DebugLog(char *msg);
 

@@ -67,8 +67,6 @@ object Messages {
         DBIO.successful(DeleteResult.Success)
       case Some(msg) if msg.createdBy != user =>
         DBIO.successful(DeleteResult.NoPermission)
-      case Some(msg) if msg.displayFrom isBefore Instant.now() =>
-        DBIO.successful(DeleteResult.Archived)
       case Some(msg) =>
         msgQuery.delete.map(_ => DeleteResult.Success)
     }.transactionally

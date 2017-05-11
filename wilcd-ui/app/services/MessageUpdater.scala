@@ -22,6 +22,5 @@ object MessageUpdater {
   object DeleteResult {
     case object Success extends DeleteResult
     case object NoPermission extends DeleteResult
-    case object Archived extends DeleteResult
   }
 }
