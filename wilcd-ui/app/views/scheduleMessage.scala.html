@@ -40,25 +40,31 @@
         }
 
         <h2>Old Messages</h2>
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Message</th>
-                <th>Display From</th>
-                <th>Display Until</th>
-                <th>Occurrence</th>
-                <th>Actions</th>
-            </tr>
-            @for(message <- scheduledMessages) {
-                <tr id="message-@message.id.id">
-                    <td>@message.id.id</td>
-                    <td>@message.message</td>
-                    <td>@message.displayFrom.atZone(userTz).format(dtFormatter)</td>
-                    <td>@message.displayUntil.map(_.atZone(userTz).format(dtFormatter)).getOrElse("Forever")</td>
-                    <td>@message.occurrence</td>
-                    <td><a href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
-                </tr>
-            }
-        </table>
+        @for(message <- scheduledMessages) {
+            <div class="mdc-card">
+                <section class="mdc-card__primary">
+                    <h3>
+                        @message.message match {
+                        case "" => {
+                            (blank)
+                        }
+                        case msg => {
+                            @message.message
+                        }
+                        }
+                        </h3>
+                </section>
+                <section class="mdc-card__supporting-text">
+                    <p>From @message.displayFrom.atZone(userTz).format(dtFormatter)</p>
+                    @message.displayUntil.map { displayUntil =>
+                        <p>Until @displayUntil.atZone(userTz).format(dtFormatter)</p>
+                    }
+                    <p>Occurring @message.occurrence</p>
+                </section>
+                <section class="mdc-card__actions">
+                    <a class="btn btn-danger" href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </section>
+            </div>
+        }
 
     }
