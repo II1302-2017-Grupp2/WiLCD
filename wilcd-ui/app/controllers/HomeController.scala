@@ -149,11 +149,6 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     messageUpdater.deleteMessage(request.user.get, id).map {
       case DeleteResult.Success =>
         Seq("message" -> "The message has been deleted")
-      case DeleteResult.Archived =>
-        Seq(
-          "message" -> "That message has been archived and could not be deleted",
-          "message.status" -> "danger"
-        )
       case DeleteResult.NoPermission =>
         Seq(
           "message" -> "You are not authorized to delete that",
