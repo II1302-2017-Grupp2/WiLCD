@@ -49,7 +49,7 @@
                     </ul>
                 </div>
             </nav>
-            <div>
+            <div class="clearfix">
                 @req.flash.get("message").map { message =>
                   <div class="alert alert-@req.flash.get("message.status").getOrElse("info")">
                       @message

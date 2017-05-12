@@ -10,11 +10,6 @@
         <h2 class="form-signin-heading">Please sign in</h2>
         @myInputText(signinForm("email"), 'required -> true, 'type -> "email", '_label -> "Email address")
         @myInputText(signinForm("password"), 'required -> true, 'type -> "password", '_label -> "Password")
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     }
 }
