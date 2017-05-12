@@ -44,38 +44,40 @@
         </div>
     }
 
-    <h2>Old Messages</h2>
-    @for(message <- scheduledMessages) {
-        <div class="mdc-card">
-            <section class="mdc-card__primary">
-                <h3>
-                @message.message match {
-                    case "" => {
-                        (blank)
+    <div id="scheduled-messages">
+        <h2>Old Messages</h2>
+        @for(message <- scheduledMessages) {
+            <div class="mdc-card">
+                <section class="mdc-card__primary">
+                    <h3>
+                    @message.message match {
+                        case "" => {
+                            (blank)
+                        }
+                        case msg => {
+                            @message.message
+                        }
                     }
-                    case msg => {
-                        @message.message
+                    </h3>
+                </section>
+                <section class="mdc-card__supporting-text">
+                    <p>From @message.displayFrom.atZone(userTz).format(dtFormatter)</p>
+                    @message.displayUntil.map { displayUntil =>
+                        <p>Until @displayUntil.atZone(userTz).format(dtFormatter)</p>
                     }
-                }
-                </h3>
-            </section>
-            <section class="mdc-card__supporting-text">
-                <p>From @message.displayFrom.atZone(userTz).format(dtFormatter)</p>
-                @message.displayUntil.map { displayUntil =>
-                    <p>Until @displayUntil.atZone(userTz).format(dtFormatter)</p>
-                }
-                <p>Occurring @message.occurrence</p>
-            </section>
-            <section class="mdc-card__actions">
-                @helper.form(routes.HomeController.submitNewMessage()) {
-                    @helper.CSRF.formField
-                    <input type="hidden" name="message" value="@message.message"/>
-                    <button type="submit" class="mdc-card__action btn btn-raised btn-primary">Show now</button>
-                }
-            <a class="mdc-card__action btn btn-danger btn-raised" href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span>
-                Delete</a>
-            </section>
-        </div>
-    }
+                    <p>Occurring @message.occurrence</p>
+                </section>
+                <section class="mdc-card__actions">
+                    @helper.form(routes.HomeController.submitNewMessage()) {
+                        @helper.CSRF.formField
+                        <input type="hidden" name="message" value="@message.message"/>
+                        <button type="submit" class="mdc-card__action btn btn-raised btn-primary">Show now</button>
+                    }
+                <a class="mdc-card__action btn btn-danger btn-raised" href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span>
+                    Delete</a>
+                </section>
+            </div>
+        }
+    </div>
 
 }
