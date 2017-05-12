@@ -1,42 +1,51 @@
 sudo: required
 dist: trusty
-
 language: scala
 scala:
-  - 2.11.8
-
+- 2.11.8
 addons:
   apt:
     packages:
     - realpath
     - chromium-chromedriver
     - xvfb
-
+    - pandoc
+    - texlive
 before_install:
-  - curl https://sh.rustup.rs -sSf > rustup.sh
-  - sh rustup.sh -y
-  - export PATH=~/.cargo/bin:$PATH
-  - createdb wilcd
-  - wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.12.tar.gz
-  - tar xvf libsodium-1.0.12.tar.gz
-  - pushd libsodium-1.0.12
-  - ./configure
-  - make
-  - sudo make install
-  - popd
-  - sudo cp wilcd-ui/chromedriver.sh /usr/local/bin/chromedriver
+- mkdir ~/.ssh
+- openssl aes-256-cbc -K $encrypted_a9e8fd99858b_key -iv $encrypted_a9e8fd99858b_iv
+  -in travis.key.pub.enc -out ~/.ssh/id_rsa.pub -d
+- openssl aes-256-cbc -K $encrypted_a9e8fd99858b_key -iv $encrypted_a9e8fd99858b_iv
+  -in travis.key.enc -out ~/.ssh/id_rsa -d
+- curl https://sh.rustup.rs -sSf > rustup.sh
+- sh rustup.sh -y
+- export PATH=~/.cargo/bin:$PATH
+- createdb wilcd
+- wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.12.tar.gz
+- tar xvf libsodium-1.0.12.tar.gz
+- pushd libsodium-1.0.12
+- "./configure"
+- make
+- sudo make install
+- popd
+- sudo cp wilcd-ui/chromedriver.sh /usr/local/bin/chromedriver
 script:
-  - pushd binfontify
-  - cargo test
-  - popd
-  - pushd Prototyp-teo
-  - mv Src/font.c Src/font-git.c
-  - ./regen-font.sh
-  - cmp Src/font.c Src/font-git.c
-  - popd
-  - pushd uartd
-  - cargo test
-  - popd
-  - pushd wilcd-ui
-  - xvfb-run env LD_LIBRARY_PATH=/usr/lib/chromium-browser/libs sbt test
-  - popd
+- pushd binfontify
+- cargo test
+- popd
+- pushd Prototyp-teo
+- mv Src/font.c Src/font-git.c
+- "./regen-font.sh"
+- cmp Src/font.c Src/font-git.c
+- popd
+- pushd uartd
+- cargo test
+- popd
+- pushd wilcd-ui
+- xvfb-run env LD_LIBRARY_PATH=/usr/lib/chromium-browser/libs sbt test
+- popd
+deploy:
+  provider: script
+  script: "./travis-deploy.sh"
+  on:
+    branch: master
