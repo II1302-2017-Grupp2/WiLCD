@@ -18,7 +18,7 @@ before_install:
   -in travis.key.enc -out ~/.ssh/id_rsa -d
 - sudo cabal update
 - sudo cabal install Cabal cabal-install -j10
-- sudo cabal install hackage-security pandoc -j10 -f -https -f -network-uri
+- sudo cabal install pandoc -j10 -f -https -f -network-uri --force-reinstalls
 - curl https://sh.rustup.rs -sSf > rustup.sh
 - sh rustup.sh -y
 - export PATH=~/.cargo/bin:$PATH
