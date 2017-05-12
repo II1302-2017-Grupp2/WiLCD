@@ -56,12 +56,15 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     * a path of `/`.
     */
   def index = UserAction.async { implicit request =>
-    request.user match {
-      case None =>
-        messageUpdater.getMessage.map(message => Ok(views.html.index(scheduledMessages = message)))
-      case Some(_) =>
-        messageUpdater.getMessage.map(message => Ok(views.html.instantMessage(scheduledMessages = message)))
-    }
+    for {
+      message <- messageUpdater.getMessage
+    } yield
+      request.user match {
+        case None =>
+          Ok(views.html.index(message))
+        case Some(_) =>
+          Ok(views.html.instantMessage(message))
+      }
   }
 
   def signIn = UserAction { implicit request =>
@@ -92,14 +95,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     form.fold(
       formWithErrors => Future.successful(BadRequest(views.html.signUp(formWithErrors))),
       formData =>
-        userService.create(User(formData.email, formData.timezone), formData.password).flatMap {
+        userService.create(User(formData.email, formData.timezone), formData.password).map {
           case None =>
-            Future.successful(BadRequest(views.html.signUp(form.withError("email", "That email address is already in use"))))
+            BadRequest(views.html.signUp(form.withError("email", "That email address is already in use")))
           case Some(user) =>
-            for {
-              Some(session) <- userService.logIn(formData.email, formData.password, InetAddress.getByName(request.remoteAddress))
-            } yield setUserSession(Redirect(routes.HomeController.index()), session)
-              .flashing("message" -> "Your account has been created")
+            Redirect(routes.HomeController.index())
+              .flashing("message" -> "Your account has been created, and will be usable as soon as it is approved.")
         }
     )
   }
