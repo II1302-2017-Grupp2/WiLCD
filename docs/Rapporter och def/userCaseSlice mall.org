@@ -1,0 +1,11 @@
+[[file:media/image1.png]]
+
+[[file:media/image1.png]]
+
+Skapa mall i LaTeX för kursrapporten
+
+Implementera ett referenshanteringsverktyg
+
+Skriva inledning
+
+Innehållsförteckning (automatiserad)

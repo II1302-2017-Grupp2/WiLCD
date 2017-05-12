@@ -1,0 +1,341 @@
+WiLCD
+
+Vision/Business Case
+
+Abstrakt
+
+| /*Detta dokument utgör business case för Projektgrupp 2;s produkt som de framställer efter beställning av kund. För att försäkra att alla inblandade I projektet ska ha en gemensam uppfattning av syftet med projektet samt produkten som ska framställas. Projektet är en del av kursen Projekt och projektmetoder (II1302) på KTH ICT*/   |
+
+Version History
+
+| *Date*       | *Version*   | *Author*            | *Description*     |
+|--------------+-------------+---------------------+-------------------|
+| 28-03-2017   | 1.0         | Sebastian Heimlén   | Första utkastet   |
+| 24-04-2017   | 1.1         | Henrik Björklund    | Reviderad         |
+|              |             |                     |                   |
+|              |             |                     |                   |
+|              |             |                     |                   |
+
+/Innehållsförteckning/
+
+[[sammanfattning][/Sammanfattning/ 3]]
+
+[[anledning-för-beställning][/Anledning för beställning/ 3]]
+
+[[fördelar][/Fördelar/ 3]]
+
+[[kostnad][/Kostnad/ 3]]
+
+[[risker][/Risker/ 4]]
+
+[[krav-och-antaganden][/Krav och antaganden/ 4]]
+
+[[introduktion][/1/ /Introduktion/ 5]]
+
+[[dokumentets-syfte][/1.1/ /Dokumentets syfte/ 5]]
+
+[[möjlighet][/2/ /Möjlighet/ 6]]
+
+[[affärsmöjlighet][/2.1/ /Affärsmöjlighet/ 6]]
+
+[[problemanalys][/2.2/ /Problemanalys/ 6]]
+
+[[problemöversikt][/2.3/ /Problemöversikt/ 6]]
+
+[[sammanfattning-av-fördelar-med-vår-lösning][/2.4/ /Sammanfattning av
+fördelar med vår lösning/ 6]]
+
+[[produkten][/3/ /Produkten/ 7]]
+
+[[produktmål][/3.1/ /Produktmål/ 7]]
+
+[[produktspecifikation][/3.2/ /Produktspecifikation/ 7]]
+
+[[eventuella-problem-med-produkten][/3.3/ /Eventuella problem med
+produkten/ 7]]
+
+[[produktplacering][/4/ /Produktplacering/ 7]]
+
+[[appendix-a---references][/Appendix A - References/ 9]]
+
+* Sammanfattning
+  :PROPERTIES:
+  :CUSTOM_ID: sammanfattning
+  :CLASS: AppendixHeading
+  :END:
+
+Denna vision visar en lösning på vår kunds problem med att behöva skriva
+sin status på en whiteboardtavla. Vår lösning innebär en trådlösdisplay
+som kan visa vår kunds lägesstatus så han bara behöver logga in på en
+hemsida för att uppdatera displayen, istället för att fysiskt vara på
+plats som i dagsläget. Vidare så tas möjligheterna som produkten kan ha
+på marknaden, samt eventuella risker som kan uppstå under projektet och
+hur de kan motverkas.
+
+* Anledning för beställning
+  :PROPERTIES:
+  :CUSTOM_ID: anledning-för-beställning
+  :CLASS: Sub-Header
+  :END:
+
+Vår kund vill ha en produkt som underlättar kommunikation och
+informations-spridning på sin arbetsplats, detta i form av en
+elektronisk display som ska visa ett meddelande som vår kund själv kan
+skriva in via en webbapplikation. Vårt jobb är alltså att producera en
+webbapplikation med tillhörande databas, som sedan kopplas trådlöst mot
+denna display och vi måste då se till att meddelandet som skrivs in i
+webbapplikation sedan visas på displayen.
+
+* Fördelar
+  :PROPERTIES:
+  :CUSTOM_ID: fördelar
+  :CLASS: Sub-Header
+  :END:
+
+Det finns flera fördelar med denna produkt, dels i produkten själv men
+också för vår kund.
+
+*Produkt:*
+
+-  Det är en generell produkt som har många användningsområden, den kan
+   användas i kontorsmiljö såväl som charkdisken i en matvarubutik.
+
+-  Eftersom produkten är generell har den en stor potential att bli en
+   kommersiell produkt, och därmed generera mycket pengar, alltså en
+   produkt att investera i.
+
+-  Denna produkt leder till förbättrad kommunikation var än den
+   placeras, detta leder till en mer effektiv arbetsmiljö med minskad
+   frustration då kollegor slipper gå runt och leta efter varandra bara
+   för att finna att den personen de letar efter ej befinner sig på
+   arbetet idag.
+
+*Kund:*
+
+-  Vår kund kommer nu att kunna meddela kollegor samt besökare om sin
+   status utan att faktiskt befinna sig på jobbet.
+
+-  Bättre kommunikation på vår kunds arbetsplats.
+
+* Kostnad
+  :PROPERTIES:
+  :CUSTOM_ID: kostnad
+  :CLASS: Sub-Header
+  :END:
+
+4 personer som jobbar cirka 20 timmar i veckan i cirka 8-10 veckor,
+180-200 timmar per person, alltså runt 720-800 timmar total arbetstid.
+
+* Risker
+  :PROPERTIES:
+  :CUSTOM_ID: risker
+  :CLASS: Sub-Header
+  :END:
+
+Risker avhandlas i mer detalj i projektdefinitionen som följer med detta
+dokument, men risker för projektet inkluderar:
+
+-  Sjukdom
+
+-  Tidsbrist
+
+-  Försenad leverans av hårdvara
+
+-  Ej fungerande levererade hårdvara
+
+* Krav och antaganden
+  :PROPERTIES:
+  :CUSTOM_ID: krav-och-antaganden
+  :CLASS: Sub-Header
+  :END:
+
+Vår kund kräver att vi innan deadline har levererat en fungerande
+produkt, denna produkt ska bestå av:
+
+-  Webbserver med tillhörande databas genom vilken kunden kan logga in
+   på sitt konto och sedan skriva in sitt meddelande som sedan ska visas
+   på displayen.
+
+-  Elektronisk display som visar meddelandet.
+
+-  Att vi har fått denna kommunikation att fungera korrekt så att
+   kundens krav uppfylls och funktionaliteten är den rätte.
+
+1. * Introduktion
+     :PROPERTIES:
+     :CUSTOM_ID: introduktion
+     :END:
+
+   1. ** Dokumentets syfte
+         :PROPERTIES:
+         :CUSTOM_ID: dokumentets-syfte
+         :END:
+
+Syftet med detta dokument är att framställa en vision/business case för
+detta projekt genom att:
+
+-  Visa att projektgruppen besitter en förståelse för att kunna lösa de
+   problem som krävs för att kundens krav ska uppfyllas.
+
+-  bestämma mål och syften med projektet och ge produktägaren en
+   uppskattning för tidsmässig kostnad samt vilket resultat som
+   förväntas av projektgrupp 2.
+
+1. * Möjlighet
+     :PROPERTIES:
+     :CUSTOM_ID: möjlighet
+     :END:
+
+   1. ** Affärsmöjlighet
+         :PROPERTIES:
+         :CUSTOM_ID: affärsmöjlighet
+         :END:
+
+Vår kund sökte upp oss då han ansåg att han behövde ett mer portabelt
+sätt att informera sina kollegor om sin status, hans nuvarande lösning
+på detta problem är en whiteboard, men nackdelen med en whiteboard är
+att vår kund måste vara fysiskt närvarande på jobbet för att kunna
+använda whiteboarden, sedan leder en whiteboard till en del andra
+sysslor så som rengöring och uppdatering av whiteboard som då tar tid
+från det ”riktiga” arbetet. Detta är en affärsmöjlighet då vår produkt
+kommer vara betydligt smidigare, är portabel och endast kräver internet
+vilket i dagens samhälle finns på de flesta ställen, samt ej kräver
+någon extra underhållning så som en whiteboard tavla gör.
+
+** Problemanalys
+   :PROPERTIES:
+   :CUSTOM_ID: problemanalys
+   :END:
+
+Problemet med vår kunds nuvarande lösning är att den är för statisk, en
+fysisk tavla som kräver att man befinner sig på platsen är för statiskt
+för vår kund, han vill kunna vara på möten på andra orter och uppdatera
+informationen till kollegorna, han vill kunna meddela personer när han
+är sjuk utan att behöva ta sig till jobbet, vår produkt är lösningen på
+dessa problem.
+
+** Problemöversikt
+   :PROPERTIES:
+   :CUSTOM_ID: problemöversikt
+   :END:
+
+Tabellen nedan summerar problemet och vad vår produkt löser:
+
+| Problemet är                         | En allt för statisk och tidsödande nuvarande lösning.                                                                                                                                                                      |
+|--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Som påverkar                         | Vår kund, hans kollegor samt hans besökare.                                                                                                                                                                                |
+| På detta sätt                        | Informationen är inte tillräckligt uppdaterad då den kräver för mycket möda, vilket skapar irritation på arbetsplatsen, då personer ej vet var vår kund är och klagar på att han inte använder sin whiteboard.             |
+| En framgångsrik slutprodukt skulle   | Underlätta för vår kund, hans kollegor samt besökare. Det skulle göra det enklare och snabbare för honom att uppdatera informationen till sina kollegor och därmed leda till mindre irritation och mer effektivt arbete.   |
+
+** 
+   :PROPERTIES:
+   :CUSTOM_ID: section
+   :CLASS: ListParagraph
+   :END:
+
+** Sammanfattning av fördelar med vår lösning
+   :PROPERTIES:
+   :CUSTOM_ID: sammanfattning-av-fördelar-med-vår-lösning
+   :END:
+
+-  Effektivitet.
+
+-  Allt underhållsarbete försvinner, vår produkt är 100% underhållsfri.
+
+-  Portabel
+
+-  Enkelt att addera ytterligare funktionalitet, till skillnad från en
+   whiteboard.
+
+1. * Produkten
+     :PROPERTIES:
+     :CUSTOM_ID: produkten
+     :CLASS: Heading1NoBreak
+     :END:
+
+   1. ** Produktmål
+         :PROPERTIES:
+         :CUSTOM_ID: produktmål
+         :END:
+
+Målet med projektarbetet är att en produkt som motsvarar vår kunds krav
+och förväntningar ska produceras, testas, godkännas samt skeppas till
+kund innan deadline för projektet.
+
+** Produktspecifikation
+   :PROPERTIES:
+   :CUSTOM_ID: produktspecifikation
+   :END:
+
+Produkten består av en elektronisk display som trådlöst kopplas till en
+Raspberry Pi som kör den webbapplikation som också ska produceras av
+oss, via denna webbapplikation ska sedan vår kund kunna logga in och
+skriva ett meddelande som sedan ska visas på skärmen.
+
+*** Eventuella problem med produkten
+    :PROPERTIES:
+    :CUSTOM_ID: eventuella-problem-med-produkten
+    :END:
+
+Problem vi kan stöta på är:
+
+-  Vi inte hinner klart med produkten i tid.
+
+#+BEGIN_QUOTE
+  Löses genom att vi har en planering över projektet som vi sedan
+  följer, om vi börjar hamna efter får vi tillsammans med kunden
+  bestämma vilka kompromisser som måste genomföras för att ro projektet
+  i land.
+#+END_QUOTE
+
+-  Någon medlem blir sjuk och vi förlorar därmed tid och kunskap.
+
+#+BEGIN_QUOTE
+  Då alla projektmedlemmar är delaktiga i arbetet så kan vi tillsammans
+  täcka upp för varandra.
+#+END_QUOTE
+
+-  Leveransen av hårdvaran tar för lång tid.
+
+#+BEGIN_QUOTE
+  Vi beställer från kända leverantörer som har gott rykte, i värsta fall
+  får vi etsa vårat eget kretskort.
+#+END_QUOTE
+
+-  Räckvidden för trådlösa kommunikationen ej räcker till.
+
+#+BEGIN_QUOTE
+  Vi får förstärka signalen med någon sorts antenn.
+#+END_QUOTE
+
+* Produktplacering
+  :PROPERTIES:
+  :CUSTOM_ID: produktplacering
+  :CLASS: Heading1NoBreak
+  :END:
+
+Tabellen nedan visar hur produkten placeras:
+
+| Produkten är för                                      | Personer som behöver en smart lösning för att sprida information generellt, vår kund specifikt.               |
+|-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------|
+| Vem behöver denna produkt                             | Vår kund, samt alla människor som enklare vill dela information med andra människor i dess närhet.            |
+| Statusdisplayen är                                    | En smidig portabel display som enkelt går att uppdatera och underhålla.                                       |
+| Som ger                                               | Information till kollegor, vänner, besökare, kunder på ett enkelt och tydligt sätt.                           |
+| Till skillnad från alternativ, så som en whiteboard   | Så är vår produkt helt underhållsfri och sparar därför tid som istället kan användas till effektivt arbete.   |
+
+** 
+   :PROPERTIES:
+   :CUSTOM_ID: section-1
+   :CLASS: ListParagraph
+   :END:
+
+* Appendix A - References
+  :PROPERTIES:
+  :CUSTOM_ID: appendix-a---references
+  :CLASS: AppendixHeading
+  :END:
+
+Use this section to give full reference details for all documents, white
+papers and books referenced by this document
+
+*[1]*
