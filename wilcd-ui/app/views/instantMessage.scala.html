@@ -1,4 +1,4 @@
-@()(implicit req: UserRequest[_])
+@(scheduledMessages: Option[WithId[Message]])(implicit req: UserRequest[_])
 
     @main("Home", currentPage = Some(Page.Index)) {
     <div class="outerMsgBox">
@@ -10,6 +10,7 @@
             <h3>@message.message</h3>
         }
         </div>
+    </div>
         <h2>Instant Message</h2>
         @helper.form(routes.HomeController.submitNewMessage) {
             @helper.CSRF.formField

@@ -55,12 +55,12 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     * will be called when the application receives a `GET` request with
     * a path of `/`.
     */
-  def index = UserAction { implicit request =>
+  def index = UserAction.async { implicit request =>
     request.user match {
       case None =>
-        Ok(views.html.index())
+        messageUpdater.getMessage.map(message => Ok(views.html.index(scheduledMessages = message)))
       case Some(_) =>
-        Ok(views.html.instantMessage())
+        messageUpdater.getMessage.map(message => Ok(views.html.instantMessage(scheduledMessages = message)))
     }
   }
 
