@@ -1,70 +1,81 @@
 @(updateMessageForm: Form[HomeController.UpdateMessageData], scheduledMessages: Seq[WithId[Message]], deviceConnected: Boolean)(implicit req: UserRequest[_], messages: play.api.i18n.Messages)
 
-    @import views.MyHelpers.myFields
     @import java.time.format.DateTimeFormatter
 
-    @userTz = @{ req.user.get.timezone }
-    @dtFormatter = @{ DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm") }
+    @import views.MyHelpers.myFields
 
-    @main("Home", currentPage = Some(Page.ScheduleMessage)) {
-        <h2>Schedule-A-Message-O-Tron</h2>
+@userTz = @{
+    req.user.get.timezone
+}
+@dtFormatter = @{
+    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+}
 
-        @if(!deviceConnected) {
-            <div class="alert alert-warning">
-                <h3>No display connected</h3>
-                <p>
-                    No display is currently connected,
-                    your message won't be displayed anywhere
-                    unless the device is reconnected.
-                </p>
-            </div>
-        }
+@main("Home", currentPage = Some(Page.ScheduleMessage)) {
+    <h2>Schedule-A-Message-O-Tron</h2>
 
-        @helper.form(routes.HomeController.submitNewMessage()) {
-            @helper.CSRF.formField
-            <div class="col-sm-12">
-            @myInputText(updateMessageForm("message"), '_label -> "Message")
-            </div>
-            <div class="col-sm-4">
-            @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
-            </div>
-            <div class="col-sm-4">
-            @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
-            </div>
-            <div class="col-sm-4">
-            @myInputSelect(updateMessageForm("occurrence"), '_label -> "Occurrence", '_options -> Message.Occurrence.values.toSeq.sorted)
-            </div>
-            <div class="col-sm-12">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-            </div>
-        }
-
-        <h2>Old Messages</h2>
-        @for(message <- scheduledMessages) {
-            <div class="mdc-card">
-                <section class="mdc-card__primary">
-                    <h3>
-                        @message.message match {
-                        case "" => {
-                            (blank)
-                        }
-                        case msg => {
-                            @message.message
-                        }
-                        }
-                        </h3>
-                </section>
-                <section class="mdc-card__supporting-text">
-                    <p>From @message.displayFrom.atZone(userTz).format(dtFormatter)</p>
-                    @message.displayUntil.map { displayUntil =>
-                        <p>Until @displayUntil.atZone(userTz).format(dtFormatter)</p>
-                    }
-                    <p>Occurring @message.occurrence</p>
-                </section>
-                <section class="mdc-card__actions">
-                    <a class="btn btn-danger" href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                </section>
-            </div>
-        }
-
+    @if(!deviceConnected) {
+        <div class="alert alert-warning">
+            <h3>No display connected</h3>
+            <p>
+                No display is currently connected,
+                your message won't be displayed anywhere
+                unless the device is reconnected.
+            </p>
+        </div>
     }
+
+    @helper.form(routes.HomeController.submitNewMessage()) {
+        @helper.CSRF.formField
+        <div class="col-sm-12">
+        @myInputText(updateMessageForm("message"), '_label -> "Message")
+        </div>
+        <div class="col-sm-4">
+        @myInputText(updateMessageForm("displayFrom"), 'class -> "input-datetime", '_label -> "Display From", 'placeholder -> "Now")
+        </div>
+        <div class="col-sm-4">
+        @myInputText(updateMessageForm("displayUntil"), 'class -> "input-datetime", '_label -> "Display Until", 'placeholder -> "Forever")
+        </div>
+        <div class="col-sm-4">
+        @myInputSelect(updateMessageForm("occurrence"), '_label -> "Occurrence", '_options -> Message.Occurrence.values.toSeq.sorted)
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Schedule</button>
+        </div>
+    }
+
+    <h2>Old Messages</h2>
+    @for(message <- scheduledMessages) {
+        <div class="mdc-card">
+            <section class="mdc-card__primary">
+                <h3>
+                @message.message match {
+                    case "" => {
+                        (blank)
+                    }
+                    case msg => {
+                        @message.message
+                    }
+                }
+                </h3>
+            </section>
+            <section class="mdc-card__supporting-text">
+                <p>From @message.displayFrom.atZone(userTz).format(dtFormatter)</p>
+                @message.displayUntil.map { displayUntil =>
+                    <p>Until @displayUntil.atZone(userTz).format(dtFormatter)</p>
+                }
+                <p>Occurring @message.occurrence</p>
+            </section>
+            <section class="mdc-card__actions">
+                @helper.form(routes.HomeController.submitNewMessage()) {
+                    @helper.CSRF.formField
+                    <input type="hidden" name="message" value="@message.message"/>
+                    <button type="submit" class="mdc-card__action btn btn-raised btn-primary">Show now</button>
+                }
+            <a class="mdc-card__action btn btn-danger btn-raised" href="@routes.HomeController.deleteMessage(message)"><span class="glyphicon glyphicon-remove"></span>
+                Delete</a>
+            </section>
+        </div>
+    }
+
+}

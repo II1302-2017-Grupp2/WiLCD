@@ -19,13 +19,13 @@
             <input class="form-control" id="message" name="message"/>
         </div>
         <div class="col-sm-10">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Display</button>
         </div>
         <div class="col-sm-2">
             @helper.form(routes.HomeController.submitNewMessage()) {
                 @helper.CSRF.formField
                 <input type="hidden" name="message" value=""/>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Clear</button>
+                <button class="btn btn-lg btn-block btn-raised btn-danger" type="submit"><span class="glyphicon glyphicon-remove"></span> Clear</button>
             }
         </div>
     }
