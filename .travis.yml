@@ -11,6 +11,7 @@ addons:
     - xvfb
     - texlive
     - lmodern
+    - texlive-generic-recommended
     - cabal-install
     - ghc
 before_install:
