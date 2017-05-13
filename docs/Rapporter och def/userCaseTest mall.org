@@ -1,6 +1,4 @@
-[[file:media/image1.png]]
-
-[[file:media/image2.png]]
+[[file:Test Case.png]]
 
 -  Kommunikation mellan Discoverykortet och Raspberry Pi via UART.
 

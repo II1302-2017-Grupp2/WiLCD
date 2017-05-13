@@ -1,6 +1,6 @@
-[[file:media/image1.png]]
+[[file:Slice.png]]
 
-[[file:media/image1.png]]
+\pagebreak
 
 Skapa mall i LaTeX för kursrapporten
 
