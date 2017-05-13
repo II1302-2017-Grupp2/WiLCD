@@ -14,5 +14,8 @@ done
 for file in **/*.{org,tex}
 do
     echo Converting $file to pdf
-    pandoc --to=latex "--output=$file.pdf" "$file"
+    pushd "$(dirname "$file")"
+    filebase="$(basename "$file")"
+    pandoc --to=latex "--output=${filebase%.*}.pdf" "$filebase"
+    popd
 done
