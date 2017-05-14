@@ -1,6 +1,6 @@
-[[file:media/image1.png]]
+[[file:Slice.png]]
 
-[[file:media/image1.png]]
+\pagebreak
 
 Användaren skriver ett meddelande i webbapplikationen och sänder iväg
 detta meddelande.
@@ -8,6 +8,12 @@ detta meddelande.
 Detta meddelande mottages av en Raspberry Pi och detta resulterar då i
 en signal som skickas till en mottagande discovery kort, på vilket en
 LED lyses upp.
+
+\pagebreak
+
+[[file:Slice.png]]
+
+\pagebreak
 
 Användaren skriver ett meddelande i webbapplikationen och sänder iväg
 detta meddelande.

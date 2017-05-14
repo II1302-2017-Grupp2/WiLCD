@@ -1,4 +1,6 @@
-[[file:media/image1.png]]
+[[file:Use Case.png]]
+
+\pagebreak
 
 Användaren ska kunna lägga upp en text på en hemsida som sedan visas på
 en display som sitter på en lämplig plats för att lämna meddelanden.
