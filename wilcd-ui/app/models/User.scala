@@ -10,7 +10,7 @@ import org.abstractj.kalium.encoders.Encoder
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.lifted.ProvenShape
 
-case class User(email: String, timezone: ZoneId) extends HasId {
+case class User(email: String, timezone: ZoneId, approved: Boolean = false) extends HasId {
   override type IdType = Long
 }
 
@@ -21,7 +21,9 @@ class Users(tag: Tag) extends IdTable[User](tag, "users") {
 
   def timezone = column[ZoneId]("timezone")
 
-  def all = (email, timezone) <> ((User.apply _).tupled, User.unapply)
+  def approved = column[Boolean]("approved")
+
+  def all = (email, timezone, approved) <> ((User.apply _).tupled, User.unapply)
 
   def withId = (id, all) <> ((WithId.apply[User] _).tupled, WithId.unapply[User])
 
@@ -48,7 +50,7 @@ object Users {
 
   def findByUsernameWithPassword(email: String, password: String): DBIO[Option[WithId[User]]] =
     tq
-      .filter(_.email === email)
+      .filter(u => u.email === email && u.approved)
       .map(u => (u.withId, u.password))
       .result.headOption
       .map(_

@@ -8,6 +8,24 @@
 
 @brand-primary: @blue-grey-700;
 
+h3 {
+  .alert &, .mdc-card & {
+    margin-top: 0;
+  }
+}
+
+.mdc-card {
+  margin-bottom: 10px;
+
+  .mdc-card__supporting-text {
+    font-size: 1.2rem;
+  }
+
+  .mdc-card__actions > :not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
 .js-only {
   display: none;
 }
