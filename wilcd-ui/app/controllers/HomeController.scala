@@ -36,8 +36,9 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     mapping(
       "email" -> email,
       "password" -> nonEmptyText,
+      "confirmPassword" -> text,
       "timezone" -> of[ZoneId]
-    )(SignupData.apply)(SignupData.unapply)
+    )(SignupData.apply)(SignupData.unapply).verifying("error.password.confirm", data => data.password == data.confirmPassword)
   )
   val updateMessageForm = Form(
     mapping(
@@ -81,7 +82,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
         case Some(session) =>
           setUserSession(Redirect(routes.HomeController.index()), session)
             .flashing("message" -> "You have been signed in")
-        case None => BadRequest(views.html.signIn(form.withError("password", "Wrong email and/or password")))
+        case None => BadRequest(views.html.signIn(form.withError("", "Wrong email and/or password")))
       }
     )
   }
@@ -163,7 +164,7 @@ object HomeController {
 
   case class SigninData(email: String, password: String)
 
-  case class SignupData(email: String, password: String, timezone: ZoneId)
+  case class SignupData(email: String, password: String, confirmPassword: String, timezone: ZoneId)
 
   case class UpdateMessageData(message: String, displayFrom: Option[LocalDateTime], displayUntil: Option[LocalDateTime], occurrence: Message.Occurrence)
 

@@ -1,4 +1,5 @@
 # https://www.playframework.com/documentation/latest/ScalaI18N
+error.password.confirm = The passwords you entered did not match
 error.localDateTime = Invalid date/time
 error.zoneId = Invalid time zone
 error.enum.Occurrence = Invalid message occurrence

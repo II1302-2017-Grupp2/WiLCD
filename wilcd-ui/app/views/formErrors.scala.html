@@ -1,0 +1,7 @@
+@(form: Form[_])(implicit messages: play.api.i18n.Messages)
+
+@for(error <- form.globalErrors) {
+    <div class="alert alert-danger">
+        @messages(error.messages, error.args: _*)
+    </div>
+}
