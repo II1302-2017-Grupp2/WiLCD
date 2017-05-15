@@ -25,5 +25,9 @@ class UserServiceDatabase @Inject()(val dbConfigProvider: DatabaseConfigProvider
 
   override def logOut(id: Id[UserSession]): Future[Unit] = db.run(UserSessions.destroy(id))
 
+  override def changePassword(id: Id[User], oldPassword: String, newPassword: String): Future[Boolean] = db.run(Users.changePassword(id, oldPassword, newPassword))
+
+  override def changeSettings(id: Id[User], f: (User) => User): Future[Unit] = db.run(Users.modifyUser(id, f))
+
   override def findSession(id: Id[UserSession]): Future[Option[(WithId[User], WithId[UserSession])]] = db.run(UserSessions.find(id).result.headOption)
 }
