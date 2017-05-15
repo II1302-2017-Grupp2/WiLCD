@@ -55,8 +55,8 @@ module box() {
             translate([80,49,-10]) {
                 cube([16,28,20]);
             }
-            translate([75, 0, 0]) {
-                cube([20, 40, 20]);
+            translate([0, -13, 0]) {
+                cube([40, 20, 20]);
             }
         }
     }
