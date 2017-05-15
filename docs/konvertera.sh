@@ -14,6 +14,18 @@ done
 for file in **/*.{org,tex}
 do
     echo Converting $file to pdf
+    newSum="$(sha256sum "$file")"
+    oldSum=""
+    if [ -e "$file.hash" ]
+    then
+        oldSum="$(cat "$file.hash")"
+    fi
+    if [ "$newSum" = "$oldSum" ]
+    then
+        echo Unchanged, skipping
+        continue
+    fi
+    echo "$newSum" > "$file.hash"
     pushd "$(dirname "$file")" > /dev/null
     filebase="$(basename "$file")"
     pandoc --to=latex "--output=${filebase%.*}.pdf" "$filebase"
