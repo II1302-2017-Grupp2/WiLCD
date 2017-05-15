@@ -1,508 +1,592 @@
-#+TITLE: Displaimer Projektdefinition
-#+AUTHOR: Sebastian Heimlén
-#+OPTIONS: toc:nil
-#+LANGUAGE: sv
-#+LATEX_HEADER: \addtolength{\textwidth}{5cm}
-#+LATEX_HEADER: \addtolength{\textheight}{4cm}
-#+LATEX_HEADER: \addtolength{\hoffset}{-2.5cm}
-#+LATEX_HEADER: \addtolength{\voffset}{-2.5cm}
-#+STARTUP: align
+Displaimer
 
-#+BEGIN_abstract
-Detta dokument är en projektdefinition (Eklund, 2010) för studentprojekt eller examensarbete vid KTH ICT.
+Projektdefinition
 
-En projektdefinition är inte en projektplan utan föregår ofta en sådan. Projektdefinitionen kan
-vid behov utvecklas till en projektplan. För examensarbetet är det lämpligt att projektdefinitionen
-fungera som ”överenskommelse” mellan projektets huvudintressenter vilka oftast är ett företag, studenten
-som gör arbetet och akademin varifrån studenten kommer. Förändras projektet i något viktigt avseende
-så uppdateras och förankras projektdefinitionen.
-#+END_abstract
+Abstract
 
-* Dokumentversion
-  :PROPERTIES:
-  :UNNUMBERED: t
-  :END:
+| /*Detta dokument är en projektdefinition*/ /*(*//*E*//*k*//*l*//*u*//*n*//*d*//*,*/ /*2010) för studentprojekt eller examensarbete vid KTH ICT.*/                                                                                                                                                                                                                                                                                                                        |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| /*En projektdefinition är inte en projektplan utan föregår ofta en sådan. Projektdefinitionen kan vid behov utvecklas till en projektplan. För examensarbetet är det lämpligt att projektdefinitionen fungera som ”överenskommelse” mellan projektets huvudintressenter vilka oftast är ett företag, studenten som gör arbetet och akademin varifrån studenten kommer. Förändras projektet i något viktigt avseende så uppdateras och förankras projektdefinitionen.*/   |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-|    *Datum* | *Version*   | *Författare*          | *Beskrivning*                  |
-|------------+-------------+-----------------------+--------------------------------|
-| 2017-03-22 | Version 1.0 | Sebastian Heimlén     | Första utkastet.               |
-| 2017-04-06 | Version 1.1 | Sebastian Heimlén     | Första revidering.             |
-| 2017-05-08 | Version 1.2 | Sebastian Heimlén     | Uppfräschning efter sprint #3. |
-| 2017-05-13 | Version 1.3 | Teo Klestrup Röijezon | Diverse layoutändringar        |
+Dokumentversion, senaste överst
 
-#+TOC: headlines 4
+| *Date*       | *Version*     | *Author*            | *Description*                                                                     |
+|--------------+---------------+---------------------+-----------------------------------------------------------------------------------|
+| 22/03/2017   | Version 1.0   | Sebastian Heimlén   | Första utkastet.                                                                  |
+| 06/04/2017   | Version 1.1   | Sebastian Heimlén   | Första revidering.                                                                |
+| 08/05/2017   | Version 1.2   | Sebastian Heimlén   | Uppfräschning efter sprint #3. Lade till Riskanalys för sprint #3 och sprint #4   |
+|              |               |                     |                                                                                   |
 
-* Introduktion
-  :PROPERTIES:
-  :CUSTOM_ID: introduktion
-  :END:
+Student/författare: /Sebastian Heimlén/ på Företag: Grupp 2
 
-** Dokumentets syfte
-   :PROPERTIES:
-   :CUSTOM_ID: dokumentets-syfte
-   :END:
+/Innehållsförteckning/
 
-   Denna projektdefinition skall ge en övergripande beskrivning av varför,
-   hur och när detta projekt ska genomföras, samt även innehålla mer
-   specifik information gällande arbetsplan, riskanalys, förändringsplan,
-   kostnadsplan etc.
+[[#__RefHeading___Toc1768_1325329787][1 Introduktion 4]]
+
+[[#__RefHeading___Toc1770_1325329787][1.1 Dokumentets syfte 4]]
+
+[[#__RefHeading___Toc1772_1325329787][1.2 Dokumentets omfattning 4]]
+
+[[#__RefHeading___Toc1774_1325329787][1.3 Dokumentöversikt 4]]
+
+[[#__RefHeading___Toc1776_1325329787][2.1 Bakgrund 6]]
+
+[[#__RefHeading___Toc1778_1325329787][2.2 Syfte 6]]
+
+[[#__RefHeading___Toc1780_1325329787][2.3 Mål 7]]
+
+[[#__RefHeading___Toc1782_1325329787][2.4 Funktionella krav -
+användningsfallsmodell 7]]
+
+[[#__RefHeading___Toc1784_1325329787][3.1 Personer i projektet 8]]
+
+[[#__RefHeading___Toc1786_1325329787][3.2 Möten 8]]
+
+[[#__RefHeading___Toc1788_1325329787][3.3 Arbetsplats 8]]
+
+[[#__RefHeading___Toc1790_1325329787][3.4 Arbetsutrustning 9]]
+
+[[#__RefHeading___Toc1792_1325329787][3.5 Meddelanden 9]]
+
+[[#__RefHeading___Toc1794_1325329787][4.1 Uppgiftsägaren 9]]
+
+[[#__RefHeading___Toc1796_1325329787][4.2 Kursmål och examensmål 10]]
+
+[[#__RefHeading___Toc1798_1325329787][4.2.1 Vetenskaplighet 13]]
+
+[[#__RefHeading___Toc1800_1325329787][4.3 Hållbarhetsaspekter 13]]
+
+[[#__RefHeading___Toc1802_1325329787][4.4 Etik, jämställdhet och
+likabehandling (JML) 14]]
+
+[[#__RefHeading___Toc1804_1325329787][4.5 Arbetsmiljöaspekter 14]]
+
+[[#__RefHeading___Toc1806_1325329787][5.1 Fas- och tidsplan 16]]
+
+[[#__RefHeading___Toc1808_1325329787][6 Intressenter 17]]
+
+1. * Introduktion
+     :PROPERTIES:
+     :CUSTOM_ID: introduktion
+     :END:
+
+   1. ** Dokumentets syfte
+         :PROPERTIES:
+         :CUSTOM_ID: dokumentets-syfte
+         :END:
+
+Denna projektdefinition skall ge en övergripande beskrivning av varför,
+hur och när detta projekt ska genomföras, samt även innehålla mer
+specifik information gällande arbetsplan, riskanalys, förändringsplan,
+kostnadsplan etc.
 
 ** Dokumentets omfattning
    :PROPERTIES:
    :CUSTOM_ID: dokumentets-omfattning
    :END:
 
-   Detta dokument behandlar följande:
+Detta dokument behandlar följande:
 
-   -  Hur projektet planeras att genomföras
+-  Hur projektet planeras att genomföras
 
-   -  Varför projektet planeras att genomföras
+-  Varför projektet planeras att genomföras
 
-   -  Vilka mål som slutligen ska uppnås med projektet, och varför dessa
-     mål är viktiga och/eller intressanta.
+-  Vilka mål som slutligen ska uppnås med projektet, och varför dessa
+   mål är viktiga och/eller intressanta.
 
-   Detta dokument behandlar /inte/ följande:
+Detta dokument behandlar /inte/ följande:
 
-   -  Specifika detaljer gällande det faktiska systemet som ska utvecklas,
-     så som systemets arkitektur.
+-  Specifika detaljer gällande det faktiska systemet som ska utvecklas,
+   så som systemets arkitektur.
 
-   -  Information om vilka programmeringsspråk eller/och ramverk som kommer
-     användas.
+-  Information om vilka programmeringsspråk eller/och ramverk som kommer
+   användas.
 
-   -  Tekniska detaljer om slutprodukten.
+-  Tekniska detaljer om slutprodukten.
 
-** Dokumentöversikt
-   :PROPERTIES:
-   :CUSTOM_ID: dokumentöversikt
-   :END:
+   1. ** Dokumentöversikt
+         :PROPERTIES:
+         :CUSTOM_ID: dokumentöversikt
+         :END:
 
-   Detta dokument innehåller följande delar:
+Detta dokument innehåller följande delar:
 
-   -  *Projekt- eller uppgiftsbeskrivning* -- detta görs översiktligt och
-     sammanfattande
+-  *Projekt- eller uppgiftsbeskrivning* -- detta görs översiktligt och
+   sammanfattande
 
-   -  *Organisation* -- hur arbetet och samarbete skall organiseras
+-  *Organisation* -- hur arbetet och samarbete skall organiseras
 
-   -  *Projektmål* -- vilka är huvudintressenternas syfte/mål med
-     projektet? Varför är man med i detta projekt?
+-  *Projektmål* -- vilka är huvudintressenternas syfte/mål med
+   projektet? Varför är man med i detta projekt?
 
-   -  *Fas- och tidsplan* -- arbetsvolym, projektets varaktighet,
-     översiktlig fas och tidsindelning, flexibilitet i ”projekttriangeln”-
-     projektåtagande (resurser/kostnad-varaktighet(tid)-funktionalitet)
+-  *Fas- och tidsplan* -- arbetsvolym, projektets varaktighet,
+   översiktlig fas och tidsindelning, flexibilitet i ”projekttriangeln”-
+   projektåtagande (resurser/kostnad-varaktighet(tid)-funktionalitet)
 
-   -  *Intressenter* -- vilka är projektets intressenter, deras
-     förväntningar och ambition att uppfylla dessa förväntningar och hur.
+-  *Intressenter* -- vilka är projektets intressenter, deras
+   förväntningar och ambition att uppfylla dessa förväntningar och hur.
 
-   -  *Riskanalys* -- riskidentifiering och åtgärder. Hur hanteras
-     eventuell sekretess och konfidentialitet mm?
+-  *Riskanalys* -- riskidentifiering och åtgärder. Hur hanteras
+   eventuell sekretess och konfidentialitet mm?
 
-   -  *Förändringsplan* -- hur hanteras och meddelas viktiga förändringar i
-     projektet?
+-  *Förändringsplan* -- hur hanteras och meddelas viktiga förändringar i
+   projektet?
 
-   -  *Kostnader* -- vilka kostnader finns i projektet? Vem betalar vad?
-     Licenser?
+-  *Kostnader* -- vilka kostnader finns i projektet? Vem betalar vad?
+   Licenser?
 
-   -  *Dokumentplan* -- vilka dokument skall användas, underhållas och
-     levereras?
+-  *Dokumentplan* -- vilka dokument skall användas, underhållas och
+   levereras?
 
-   -  *Utbildningsplan* -- behov av förstudie, inläsning, utbildning.
+-  *Utbildningsplan* -- behov av förstudie, inläsning, utbildning.
 
-   -  *Rapport- och granskningsplan* -- syfte och tider för rapportering
-     och granskning.
+-  *Rapport- och granskningsplan* -- syfte och tider för rapportering
+   och granskning.
 
-   -  *Referenser* -- detaljerad referenslista enligt APA, Vancouver eller
-     annat (APA kan vara bra så länge man skriver för man ser författaren
-     och förstår då vilken källa det handlar om medans Vancouver ger ett
-     nummer som inte säger något)
+-  *Referenser* -- detaljerad referenslista enligt APA, Vancouver eller
+   annat (APA kan vara bra så länge man skriver för man ser författaren
+   och förstår då vilken källa det handlar om medans Vancouver ger ett
+   nummer som inte säger något)
 
 * Projektöversikt -- bakgrund, syfte och mål
   :PROPERTIES:
   :CUSTOM_ID: projektöversikt-bakgrund-syfte-och-mål
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Detta kapitel ger en översikt av projektet.
+Detta kapitel ger en översikt av projektet.
 
 ** Bakgrund
    :PROPERTIES:
    :CUSTOM_ID: bakgrund
    :END:
 
-   Önskemålet som vår uppdragsgivare har är att denna vill ha en display på
-   sin kontorsdörr som denna person via en webbapplikation eller hemsida
-   ska kunna skriva in meddelanden på för att upplysa kollegor, kunder samt
-   besökare om denna persons nuvarande status, displayen skulle till
-   exempel kunna visa meddelandet ”sjuk, tillbaka på onsdag” eller ”möte
-   till 14:00”.
+Önskemålet som vår uppdragsgivare har är att denna vill ha en display på
+sin kontorsdörr som denna person via en webbapplikation eller hemsida
+ska kunna skriva in meddelanden på för att upplysa kollegor, kunder samt
+besökare om denna persons nuvarande status, displayen skulle till
+exempel kunna visa meddelandet ”sjuk, tillbaka på onsdag” eller ”möte
+till 14:00”.
 
-   Vi som projektgrupp har även egna önskemål som ligger bakom detta
-   projekt, dels vill vi lära oss projektmetodik i allmänhet och
-   Scrum-metodiken i synnerhet, men detta projekt är även en stor del av en
-   kurs som vi läser på KTH som heter ”Projekt och Projektmetoder” och vårt
-   önskemål är då att efter genomfört projekt och inlämnad rapport få,
-   åtminstone, godkänt i kursen.
+Vi som projektgrupp har även egna önskemål som ligger bakom detta
+projekt, dels vill vi lära oss projektmetodik i allmänhet och
+Scrum-metodiken i synnerhet, men detta projekt är även en stor del av en
+kurs som vi läser på KTH som heter ”Projekt och Projektmetoder”. I denna
+kurs skall vi genom litteraturstudie och praktiskt arbete undersöka
+olika projektmetoder för att besvara frågeställningen ”Vad är en bra
+projektmetod för små IT-projekt”. Denna frågeställning ska sedan
+besvaras i en rapport som också är en del av examinationen i denna kurs.
+Vi måste därför under projektets gång undersöka, diskutera samt dra
+slutsatser kring vad vi tycker är bra projektmetoder i detta projekt,
+som kan anses vara ett litet IT-projekt.
 
 ** Syfte
    :PROPERTIES:
    :CUSTOM_ID: syfte
    :END:
 
-   Slutprodukten av projektet förväntas underlätta för både vår kund samt
-   dennes besökare, eftersom det kommer vara enkelt att skriva ut ett
-   beskrivande meddelande på skärmen som besökare och kollegor kan ta del
-   av, oavsett vart innehavaren av skylten befinner sig. Nuvarande lösning
-   är en whiteboard tavla, men detta kommer vara en stor förbättring då all
-   modifiering av skärmen sker digitalt, medan en whiteboard tavla kräver
-   att innehavaren faktiskt befinner sig i lokalen och fysiskt skriver in
-   meddelandet på skärmen.
+Slutprodukten av projektet förväntas underlätta för både vår kund samt
+dennes besökare, eftersom det kommer vara enkelt att skriva ut ett
+beskrivande meddelande på skärmen som besökare och kollegor kan ta del
+av, oavsett vart innehavaren av skylten befinner sig. Nuvarande lösning
+är en whiteboard tavla, men detta kommer vara en stor förbättring då all
+modifiering av skärmen sker digitalt, medan en whiteboard tavla kräver
+att innehavaren faktiskt befinner sig i lokalen och fysiskt skriver in
+meddelandet på skärmen.
 
-   Vårt syfte som projektgrupp är som tidigare nämnt att bli bättre på att
-   jobba i projekt, och lära oss diverse projektmetoder, detta är en
-   kunskap som vi kommer ha användning för i vårt följande yrkesliv, då en
-   väldigt stor del av IT-utveckling i dagens samhälle sker i projekt, och
-   just Scrum i synnerhet används i väldigt stor utsträckning.
+Vårt syfte som projektgrupp är som tidigare nämnt att bli bättre på att
+jobba i projekt, och lära oss diverse projektmetoder, detta är en
+kunskap som vi kommer ha användning för i vårt följande yrkesliv, då en
+väldigt stor del av IT-utveckling i dagens samhälle sker i projekt, och
+just Scrum i synnerhet används i väldigt stor utsträckning.
 
-   Detta är också ett bra tillfälle att träna på att göra undersökningar
-   och sedan skriva en vetenskaplig text som förklarar och berättar om
-   dessa undersökningar, så som vi ska göra i kursrapporten som görs som en
-   direkt följd av detta projektarbete, eftersom vi senare kommer att göra
-   just detta när vi genomför examensarbetet i årskurs 3, så syftet med
-   detta projekt och tillhörande kursrapport är också delvis en
-   förberedelse för examensarbetet.
+Detta är också ett bra tillfälle att träna på att göra undersökningar
+och sedan skriva en vetenskaplig text som förklarar och berättar om
+dessa undersökningar, så som vi ska göra i kursrapporten som görs som en
+direkt följd av detta projektarbete, eftersom vi senare kommer att göra
+just detta när vi genomför examensarbetet i årskurs 3, så syftet med
+detta projekt och tillhörande kursrapport är också delvis en
+förberedelse för examensarbetet.
 
 ** Mål
    :PROPERTIES:
    :CUSTOM_ID: mål
    :END:
 
-   -  Skapa en webbapplikation som jobbar mot en databas.
+-  Skapa en webbapplikation som jobbar mot en databas.
 
-   -  Skapa nämnd databas
+-  Skapa nämnd databas
 
-   -  Köra denna webbapplikation på en Raspberry Pi
+-  Köra denna webbapplikation på en Raspberry Pi
 
-   -  Koppla en elektronisk display mot ett kretskort som TIEDB studenterna
-     ritat.
+-  Koppla en elektronisk display mot ett kretskort som TIEDB studenterna
+   ritat.
 
-   -  Trådlöst koppla hallonpajen mot displayen, på så sätt att displayen
-     kan visa meddelanden som skrivs in i webbapplikationen.
+-  Trådlöst koppla hallonpajen mot displayen, på så sätt att displayen
+   kan visa meddelanden som skrivs in i webbapplikationen.
 
-** Funktionella krav - användningsfallsmodell
-   :PROPERTIES:
-   :CUSTOM_ID: funktionella-krav---användningsfallsmodell
-   :END:
+-  Undersöka olika projektmetoder och bilda sig en uppfattning kring
+   dessa
 
-   Detta diagram visar hur en användare går till väga när den vill nyttja
-   systemet.
+-  Skriva ett antal formella dokument (olika dokument beroende på roll i
+   projekt)
 
-* Organisation
-  :PROPERTIES:
-  :CUSTOM_ID: organisation
-  :CLASS:    Heading1NoBreak
-  :END:
+-  Skriva en teknisk specifikation för en del i systemet som den
+   personen skapat (Varje medlem skriver en egen spec.)
 
-** Personer i projektet
-   :PROPERTIES:
-   :CUSTOM_ID: personer-i-projektet
-   :END:
+-  Tillsammans skriva en rapport som besvarar frågeställningen ”Vad är
+   en bra projektmetod för små IT-projekt”, där vissa delar skrivs
+   enskilt baserat på roll i projektet.
 
-   | *Namn*                | *Kontaktuppgift och roll*                                 |
-   |-----------------------+-----------------------------------------------------------|
-   | Teo Klestrup Röijezon | [[mailto:teo@nullable.se][/teo@nullable.se/]], [[mailto:roijezon@kth.se][/roijezon@kth.se/]]                      |
-   |                       | Arkitekt och Utvecklingsansvarig.                         |
-   | Yobart Amino          | [[mailto:yobart@kth.se][/yobart@kth.se/]]                                           |
-   |                       | Testansvarig                                              |
-   | Henrik Björklund      | [[mailto:hebjo@kth.se][/hebjo@kth.se/]]                                            |
-   |                       | Kund-/kravansvarig, arbetsmiljöansvarig, shoppingansvarig |
-   | Sebastian Heimlén     | [[mailto:heimlen@kth.se][/heimlen@kth.se/]]                                          |
-   |                       | Projektledare, etik och jämställdhetsansvarig             |
+   1. ** Funktionella krav - användningsfallsmodell
+         :PROPERTIES:
+         :CUSTOM_ID: funktionella-krav---användningsfallsmodell
+         :END:
+
+Detta diagram visar hur en användare går till väga när den vill nyttja
+systemet.
+
+[[media/image1.png]]
+
+1. * Organisation
+     :PROPERTIES:
+     :CUSTOM_ID: organisation
+     :CLASS: Heading1NoBreak
+     :END:
+
+   1. ** Personer i projektet
+         :PROPERTIES:
+         :CUSTOM_ID: personer-i-projektet
+         :END:
+
+| *Namn*                  | *Kontaktuppgift och roll*                                   |
+|-------------------------+-------------------------------------------------------------|
+| Teo Klestrup Röijezon   | [[mailto:teo@nullable.se][teo@nullable.se]]                 |
+|                         |                                                             |
+|                         | [[mailto:teo@nullable.se][teo@nullable.se]]                 |
+|                         |                                                             |
+|                         | Arkitekt och Utvecklingsansvarig.                           |
+| Yobart Amino            | [[mailto:yobart@kth.se][/yobart@kth.se/]]                   |
+|                         |                                                             |
+|                         | [[mailto:yobart@kth.se][/yobart@kth.se/]]                   |
+|                         |                                                             |
+|                         | Testansvarig                                                |
+| Henrik Björklund        | [[mailto:hebjo@kth.se][/hebjo@kth.se/]]                     |
+|                         |                                                             |
+|                         | [[mailto:hebjo@kth.se][/hebjo@kth.se/]]                     |
+|                         |                                                             |
+|                         | Kund-/kravansvarig, arbetsmiljöansvarig, shoppingansvarig   |
+| Sebastian Heimlén       | [[mailto:heimlen@kth.se][/heimlen@kth.se/]]                 |
+|                         |                                                             |
+|                         | [[mailto:heimlen@kth.se][/heimlen@kth.se/]]                 |
+|                         |                                                             |
+|                         | Projektledare, etik och jämställdhetsansvarig               |
 
 ** Möten
    :PROPERTIES:
    :CUSTOM_ID: möten
    :END:
 
-   Vi kommer hålla ett antal möten i veckan, samtliga dagar som har
-   schemalagda pass påbörjas med ett scrum möte, där vi i ungefär 10-15
-   minuter går igenom vad vi åstadkommit tidigare dagar och vad vi ska
-   fortsätta med kommande dagar.
+Ett antal möten i veckan kommer att hållas, samtliga dagar som har
+schemalagda pass påbörjas med ett scrum möte, där gruppen går igenom vad
+de enskilt har jobbat med den senaste dagen/dagarna och hur arbetet
+skall fortskrida.
 
-   I början av varje sprint kommer vi hålla ett sprintmöte, i detta möte
-   kommer kravansvarig att agera proxy för produktägaren. I sprintmötet
-   kommer vi bestämma vilka stories som vi kommer jobba med under sprinten,
-   detta baserat på storypoäng samt viktighetsgrad.
+I början av varje sprint hålls ett sprintmöte. I detta möte kommer
+kravansvarig att agera proxy för produktägaren. I sprintmötet bestäms
+iterationsmålet för vidkommande sprint, utifrån detta iterationsmål
+väljs use-case slices ut och tasks baseras på dessa slices, sedan
+genomförs scrum-poker för att bestämma antal story-poäng vardera task
+kommer att kosta, samt viktighetsgrad den innehar.
 
-   När vi närmar oss slutet av varje sprint kommer vi hålla ett möte där vi
-   går igenom alla stories, ser till så att allting ser bra ut och är
-   korrekt. I slutet av varje sprint kommer vi också hålla ett retrospekt
-   möte där vi diskuterar vad som gick bra, mindre bra och vad som kan
-   förbättras i nästa sprint. Detta för att öka kvalitén och förståelsen
-   för projektet och arbetet, men också för att alla i gruppen ska få
+I slutet av varje sprint hålls ett retrospective-möte där projektgruppen
+går igenom hur vi tycker att sprinten gått, vad som varit bra, vad som
+varit mindre bra, vad som skall behållas till nästa sprint samt
+eventuella saker som skall prövas i nästa sprint. Detta för att öka
+kvalitén och förståelsen för projektet och arbetet, men också för att
+alla i gruppen skall ha rum att yttra sina egna tankar och funderingar,
+detta blir helt enkelt ett forum där samtliga medlemmar kan få saker
+sagt och förändringar genomförda.
 
 ** Arbetsplats
    :PROPERTIES:
    :CUSTOM_ID: arbetsplats
    :END:
 
-   Vi kommer de flesta dagar att sitta tillsammans i skolan, ofta på plan 3
-   då det har ställts ut många bord där 4 personer kan sitta och jobba
-   ihop. De dagar vi sitter och jobbar enskilt sitter vi hemma eller på
-   bibliotek eller liknande.
+Vi kommer de flesta dagar att sitta tillsammans i skolan, ofta på plan 3
+då det har ställts ut många bord där 4 personer kan sitta och jobba
+ihop. De dagar vi sitter och jobbar enskilt sitter vi hemma eller på
+bibliotek eller liknande. Anledningen till att vi vill spendera så
+mycket tid som möjligt i skolan tillsammans är för att det är enklare
+att diskutera och komma fram till lösningar på problem om man
+tillsammans i gruppen resonerar kring dessa, och detta görs enklast och
+bäst i person och ej över internet.
 
 ** Arbetsutrustning
    :PROPERTIES:
    :CUSTOM_ID: arbetsutrustning
    :END:
 
-   Vi använder oss av ett tvåsidigt scrumboard, den ena sidan består av
-   Sprint backlogen där vi kan följa vårt arbete i sprinten, vilka stories
-   som är påbörjade, avslutade etc. På sprint backlogen finns också vår
-   burn down där vi kan följa vår progression.
+Vi använder oss av ett tvåsidigt scrumboard, den ena sidan består av
+Sprint backlogen där vi kan följa vårt arbete i sprinten, vilka stories
+som är påbörjade, avslutade etc. På sprint backlogen finns också vår
+burn down där vi kan följa vår progression. På den andra sidan återfinns
+product backlogen, som kan ses som den publika sidan av scrumboarden,
+det vill säga den sida som kunden och andra utomstående ur projektet kan
+se vad projektgruppen åstadkommit hittills och hur arbetet fortlöper. Vi
+använder oss också av Trello, som är en onlinetjänst som kan
+konfigureras efter behov, vi har valt att konfigurera denna enligt
+KanBan, det vill säga vi har ett fält ”checked out”, ett fält ”test”
+samt ett fält ”done”. På Trello återfinns också samtliga use-case
+slices, tasks samt test-cases, för samtliga sprints. På detta sätt
+fungerar Trello både som en backup av tavlan, en historik över projektet
+samt ett arbetsverktyg som kan användas vid aktuellt arbete.
 
 ** Meddelanden
    :PROPERTIES:
    :CUSTOM_ID: meddelanden
    :END:
 
-   För att kommunicera med varandra och skicka meddelanden etc. när vi inte
-   träffas i skolan så använder vi gitter.im som är en
-   kommunikations-applikation som är kopplad till github, man loggar in med
-   sitt github konto och har sedan dels en chatt samt kan skapa olika
-   projekt och communities etc. Vi använder för nuvarande endast chatten
-   och resten av dokumenthanteringen överlåter vi till github.
+För att kommunicera med varandra och skicka meddelanden etc. när vi inte
+träffas i skolan så använder vi gitter.im som är en
+kommunikations-applikation som är kopplad till github, man loggar in med
+sitt github konto och har sedan dels en chatt samt kan skapa olika
+projekt och communities etc. Vi använder för nuvarande endast chatten
+och resten av dokumenthanteringen överlåter vi till github.
 
 * Projektets olika mål
   :PROPERTIES:
   :CUSTOM_ID: projektets-olika-mål
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Vilka är de olika intressenternas mål med projektet?
+Vilka är de olika intressenternas mål med projektet?
 
-  Eklund (Eklund, 2010) anger tre olika typer av mål med ett projekt
+Eklund (Eklund, 2010) anger tre olika typer av mål med ett projekt
 
-  -  Effektmål
+-  Effektmål
 
-  -  Resultatmål
+-  Resultatmål
 
-  -  Projektmål
+-  Projektmål
 
-  Hur relaterar målen nedan till dessa? Vad är vad?
+Hur relaterar målen nedan till dessa? Vad är vad?
 
 ** Uppgiftsägaren
    :PROPERTIES:
    :CUSTOM_ID: uppgiftsägaren
    :END:
 
-   Hur färdig måste eventuell produkt bli? Hur skall en inkrementell
-   utveckling ske för att uppgiftsägarens förväntningar skall uppfyllas så
-   bra som möjligt och tillräckligt? Vilka är de konkreta *resultatmålen*
-   som skall göra att *effektmålen* uppfylls?
+Hur färdig måste eventuell produkt bli? Hur skall en inkrementell
+utveckling ske för att uppgiftsägarens förväntningar skall uppfyllas så
+bra som möjligt och tillräckligt? Vilka är de konkreta *resultatmålen*
+som skall göra att *effektmålen* uppfylls?
 
-   //
+//
 
-   Vi planerar att använda oss av den agila projektmetodiken Scrum, en agil
-   metodik går ut på att man i slutet av varje sprint förväntas ha en
-   fungerande produkt, som sedan i vidkommande sprinter kan utvecklas, och
-   det är så vi planerar att jobba också, det vill säga att i slutet av
-   sprint #2 hoppas vi att vi kan ha en, förvisso väldigt enkel, fungerande
-   produkt som vi i kommande sprinter kan vidareutveckla och addera mer
-   funktionalitet och komplexitet till.
+Vi planerar att använda oss av den agila projektmetodiken Scrum, en agil
+metodik går ut på att man i slutet av varje sprint förväntas ha en
+fungerande produkt, som sedan i vidkommande sprinter kan utvecklas, och
+det är så vi planerar att jobba också, det vill säga att i slutet av
+sprint #2 hoppas vi att vi kan ha en, förvisso väldigt enkel, fungerande
+produkt som vi i kommande sprinter kan vidareutveckla och addera mer
+funktionalitet och komplexitet till.
 
-   Det konkreta projektmålet är att vi ska producera en webbapplikation som
-   är kopplad till en databas, på denna webbapplikation ska man kunna skapa
-   ett konto och logga in i applikationen, när man är inloggad i
-   applikationen ska man kunna skriva ett meddelande som sedan ska visas på
-   en elektronisk display. Denna display ska vara trådlöst ansluten till en
-   Raspberry pi där webbapplikationen körs. Detta resultatmål kommer leda
-   till att effektmålet, som är att vår kund på ett enkelt och portabelt
-   sätt ska kunna skriva ut information till kollegor och besökare, även om
-   vår kund inte själv är tillgänglig, kommer att uppfyllas.
+Det konkreta projektmålet är att vi ska producera en webbapplikation som
+är kopplad till en databas, på denna webbapplikation ska man kunna skapa
+ett konto och logga in i applikationen, när man är inloggad i
+applikationen ska man kunna skriva ett meddelande som sedan ska visas på
+en elektronisk display. Denna display ska vara trådlöst ansluten till en
+Raspberry pi där webbapplikationen körs. Detta resultatmål kommer leda
+till att effektmålet, som är att vår kund på ett enkelt och portabelt
+sätt ska kunna skriva ut information till kollegor och besökare, även om
+vår kund inte själv är tillgänglig, kommer att uppfyllas.
 
-*** Effektmål
+*Effektmål*
 
-    Denna produkt kommer underlätta för vår uppdragsgivare samt för hans
-    kollegor och besökare, vår uppdragsgivare kommer nu ej behöva vara
-    närvarande på arbetsplatsen för att informera om varför/när han ej är
-    tillgänglig, detta kommer leda till mindre frustration hos kollegor samt
-    besökare, då de enklare kan planera sina besök och möten med vår
-    uppdragsgivare. Denna utökade kommunikation kommer leda till en
-    arbetsplats med bättre stämning och leda till att samtliga parter
-    spenderar sin arbetstid mer effektivt, då de slipper springa runt och
-    leta efter vår uppdragsgivare i de fall de ej vet vad han har för sig,
-    nu kan de enkelt se detta på hans kontorsdörr.
+Denna produkt kommer underlätta för vår uppdragsgivare samt för hans
+kollegor och besökare, vår uppdragsgivare kommer nu ej behöva vara
+närvarande på arbetsplatsen för att informera om varför/när han ej är
+tillgänglig, detta kommer leda till mindre frustration hos kollegor samt
+besökare, då de enklare kan planera sina besök och möten med vår
+uppdragsgivare. Denna utökade kommunikation kommer leda till en
+arbetsplats med bättre stämning och leda till att samtliga parter
+spenderar sin arbetstid mer effektivt, då de slipper springa runt och
+leta efter vår uppdragsgivare i de fall de ej vet vad han har för sig,
+nu kan de enkelt se detta på hans kontorsdörr.
 
-*** Resultatmål
+*Resultatmål*
 
-    Låta en elektroniskt display trådlöst kommunicera med en raspberry pi
-    som i sin tur är inkopplad på internet. Hallonpajen är kopplad mot en
-    webbapplikation/webbsida som användaren kan koppla upp sig mot och
-    skriva ett meddelande som visas på displayen. Den trådlösa räckvidden
-    mellan rasp och display skall vara minst 5 meter.
+Låta en elektroniskt display trådlöst kommunicera med en raspberry pi
+som i sin tur är inkopplad på internet. Hallonpajen är kopplad mot en
+webbapplikation/webbsida som användaren kan koppla upp sig mot och
+skriva ett meddelande som visas på displayen. Den trådlösa räckvidden
+mellan rasp och display skall vara minst 5 meter.
 
-*** Projektmål
+*Projektmål*
 
-    Genomföra projekt och därmed producera och lämna in samtliga dokument
-    som krävs, samt en fungerande slutprodukt. Allt detta ska laddas upp på
-    GitHub och godkännas. En kursrapport där projektgruppen diskuterar och
-    resonerar kring projekt och projektmetodik ska också lämnas in. När allt
-    detta lämnats in och godkänts är kursen godkänt och avklarad, och detta
-    är det stora projektmålet som finns utöver målet att lära, diskutera och
-    utveckla vår kunskap inom projekt under projektets gång.
+Genomföra projekt och därmed producera och lämna in samtliga dokument
+som krävs, samt en fungerande slutprodukt. Allt detta ska laddas upp på
+GitHub och godkännas. En kursrapport där projektgruppen diskuterar och
+resonerar kring projekt och projektmetodik ska också lämnas in. När allt
+detta lämnats in och godkänts är kursen godkänt och avklarad, och detta
+är det stora projektmålet som finns utöver målet att lära, diskutera och
+utveckla vår kunskap inom projekt under projektets gång.
 
 ** Kursmål och examensmål
    :PROPERTIES:
    :CUSTOM_ID: kursmål-och-examensmål
    :END:
 
-   Hur kopplar projektet till examensarbetets (själv-) bedömande och
-   godkännande? Vilka är (projekt-) målen för att uppfylla akademins krav
-   för ett godkänt examensarbete?
+Hur kopplar projektet till examensarbetets (själv-) bedömande och
+godkännande? Vilka är (projekt-) målen för att uppfylla akademins krav
+för ett godkänt examensarbete?
 
-   //
+//
 
-   Projektet kopplas till kursens mål i och med att ett godkänt projekt är
-   en stor del (4.5 hp) av kursen, och för att klara kursen måste vi få ett
-   godkänt projekt. Vidare så är projektet en essentiell del av kursen i
-   och med att vi igenom kursen ska testa lite olika projektmetoder och
-   sätt att arbeta i projekt, och därmed måste genomföra ett projekt för
-   att kunna testa detta, det skulle vara svårt att jämföra och hitta för-
-   och nackdelar med olika projektmetoder om vi inte använde dessa
-   projektmetoder i praktiken.
+Projektet kopplas till kursens mål i och med att ett godkänt projekt är
+en stor del (4.5 hp) av kursen, och för att klara kursen måste vi få ett
+godkänt projekt. Vidare så är projektet en essentiell del av kursen i
+och med att vi igenom kursen ska testa lite olika projektmetoder och
+sätt att arbeta i projekt, och därmed måste genomföra ett projekt för
+att kunna testa detta, det skulle vara svårt att jämföra och hitta för-
+och nackdelar med olika projektmetoder om vi inte använde dessa
+projektmetoder i praktiken.
 
-   Projektmålen för att uppfylla kraven för en godkänt kurs är att vi ska
-   leverera en slutprodukt som godkänns, vi ska leverera ett antal dokument
-   som även de ska godkännas som har med projektet och göra, och vi ska
-   även skriva en kursrapport där vi diskuterar saker som vi genomfört inom
-   projektet, det vill säga den ska reflektera över projekt och
-   projektmetoder i sig och inte diskutera detaljer specifika för just
-   detta projekt.
+Projektmålen för att uppfylla kraven för en godkänt kurs är att vi ska
+leverera en slutprodukt som godkänns, vi ska leverera ett antal dokument
+som även de ska godkännas som har med projektet och göra, och vi ska
+även skriva en kursrapport där vi diskuterar saker som vi genomfört inom
+projektet, det vill säga den ska reflektera över projekt och
+projektmetoder i sig och inte diskutera detaljer specifika för just
+detta projekt.
 
-   De kursmål som ska uppfyllas och motiveringar till varför de uppfylls
-   finns nedan:
+De kursmål som ska uppfyllas och motiveringar till varför de uppfylls
+finns nedan:
 
-   1. Kunna tillämpa en lämplig projektprocess lämplig inom teknikområdet
-      informationsteknologi (IT).
-      
-      Detta mål kommer att uppnås i och med att vi använder oss av
-      Scrum-metodiken samt delar av Kanban metodiken, vilket är beprövade
-      projektprocesser inom just teknikområdet informationsteknik.
+1. Kunna tillämpa en lämplig projektprocess lämplig inom teknikområdet
+   informationsteknologi (IT).
 
-   2. Kunna reflektera över det social samspelet mellan individ, grupp och
-      ledare i en mindre projektgrupp.
+Detta mål kommer att uppnås i och med att vi använder oss av
+Scrum-metodiken samt delar av Kanban metodiken, vilket är beprövade
+projektprocesser inom just teknikområdet informationsteknik.
 
-      Vi kommer genomföra en hel del socialt samspel under projektets gång,
-      och därmed kommer vi under och efter projektets gång att kunna
-      reflektera över det.
+1. Kunna reflektera över det social samspelet mellan individ, grupp och
+   ledare i en mindre projektgrupp.
 
-   3. Kunna fånga, dokumentera och organisera krav i typiska IT-projekt.
+Vi kommer genomföra en hel del socialt samspel under projektets gång,
+och därmed kommer vi under och efter projektets gång att kunna
+reflektera över det.
 
-      Detta krav uppnås under projektets gång då vi ska producera ett antal
-      dokument inom vilka vi fånga, organisera samt diskutera vårt arbete, och
-      en del av det arbetet är just att se till så att vi uppfyller vissa
-      krav.
+1. Kunna fånga, dokumentera och organisera krav i typiska IT-projekt.
 
-   4. Kunna upprätta, följa och utvärdera en projektplan, riskanalys och
-      testspecifikationer för typiska IT-projekt.
+Detta krav uppnås under projektets gång då vi ska producera ett antal
+dokument inom vilka vi fånga, organisera samt diskutera vårt arbete, och
+en del av det arbetet är just att se till så att vi uppfyller vissa
+krav.
 
-      Detta uppnås i och med att vi skriver en projektplan, en riskanalys,
-      testspecifikationer etc. och sedan kommer jobba mot dessa krav.
+1. Kunna upprätta, följa och utvärdera en projektplan, riskanalys och
+   testspecifikationer för typiska IT-projekt.
 
-   5. Kunna utvärdera, dokumentera och presentera genomförd konstruktion.
+Detta uppnås i och med att vi skriver en projektplan, en riskanalys,
+testspecifikationer etc. och sedan kommer jobba mot dessa krav.
 
-      Uppnås i och med de dokument vi producerar.
+1. Kunna utvärdera, dokumentera och presentera genomförd konstruktion.
 
-   6. Uppnått ökade färdigheter i muntlig och skriftlig presentation.
+Uppnås i och med de dokument vi producerar.
 
-      Uppnås då vi måste skriva ett antal dokument samt måste presentera vårt
-      projekt muntligt i och med ett antal Scrum-demos i vilka vi muntligt ska
-      presentera vårt projekt för andra projektgrupper.
+1. Uppnått ökade färdigheter i muntlig och skriftlig presentation.
 
-   7. Kunna söka och utvärdera information om komponenter,
-      kommunikationsprotokoll eller andra tekniska specifikationer aktuella
-      för IT-projektet.
+Uppnås då vi måste skriva ett antal dokument samt måste presentera vårt
+projekt muntligt i och med ett antal Scrum-demos i vilka vi muntligt ska
+presentera vårt projekt för andra projektgrupper.
 
-      Kommer att uppnås i samband med att vi behöver skriva ett eget
-      kommunikationsprotokoll som sköter kommunikationen mellan vår raspberry
-      pi och den elektroniska displayen. Delar av gruppen kommer även att rita
-      en design som sedan kommer tryckas på ett kretskort som kommer användas
-      i projektet, och i samband med det måste vi läsa in oss på detta
-      kretskort.
+1. Kunna söka och utvärdera information om komponenter,
+   kommunikationsprotokoll eller andra tekniska specifikationer aktuella
+   för IT-projektet.
 
-   8. Personligen kunna konstruera/utveckla en del i ett större system.
+Kommer att uppnås i samband med att vi behöver skriva ett eget
+kommunikationsprotokoll som sköter kommunikationen mellan vår raspberry
+pi och den elektroniska displayen. Delar av gruppen kommer även att rita
+en design som sedan kommer tryckas på ett kretskort som kommer användas
+i projektet, och i samband med det måste vi läsa in oss på detta
+kretskort.
 
-      Samtliga medlemmar i projektgruppen ska utveckla minst en del var av
-      detta system som vi producerar och i och med det så uppnås detta krav.
+1. Personligen kunna konstruera/utveckla en del i ett större system.
 
-   9. Kunna bygga en prototyp och felsöka en produkt som är typisk inom IT.
+Samtliga medlemmar i projektgruppen ska utveckla minst en del var av
+detta system som vi producerar och i och med det så uppnås detta krav.
 
-      Detta uppfylls i samband med att vi bygger en prototyp som vi sedan
-      jobbar med för att uppnå en fungerande slutprodukt.
+1. Kunna bygga en prototyp och felsöka en produkt som är typisk inom IT.
 
-   10. Kunna delta i IT-projektets ekonomi- och tids-redovisning.
+Detta uppfylls i samband med att vi bygger en prototyp som vi sedan
+jobbar med för att uppnå en fungerande slutprodukt.
 
-       Samtliga medlemmar gör sin egen tidsrapportering och samtliga medlemmar
-       deltager i ekonomi-redovisningen.
+1. Kunna delta i IT-projektets ekonomi- och tids-redovisning.
 
-   11. Kunna analysera och föreslå hur man säkerställer att samhällets mål
-       för ekonomiskt, socialt och ekologiskt hållbar utveckling beaktas i
-       projektprodukt och projektprocess.
+Samtliga medlemmar gör sin egen tidsrapportering och samtliga medlemmar
+deltager i ekonomi-redovisningen.
 
-       Vi i projektgruppen ser till att jobba för en hållbar utveckling och
-       detta sker på flera sätt, till exempel undviker vi att skriva ut papper
-       i onödan, utan skriver istället ut QR-koder som kan skannas för att nå
-       uppdaterade dokument, detta för att det är en miljövinst.
+1. Kunna analysera och föreslå hur man säkerställer att samhällets mål
+   för ekonomiskt, socialt och ekologiskt hållbar utveckling beaktas i
+   projektprodukt och projektprocess.
 
-   12. Förklara och använda bra personlig arbetsergonomi.
+Vi i projektgruppen ser till att jobba för en hållbar utveckling och
+detta sker på flera sätt, till exempel undviker vi att skriva ut papper
+i onödan, utan skriver istället ut QR-koder som kan skannas för att nå
+uppdaterade dokument, detta för att det är en miljövinst.
 
-       Vi sitter på designerade platser i skolan, där vi har en bra
-       arbetsergonomi, samtliga medlemmar kan sitta tillsammans och enkelt
-       konversera samt demonstrera saker för varandra.
+1. Förklara och använda bra personlig arbetsergonomi.
+
+Vi sitter på designerade platser i skolan, där vi har en bra
+arbetsergonomi, samtliga medlemmar kan sitta tillsammans och enkelt
+konversera samt demonstrera saker för varandra.
 
 *** Vetenskaplighet
     :PROPERTIES:
     :CUSTOM_ID: vetenskaplighet
     :END:
 
-    Projektet har en vetenskaplig koppling som genomsyrar arbetet, då
-    arbetet för att skapa produkten sker genom ett intensivt arbete med
-    Scrum som huvudsaklig projekt-metodik. Scrum är en Agil metod som
-    innebär att projektet genomförs med låg nivå av handledning/styrning och
-    projektetsarbetsmetod ska vara snabb föränderlig vid behov, (Permana
-    2015). Detta leder till att projektet snabbt kan styras om i en annan
-    riktning i de fall projektet ”driver” iväg åt fel håll och eftersom
-    projektet genomförs iterativt och agilt så är tiden tills feedback finns
-    tillgänglig väldigt kort, och detta leder till att projektgruppen snabbt
-    kan ändra arbetssätt samt arbetsuppgifter för att maximera resultatet.
+Projektet har en vetenskaplig koppling som genomsyrar arbetet, då
+arbetet för att skapa produkten sker genom ett intensivt arbete med
+Scrum som huvudsaklig projekt-metodik. Scrum är en Agil metod som
+innebär att projektet genomförs med låg nivå av handledning/styrning och
+projektetsarbetsmetod ska vara snabb föränderlig vid behov, (Permana
+2015). Detta leder till att projektet snabbt kan styras om i en annan
+riktning i de fall projektet ”driver” iväg åt fel håll och eftersom
+projektet genomförs iterativt och agilt så är tiden tills feedback finns
+tillgänglig väldigt kort, och detta leder till att projektgruppen snabbt
+kan ändra arbetssätt samt arbetsuppgifter för att maximera resultatet.
 
-    Vidare så sker även en kontinuerlig kontroll mot Andersson och Ekholm
-    (2002) rapport hur en vetenskaplig metod skall upprätthållas, där
-    rapporten skapas via att teori inhämtas för att sedan metod utarbetas
-    och resultatet framarbetas ifrån tidigare insamlade teorier och metoder.
+Vidare så sker även en kontinuerlig kontroll mot Andersson och Ekholm
+(2002) rapport hur en vetenskaplig metod skall upprätthållas, där
+rapporten skapas via att teori inhämtas för att sedan metod utarbetas
+och resultatet framarbetas ifrån tidigare insamlade teorier och metoder.
 
-** Hållbarhetsaspekter
-   :PROPERTIES:
-   :CUSTOM_ID: hållbarhetsaspekter
-   :END:
+1. ** Hållbarhetsaspekter
+      :PROPERTIES:
+      :CUSTOM_ID: hållbarhetsaspekter
+      :END:
 
-*** Projektgrupp
+   Projektgrupp:
 
-    Genom att försöka använda våra datorer så mycket så möjligt och
-    endast använda papper till Scrumboarden så försöker vi minska
-    användandet av papper och därmed minska negativ miljöpåverkan.
+   Genom att försöka använda våra datorer så mycket så möjligt och
+   endast använda papper till Scrumboarden så försöker vi minska
+   användandet av papper och därmed minska negativ miljöpåverkan.
 
-*** Produkt
+   Produkt:
 
-    Se till att displayen stängs av under natten då den inte är till
-    någon användning.
+   Se till att displayen stängs av under natten då den inte är till
+   någon användning.
 
-    CPUn ska vara interrupt driven och sova ner den inte används, den ska
-    inte polla servern konstant.
+   CPUn ska vara interrupt driven och sova ner den inte används, den ska
+   inte polla servern konstant.
 
-** Etik, jämställdhet och likabehandling (JML)
-   :PROPERTIES:
-   :CUSTOM_ID: etik-jämställdhet-och-likabehandling-jml
-   :END:
+2. ** Etik, jämställdhet och likabehandling (JML)
+      :PROPERTIES:
+      :CUSTOM_ID: etik-jämställdhet-och-likabehandling-jml
+      :END:
 
    Vår projektgrupp består av fyra medlemmar, under detta projekt ska vi
    se till att samtliga medlemmar får lika mycket arbete, ansvar och
@@ -528,199 +612,219 @@ så uppdateras och förankras projektdefinitionen.
    specifika meddelande, själva ”övervakningen” i samband med kamera
    funktionen skulle även den kunna anses oetisk.
 
-** Arbetsmiljöaspekter
-   :PROPERTIES:
-   :CUSTOM_ID: arbetsmiljöaspekter
-   :END:
+3. ** Arbetsmiljöaspekter
+      :PROPERTIES:
+      :CUSTOM_ID: arbetsmiljöaspekter
+      :END:
 
-*** Kopplat till projektgenomförande
+-  Kopplat till projektgenomförande
 
-*** Kopplat till produkt som utvecklas och dess användning
+-  Kopplat till produkt som utvecklas och dess användning
 
-    Projektet genomförs till stora delar digitalt, där dokument sparas
-    och organiseras på GitHub och scrumtavlan finns tillgänglig på
-    Trello. Detta leder till att vi minimerar användandet av papper och
-    andra fysiska medel som har en negativ inverkan på miljön i allmänhet
-    så väl som arbetsmiljön, eftersom allt material förutom den fysiska
-    produkten existerar digitalt betyder det att samtliga medlemmar har
-    ständig möjlighet att konsultera samt redigera projektets
-    dokumentation, detta leder till att medlemmar kan placera sig på
-    något trevligt bibliotek eller hemma hos sig själv och fortfarande
-    jobba med projektet.
+   Projektet genomförs till stora delar digitalt, där dokument sparas
+   och organiseras på GitHub och scrumtavlan finns tillgänglig på
+   Trello. Detta leder till att vi minimerar användandet av papper och
+   andra fysiska medel som har en negativ inverkan på miljön i allmänhet
+   så väl som arbetsmiljön, eftersom allt material förutom den fysiska
+   produkten existerar digitalt betyder det att samtliga medlemmar har
+   ständig möjlighet att konsultera samt redigera projektets
+   dokumentation, detta leder till att medlemmar kan placera sig på
+   något trevligt bibliotek eller hemma hos sig själv och fortfarande
+   jobba med projektet.
 
-    När projektgruppen väl befinner sig på plats på ICT så har vi ett
-    bord där samtliga medlemmar kan sitta tillsammans, vi har tillgång
-    till elektricitet och internet så att vi kan ladda våra datorer, vi
-    kan enkelt diskutera och demonstrera saker för varandra och vi har
-    även enkel tillgång till vår scrumtavla, toaletter samt café finns i
-    närheten så arbetsmiljön är väldigt god för gruppen.
+   När projektgruppen väl befinner sig på plats på ICT så har vi ett
+   bord där samtliga medlemmar kan sitta tillsammans, vi har tillgång
+   till elektricitet och internet så att vi kan ladda våra datorer, vi
+   kan enkelt diskutera och demonstrera saker för varandra och vi har
+   även enkel tillgång till vår scrumtavla, toaletter samt café finns i
+   närheten så arbetsmiljön är väldigt god för gruppen.
 
-    Produkten som utvecklas kommer även den att underlätta arbetsmiljön
-    för vår uppdragsgivare, då produkten tillhandahåller en portabel
-    lösning till vår uppdragsgivare så att den på ett enkelt och smidigt
-    sätt kan meddela sina kollegor och besökare om sin status, det går
-    att schemalägga händelser så rapporteringen i framtiden blir
-    'automatisk' och den kommer allt som allt underlätta både för vår
-    uppdragsgivare samt dess kollegor, och leda till en bättre
-    arbetsmiljö även för dessa.
+   Produkten som utvecklas kommer även den att underlätta arbetsmiljön
+   för vår uppdragsgivare, då produkten tillhandahåller en portabel
+   lösning till vår uppdragsgivare så att den på ett enkelt och smidigt
+   sätt kan meddela sina kollegor och besökare om sin status, det går
+   att schemalägga händelser så rapporteringen i framtiden blir
+   'automatisk' och den kommer allt som allt underlätta både för vår
+   uppdragsgivare samt dess kollegor, och leda till en bättre
+   arbetsmiljö även för dessa.
 
-* //
+* \\
   :PROPERTIES:
-  :CLASS:    Heading1NoBreak
+  :CUSTOM_ID: section
+  :CLASS: Heading1NoBreak
   :END:
 
 * Fas-, tids- och arbetsplan
   :PROPERTIES:
   :CUSTOM_ID: fas--tids--och-arbetsplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Ange arbetsvolym, projektets varaktighet, översiktlig fas och
-  tidsindelning, flexibilitet i ”projekttriangeln”- projektåtagande
-  (resurser/kostnad-varaktighet(tid)-funktionalitet) mm.
+Ange arbetsvolym, projektets varaktighet, översiktlig fas och
+tidsindelning, flexibilitet i ”projekttriangeln”- projektåtagande
+(resurser/kostnad-varaktighet(tid)-funktionalitet) mm.
 
-  Översiktligt Gantt-schema med faser och milstolpar?
+Översiktligt Gantt-schema med faser och milstolpar?
 
-  Projekttriangeln, var ligger flexibiliteten i detta projekt?
+Projekttriangeln, var ligger flexibiliteten i detta projekt?
 
-  Arbetsschema, hur mycket tid skall användas och hur fördelar sig denna
-  tid på projektets veckor?
+Arbetsschema, hur mycket tid skall användas och hur fördelar sig denna
+tid på projektets veckor?
 
 ** Fas- och tidsplan
    :PROPERTIES:
    :CUSTOM_ID: fas--och-tidsplan
    :END:
 
-   [[../GANTT.png]]
-
-   *Här ska en bild på ganttschemat läggas in när
-   vi går över till orgmode/LateX*
+[[media/image2.png]]*Här ska en bild på ganttschemat läggas in när vi
+går över till orgmode/LateX*
 
 * Intressenter
   :PROPERTIES:
   :CUSTOM_ID: intressenter
   :END:
 
-  #+ATTR_LATEX: :align 1 p{3cm} p{5cm} p{5cm}
-  |                | <20>                 | <30>                           | <30>                           |
-  | Inressent      | Namn                 | Förväntningar                  | Uppfyllande av förväntningar   |
-  |----------------+----------------------+--------------------------------+--------------------------------|
-  | Examinator     | Anders Sjögren       | Att gruppmedlemmarna ska lära sig agila projektmetoder samt nå kursmålen så att de klarar kursen | Att lämna in en tillfredsställande slutprodukt, samt samtliga dokument under rubriken dokumentplan i denna projektdefinition där kursrapporten är det viktigaste dokumentet. |
-  | Uppdragsgivare | Anders Sjögren       | Få en fungerande slutprodukt innan deadline | På ett planerat och strukturerat sätt utveckla samt leverera slutprodukten innan deadline. |
-  | Projektgrupp   |                      | Genom att genomföra ett planerat och strukturerat arbete lära sig mer och projektmetodik och få mer erfarenhet inom projektarbete för att förbereda inför kommande arbetsliv samt examensjobb. | Noga planera upp arbetet och strukturera detta planerande genom att skriva utförliga dokument som täcker all nödvändig information som krävs för att genomföra projektet på ett tillfredsställande sätt och samtidigt få mer kunskap kring projekt samt projektmetoder. |
-  | Skola          | Kungliga Tekniska Högskolan | Att utbilda kompetenta ingenjörer och/eller forskare som sedan kan ta mark på arbetsmarknaden. | Genom att genomföra kursen till den grad att studenten får ett tillfredsställande betyg i denna kurs, likt alla andra kurser, på så sätt att studenten är attraktiv på arbetsmarknaden och därmed kan få ett jobb. |
+Lista vilka som är projektets intressenter, deras förväntningar och
+ambition att uppfylla dessa förväntningar och hur.
+
+| Inressent        | Namn                          | Förväntningar                                                                                                                                                                                    | Uppfyllande av förväntningar                                                                                                                                                                                                                                              |
+|------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Examinator       | Anders Sjögren                | Att gruppmedlemmarna ska lära sig agila projektmetoder samt nå kursmålen så att de klarar kursen                                                                                                 | Att lämna in en tillfredsställande slutprodukt, samt samtliga dokument under rubriken dokumentplan i denna projektdefinition där kursrapporten är det viktigaste dokumentet.                                                                                              |
+| Uppdragsgivare   | Anders Sjögren                | Få en fungerande slutprodukt innan deadline                                                                                                                                                      | På ett planerat och strukturerat sätt utveckla samt leverera slutprodukten innan deadline.                                                                                                                                                                                |
+| Projektgrupp     |                               | Genom att genomföra ett planerat och strukturerat arbete lära sig mer och projektmetodik och få mer erfarenhet inom projektarbete för att förbereda inför kommande arbetsliv samt examensjobb.   | Noga planera upp arbetet och strukturera detta planerande genom att skriva utförliga dokument som täcker all nödvändig information som krävs för att genomföra projektet på ett tillfredsställande sätt och samtidigt få mer kunskap kring projekt samt projektmetoder.   |
+| Skola            | Kungliga Tekniska Högskolan   | Att utbilda kompetenta ingenjörer och/eller forskare som sedan kan ta mark på arbetsmarknaden.                                                                                                   | Genom att genomföra kursen till den grad att studenten får ett tillfredsställande betyg i denna kurs, likt alla andra kurser, på så sätt att studenten är attraktiv på arbetsmarknaden och därmed kan få ett jobb.                                                        |
 
 * Riskanalys
   :PROPERTIES:
   :CUSTOM_ID: riskanalys
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  #+ATTR_LATEX: :align 1 p{4cm} p{6cm} p{5cm}
-  |    | <30>                           | <30>                           | <30>                           |
-  | ID | Risk                           | Förebyggande åtgärd            | Åtgärder vid riskutfall        |
-  |----+--------------------------------+--------------------------------+--------------------------------|
-  | R1 | Sjukdom                        | Genom att se till att alla projektmedlemmar bidrar till projektet undviker vi att någon projektmedlem överarbetar och därmed så minskar risken att någon medlem insjuknar. Eftersom alla är med och bidrar så har även alla medlemmar någorlunda koll på projektet och kan därför täcka upp för varandra. | Sjuka gruppmedlemmar skall arbeta till sin bästa förmåga hemifrån för att påskynda tillfrisknad samt undvika att sprida sjukdom till resterande gruppmedlemmar. |
-  | R2 | Tidsbrist                      | Planera upp projektet i sin helhet redan från start, använd denna plan i konjunktion med en agil arbetsprocess samt något hjälpmedel (i vårt fall en scrumboard) för att enkelt kunna se om planeringen efterföljs. | I fallet där gruppen hamnar efter planering så får gruppen tillsammans med uppdragsgivare komma överens om vilka delar av projektet som ska kompromissas så att projektet hinner klart i tid. |
-  | R3 | Leverans av hårdvara           | Beställa hårdvaran från leverantörer som historiskt är kända för att uppfylla leveranskrav. | Ha backup kretskort som vi då själva får producera med hjälp av till exempel en fräs eller laser. |
-  | R4 | Förlust av kod                 | Använda GitHub för versionshantering. | GitHub innehåller en funktion där man kan gå tillbaka i versioner, och därmed få tillbaka äldre kod/data. |
-  | R5 | Samtliga medlemmar kan inte hantera samtliga delar av projektet | Olika medlemmar specificerar sig samt har tidigare erfarenheter av olika delar av projektet, och denna kunskap måste förmedlas till samtliga medlemmar genom dokumentation samt utbildning, på detta sätt minimerar vi risken att någon medlem försvinner och projektet därför blir stående. | Vid riskutfall ska tydlig dokumentation finnas tillgänglig så att medlemmar kan konsultera denna dokumentation och utifrån den genomföra delar projektet som personen I fråga kanske inte har specialiserat sig på |
+Nedan beskrivs identifierade risker.
 
-** Riskbedömning
-   
-   +----------------+--------------------------+---------------+
-   |                |     Hög sannolikhet      |               |
-   +----------------+--------+--------+--------+---------------+
-   |                |   R4   |   R2   |        |               |
-   |                +--------+--------+--------+               |
-   | Liten Påverkan |   R1   |        | R3, R5 | Stor påverkan |
-   |                +--------+--------+--------+               |
-   |                |        |        |        |               |
-   +----------------+--------+--------+--------+---------------+
-   |                |     Låg sannolikhet      |               |
-   +----------------+--------------------------+---------------+
+Risklista
+
+| ID   | Risk                                                              | Förebyggande åtgärd                                                                                                                                                                                                                                                                                         | Åtgärder vid riskutfall                                                                                                                                                                                              |
+|------+-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| R1   | Sjukdom                                                           | Genom att se till att alla projektmedlemmar bidrar till projektet undviker vi att någon projektmedlem överarbetar och därmed så minskar risken att någon medlem insjuknar. Eftersom alla är med och bidrar så har även alla medlemmar någorlunda koll på projektet och kan därför täcka upp för varandra.   | Sjuka gruppmedlemmar skall arbeta till sin bästa förmåga hemifrån för att påskynda tillfrisknad samt undvika att sprida sjukdom till resterande gruppmedlemmar.                                                      |
+| R2   | Tidsbrist                                                         | Planera upp projektet i sin helhet redan från start, använd denna plan i konjunktion med en agil arbetsprocess samt något hjälpmedel (i vårt fall en scrumboard) för att enkelt kunna se om planeringen efterföljs.                                                                                         | I fallet där gruppen hamnar efter planering så får gruppen tillsammans med uppdragsgivare komma överens om vilka delar av projektet som ska kompromissas så att projektet hinner klart i tid.                        |
+| R3   | Leverans avHårdvara                                               | Beställa hårdvaran från leverantörer som historiskt är kända för att uppfylla leveranskrav.                                                                                                                                                                                                                 | Ha backup kretskort som vi då själva får producera med hjälp av till exempel en fräs eller laser.                                                                                                                    |
+| R4   | Förlust av kod                                                    | Använda GitHub för versionshantering.                                                                                                                                                                                                                                                                       | GitHub innehåller en funktion där man kan gå tillbaka i versioner, och därmed få tillbaka äldre kod/data.                                                                                                            |
+| R5   | Samtliga medlemmar kan inte hantera samtliga delar av projektet   | Olika medlemmar specificerar sig samt har tidigare erfarenheter av olika delar av projektet, och denna kunskap måste förmedlas till samtliga medlemmar genom dokumentation samt utbildning, på detta sätt minimerar vi risken att någon medlem försvinner och projektet därför blir stående.                | Vid riskutfall ska tydlig dokumentation finnas tillgänglig så att medlemmar kan konsultera denna dokumentation och utifrån den genomföra delar projektet som personen I fråga kanske inte har specialiserat sig på   |
+
+Riskbedömning
+
+|                  | Hög sannolikhet   |      |
+|------------------+-------------------+------+----------+-----------------|
+| Liten påverkan   | R4                | R2   |          | Stor påverkan   |
+|                  | R1                |      | R3, R5   |                 |
+|                  |                   |      |          |                 |
+|                  | Låg sannolikhet   |      |
 
 * Förändringsplan
   :PROPERTIES:
   :CUSTOM_ID: förändringsplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Ange hur hanteras och meddelas viktiga förändringar i projektet.
+Ange hur hanteras och meddelas viktiga förändringar i projektet.
 
 * Kostnadsplan
   :PROPERTIES:
   :CUSTOM_ID: kostnadsplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Vilka kostnader finns i projektet? Vem betalar vad? Licenser?
+Vilka kostnader finns i projektet? Vem betalar vad? Licenser?
 
-  #+ATTR_LATEX: :align 1 1 1 p{8cm}
-  | Vad?                   | Betalas av?   | Kostnad        | Beskrivning                                                                                |
-  |------------------------+---------------+----------------+--------------------------------------------------------------------------------------------|
-  | Display                | Examinator    | Vet ej         | Displayen som ska användas för meddelandet.                                                |
-  | Wifi-modul (ESP8266)   | Examinator    | Cirka 100 :-   | Wifi-modul som kopplas till displayen så att den kan kommunicera trådlöst med Raspberry.   |
-  | Kretskort              | Bengt Molin   | Cirka 100 :-   | Det kretskort som ska användas för att koppla displayen till Raspberry Pi.                 |
+| Vad?                   | Betalas av?   | Kostnad        | Beskrivning                                                                                |
+|------------------------+---------------+----------------+--------------------------------------------------------------------------------------------|
+| Display                | Examinator    | Vet ej         | Displayen som ska användas för meddelandet.                                                |
+| Wifi-modul (ESP8266)   | Examinator    | Cirka 100 :-   | Wifi-modul som kopplas till displayen så att den kan kommunicera trådlöst med Raspberry.   |
+| Kretskort              | Bengt Molin   | Cirka 100 :-   | Det kretskort som ska användas för att koppla displayen till Raspberry Pi.                 |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
+|                        |               |                |                                                                                            |
 
 * Dokumentplan
   :PROPERTIES:
   :CUSTOM_ID: dokumentplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Vilka dokument skall användas, underhållas, granskas och levereras? När
-  skall detta ske och för vilka?
+Vilka dokument skall användas, underhållas, granskas och levereras? När
+skall detta ske och för vilka?
 
-  #+ATTR_LATEX: :align 1 1 p{3cm} p{7cm}
-  | Namn                | Ska underhållas?   | Hur ofta?                         | Beskrivning                                                                                                        |
-  |---------------------+--------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------|
-  | Projektdefinition   | Ja                 | Varje sprint                      | Dokument som definierar projektet.                                                                                 |
-  | Iterationsplan      | Ja                 | Varje vecka                       | Grovplanering över hela projektet.                                                                                 |
-  | Scrumboard          | Ja                 | Varje Vecka                       | Tavla som ger en översikt över Scrumen.                                                                            |
-  | Vision              | Nej                | -                                 | Vår vision över projektet, skrivs i början av projektet och beskriver hur och varför vi ska genomföra projektet.   |
-  | Kursrapport         | Ja                 | Varje vecka from. Iteration 2-3   | Kursrapporten som ska lämnas in i slutet av kursen.                                                                |
+| Namn                | Ska underhållas?   | Hur ofta?                         | Beskrivning                                                                                                        |
+|---------------------+--------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------|
+| Projektdefinition   | Ja                 | Varje sprint                      | Dokument som definierar projektet.                                                                                 |
+| Iterationsplan      | Ja                 | Varje vecka                       | Grovplanering över hela projektet.                                                                                 |
+| Scrumboard          | Ja                 | Varje Vecka                       | Tavla som ger en översikt över Scrumen.                                                                            |
+| Vision              | Nej                | -                                 | Vår vision över projektet, skrivs i början av projektet och beskriver hur och varför vi ska genomföra projektet.   |
+| Kursrapport         | Ja                 | Varje vecka from. Iteration 2-3   | Kursrapporten som ska lämnas in i slutet av kursen.                                                                |
+|                     |                    |                                   |                                                                                                                    |
+|                     |                    |                                   |                                                                                                                    |
+|                     |                    |                                   |                                                                                                                    |
+|                     |                    |                                   |                                                                                                                    |
+|                     |                    |                                   |                                                                                                                    |
 
 * Utbildningsplan
   :PROPERTIES:
   :CUSTOM_ID: utbildningsplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Behov av förstudie, inläsning, utbildning.
+Behov av förstudie, inläsning, utbildning.
 
-  #+ATTR_LATEX: :align 1 1 p{5cm} p{5cm}
-  | Namn               | När?      | Varför?                                                                                                          | Beskrivning                                                                                  |
-  |--------------------+-----------+------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------|
-  | Git intro          | Sprint #1 | För att vi ska använda Git i kursen.                                                                             | En video-introduktion i Git som visar hur man sätter upp Wikin samt ett repo.                |
-  | Text om Scrum      | Sprint #1 | För att vi ska jobba med Scrum i kursen.                                                                         | En text som förklarar hur författaren jobbar med Scrum i ”riktiga” IT-Projekt.               |
-  | Artikel om KanBan  | Sprint #3 | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik                 | Läsa artikel om KanBan som finns på kurswebben under ”Iterationsplanering - 3”               |
-  | Artikel om Essence | Sprint #3 | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet. |
+| Namn                 | När?        | Varför?                                                                                                            | Beskrivning                                                                                    |
+|----------------------+-------------+--------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------|
+| Git intro            | Sprint #1   | För att vi ska använda Git i kursen.                                                                               | En video-introduktion i Git som visar hur man sätter upp Wikin samt ett repo.                  |
+| Text om Scrum        | Sprint #1   | För att vi ska jobba med Scrum i kursen.                                                                           | En text som förklarar hur författaren jobbar med Scrum i ”riktiga” IT-Projekt.                 |
+| Artikel om KanBan    | Sprint #3   | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik                   | Läsa artikel om KanBan som finns på kurswebben under ”Iterationsplanering - 3”                 |
+| Artikel om Essence   | Sprint #3   | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling   | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet.   |
+|                      |             |                                                                                                                    |                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                |
 
 * Rapport- och granskningsplan
   :PROPERTIES:
   :CUSTOM_ID: rapport--och-granskningsplan
-  :CLASS:    Heading1NoBreak
+  :CLASS: Heading1NoBreak
   :END:
 
-  Syfte och tider för rapportering och granskning
+Syfte och tider för rapportering och granskning
 
-  |   |   |   |   |
-  |   |   |   |   |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
 
 * Appendix A - Referenser
   :PROPERTIES:
   :CUSTOM_ID: appendix-a---referenser
-  :CLASS:    AppendixHeading
+  :CLASS: AppendixHeading
   :END:
 
-  Andersson, N., & Ekholm, A. (2002). Vetenskaplighet - Utvärdering av tre
-  implementeringsprojekt inom IT Bygg &amp; Fastighet 2002.
+Andersson, N., & Ekholm, A. (2002). Vetenskaplighet - Utvärdering av tre
+implementeringsprojekt inom IT Bygg &amp; Fastighet 2002.
 
-  Eklund, S. (2010). /Arbeta i projekt: individen, gruppen, ledaren/:
-  Studentlitteratur.
+Eklund, S. (2010). /Arbeta i projekt: individen, gruppen, ledaren/:
+Studentlitteratur.
 
-  Permana, Putu Adi Guna. 2015. “Scrum Method Implementation in a Software
-  Development Project Management.” /International Journal of Advanced
-  Computer Science and Applications (Ijacsa)/ 6 (9).
-  doi:10.14569/IJACSA.2015.060927.
+Permana, Putu Adi Guna. 2015. “Scrum Method Implementation in a Software
+Development Project Management.” /International Journal of Advanced
+Computer Science and Applications (Ijacsa)/ 6 (9).
+doi:10.14569/IJACSA.2015.060927.
