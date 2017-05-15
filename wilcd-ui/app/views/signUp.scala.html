@@ -7,9 +7,10 @@
     <h2>Sign Up</h2>
     @form(routes.HomeController.doSignUp(), 'class -> "form-signup") {
         @CSRF.formField
-        <h2 class="form-signin-heading">Please enter credentials</h2>
+        @formErrors(signupForm)
         @myInputText(signupForm("email"), 'required -> true, 'type -> "email", '_label -> "Email address")
         @myInputText(signupForm("password"), 'required -> true, 'type -> "password", '_label -> "Password")
+        @myInputText(signupForm("confirmPassword"), 'required -> true, 'type -> "password", '_label -> "Confirm Password")
         @myInputText(signupForm("timezone"), 'required -> true, '_default -> "UTC (default)", '_label -> Html("Time Zone <noscript>(Enable JavaScript to autodetect)</noscript>"))
         <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Sign up</button>
     }

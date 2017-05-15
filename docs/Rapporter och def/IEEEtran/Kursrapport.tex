@@ -59,7 +59,9 @@
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
 \usepackage[utf8]{inputenc}
-
+\usepackage[pdftex]{graphicx}
+\graphicspath{{Images/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -138,7 +140,7 @@ Dessa fyra steg skall göras i små iterationer så att en prototyp av produkten
 Strategien för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen har genomfört ett projekt som har lett till en slutprodukt som levererats till kund. I detta projekt har projektgruppen testat ett antal olika projektmetoder, som samtliga medlemmar i gruppen tillsammans genom diskussion har beslutat att undersöka närmare, dessa projektmetoder har sedan diskuterats, analyserats och slutsatser har dragits, och dessa slutsatser kommer förmedlas i detta dokument.
 
 \subsection{Avgränsningar}
-Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till givna artiklar och dokument som är givna, med viss komplimenterande dokument.
+Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. IT miljö, studiemiljö, studenter, ett enda projektuppdrag. 
 
 \section{Teori och ingenjörspraxis}
 I detta avsnitt går teori som kommer att användas i detta projekt igenom, samt den ingengjörspraxis som brukas. Teorierna avhandlar teorier om projektmetoder, hur en grupp och dess individer arbetar i ett projekt, samt teorier om gruppdynamik.
@@ -146,8 +148,9 @@ I detta avsnitt går teori som kommer att användas i detta projekt igenom, samt
 \subsection{Teori}
 Detta kapitel listar och i viss mån beskriver teorier och ingenjörspraxis som använts i undersökningen. Det finns två underkapitel, Litteraturstudie och Förstudie.
 \subsection{Litteraturstudie}
-I denna fallstudie har flera källor konsulterats, och i denna del ämnar vi att kortfattat beskriva dessa:\\
+I genomförandet av denna fallstudie har flera källor konsulterats, och i denna del ämnar vi att kortfattat beskriva dessa. Förutom de källor som anges finns förmodligen andra, och möjligtvis bättre, källor som ej konsulterats.\\
 \\
+
 \textbf{Övergripande källor för hela projektet}\\
 \\
 \textit{Software Engineering} av Ian Sommerville\cite{Sommerville10}. Denna bok behandlar främst IT-projekt inom mjukvaru-utveckling, men den tar även upp saker som är viktiga att ta med sig i vilket projekt som helst, denna bok är en bra utgångspunkt när man ska genomföra ett IT-projekt och den innehåller mer än nödvändig information för att komma igång. De tre första kapitlena i denna bok har lästs av samtliga medlemmar i projektgruppen, sedan har varje medlem läst ytterligare några kapitel baserat på vilken roll de haft i projektet, dessa kapitel specificeras under vardera rolls litteraturstudie.\\
@@ -174,31 +177,62 @@ Kapitel 22, 23 samt 26 i boken \textit{Software Engineering} av Ian Sommerville\
 \\
 Rapporten \textit{Vetenskaplighet - Utvärdering av tre implementeringsprojekt inom IT Bygg och Fastighet 2002} skriven av Niclas Andersson och Anders Ekholm\cite{Andersson02} har studerats då den utgör en vetenskaplig granskning och utvärdering av tre forskningsobjekt inom bygg och fastighetsbranchen. I denna rapport finns mycket nyttig information om vetenskap i allmänhet och vetenskapliga undersöknings- samt forskningsmetoder och utvärderingsmetoder i synnerhet. Denna rapports innehåll var mycket intressant and studera och reflektera kring när jag genomförde min egen undersökning av detta projekt samt de projektmetoder vi använd oss av i arbetet.
 \subsection{Förstudie}
-%Exempel på hur man lägger in en bild
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
+Omarbeta följande text något\\
+\\
+Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas. Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figurer och bilder. Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
+Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
+\subsubsection{Anslagstavla}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=3in]{sprintbacklog}
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
+\DeclareGraphicsExtensions.
+\caption{Exempel på en intern sida för projektgruppen.}
+\label{sprintbacklog}
+\end{figure}
 
-\subsubsection{Anslagstavla}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=3in]{productbacklog}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+\DeclareGraphicsExtensions.
+\caption{Exempel på en public sida för projektgruppen.}
+\label{productbacklog}
+\end{figure}
 
 \subsubsection{Scruminspirerade projektaktiviteter (vald ansats)}
 
 
-% conference papers do not normally have an appendix
-
 
 % use section* for acknowledgment
-\section*{Undersökningsmetoder}
-
+\section{Undersökningsmetoder}
+Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna är valda och specificerade så att de skall kunna ge svar på ett antal följdfrågor som identifierats i denna undersökning. Först anges frågorna och sedan följer metodbeskrivning.
 \subsection{Frågor att besvara i undersökningen}
 
+\subsubsection{1}
+\subsubsection{2}
+\subsubsection{3}
+\subsubsection{4}
+\subsubsection{5}
+
 \subsection{Metodbeskrivning}
+
+\textbf{Metod 1: Undersökningsmetod}
+
+%Exempel på hur man lägger in en bild
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=2.5in]{invmethod}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+\DeclareGraphicsExtensions.
+\caption{Undersökningsmetod för ``Vad är en bra projektmetod för små IT-projekt?''.}
+\label{undersokningsmetod}
+\end{figure}
+
 
 \section{Genomförande}
 
@@ -279,7 +313,7 @@ Rapporten \textit{Vetenskaplighet - Utvärdering av tre implementeringsprojekt i
   
 %\end{thebibliography}
 
-
+\nocite{*}
 \bibliographystyle{IEEEtran}
 \bibliography{sources}
 

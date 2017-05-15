@@ -63,4 +63,28 @@ object Users {
       id <- tq.map(u => (u.all, u.password)).returning(tq.map(_.id)) += (user, hashPassword(password))
       user <- tq.filter(_.id === id).result.head
     } yield user).transactionally
+
+  def changePassword(id: Id[User], oldPassword: String, newPassword: String): DBIO[Boolean] = {
+    val pwQuery = tq
+      .filter(_.id === id)
+      .map(_.password)
+    pwQuery.forUpdate.result.headOption.flatMap {
+      case Some(oldHashed) if verifyPassword(oldHashed, oldPassword) =>
+        pwQuery.update(hashPassword(newPassword)).map(_ => true)
+      case _ =>
+        DBIO.successful(false)
+    }
+  }.transactionally
+
+  def modifyUser(id: Id[User], f: User => User): DBIO[Unit] = {
+    val userQuery = tq
+      .filter(_.id === id)
+      .map(_.all)
+
+    for {
+      oldUser <- userQuery.forUpdate.result.head
+      newUser = f(oldUser)
+      _ <- userQuery.update(newUser)
+    } yield ()
+  }.transactionally
 }

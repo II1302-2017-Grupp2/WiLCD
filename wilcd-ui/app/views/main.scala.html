@@ -33,8 +33,8 @@
                             Instant message</a></li>
                         <li class="@if(currentPage contains Page.ScheduleMessage) { active }"><a href="@routes.HomeController.scheduleMessage()">
                             Schedule message</a></li>
-                        @*<li class="@if(currentPage contains Page.Settings) { active }"><a href="@routes.HomeController.signUp()">*@
-                        @*Settings</a></li>*@
+                        <li class="@if(currentPage contains Page.Settings) { active }"><a href="@routes.HomeController.settings()">
+                        Settings</a></li>
                         <li class="@if(currentPage contains Page.SignOut) { active }"><a href="@routes.HomeController.signOut()">
                             Sign out</a></li>
 

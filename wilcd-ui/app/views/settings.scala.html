@@ -1,0 +1,19 @@
+@(signupForm: Form[HomeController.SettingsData])(implicit messages: play.api.i18n.Messages, req: UserRequest[_])
+
+    @import helper._
+    @import views.MyHelpers._
+
+@main("Sign Up", currentPage = Some(Page.Settings)) {
+    <h2>Sign Up</h2>
+    @form(routes.HomeController.saveSettings(), 'class -> "form-signup") {
+        @CSRF.formField
+        @formErrors(signupForm)
+        <h3>Change password</h3>
+        @myInputText(signupForm("oldPassword"), 'type -> "password", '_label -> "Old Password")
+        @myInputText(signupForm("newPassword"), 'type -> "password", '_label -> "New Password")
+        @myInputText(signupForm("confirmPassword"), 'type -> "password", '_label -> "Confirm Password")
+        <h3>Other settings</h3>
+            @myInputText(signupForm("timezone"), 'required -> true, '_label -> "Time Zone")
+        <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Save</button>
+    }
+}

@@ -13,5 +13,9 @@ trait UserService {
 
   def logOut(id: Id[UserSession]): Future[Unit]
 
+  def changePassword(id: Id[User], oldPassword: String, newPassword: String): Future[Boolean]
+
+  def changeSettings(id: Id[User], f: User => User): Future[Unit]
+
   def findSession(id: Id[UserSession]): Future[Option[(WithId[User], WithId[UserSession])]]
 }
