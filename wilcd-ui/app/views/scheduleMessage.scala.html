@@ -25,7 +25,7 @@
         </div>
     }
 
-    @helper.form(routes.HomeController.submitNewMessage()) {
+    @helper.form(routes.HomeController.doScheduleMessage()) {
         @helper.CSRF.formField
         <div class="col-sm-12">
         @myInputText(updateMessageForm("message"), '_label -> "Message")
@@ -68,7 +68,7 @@
                     <p>Occurring @message.occurrence</p>
                 </section>
                 <section class="mdc-card__actions">
-                    @helper.form(routes.HomeController.submitNewMessage()) {
+                    @helper.form(routes.HomeController.doScheduleMessage()) {
                         @helper.CSRF.formField
                         <input type="hidden" name="message" value="@message.message"/>
                         <button type="submit" class="mdc-card__action btn btn-raised btn-primary">Show now</button>

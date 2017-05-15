@@ -153,7 +153,7 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
     scheduleMessagePage(updateMessageForm).map(Ok(_))
   }
 
-  def submitNewMessage = UserAction.andThen(UserRequiredAction).async { implicit request =>
+  private def submitNewMessage(target: Call) = UserAction.andThen(UserRequiredAction).async { implicit request =>
     val user = request.user.get
     updateMessageForm.bindFromRequest().fold(
       formWithErrors => scheduleMessagePage(formWithErrors).map(BadRequest(_)),
@@ -168,11 +168,14 @@ class HomeController @Inject()(messageUpdater: MessageUpdater, val userService: 
             .map(_.atZone(user.timezone).toInstant),
           occurrence = formData.occurrence
         ))
-      } yield Redirect(routes.HomeController.scheduleMessage()
+      } yield Redirect(target
         .withFragment(s"message-${message.id.id}"))
         .flashing("message" -> "Your message has been scheduled")
     )
   }
+
+  def doScheduleMessage = submitNewMessage(routes.HomeController.scheduleMessage())
+  def doShowInstantMessage = submitNewMessage(routes.HomeController.index())
 
   private def scheduleMessagePage(form: Form[UpdateMessageData])(implicit request: UserRequest[_]): Future[Html] =
     for {

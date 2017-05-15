@@ -1,4 +1,4 @@
-@(scheduledMessages: Option[WithId[Message]])(implicit req: UserRequest[_])
+@(currentMessage: Option[WithId[Message]])(implicit req: UserRequest[_])
 
     @main("Home", currentPage = Some(Page.Index)) {
         <div class="outerMsgBox">
@@ -6,9 +6,9 @@
                 Currently shown message
             </h2>
             <div class="currentMsgBox">
-                @for(message <- scheduledMessages){
-                <h3>@message.message</h3>
-                }
+            @for(message <- currentMessage) {
+                <p>@message.message</p>
+            }
             </div>
         </div>
         <div class="infoBox">

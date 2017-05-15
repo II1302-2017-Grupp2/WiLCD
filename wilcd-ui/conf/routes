@@ -12,7 +12,8 @@ POST        /register                  controllers.HomeController.doSignUp
 GET         /settings                  controllers.HomeController.settings
 POST        /settings                  controllers.HomeController.saveSettings
 GET         /message                   controllers.HomeController.scheduleMessage
-POST        /message                   controllers.HomeController.submitNewMessage
+POST        /message                   controllers.HomeController.doScheduleMessage
+POST        /message/instant           controllers.HomeController.doShowInstantMessage
 GET         /message/delete/:id        controllers.HomeController.deleteMessage(id: Id[Message])
 POST        /message/delete/:id        controllers.HomeController.doDeleteMessage(id: Id[Message])
 GET         /logout                    controllers.HomeController.signOut

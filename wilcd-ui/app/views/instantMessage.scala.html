@@ -7,12 +7,12 @@
         </h2>
         <div class="currentMsgBox">
         @for(message <- scheduledMessages){
-            <h3>@message.message</h3>
+            <p>@message.message</p>
         }
         </div>
     </div>
     <h2>Instant Message</h2>
-    @helper.form(routes.HomeController.submitNewMessage) {
+    @helper.form(routes.HomeController.doShowInstantMessage()) {
         @helper.CSRF.formField
         <div class="form-group label-floating">
             <label class="control-label" for="message">Message</label>
@@ -22,7 +22,7 @@
             <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Display</button>
         </div>
         <div class="col-sm-2">
-            @helper.form(routes.HomeController.submitNewMessage()) {
+            @helper.form(routes.HomeController.doShowInstantMessage()) {
                 @helper.CSRF.formField
                 <input type="hidden" name="message" value=""/>
                 <button class="btn btn-lg btn-block btn-raised btn-danger" type="submit"><span class="glyphicon glyphicon-remove"></span> Clear</button>
