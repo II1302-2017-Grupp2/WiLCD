@@ -4,7 +4,7 @@ Projektdefinition
 
 Abstract
 
-| /*Detta dokument är en projektdefinition*/ /*(*//*E*//*k*//*l*//*u*//*n*//*d*//*,*/ /*2010) för studentprojekt eller examensarbete vid KTH ICT.*/                                                                                                                                                                                                                                                                                                                        |
+| /*Detta dokument är en projektdefinition*/ /*(*//*E*//*k*//*l*//*u*//*n*//*d*//*,*/ /*2*//*010) för studentprojekt eller examensarbete vid KTH ICT.*/                                                                                                                                                                                                                                                                                                                    |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | /*En projektdefinition är inte en projektplan utan föregår ofta en sådan. Projektdefinitionen kan vid behov utvecklas till en projektplan. För examensarbetet är det lämpligt att projektdefinitionen fungera som ”överenskommelse” mellan projektets huvudintressenter vilka oftast är ett företag, studenten som gör arbetet och akademin varifrån studenten kommer. Förändras projektet i något viktigt avseende så uppdateras och förankras projektdefinitionen.*/   |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -632,12 +632,12 @@ och resultatet framarbetas ifrån tidigare insamlade teorier och metoder.
    något trevligt bibliotek eller hemma hos sig själv och fortfarande
    jobba med projektet.
 
-   När projektgruppen väl befinner sig på plats på ICT så har vi ett
-   bord där samtliga medlemmar kan sitta tillsammans, vi har tillgång
-   till elektricitet och internet så att vi kan ladda våra datorer, vi
-   kan enkelt diskutera och demonstrera saker för varandra och vi har
-   även enkel tillgång till vår scrumtavla, toaletter samt café finns i
-   närheten så arbetsmiljön är väldigt god för gruppen.
+   När projektgruppen väl befinner sig på plats på ICT så försöker vi
+   att hitta ett bord där samtliga medlemmar kan sitta tillsammans, vi
+   har tillgång till elektricitet och internet så att vi kan ladda våra
+   datorer, vi kan enkelt diskutera och demonstrera saker för varandra
+   och vi har även enkel tillgång till vår scrumtavla, toaletter samt
+   café finns i närheten så arbetsmiljön är väldigt god för gruppen.
 
    Produkten som utvecklas kommer även den att underlätta arbetsmiljön
    för vår uppdragsgivare, då produkten tillhandahåller en portabel
@@ -647,12 +647,6 @@ och resultatet framarbetas ifrån tidigare insamlade teorier och metoder.
    'automatisk' och den kommer allt som allt underlätta både för vår
    uppdragsgivare samt dess kollegor, och leda till en bättre
    arbetsmiljö även för dessa.
-
-* \\
-  :PROPERTIES:
-  :CUSTOM_ID: section
-  :CLASS: Heading1NoBreak
-  :END:
 
 * Fas-, tids- och arbetsplan
   :PROPERTIES:
@@ -676,8 +670,10 @@ tid på projektets veckor?
    :CUSTOM_ID: fas--och-tidsplan
    :END:
 
-[[media/image2.png]]*Här ska en bild på ganttschemat läggas in när vi
-går över till orgmode/LateX*
+[[media/image2.png]]Denna bild visar iterationsplaneringen för detta
+projekt, projektet består av 5 iterationer som samtliga består av olika
+iterationsmål och varierar något i längd, klicka denna länk för att se
+projektplaneringen i full storlek.
 
 * Intressenter
   :PROPERTIES:
@@ -700,25 +696,25 @@ ambition att uppfylla dessa förväntningar och hur.
   :CLASS: Heading1NoBreak
   :END:
 
-Nedan beskrivs identifierade risker.
+Nedan beskrivs identifierade risker som finns i sprint 1 och 2, se
+appendix 2 för riskanalys av sprint 3 och 4.
 
-Risklista
-
-| ID   | Risk                                                              | Förebyggande åtgärd                                                                                                                                                                                                                                                                                         | Åtgärder vid riskutfall                                                                                                                                                                                              |
-|------+-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| R1   | Sjukdom                                                           | Genom att se till att alla projektmedlemmar bidrar till projektet undviker vi att någon projektmedlem överarbetar och därmed så minskar risken att någon medlem insjuknar. Eftersom alla är med och bidrar så har även alla medlemmar någorlunda koll på projektet och kan därför täcka upp för varandra.   | Sjuka gruppmedlemmar skall arbeta till sin bästa förmåga hemifrån för att påskynda tillfrisknad samt undvika att sprida sjukdom till resterande gruppmedlemmar.                                                      |
-| R2   | Tidsbrist                                                         | Planera upp projektet i sin helhet redan från start, använd denna plan i konjunktion med en agil arbetsprocess samt något hjälpmedel (i vårt fall en scrumboard) för att enkelt kunna se om planeringen efterföljs.                                                                                         | I fallet där gruppen hamnar efter planering så får gruppen tillsammans med uppdragsgivare komma överens om vilka delar av projektet som ska kompromissas så att projektet hinner klart i tid.                        |
-| R3   | Leverans avHårdvara                                               | Beställa hårdvaran från leverantörer som historiskt är kända för att uppfylla leveranskrav.                                                                                                                                                                                                                 | Ha backup kretskort som vi då själva får producera med hjälp av till exempel en fräs eller laser.                                                                                                                    |
-| R4   | Förlust av kod                                                    | Använda GitHub för versionshantering.                                                                                                                                                                                                                                                                       | GitHub innehåller en funktion där man kan gå tillbaka i versioner, och därmed få tillbaka äldre kod/data.                                                                                                            |
-| R5   | Samtliga medlemmar kan inte hantera samtliga delar av projektet   | Olika medlemmar specificerar sig samt har tidigare erfarenheter av olika delar av projektet, och denna kunskap måste förmedlas till samtliga medlemmar genom dokumentation samt utbildning, på detta sätt minimerar vi risken att någon medlem försvinner och projektet därför blir stående.                | Vid riskutfall ska tydlig dokumentation finnas tillgänglig så att medlemmar kan konsultera denna dokumentation och utifrån den genomföra delar projektet som personen I fråga kanske inte har specialiserat sig på   |
+| ID   | Risk                                                                       | Förebyggande åtgärd                                                                                                                                                                                                                                                                                         | Åtgärder vid riskutfall                                                                                                                                                                                                                                                |
+|------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| R1   | Sjukdom                                                                    | Genom att se till att alla projektmedlemmar bidrar till projektet undviker vi att någon projektmedlem överarbetar och därmed så minskar risken att någon medlem insjuknar. Eftersom alla är med och bidrar så har även alla medlemmar någorlunda koll på projektet och kan därför täcka upp för varandra.   | Sjuka gruppmedlemmar skall arbeta till sin bästa förmåga hemifrån för att påskynda tillfrisknad samt undvika att sprida sjukdom till resterande gruppmedlemmar.                                                                                                        |
+| R2   | Tidsbrist                                                                  | Planera upp projektet i sin helhet redan från start, använd denna plan i konjunktion med en agil arbetsprocess samt något hjälpmedel (i vårt fall en scrumboard) för att enkelt kunna se om planeringen efterföljs.                                                                                         | I fallet där gruppen hamnar efter planering så får gruppen tillsammans med uppdragsgivare komma överens om vilka delar av projektet som ska kompromissas så att projektet hinner klart i tid.                                                                          |
+| R3   | Leverans avHårdvara                                                        | Beställa hårdvaran från leverantörer som historiskt är kända för att uppfylla leveranskrav.                                                                                                                                                                                                                 | Ha backup kretskort som vi då själva får producera med hjälp av till exempel en fräs eller laser.                                                                                                                                                                      |
+| R4   | Förlust av kod                                                             | Använda GitHub för versionshantering.                                                                                                                                                                                                                                                                       | GitHub innehåller en funktion där man kan gå tillbaka i versioner, och därmed få tillbaka äldre kod/data.                                                                                                                                                              |
+| R5   | Samtliga medlemmar kan inte hantera samtliga delar av projektet            | Olika medlemmar specificerar sig samt har tidigare erfarenheter av olika delar av projektet, och denna kunskap måste förmedlas till samtliga medlemmar genom dokumentation samt utbildning, på detta sätt minimerar vi risken att någon medlem försvinner och projektet därför blir stående.                | Vid riskutfall ska tydlig dokumentation finnas tillgänglig så att medlemmar kan konsultera denna dokumentation och utifrån den genomföra delar projektet som personen I fråga kanske inte har specialiserat sig på                                                     |
+| R6   | Medlemmar kommer ej överens och det bildas sprickningar I projektgruppen   | Då första sprinten går ut mycket på att läsa teori och lära känna varandra så kastas gruppen ej in i hårt arbete direkt, därför har vi tid att lära känna varandra och känna av varandras styrkor och svagheter, och jobba för att alla ska känna att de har en plats i projektgruppen                      | Om gruppen verkligen ej kommer överens så finns inget annat alternativ än att försöka bryta upp gruppen och bilda nya grupper, detta går antagligen att ordna med kursansvarig och borde således ej vara ett problem, men det är verkligen ett värsta-fall scenario.   |
 
 Riskbedömning
 
 |                  | Hög sannolikhet   |      |
 |------------------+-------------------+------+----------+-----------------|
-| Liten påverkan   | R4                | R2   |          | Stor påverkan   |
+| Liten påverkan   | R4,               | R2   |          | Stor påverkan   |
 |                  | R1                |      | R3, R5   |                 |
-|                  |                   |      |          |                 |
+|                  |                   |      | R6       |                 |
 |                  | Låg sannolikhet   |      |
 
 * Förändringsplan
@@ -727,7 +723,7 @@ Riskbedömning
   :CLASS: Heading1NoBreak
   :END:
 
-Ange hur hanteras och meddelas viktiga förändringar i projektet.
+Ange hur viktiga förändringar i projektet hanteras och meddelas.
 
 * Kostnadsplan
   :PROPERTIES:
@@ -737,18 +733,18 @@ Ange hur hanteras och meddelas viktiga förändringar i projektet.
 
 Vilka kostnader finns i projektet? Vem betalar vad? Licenser?
 
-| Vad?                   | Betalas av?   | Kostnad        | Beskrivning                                                                                |
-|------------------------+---------------+----------------+--------------------------------------------------------------------------------------------|
-| Display                | Examinator    | Vet ej         | Displayen som ska användas för meddelandet.                                                |
-| Wifi-modul (ESP8266)   | Examinator    | Cirka 100 :-   | Wifi-modul som kopplas till displayen så att den kan kommunicera trådlöst med Raspberry.   |
-| Kretskort              | Bengt Molin   | Cirka 100 :-   | Det kretskort som ska användas för att koppla displayen till Raspberry Pi.                 |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
-|                        |               |                |                                                                                            |
+| Vad?                   | Betalas av?               | Kostnad                  | Beskrivning                                                                                                                                                                                                                                           |
+|------------------------+---------------------------+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Frimärks-display       | Anders Sjögren            | Vet ej                   | Displayen som ska användas för meddelandet.                                                                                                                                                                                                           |
+| Wifi-modul (ESP8266)   | Anders Sjögren            | Cirka 100 :-             | Wifi-modul som kopplas till displayen så att den kan kommunicera trådlöst med Raspberry.                                                                                                                                                              |
+| Kretskort              | Bengt Molin               | Cirka 100 :-             | Det kretskort som ska användas för att koppla displayen till Raspberry Pi.                                                                                                                                                                            |
+| E-ink display          | Anders Sjögren            | Cirka 500:- inkl frakt   | En större display som använder bläck för att visa innehåll, denna display drar mindre ström och är lite roligare att hålla på med, planen är att gå över från frimärksdisplayen till denna och använda frimärksdisplayen för debug meddelanden etc.   |
+| Raspberry Pi v.3       | Lånas av Anders Sjögren   | Fanns redan inköpt       | Den Raspberry Pi som skall driva projektet, webbapplikationen skall köras på denna rasp och den ska vara kopplad via WiFi till displayen.                                                                                                             |
+|                        |                           |                          |                                                                                                                                                                                                                                                       |
+|                        |                           |                          |                                                                                                                                                                                                                                                       |
+|                        |                           |                          |                                                                                                                                                                                                                                                       |
+|                        |                           |                          |                                                                                                                                                                                                                                                       |
+|                        |                           |                          |                                                                                                                                                                                                                                                       |
 
 * Dokumentplan
   :PROPERTIES:
@@ -759,18 +755,18 @@ Vilka kostnader finns i projektet? Vem betalar vad? Licenser?
 Vilka dokument skall användas, underhållas, granskas och levereras? När
 skall detta ske och för vilka?
 
-| Namn                | Ska underhållas?   | Hur ofta?                         | Beskrivning                                                                                                        |
-|---------------------+--------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------|
-| Projektdefinition   | Ja                 | Varje sprint                      | Dokument som definierar projektet.                                                                                 |
-| Iterationsplan      | Ja                 | Varje vecka                       | Grovplanering över hela projektet.                                                                                 |
-| Scrumboard          | Ja                 | Varje Vecka                       | Tavla som ger en översikt över Scrumen.                                                                            |
-| Vision              | Nej                | -                                 | Vår vision över projektet, skrivs i början av projektet och beskriver hur och varför vi ska genomföra projektet.   |
-| Kursrapport         | Ja                 | Varje vecka from. Iteration 2-3   | Kursrapporten som ska lämnas in i slutet av kursen.                                                                |
-|                     |                    |                                   |                                                                                                                    |
-|                     |                    |                                   |                                                                                                                    |
-|                     |                    |                                   |                                                                                                                    |
-|                     |                    |                                   |                                                                                                                    |
-|                     |                    |                                   |                                                                                                                    |
+| Namn                                                                       | Ska underhållas?                             | Hur ofta?                         | Beskrivning                                                                                                                                                                                                                                                                       |
+|----------------------------------------------------------------------------+----------------------------------------------+-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Projektdefinition                                                          | Ja                                           | Varje sprint                      | Dokument som definierar projektet.                                                                                                                                                                                                                                                |
+| Iterationsplan                                                             | Ja                                           | Varje vecka                       | Grovplanering över hela projektet.                                                                                                                                                                                                                                                |
+| Scrumboard                                                                 | Ja                                           | Varje Vecka                       | Tavla som ger en översikt över Scrumen.                                                                                                                                                                                                                                           |
+| Vision                                                                     | Nej                                          | -                                 | Vår vision över projektet, skrivs i början av projektet och beskriver hur och varför vi ska genomföra projektet.                                                                                                                                                                  |
+| Kursrapport                                                                | Ja                                           | Varje vecka from. Iteration 2-3   | Kursrapporten som ska lämnas in i slutet av kursen.                                                                                                                                                                                                                               |
+| Tekniska specifikationer för olika komponenter i systemet (fyra stycken)   | Nej, men ska dock skrivas i period 4 och 5   | -                                 | Tekniska specifikationer som beskriver komponenter i systemet mer i detalj så att läsare antingen kan lära sig hur systemet fungerar eller få mer information så att de kan vidareutveckla systemet. (Upp till författaren att välja på vilken nivå specifikationen ska läggas)   |
+|                                                                            |                                              |                                   |                                                                                                                                                                                                                                                                                   |
+|                                                                            |                                              |                                   |                                                                                                                                                                                                                                                                                   |
+|                                                                            |                                              |                                   |                                                                                                                                                                                                                                                                                   |
+|                                                                            |                                              |                                   |                                                                                                                                                                                                                                                                                   |
 
 * Utbildningsplan
   :PROPERTIES:
@@ -780,37 +776,18 @@ skall detta ske och för vilka?
 
 Behov av förstudie, inläsning, utbildning.
 
-| Namn                 | När?        | Varför?                                                                                                            | Beskrivning                                                                                    |
-|----------------------+-------------+--------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------|
-| Git intro            | Sprint #1   | För att vi ska använda Git i kursen.                                                                               | En video-introduktion i Git som visar hur man sätter upp Wikin samt ett repo.                  |
-| Text om Scrum        | Sprint #1   | För att vi ska jobba med Scrum i kursen.                                                                           | En text som förklarar hur författaren jobbar med Scrum i ”riktiga” IT-Projekt.                 |
-| Artikel om KanBan    | Sprint #3   | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik                   | Läsa artikel om KanBan som finns på kurswebben under ”Iterationsplanering - 3”                 |
-| Artikel om Essence   | Sprint #3   | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling   | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet.   |
-|                      |             |                                                                                                                    |                                                                                                |
-|                      |             |                                                                                                                    |                                                                                                |
-|                      |             |                                                                                                                    |                                                                                                |
-|                      |             |                                                                                                                    |                                                                                                |
-|                      |             |                                                                                                                    |                                                                                                |
-|                      |             |                                                                                                                    |                                                                                                |
-
-* Rapport- och granskningsplan
-  :PROPERTIES:
-  :CUSTOM_ID: rapport--och-granskningsplan
-  :CLASS: Heading1NoBreak
-  :END:
-
-Syfte och tider för rapportering och granskning
-
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
+| Namn                 | När?        | Varför?                                                                                                            | Beskrivning                                                                                                                                                                    |
+|----------------------+-------------+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Git intro            | Sprint #1   | För att vi ska använda Git i kursen.                                                                               | En video-introduktion i Git som förklarar gruderna inom git, samt visar hur man sätter upp ett reposity och en wiki på webbsidan GitHub.                                       |
+| Handbok om Scrum     | Sprint #1   | För att vi ska jobba med Scrum i kursen.                                                                           | En handbok som förklarar hur författaren jobbar med Scrum i skarpa IT-Projekt. Denna text skall ge oss en inblick i hur Scrum används och hur vi kan använda oss utav Scrum.   |
+| Handbok om KanBan    | Sprint #3   | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik                   | Läsa Handbok om KanBan och Scrum som finns på kurswebben. Detta för att få ytterliggare                                                                                        |
+| Artikel om Essence   | Sprint #3   | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling   | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet.                                                                                   |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
+|                      |             |                                                                                                                    |                                                                                                                                                                                |
 
 * Appendix A - Referenser
   :PROPERTIES:
