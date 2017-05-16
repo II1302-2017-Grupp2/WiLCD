@@ -82,7 +82,7 @@ module box() {
 }*/
 
 rotate([180, 0, 0]) {
-    translate([150, -80, -64]) {
+    translate([140, -80, -84]) {
         intersection() {
             box();
             translate([-50, -50, 25]) {
