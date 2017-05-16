@@ -153,12 +153,9 @@ void Display_Char(char msg) {
 }
 
 void Display_Str(char *msg) {
-	Epaper_Splash_Status(msg);
 	Display_Newline();
-	while (*msg != 0) {
-		Display_Char(*msg);
-		++msg;
-	}
+	Display_Strn(msg, (uint16_t) strlen(msg));
+	Epaper_Splash_Status(msg);
 }
 
 void Display_Strn(uint8_t *msg, uint16_t len) {
