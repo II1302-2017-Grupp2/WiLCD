@@ -63,6 +63,7 @@ char *espFailMsg = "FAIL";
 char *espIpDataMsg = "+IPD,";
 
 int8_t ESP_WaitForMsg(char *msg, uint8_t loop);
+int8_t ESP_WaitForMsg_Timeout(char *msg, int timeout);
 
 void ESP_Init() {
 	uartEspPos = 0;
@@ -79,15 +80,7 @@ void ESP_Init() {
 	HAL_GPIO_WritePin(ESP_RESET_GPIO_Port, ESP_RESET_Pin, GPIO_PIN_SET);
 
 	UART_DebugLog("Wi-Fi Booting");
-	uint8_t bootOk = 0;
-	for (int i = 0; i < 400; i++) {
-		if (ESP_WaitForMsg(espReadyMsg, 0) == 1) {
-			bootOk = 1;
-			break;
-		}
-		HAL_Delay(10);
-	}
-	if (bootOk == 0) {
+	if (ESP_WaitForMsg_Timeout(espReadyMsg, 4000) != 1) {
 		UART_DebugLog("Wi-Fi Boot Timeout, Resetting MCU...");
 		HAL_Delay(1000);
 		HAL_NVIC_SystemReset();
@@ -97,6 +90,7 @@ void ESP_Init() {
 	ESP_WaitForMsg(espReadyMsg, 1);*/
 	ESP_SendCommand("AT+RFPOWER=5"); // Send ASAP to prevent brownout
 	UART_DebugLog("Wi-Fi Configuring");
+	ESP_SendCommand("AT+SLEEP=0"); // Don't you dare sleep
 	ESP_SendCommand("AT");
 	ESP_SendCommand("ATE0"); // Disable command echo
 	ESP_SendCommand("AT+CIPMUX=0");
@@ -107,12 +101,13 @@ void ESP_Init() {
 		UART_DebugLog("Wi-Fi Failed");
 		HAL_NVIC_SystemReset();
 	}
-	ESP_SendCommand("AT+SLEEP=1"); // Allow sleeping
 	UART_DebugLog("Wi-Fi TCP Connecting");
-	if (ESP_SendCommand("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797") == 0) {
+	ESP_SendCommand_NoWait("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797");
+	if (ESP_WaitForOk_Timeout(3000) != 1) {
 		UART_DebugLog("Wi-Fi TCP Failed");
 		HAL_NVIC_SystemReset();
 	}
+	ESP_SendCommand("AT+SLEEP=1"); // Allow sleeping
 	UART_DebugLog("Wi-Fi Connected");
 }
 
@@ -169,13 +164,33 @@ int8_t ESP_WaitForMsg(char *msg, uint8_t loop) {
 	return -1;
 }
 
+int8_t ESP_WaitForMsg_Timeout(char *msg, int timeout) {
+	int step = 10;
+	for (int i = 0; i < timeout / step; i++) {
+		int8_t gotOk = ESP_WaitForMsg(msg, 0);
+		if (gotOk >= 0) {
+			return gotOk;
+		}
+		HAL_Delay(step);
+	}
+	return -1;
+}
+
 int8_t ESP_WaitForOk() {
 	return ESP_WaitForMsg(espOkMsg, 1);
 }
 
-int8_t ESP_SendCommand(char *msg) {
+int8_t ESP_WaitForOk_Timeout(int timeout) {
+	return ESP_WaitForMsg_Timeout(espOkMsg, timeout);
+}
+
+void ESP_SendCommand_NoWait(char *msg) {
 	HAL_UART_Transmit(&HUART_ESP, (uint8_t *)msg, strlen(msg), 1000);
 	HAL_UART_Transmit(&HUART_ESP, (uint8_t *)"\r\n", 2, 1000);
+}
+
+int8_t ESP_SendCommand(char *msg) {
+	ESP_SendCommand_NoWait(msg);
 	return ESP_WaitForOk();
 }
 

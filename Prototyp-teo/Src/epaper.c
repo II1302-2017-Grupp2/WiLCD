@@ -420,8 +420,8 @@ void Epaper_Splash_Init() {
 
 void Epaper_Splash_Shutdown() {
 	epaperSplashOn = 0;
-	Epaper_Clear();
-	Epaper_Flush();
+	/*Epaper_Clear();
+	Epaper_Flush();*/
 }
 
 void Epaper_Splash_Status(char *msg) {

@@ -71,6 +71,8 @@ void MX_USART2_UART_Init(void);
 
 void ESP_Init();
 int8_t ESP_WaitForOk();
+int8_t ESP_WaitForOk_Timeout();
+void ESP_SendCommand_NoWait(char *msg);
 int8_t ESP_SendCommand(char *msg);
 uint16_t ESP_ReadLine(uint8_t *buf);
 int16_t ESP_TCP_ReadLine(uint8_t *buf);

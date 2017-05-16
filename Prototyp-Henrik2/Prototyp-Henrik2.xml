@@ -4,6 +4,6 @@
     <name>Prototyp-Henrik2</name>
     <mcuId>stm32f303c6tx</mcuId>
     <dbgIF>SWD</dbgIF>
-    <dbgDEV>ST-LinkV2-1</dbgDEV>
+    <dbgDEV>ST-Link</dbgDEV>
   </board>
 </targetDefinitions>
