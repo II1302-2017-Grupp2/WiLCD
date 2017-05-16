@@ -1,8 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
-  * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  * @file    stm32f3xx_it.h
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   *
   * COPYRIGHT(c) 2017 STMicroelectronics
@@ -31,66 +30,37 @@
   *
   ******************************************************************************
   */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
+#ifndef __STM32F3xx_IT_H
+#define __STM32F3xx_IT_H
+
 #ifdef __cplusplus
  extern "C" {
-#endif
+#endif 
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f3xx_hal.h"
-#include "main.h"
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
 
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-extern UART_HandleTypeDef huart1;
-extern UART_HandleTypeDef huart2;
-
-/* USER CODE BEGIN Private defines */
-
-#ifdef IS_DISCOVERY
-#define HUART_DEBUG (huart1)
-#define HUART_ESP (huart2)
-#else
-#define HUART_ESP (huart1)
-#endif
-
-#define ESP_BUF_SIZE (400)
-
-/* USER CODE END Private defines */
-
-extern void Error_Handler(void);
-
-void MX_USART1_UART_Init(void);
-void MX_USART2_UART_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-void ESP_Init();
-int8_t ESP_WaitForOk();
-int8_t ESP_SendCommand(char *msg);
-uint16_t ESP_ReadLine(uint8_t *buf);
-int16_t ESP_TCP_ReadLine(uint8_t *buf);
-void ESP_SleepUntilMessage();
-
-void UART_DebugLog(char *msg);
-
-/* USER CODE END Prototypes */
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void MemManage_Handler(void);
+void BusFault_Handler(void);
+void UsageFault_Handler(void);
+void SVC_Handler(void);
+void DebugMon_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
+void DMA1_Channel5_IRQHandler(void);
+void RTC_Alarm_IRQHandler(void);
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usart_H */
 
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
+#endif /* __STM32F3xx_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

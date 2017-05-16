@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
-  * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  * File Name          : gpio.h
+  * Description        : This file contains all the functions prototypes for 
+  *                      the gpio  
   ******************************************************************************
   *
   * COPYRIGHT(c) 2017 STMicroelectronics
@@ -31,9 +31,10 @@
   *
   ******************************************************************************
   */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
+#ifndef __gpio_H
+#define __gpio_H
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -46,44 +47,20 @@
 
 /* USER CODE END Includes */
 
-extern UART_HandleTypeDef huart1;
-extern UART_HandleTypeDef huart2;
-
 /* USER CODE BEGIN Private defines */
-
-#ifdef IS_DISCOVERY
-#define HUART_DEBUG (huart1)
-#define HUART_ESP (huart2)
-#else
-#define HUART_ESP (huart1)
-#endif
-
-#define ESP_BUF_SIZE (400)
 
 /* USER CODE END Private defines */
 
-extern void Error_Handler(void);
-
-void MX_USART1_UART_Init(void);
-void MX_USART2_UART_Init(void);
+void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
-void ESP_Init();
-int8_t ESP_WaitForOk();
-int8_t ESP_SendCommand(char *msg);
-uint16_t ESP_ReadLine(uint8_t *buf);
-int16_t ESP_TCP_ReadLine(uint8_t *buf);
-void ESP_SleepUntilMessage();
-
-void UART_DebugLog(char *msg);
 
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usart_H */
+#endif /*__ pinoutConfig_H */
 
 /**
   * @}

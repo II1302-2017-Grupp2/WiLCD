@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
+  * File Name          : gpio.c
   * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  *                      of all used GPIO pins.
   ******************************************************************************
   *
   * COPYRIGHT(c) 2017 STMicroelectronics
@@ -31,59 +31,65 @@
   *
   ******************************************************************************
   */
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
-#ifdef __cplusplus
- extern "C" {
-#endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f3xx_hal.h"
-#include "main.h"
+#include "gpio.h"
+/* USER CODE BEGIN 0 */
 
-/* USER CODE BEGIN Includes */
+/* USER CODE END 0 */
 
-/* USER CODE END Includes */
+/*----------------------------------------------------------------------------*/
+/* Configure GPIO                                                             */
+/*----------------------------------------------------------------------------*/
+/* USER CODE BEGIN 1 */
 
-extern UART_HandleTypeDef huart1;
-extern UART_HandleTypeDef huart2;
+/* USER CODE END 1 */
 
-/* USER CODE BEGIN Private defines */
+/** Configure pins as 
+        * Analog 
+        * Input 
+        * Output
+        * EVENT_OUT
+        * EXTI
+*/
+void MX_GPIO_Init(void)
+{
 
-#ifdef IS_DISCOVERY
-#define HUART_DEBUG (huart1)
-#define HUART_ESP (huart2)
-#else
-#define HUART_ESP (huart1)
-#endif
+  GPIO_InitTypeDef GPIO_InitStruct;
 
-#define ESP_BUF_SIZE (400)
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
-/* USER CODE END Private defines */
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, ESP_RESET_Pin|ESP_ENABLE_Pin|ESP_GPIO2_Pin|ESP_GPIO0_Pin, GPIO_PIN_RESET);
 
-extern void Error_Handler(void);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin|EPAPER_RESET_Pin 
+                          |EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
-void MX_USART1_UART_Init(void);
-void MX_USART2_UART_Init(void);
+  /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
+  GPIO_InitStruct.Pin = ESP_RESET_Pin|ESP_ENABLE_Pin|ESP_GPIO2_Pin|ESP_GPIO0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-/* USER CODE BEGIN Prototypes */
+  /*Configure GPIO pins : PBPin PBPin PBPin PBPin 
+                           PBPin PBPin PB8 PB9 */
+  GPIO_InitStruct.Pin = EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin|EPAPER_RESET_Pin 
+                          |EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-void ESP_Init();
-int8_t ESP_WaitForOk();
-int8_t ESP_SendCommand(char *msg);
-uint16_t ESP_ReadLine(uint8_t *buf);
-int16_t ESP_TCP_ReadLine(uint8_t *buf);
-void ESP_SleepUntilMessage();
-
-void UART_DebugLog(char *msg);
-
-/* USER CODE END Prototypes */
-
-#ifdef __cplusplus
 }
-#endif
-#endif /*__ usart_H */
+
+/* USER CODE BEGIN 2 */
+
+/* USER CODE END 2 */
 
 /**
   * @}

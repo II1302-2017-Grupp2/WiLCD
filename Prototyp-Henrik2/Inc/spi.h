@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
+  * File Name          : SPI.h
   * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  *                      of the SPI instances.
   ******************************************************************************
   *
   * COPYRIGHT(c) 2017 STMicroelectronics
@@ -32,8 +32,8 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
+#ifndef __spi_H
+#define __spi_H
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -46,44 +46,24 @@
 
 /* USER CODE END Includes */
 
-extern UART_HandleTypeDef huart1;
-extern UART_HandleTypeDef huart2;
+extern SPI_HandleTypeDef hspi1;
 
 /* USER CODE BEGIN Private defines */
-
-#ifdef IS_DISCOVERY
-#define HUART_DEBUG (huart1)
-#define HUART_ESP (huart2)
-#else
-#define HUART_ESP (huart1)
-#endif
-
-#define ESP_BUF_SIZE (400)
 
 /* USER CODE END Private defines */
 
 extern void Error_Handler(void);
 
-void MX_USART1_UART_Init(void);
-void MX_USART2_UART_Init(void);
+void MX_SPI1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
-void ESP_Init();
-int8_t ESP_WaitForOk();
-int8_t ESP_SendCommand(char *msg);
-uint16_t ESP_ReadLine(uint8_t *buf);
-int16_t ESP_TCP_ReadLine(uint8_t *buf);
-void ESP_SleepUntilMessage();
-
-void UART_DebugLog(char *msg);
 
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usart_H */
+#endif /*__ spi_H */
 
 /**
   * @}

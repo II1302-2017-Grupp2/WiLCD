@@ -1,8 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
-  * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  * File Name          : main.h
+  * Description        : This file contains the common defines of the application
   ******************************************************************************
   *
   * COPYRIGHT(c) 2017 STMicroelectronics
@@ -32,65 +31,52 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
-#ifdef __cplusplus
- extern "C" {
-#endif
-
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f3xx_hal.h"
-#include "main.h"
+#ifndef __MAIN_H
+#define __MAIN_H
+  /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
-extern UART_HandleTypeDef huart1;
-extern UART_HandleTypeDef huart2;
+/* Private define ------------------------------------------------------------*/
+
+#define ESP_RESET_Pin GPIO_PIN_5
+#define ESP_RESET_GPIO_Port GPIOA
+#define ESP_ENABLE_Pin GPIO_PIN_6
+#define ESP_ENABLE_GPIO_Port GPIOA
+#define ESP_GPIO2_Pin GPIO_PIN_7
+#define ESP_GPIO2_GPIO_Port GPIOA
+#define EPAPER_CS_Pin GPIO_PIN_10
+#define EPAPER_CS_GPIO_Port GPIOB
+#define EPAPER_BUSY_Pin GPIO_PIN_11
+#define EPAPER_BUSY_GPIO_Port GPIOB
+#define EPAPER_FLASH_CS_Pin GPIO_PIN_12
+#define EPAPER_FLASH_CS_GPIO_Port GPIOB
+#define EPAPER_RESET_Pin GPIO_PIN_13
+#define EPAPER_RESET_GPIO_Port GPIOB
+#define EPAPER_POWER_Pin GPIO_PIN_14
+#define EPAPER_POWER_GPIO_Port GPIOB
+#define EPAPER_DISCHARGE_Pin GPIO_PIN_15
+#define EPAPER_DISCHARGE_GPIO_Port GPIOB
+#define ESP_GPIO0_Pin GPIO_PIN_8
+#define ESP_GPIO0_GPIO_Port GPIOA
+#define ESP_UART_TX_Pin GPIO_PIN_9
+#define ESP_UART_TX_GPIO_Port GPIOA
+#define ESP_UART_RX_Pin GPIO_PIN_10
+#define ESP_UART_RX_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
-#ifdef IS_DISCOVERY
-#define HUART_DEBUG (huart1)
-#define HUART_ESP (huart2)
-#else
-#define HUART_ESP (huart1)
-#endif
-
-#define ESP_BUF_SIZE (400)
-
 /* USER CODE END Private defines */
 
-extern void Error_Handler(void);
-
-void MX_USART1_UART_Init(void);
-void MX_USART2_UART_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-void ESP_Init();
-int8_t ESP_WaitForOk();
-int8_t ESP_SendCommand(char *msg);
-uint16_t ESP_ReadLine(uint8_t *buf);
-int16_t ESP_TCP_ReadLine(uint8_t *buf);
-void ESP_SleepUntilMessage();
-
-void UART_DebugLog(char *msg);
-
-/* USER CODE END Prototypes */
-
-#ifdef __cplusplus
-}
-#endif
-#endif /*__ usart_H */
+/**
+  * @}
+  */ 
 
 /**
   * @}
-  */
+*/ 
 
-/**
-  * @}
-  */
-
+#endif /* __MAIN_H */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
