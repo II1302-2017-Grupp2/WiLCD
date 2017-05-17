@@ -19,6 +19,9 @@ module box() {
             translate([12.5, 10, 20]) {
                 cube([78, 61, 44]);
             }
+            translate([0, -13, 20]) {
+                cube([60,60,40]);
+            }
             
             translate([16.5, 15, 40]) {
                 cylinder(40, d = 3, $fn = 20);
