@@ -108,99 +108,102 @@
 \IEEEpeerreviewmaketitle
 
 \section{Om detta dokument och undersökning}
-Detta dokument är en del av examen i kursen ''Projekt och projektmetoder'' och skall förmedla känslor, tankar och slutsatser vilket vår projektgrupp förvärvat under  projektarbete i denna kurs. Detta dokument kommer att läsas av kursens examinator och utvärderas enligt ''Blooms taxonomi''
-, en stor del av detta dokument skrivs gemensamt av gruppens medlemmar, medan vissa specifika delar skrivs av enskilda medlemmar baserat på den projektroll de antagit under projektet. Vilket som ett exempel kan ges att sudenten som hade rollen som projektledare att skriva om sina erfarenheter och slutsatser inom den rollen.
+Detta dokument är ett försök att på ett vetenskapligt sätt undersöka projektmetoder inom små IT-projekt. Dokumentet är också delvis en träning på att skriva vetenskapliga rapporter och en övning inför examensarbetet. Dokumentet riktar sig mot akademin och specifikt mot kursens examinator som kommer att utvärdera rapporten enligt ''Blooms taxonomi'' \cite{krathwohl10}.\\
+\\
+Rapportens disposition är som följer. Sektion \ref{sec:intro} introducerar rapporten. Sektion \ref{sec:teori} redovisar bakomliggande teori och ingenjörspraxis. Sektion \ref{sec:under} redovisar vår undersökningsmetod. Sektion \ref{sec:genom} beskriver genomförandet. Sektion \ref{sec:res} redovisar resultatet av undersökningen. I sektion \ref{sec:analys} analyseras undersökningen och eventuella förbättringsförslag lämnas. I sektion \ref{sec:disk} diskuteras undersökningen och resultatet av undersökningen. Sektion \ref{sec:slutord} innehåller slutord. \\
+\\
+Detta dokuments trovärdighet anses vara hög, då undersökningsmetoden som använts är vetenskaplig KOLLA UPP MED ANDERS VEM SOM SKAPAT METODEN, vilket i sin tur leder till att resultaten är framtagna på ett vetenskapligt sätt. De projektmetoder vi undersöker är erkända och välanvanda inom IT-projekt, och dokumentet refererar till erkända böcker, tidsskrifter samt vetenskapliga texter. Dessa egenskaper bygger tillsammans upp projektets trovärdighet och vi är övertygade om att en likadan undersökning med lika många deltagare och samma förutsättningar skulle komma fram till så gott som samma slutsatser som vi har gjort.
 
-Detta dokuments trovärdighet anses vara hög, då innehållet är baserat på våra egna erfarenheter och upplevelser från att ha genomfört detta projekt, vars projektmetoder bygger på erkända och välanvända projektmetoder inom just IT-projekt och produkt-utveckling. Dokumentet innehåller också referenser till  erkända böcker, tidsskrifer samt vetenskapliga texter inom projektmetoder, vilket ger arbetet en hög trovädighetsfaktor.
-\section{Introduktion}
-
-%\hfill mds
- 
-%\hfill August 26, 2015
+\section{Introduktion} \label{sec:intro}
 
 \subsection{Bakgrund}
-Detta är en rapport som skrivs i samband med kursen ''Projekt och projektmetoder'' i vilket studenter i små grupper genomför ett IT-projekt i syfte att pröva på samt analysera olika projektmetoder, dessa analyser ska sedan diskuteras och framföras i denna rapport för att kunna besvara frågeställningen ''Vad är en bra projektmetod för små IT-projekt''. För att besvara denna frågeställning ska studenterna i sina projektgrupper skapa en produkt som innefattar både hårdvara, mjukvara, datornätverk samt elektronik.\\
+Detta dokument är en del av examinationen i kursen ''Projekt och projektmetoder'' i vilket studenter i små grupper genomför ett IT-projekt som innefattar både hårdvara, mjukvara, datornätverk samt elektronik. Syftet med att genomföra projektet är att undersöka samt analysera olika projektmetoder, dessa analyser ska sedan diskuteras och framföras i denna rapport för att kunna besvara frågeställningen ''Vad är en bra projektmetod för små IT-projekt''.\\
 \\
 Kursens syfte är att fördjupa studenternas kunskap inom projektmetodik och skall fungera som en förberedelse inför både examensarbete samt det fortsatta arbetslivet efter examen. Kursen projektgrupper består av både data- samt elektrostudenter, och tanken bakom detta är att studenter från de olika programmen har olika expertisområden, vilket leder till att olika studenter har olika ansvarsområden inom projektgruppen, ett mål med kursen är att projektgruppen tillsammans ska utvecklas och dela med sig av sin kunskap, vilket leder till att samtliga medlemmar ytterliggare utvecklas på en personlig nivå.
 
 \subsection{Problemformulering}
-Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra projektmetod för små IT-projekt?'',  för att besvara denna frågeställning måste gruppen först undersöka samt komma överens om vad en bra projektmetod är. En bra utgångspunkt för att beskriva en bra projektmetod är projekt-triangel.En bra projektmetod kan ses som en metod där projektgruppen på ett strukturerat och planerat vis tar fram en produkt som tillfredställer kundens krav, och på samma gång utvecklar projektgruppens effektivitet och sammarbetsförmåga. En bra projektmetod innefattar hjälpmedel som underlättar och förbättrar arbetsgången och tillåter projektgruppen att snabbt och ofta ändra arbetssätt, arbetsbörda och/eller resultatet av projektarbetet. Detta är grundkraven för en bra projektmetod och det är därför som agila och iterativa projektmetoder är så populära inom IT-projekt. IT-projekt, och specifikt projekt som innefattar mjukvaru-utveckling är speciella, då det är lätt att projektgruppen skapar något som inte alls överensstämmer med vad kundens vision var. Det är därför viktigt att ofta återkoppla till kunden och snabbt kunna byta riktning i de fall där kunden känner att projektgruppen gått fel. Sommerville beskriver ett enligt honom bra arbetssätt för att genomföra IT-projekt i sin bok \textit{Software Engineering}\cite{Sommerville10} som innefattar fyra olika steg:\\
+Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra projektmetod för små IT-projekt?''. För att besvara denna frågeställning måste gruppen först undersöka samt komma överens om vad en bra projektmetod är. En vettig utgångspunkt för att beskriva en bra projektmetod är projekt-triangeln \cite[s. 128-129]{Eklund14}. En bra projektmetod kan då beskrivas som en metod där projektgruppen på ett strukturerat och planerat vis tar fram en produkt som tillfredställer kundens krav och ej överskrider projektets budget. En bra projektmetod utvecklar också under arbetets gång projektgruppens effektivitet och sammarbetsförmåga. En bra projektmetod innefattar hjälpmedel som underlättar och förbättrar arbetsgången och tillåter projektgruppen att snabbt och ofta ändra arbetssätt, arbetsbörda och/eller förväntat resultatet av projektarbetet. Detta är grundkraven för en bra projektmetod och det är därför som agila och iterativa projektmetoder är så populära inom IT-projekt.\\
 \\
-1. Produktspecifikation, där projektgruppen tillsammans med kunden kommer överens om vilka krav och specifikationer som finns på produkten som ska tas fram.\\
-\\
-2. Produktframtagning, där projektgruppen designar och jobbar för att ta fram en produkt.\\
-\\
-3. Produktvalidering, där produkten blir testad och validerad för att försäkra att produkten uppfyller kraven.\\
-\\
-4. Produktutveckling, där projektgruppen ändrar produkten beroende på eventuella önskemål från kund.\\
-\\
-Dessa fyra steg skall göras i små iterationer så att en prototyp av produkten produceras snabbt, kan valideras och testas och samtal kan hållas med kunden för att se till att projektgruppen är på rätt spår, och i de fall kunden känner att projektgruppen har tänkt fel eller kommer på fler krav och/eller funktioner så kan projektgruppen snabbt börja utveckla och testa för dessa nya önskemål.
-
+Efter att ha sanktionerat denna definition av vad en bra projektmetod är blir det betydligt enklare och tydligare att resonera kring den övergripande frågeställningen.
 \subsection{Undersökningsstrategi/lösningsstrategi}
-Strategien för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen har genomfört ett projekt som har lett till en slutprodukt som levererats till kund. I detta projekt har projektgruppen testat ett antal olika projektmetoder, som samtliga medlemmar i gruppen tillsammans genom diskussion har beslutat att undersöka närmare, dessa projektmetoder har sedan diskuterats, analyserats och slutsatser har dragits, och dessa slutsatser kommer förmedlas i detta dokument.
+Strategien för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen genomfört ett litet IT-projekt. Inom detta projekt testas ett antal förvalda projektmetoder och varje medlem har tagit en specifik roll i projektet. Det är sedan varje medlems uppgift att inom denna roll experimentellt under projektets gång samla in information och intryck om vilka projektmetoder som fungerar bra och varför inom den specifika roll medlemmen besitter. Dessa intryck ska sedan analyseras och slutsatser skall dras, och det är dessa analyser och slutsatser som denna rapport avser avhandla.
+
+\subsection{Relaterade arbeten}
 
 \subsection{Avgränsningar}
-Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. IT miljö, studiemiljö, studenter, ett enda projektuppdrag. 
+Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och samtliga grupper utför samma projektuppdrag. 
 
-\section{Teori och ingenjörspraxis}
-I detta avsnitt går teori som kommer att användas i detta projekt igenom, samt den ingengjörspraxis som brukas. Teorierna avhandlar teorier om projektmetoder, hur en grupp och dess individer arbetar i ett projekt, samt teorier om gruppdynamik.
-
-\subsection{Teori}
+\section{Teori och ingenjörspraxis} \label{sec:teori}
 Detta kapitel listar och i viss mån beskriver teorier och ingenjörspraxis som använts i undersökningen. Det finns två underkapitel, Litteraturstudie och Förstudie.
 \subsection{Litteraturstudie}
-I genomförandet av denna fallstudie har flera källor konsulterats, och i denna del ämnar vi att kortfattat beskriva dessa. Förutom de källor som anges finns förmodligen andra, och möjligtvis bättre, källor som ej konsulterats.\\
-\\
+I genomförandet av denna fallstudie har flera källor konsulterats, och i detta kapitel anges dessa källor. Förutom de källor som anges finns förmodligen andra, och möjligtvis bättre, källor som ej konsulterats.\\
 
-\textbf{Övergripande källor för hela projektet}\\
+\noindent \textbf{Övergripande källor för hela projektet}
+\begin{itemize}
+\item Boken \textit{Software Engineering} av Ian Sommerville \cite{Sommerville10}.
 \\
-\textit{Software Engineering} av Ian Sommerville\cite{Sommerville10}. Denna bok behandlar främst IT-projekt inom mjukvaru-utveckling, men den tar även upp saker som är viktiga att ta med sig i vilket projekt som helst, denna bok är en bra utgångspunkt när man ska genomföra ett IT-projekt och den innehåller mer än nödvändig information för att komma igång. De tre första kapitlena i denna bok har lästs av samtliga medlemmar i projektgruppen, sedan har varje medlem läst ytterligare några kapitel baserat på vilken roll de haft i projektet, dessa kapitel specificeras under vardera rolls litteraturstudie.\\
+\item Handboken \textit{Scrum and XP from the Trenches} av Henrik Kniberg \cite{Kniberg07}.
 \\
-\textit{Scrum and XP from the Trenches} av Henrik Kniberg\cite{Kniberg07}. Denna handbok är skriven av en ingenjör som dagligen jobbar med Scrum-metodiken, här ger han sin syn på Scrum och hur man ska arbeta med det. En nyttig bok om man aldrig tidigare jobbat med Scrum. Denna bok studerades i början av projektet då ingen projektmedlem hade arbetat med Scrum tidigare, och detta ansågs vara en lagom bok att börja med.\\
+\item Handboken \textit{KanBan och Scrum, få det bästa av två världar} av Henrik Kniberg och Mattias Skarin \cite{Kniberg10}.
 \\
-\textit{KanBan och Scrum, få det bästa av två världar} av Henrik Kniberg och Mattias Skarin\cite{Kniberg10}. Ytterliggare en handbok skriven av Henrik Kniberg som tar upp KanBan kombinerat med Scrum. En bok som studerades i början av projektet för att ge ideér om hur vi kan uttnyttja dessa två metodiker i vårt projekt.\\
+\item Artikeln \textit{Industrial Scale Agile, from Craft to Engineering} av Ivar Jacobson, Ian Spence och Ed Seidewitz \cite{Jacobson16}.
 \\
-\textit{Industrial Scale Agile, from Craft to Engineering} av Ivar Jacobson, Ian Spence och Ed Seidewitz\cite{Jacobson16}. Denna bok användes främst för att studera Essence, som är en metod för agila arbetssätt som kan fungera som ett hjälpmedel i IT-projekt.\\
+\end{itemize}
+
+\noindent \textbf{Kundrepresentant}
+\begin{itemize}
+\item lista av källor
 \\
-\textit{Arbeta i projekt - individen, gruppen, ledaren} av Sven Eklund\cite{Eklund14}. Denna bok tar upp mycket nyttig information om projektarbeten. Boken täcker allt ifrån projektgrunder till gruppdynamik, till exempel hur man på individnivå sammarbetar i projekt, hur man hanterar konflikter och går vidare, samt hur man på effektivast sätt dokumenterar projektarbetet.\\
+\end{itemize}
+
+\noindent \textbf{Analytiker}
+\begin{itemize}
+\item lista av källor
 \\
-\textbf{Kundrepresentant}\\
+\end{itemize}
+
+\noindent \textbf{Utvecklare}\\
+\indent Denna roll existerar i projektet, men det har ej varit en del av undersökningen och vi utelämnar därför rollen ur rapporten.\\
 \\
-\textbf{Analytiker}\\
+\noindent \textbf{Testare}
+\begin{itemize}
+\item lista av källor
 \\
-\textbf{Utvecklare}\\
+\end{itemize}
+
+\noindent \textbf{Ledning och styrning (Sebastian Heimlén)}
+\begin{itemize}
+\item \textit{Software Engineering} av Ian Sommerville \cite[kap. 22,23,26]{Sommerville10}. Dessa kapitel behandlar projektmetodik.
 \\
-\textbf{Testare}\\
+\item Rapporten \textit{Vetenskaplighet - Utvärdering av tre implementeringsprojekt inom IT Bygg och Fastighet 2002} skriven av Niclas Andersson och Anders Ekholm \cite{Andersson02}.
 \\
-\textbf{Ledning och styrning (Sebastian Heimlén)}\\
+\item Boken \textit{Arbeta i projekt - individen, gruppen, ledaren} av Sven Eklund \cite{Eklund14}.
 \\
-Kapitel 22, 23 samt 26 i boken \textit{Software Engineering} av Ian Sommerville\cite{Sommerville10}. Dessa kapitel studerades då de behandlar flertalet viktiga komponenter i projektledarrollen, så som risk-hantering, planering, ledning samt förbättring av processer och metoder.\\
-\\
-Rapporten \textit{Vetenskaplighet - Utvärdering av tre implementeringsprojekt inom IT Bygg och Fastighet 2002} skriven av Niclas Andersson och Anders Ekholm\cite{Andersson02} har studerats då den utgör en vetenskaplig granskning och utvärdering av tre forskningsobjekt inom bygg och fastighetsbranchen. I denna rapport finns mycket nyttig information om vetenskap i allmänhet och vetenskapliga undersöknings- samt forskningsmetoder och utvärderingsmetoder i synnerhet. Denna rapports innehåll var mycket intressant and studera och reflektera kring när jag genomförde min egen undersökning av detta projekt samt de projektmetoder vi använd oss av i arbetet.
+\end{itemize}
+
 \subsection{Förstudie}
-Omarbeta följande text något\\
-\\
-Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas. Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figurer och bilder. Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
+Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas. Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figur \ref{forslagsprintbacklog} och \ref{forslagproductbacklog}. Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
 Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
 \subsubsection{Anslagstavla}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=3in]{sprintbacklog}
+\includegraphics[width=3in]{forslagsprintbacklog}
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
-\caption{Exempel på en intern sida för projektgruppen.}
-\label{sprintbacklog}
+\caption{Föreslaget Exempel på en intern sida för projektgruppen.}
+\label{forslagsprintbacklog}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=3in]{productbacklog}
+\includegraphics[width=3in]{forslagproductbacklog}
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
-\caption{Exempel på en public sida för projektgruppen.}
-\label{productbacklog}
+\caption{Föreslaget Exempel på en public sida för projektgruppen.}
+\label{forslagproductbacklog}
 \end{figure}
 
 \subsubsection{Scruminspirerade projektaktiviteter (vald ansats)}
@@ -208,15 +211,9 @@ Resultatet av förstudien är att metoderna, som anges i följande kapitel, har 
 
 
 % use section* for acknowledgment
-\section{Undersökningsmetoder}
+\section{Undersökningsmetoder} \label{sec:under}
 Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna är valda och specificerade så att de skall kunna ge svar på ett antal följdfrågor som identifierats i denna undersökning. Först anges frågorna och sedan följer metodbeskrivning.
 \subsection{Frågor att besvara i undersökningen}
-
-\subsubsection{1}
-\subsubsection{2}
-\subsubsection{3}
-\subsubsection{4}
-\subsubsection{5}
 
 \subsection{Metodbeskrivning}
 
@@ -233,14 +230,27 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 \label{undersokningsmetod}
 \end{figure}
 
-
-\section{Genomförande}
+\textbf{Metod 2: Begrepp}\\
+\\
+Begrepp som används följer om möjligt OMGs standard Essence \cite{Jacobson13}.
+Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de engelska begreppen att fritt översättas till svenska då risken för missförstånd anses liten.
+\section{Genomförande} \label{sec:genom}
+\textbf{NEDAN VISAS GENERELL LAYOUT FÖR DE ENSKILDA DELARNA, SKRIV SOM LÖPANDE TEXT}
+\begin{enumerate}
+\item Kort om rollen.
+\item Vad som provats i rollen
+\item Hur det som provades fungerade som metod för "små IT-projekt".
+\item Alternativa metoder som kan fungera bättre eller kan provas i framtiden.
+\item Lyft fram ett antal bitar från try, keep, skip som har med rollen att göra. Ta fram det bästa och tänk hur det relaterar till rollen och projktmetoder för små IT-projekt.
+\item Ta upp allt speciellt bra/dåligt i rollen, verktyg (git), metoder, processer osv.
+\item Återkoppla till litteratur och referera.
+\end{enumerate}
 
 \subsection{Projektledning}
 
 \subsection{Kundrepresentant}
 
-\section{Resultat}
+\section{Resultat} \label{sec:res}
 
 % An example of a floating table. Note that, for IEEE style tables, the
 % \caption command should come BEFORE the table and, given that table
@@ -269,9 +279,9 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 %\hline
 %\end{tabular}
 %\end{table}
-\section{Analys / Förbättringsförslag}
+\section{Analys / Förbättringsförslag} \label{sec:analys}
 
-\section{Diskussion}
+\section{Diskussion} \label{sec:disk}
 
 \subsection{Metoddiskussion}
 
@@ -279,7 +289,7 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 
 \subsection{Bidrag till vetenskaplighet, ingenjörserfarenhet (studenterfarenhet?)}
 
-\section{Slutord}
+\section{Slutord} \label{sec:slutord}
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
