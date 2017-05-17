@@ -1,6 +1,6 @@
-/*translate([-70, 0, 0]) {
+translate([60, 0, 0]) {
     cube([57, 56, 1]);
-}*/
+}
 
 module box() {
     translate([0,0,16]) {
@@ -9,37 +9,52 @@ module box() {
                 cube([101, 99, 21]);
                 
                 translate([0, 0, 40]) {
-                    cube([101, 99, 24]);
+                    cube([101, 99, 44]);
                 }
             }
             
-            translate([15, 15, 20]) {
-                cube([74, 54, 40]);
+            translate([15, 17, 20]) {
+                cube([72, 48, 60]);
             }
             translate([12.5, 10, 20]) {
-                cube([80, 65, 24]);
+                cube([78, 61, 44]);
+            }
+            translate([0, -13, 20]) {
+                cube([60,60,40]);
             }
             
-            translate([16.5, 13, 20]) {
+            translate([16.5, 15, 40]) {
                 cylinder(40, d = 3, $fn = 20);
             }
-            translate([16.5, 71, 20]) {
+            translate([16.5, 67, 40]) {
                 cylinder(40, d = 3, $fn = 20);
             }
-            translate([87.5, 13, 20]) {
+            translate([85.5, 15, 40]) {
                 cylinder(40, d = 3, $fn = 20);
             }
-            translate([87.5, 71, 20]) {
+            translate([85.5, 67, 40]) {
                 cylinder(40, d = 3, $fn = 20);
             }
             
             translate([81,5,-17]) {
-                cylinder(100, d = 2.7, $fn = 20);
+                cylinder(100, d = 3, $fn = 20);
                 cylinder(14, d = 6, $fn = 6);
+                translate([0,0,44]) {
+                    translate([0, 0, -1]) {
+                        cylinder(1.1, d1 = 2, d2 = 8, $fn = 20);
+                    }
+                    cylinder(50, d = 8, $fn = 20);
+                }
             }
             translate([5,76,-17]) {
-                cylinder(100, d = 2.7, $fn = 20);
+                cylinder(100, d = 3, $fn = 20);
                 cylinder(14, d = 6, $fn = 6);
+                translate([0,0,46]) {
+                    translate([0, 0, -1]) {
+                        cylinder(1.1, d1 = 2, d2 = 8, $fn = 20);
+                    }
+                    cylinder(50, d = 8, $fn = 20);
+                }
             }
 
             cube([88, 81, 10]);
@@ -62,20 +77,20 @@ module box() {
     }
 }
 
-intersection() {
+/*intersection() {
     box();
     translate([-50, -50, 0]) {
         cube([200, 200, 30]);
     }
-}
+}*/
 
-/*rotate([180, 0, 0]) {
-    translate([150, -80, -64]) {
+rotate([180, 0, 0]) {
+    translate([140, -80, -84]) {
         intersection() {
             box();
             translate([-50, -50, 25]) {
-                cube([200, 200, 60]);
+                cube([200, 200, 80]);
             }
         }
     }
-}*/
+}
