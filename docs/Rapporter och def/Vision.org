@@ -24,6 +24,8 @@ Projektet är en del av kursen Projekt och projektmetoder (II1302) på KTH ICT.
   | 2017-03-28 |       1.0 | Sebastian Heimlén | Första utkastet |
   | 2017-04-24 |       1.1 | Henrik Björklund  | Reviderad       |
 
+#+TOC: headlines 4
+
 * Sammanfattning
   :PROPERTIES:
   :CUSTOM_ID: sammanfattning
