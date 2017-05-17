@@ -1,6 +1,16 @@
-@()(implicit req: UserRequest[_])
+@(currentMessage: Option[WithId[Message]])(implicit req: UserRequest[_])
 
     @main("Home", currentPage = Some(Page.Index)) {
+        <div class="outerMsgBox">
+            <h2 class="msgBox-heading">
+                Currently shown message
+            </h2>
+            <div class="currentMsgBox">
+            @for(message <- currentMessage) {
+                <p>@message.message</p>
+            }
+            </div>
+        </div>
         <div class="infoBox">
             <h2 class="cover-heading">Welcome to Displaimer</h2>
             <div class="formBox">

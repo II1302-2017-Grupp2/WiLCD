@@ -4,7 +4,8 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email TEXT NOT NULL UNIQUE,
   password BYTEA NOT NULL,
-  timezone TEXT NOT NULL
+  timezone TEXT NOT NULL,
+  approved BOOLEAN NOT NULL
 );
 
 CREATE TABLE sessions (

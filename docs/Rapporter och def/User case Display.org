@@ -1,0 +1,22 @@
+[[file:Use Case.png]]
+
+\pagebreak
+
+Användaren ska kunna lägga upp en text på en hemsida som sedan visas på
+en display som sitter på en lämplig plats för att lämna meddelanden.
+
+Detta ska ske med hjälp av en webbapplikation som samverkar med en
+databas, som sedan en raspberry Pi läser in och skickar trådlöst till
+displayen.
+
+Skapa en databas
+
+Skapa en webbapplikation
+
+Den trådlösa kommunikationen går via WiFi.
+
+Displayen styrs av en MCU
+
+Raspberryn kopplas till internet via en ethernetkabel
+
+Webbapplikationen ligger på en webbserver på Raspberryn

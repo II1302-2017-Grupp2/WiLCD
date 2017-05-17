@@ -1,0 +1,12 @@
+Debug
+Release
+Drivers
+.mxproject
+.cproject
+.project
+STM32F303VCTx_FLASH.ld
+MCU-Discovery.xml
+.settings
+MCU-Discovery.cfg
+secrets.h
+EWARM

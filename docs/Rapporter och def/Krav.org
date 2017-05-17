@@ -1,0 +1,99 @@
+WiLCD
+
+Kravspecifikation
+
+| *Date*       | *Version*   | *Author*           | *Description*     |
+|--------------+-------------+--------------------+-------------------|
+| 02-05-2017   | 1.0         | Henrik Björklund   | Första utkastet   |
+|              |             |                    |                   |
+|              |             |                    |                   |
+|              |             |                    |                   |
+|              |             |                    |                   |
+
+* Inledning
+  :PROPERTIES:
+  :CUSTOM_ID: inledning
+  :END:
+
+Dessa krav erhölls från kunden angående produkt WiLCD, dess delar delas
+upp i två separata produkter, den fysiska delen med en LCD-display som
+placeras på vald synlig plats och den mjukvarubaserade delen som ger
+användaren ett gränssnitt som är lätt att använda sig av.
+
+Kraven delas upp enligt MoSCoW-modellen (Must, Should, Could, Won't).
+
+** Fysiska produktens krav
+   :PROPERTIES:
+   :CUSTOM_ID: fysiska-produktens-krav
+   :END:
+
+*Must*
+
+-  Skapa en skylt som säger vart kunden är
+
+-  Stödja svenska tecken.
+
+*Should*
+
+-  Lägga till olika ”säsongsbaserade” mönster, jul, nyår, tårtor etc.
+
+-  Visa datum och tid på displayen.
+
+-  RTC klocka med backup batteri för att hålla tiden vid ev.
+   strömavbrott eller avbrott på matningsspänningen.
+
+-  Sleep läge mellan 22-06 vid batteridrift för energibesparing.
+
+*Won't*
+
+-  Säger hej då du kommer och då andra kommer förbi skylten
+
+-  Ljus och rörelsedetektor
+
+** Produktens användargränssnitt
+   :PROPERTIES:
+   :CUSTOM_ID: produktens-användargränssnitt
+   :END:
+
+*Must*
+
+-  Gå att nå från en webbapplikation
+
+-  Kunna lägga upp och ta bort meddelanden.
+
+-  Välja under vilken tidsperiod som meddelandet ska ligga framme.
+
+-  Stödja svenska tecken.
+
+-  Hemsida.
+
+-  Ytterligare, vill veta meddelandet som ligger på displayen
+
+*Should*
+
+-  Användare med lösen
+
+-  Historik
+
+-  Flera olika användare på samma server /rhasp.
+
+-  Datum och tid.
+
+*Could*
+
+-  Använda telefonkoder, som säger vad kunden är/gör, mobilinterface,
+   sms nått, ringa / lägga upp på kalender.
+
+-  Google kalender komp., fråga visa kalender på skylten.
+
+-  Lägga till olika ”säsongsbaserade” mönster, jul, nyår, tårtor etc.
+
+-  App för skriva / lägga in meddelande, ”aktivitet” ”tid” ”datum”
+
+-  Kommersiella syften, en server massor av skyltar till samma.
+
+*Won't*
+
+-  Nästa tunnelbaneingång.
+
+

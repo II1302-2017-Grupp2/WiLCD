@@ -10,7 +10,7 @@ import org.abstractj.kalium.encoders.Encoder
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.lifted.ProvenShape
 
-case class User(email: String, timezone: ZoneId) extends HasId {
+case class User(email: String, timezone: ZoneId, approved: Boolean = false) extends HasId {
   override type IdType = Long
 }
 
@@ -21,7 +21,9 @@ class Users(tag: Tag) extends IdTable[User](tag, "users") {
 
   def timezone = column[ZoneId]("timezone")
 
-  def all = (email, timezone) <> ((User.apply _).tupled, User.unapply)
+  def approved = column[Boolean]("approved")
+
+  def all = (email, timezone, approved) <> ((User.apply _).tupled, User.unapply)
 
   def withId = (id, all) <> ((WithId.apply[User] _).tupled, WithId.unapply[User])
 
@@ -48,7 +50,7 @@ object Users {
 
   def findByUsernameWithPassword(email: String, password: String): DBIO[Option[WithId[User]]] =
     tq
-      .filter(_.email === email)
+      .filter(u => u.email === email && u.approved)
       .map(u => (u.withId, u.password))
       .result.headOption
       .map(_
@@ -61,4 +63,28 @@ object Users {
       id <- tq.map(u => (u.all, u.password)).returning(tq.map(_.id)) += (user, hashPassword(password))
       user <- tq.filter(_.id === id).result.head
     } yield user).transactionally
+
+  def changePassword(id: Id[User], oldPassword: String, newPassword: String): DBIO[Boolean] = {
+    val pwQuery = tq
+      .filter(_.id === id)
+      .map(_.password)
+    pwQuery.forUpdate.result.headOption.flatMap {
+      case Some(oldHashed) if verifyPassword(oldHashed, oldPassword) =>
+        pwQuery.update(hashPassword(newPassword)).map(_ => true)
+      case _ =>
+        DBIO.successful(false)
+    }
+  }.transactionally
+
+  def modifyUser(id: Id[User], f: User => User): DBIO[Unit] = {
+    val userQuery = tq
+      .filter(_.id === id)
+      .map(_.all)
+
+    for {
+      oldUser <- userQuery.forUpdate.result.head
+      newUser = f(oldUser)
+      _ <- userQuery.update(newUser)
+    } yield ()
+  }.transactionally
 }

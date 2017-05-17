@@ -48,7 +48,7 @@ class MessageUpdaterSpec extends OurPlaySpec with DbOneAppPerTest with Eventuall
       val scanner = new Scanner(inputStream)
       eventually {
         val line = scanner.nextLine()
-        line mustBe "hej"
+        line mustBe "Mhej"
       }
     }
   }

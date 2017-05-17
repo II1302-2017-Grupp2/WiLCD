@@ -2,6 +2,7 @@ package services
 
 import javax.inject.{Inject, Named}
 
+import actors.DbMessageFetcher.Refresh
 import actors.TcpDisplayUpdater.NotifyBound
 import actors.{DbMessageFetcher, TcpDisplayUpdater}
 import akka.actor.ActorRef
@@ -29,7 +30,12 @@ class MessageUpdaterDatabase @Inject()(@Named("db-message-fetcher") dbMessageFet
     (tcpDisplayUpdater ? TcpDisplayUpdater.IsDeviceConnected).mapTo[Boolean]
 
   override def deleteMessage(user: Id[User], msg: Id[Message]): Future[MessageUpdater.DeleteResult] =
-    db.run(Messages.delete(user, msg))
+    for {
+      result <- db.run(Messages.delete(user, msg))
+    } yield {
+      dbMessageFetcher ! Refresh
+      result
+    }
 
   override def scheduleMessage(msg: Message): Future[WithId[Message]] =
     for {

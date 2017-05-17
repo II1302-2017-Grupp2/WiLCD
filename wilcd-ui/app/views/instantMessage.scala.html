@@ -1,13 +1,32 @@
-@()(implicit req: UserRequest[_])
+@(scheduledMessages: Option[WithId[Message]])(implicit req: UserRequest[_])
 
-    @main("Home", currentPage = Some(Page.Index)) {
-        <h2>Instant Message</h2>
-        @helper.form(routes.HomeController.submitNewMessage) {
-            @helper.CSRF.formField
-            <div class="form-group label-floating">
-                <label class="control-label" for="message">Message</label>
-                <input class="form-control" id="message" name="message"/>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-            </div>
+@main("Home", currentPage = Some(Page.Index)) {
+    <div class="outerMsgBox">
+        <h2 class="msgBox-heading">
+            Current message
+        </h2>
+        <div class="currentMsgBox">
+        @for(message <- scheduledMessages){
+            <p>@message.message</p>
         }
+        </div>
+    </div>
+    <h2>Instant Message</h2>
+    @helper.form(routes.HomeController.doShowInstantMessage()) {
+        @helper.CSRF.formField
+        <div class="form-group label-floating">
+            <label class="control-label" for="message">Message</label>
+            <input class="form-control" id="message" name="message"/>
+        </div>
+        <div class="col-sm-10">
+            <button class="btn btn-lg btn-primary btn-block btn-raised" type="submit">Display</button>
+        </div>
+        <div class="col-sm-2">
+            @helper.form(routes.HomeController.doShowInstantMessage()) {
+                @helper.CSRF.formField
+                <input type="hidden" name="message" value=""/>
+                <button class="btn btn-lg btn-block btn-raised btn-danger" type="submit"><span class="glyphicon glyphicon-remove"></span> Clear</button>
+            }
+        </div>
     }
+}
