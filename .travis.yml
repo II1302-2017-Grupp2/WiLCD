@@ -34,15 +34,20 @@ before_install:
 - popd
 - sudo cp wilcd-ui/chromedriver.sh /usr/local/bin/chromedriver
 script:
-- pushd binfontify
+- pushd Prototyp/binfontify
 - cargo test
 - popd
-- pushd Prototyp-teo
+- pushd Prototyp/MCU/MCU-Discovery
 - mv Src/font.c Src/font-git.c
 - "./regen-font.sh"
 - cmp Src/font.c Src/font-git.c
 - popd
-- pushd uartd
+- pushd Prototyp/MCU/MCU-Henrik
+- mv Src/font.c Src/font-git.c
+- "./regen-font.sh"
+- cmp Src/font.c Src/font-git.c
+- popd
+- pushd Prototyp/uartd
 - cargo test
 - popd
 - pushd wilcd-ui
