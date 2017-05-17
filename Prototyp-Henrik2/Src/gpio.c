@@ -66,8 +66,9 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, ESP_RESET_Pin|ESP_ENABLE_Pin|ESP_GPIO2_Pin|ESP_GPIO0_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin|EPAPER_RESET_Pin 
-                          |EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, EPAPER_BORDER_CTRL_Pin|EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin 
+                          |EPAPER_RESET_Pin|EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8 
+                          |GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
   GPIO_InitStruct.Pin = ESP_RESET_Pin|ESP_ENABLE_Pin|ESP_GPIO2_Pin|ESP_GPIO0_Pin;
@@ -77,9 +78,11 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PBPin PBPin PBPin PBPin 
-                           PBPin PBPin PB8 PB9 */
-  GPIO_InitStruct.Pin = EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin|EPAPER_RESET_Pin 
-                          |EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8|GPIO_PIN_9;
+                           PBPin PBPin PBPin PB8 
+                           PB9 */
+  GPIO_InitStruct.Pin = EPAPER_BORDER_CTRL_Pin|EPAPER_CS_Pin|EPAPER_BUSY_Pin|EPAPER_FLASH_CS_Pin 
+                          |EPAPER_RESET_Pin|EPAPER_POWER_Pin|EPAPER_DISCHARGE_Pin|GPIO_PIN_8 
+                          |GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

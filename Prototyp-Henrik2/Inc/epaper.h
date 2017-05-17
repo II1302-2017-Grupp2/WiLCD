@@ -17,7 +17,7 @@ void Epaper_Flush();
 void Epaper_Demo();
 void Epaper_Draw_HorizLine(int y, uint8_t yPos);
 void Epaper_Write_Raw_Line(int y, uint8_t *line, uint8_t invert);
-void Epaper_Write_Raw_8Lines(int y, uint8_t *line, uint8_t invert);
+void Epaper_Write_Raw_8Lines(int y, uint8_t *line, uint8_t invert, uint8_t first);
 void Epaper_Write_StrLine(int y, char *msg);
 void Epaper_Write_StrnLine(int y, uint8_t *msg, int len);
 void Epaper_Write_Nothing_Frame();

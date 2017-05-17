@@ -42,6 +42,8 @@
 /* Private define ------------------------------------------------------------*/
 #define IS_DISCOVERY 1
 
+#define EPAPER_BORDER_CTRL_Pin GPIO_PIN_2
+#define EPAPER_BORDER_CTRL_GPIO_Port GPIOF
 #define EPAPER_POWER_Pin GPIO_PIN_0
 #define EPAPER_POWER_GPIO_Port GPIOA
 #define EPAPER_BUSY_Pin GPIO_PIN_1

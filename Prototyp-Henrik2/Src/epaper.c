@@ -49,6 +49,7 @@ void Epaper_Init() {
 	HAL_GPIO_WritePin(EPAPER_POWER_GPIO_Port, EPAPER_POWER_Pin, GPIO_PIN_SET);
 
 	HAL_GPIO_WritePin(EPAPER_CS_GPIO_Port, EPAPER_CS_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(EPAPER_BORDER_CTRL_GPIO_Port, EPAPER_BORDER_CTRL_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(EPAPER_RESET_GPIO_Port, EPAPER_RESET_Pin, GPIO_PIN_SET);
 	HAL_Delay(10);
 	HAL_GPIO_WritePin(EPAPER_RESET_GPIO_Port, EPAPER_RESET_Pin, GPIO_PIN_RESET);
@@ -127,7 +128,10 @@ void Epaper_Init() {
 void Epaper_Shutdown() {
 	Epaper_Write_Nothing_Frame();
 	Epaper_Write_Dummy_Line();
+	HAL_Delay(30);
+	HAL_GPIO_WritePin(EPAPER_BORDER_CTRL_GPIO_Port, EPAPER_BORDER_CTRL_Pin, GPIO_PIN_RESET);
 	HAL_Delay(150);
+	HAL_GPIO_WritePin(EPAPER_BORDER_CTRL_GPIO_Port, EPAPER_BORDER_CTRL_Pin, GPIO_PIN_SET);
 
 	Epaper_Send_Byte(0x0B, 0x00);
 	// Latch Reset
@@ -146,6 +150,7 @@ void Epaper_Shutdown() {
 	Epaper_Send_Byte(0x07, 0x01);
 	HAL_Delay(50);
 
+	HAL_GPIO_WritePin(EPAPER_POWER_GPIO_Port, EPAPER_POWER_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(EPAPER_POWER_GPIO_Port, EPAPER_POWER_Pin, GPIO_PIN_RESET);
 	HAL_Delay(20);
 	HAL_GPIO_WritePin(EPAPER_RESET_GPIO_Port, EPAPER_RESET_Pin, GPIO_PIN_RESET);
@@ -251,6 +256,12 @@ void Epaper_Write_Raw_Line(int y, uint8_t *line, uint8_t invert) {
 	Epaper_Write_Raw_Frame();
 }
 
+void Epaper_Write_Nothing_8Line(int y) {
+	_Epaper_Clear_LineBuffer();
+	epaperLineBuffer.data.scan[(EPAPER_LINES - 1 - y) / 4] = 0x03 << ((y % 4) * 2);
+	Epaper_Write_Raw_Frame();
+}
+
 void Epaper_Write_Nothing_Frame() {
 	_Epaper_Clear_LineBuffer();
 	for (int i = 0; i < EPAPER_LINES / 4; ++i) {
@@ -287,7 +298,7 @@ void Epaper_Write_Frame(uint8_t invert, uint8_t repeat) {
 			for (int i = 0; i < EPAPER_COLS; ++i) {
 				lineBuf[i] = epaperScreenBuffer[y][i];
 			}
-			Epaper_Write_Raw_8Lines(y, lineBuf, invert);
+			Epaper_Write_Raw_8Lines(y, lineBuf, invert, i == 0);
 		}
 	}
 }
@@ -297,13 +308,16 @@ void Epaper_Write_Dummy_Line() {
 	Epaper_Write_Raw_Frame();
 }
 
-void Epaper_Write_Raw_8Lines(int y, uint8_t *line, uint8_t invert) {
+void Epaper_Write_Raw_8Lines(int y, uint8_t *line, uint8_t invert, uint8_t first) {
 	uint8_t lineBuf[EPAPER_COLS];
 	for (int i = 0; i < 16; ++i) {
 		for (int j = 0; j < EPAPER_COLS; ++j) {
 			lineBuf[EPAPER_COLS - 1 - j] = (line[j] & (0x1 << i/2)) != 0;
 		}
 		Epaper_Write_Raw_Line(y * 16 + i, lineBuf, invert);
+	}
+	if (!first && y > 0) {
+		Epaper_Write_Nothing_8Line(y - 1);
 	}
 }
 
