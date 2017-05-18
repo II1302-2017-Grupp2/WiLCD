@@ -1,0 +1,14 @@
+[[file:Use Case.png]]
+
+\pagebreak
+
+Skriva en rapport som Anders ska läsa som förklar hur detta projekt går
+och vad som hänt, med huvudfokus på vad är en bra projektmodell för små
+IT-projekt?
+
+Vilket innefattar korrekt vetenskaplig metod, med korrekt användande av
+teorier källor och referenser.
+
+Skall innehålla en bakgrund, teori, metod , resultat och diskussion.
+
+Relevanta bilder och figurer för att förklara projektet och dess delar.

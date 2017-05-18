@@ -1,0 +1,15 @@
+[[file:Test Case.png]]
+
+-  Kommunikation mellan Discoverykortet och Raspberry Pi via UART.
+
+-  Testa displayen på prototypen (Discovery).
+
+-  En LED ska lysa på Discovery när ett meddelande skrivs i webbappen.
+
+-  Gör ett typsnitt och testa att det fungerar.
+
+-  Skriv simpelt testmeddelande på displayen via Discovery.
+
+-  Skicka meddelande till Discovery via UART
+
+

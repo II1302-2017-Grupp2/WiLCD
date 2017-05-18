@@ -1,6 +1,0 @@
-[package]
-name = "uartd"
-version = "0.1.0"
-authors = ["Teo Klestrup Röijezon <teo@nullable.se>"]
-
-[dependencies]

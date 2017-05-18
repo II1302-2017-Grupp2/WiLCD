@@ -1,0 +1,9 @@
+Scrum är en iterativ och agil projektmetod utvecklad specifikt för
+systemutveckling men kan appliceras på alla typer av projekt. Genom sitt
+ramverk som bland annat består av ett scrumteam, sprints, daily scrums,
+product backlog, sprint backlog samt sprint retrospective underlättar
+scrum komplexa projekt som ofta drabbas av oplanerade scope-ändringar
+och oklara roller.
+
+Scrum kan appliceras på i princip alla projekt och genom sitt ramverk
+som består av ett scrumteam och deras roller så under

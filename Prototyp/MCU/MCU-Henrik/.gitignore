@@ -1,0 +1,12 @@
+Debug
+Release
+Drivers
+.mxproject
+.cproject
+.project
+STM32F303VCTx_FLASH.ld
+MCU-Henrik.xml
+.settings
+MCU-Henrik.cfg
+secrets.h
+EWARM

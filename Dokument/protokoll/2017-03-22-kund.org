@@ -1,0 +1,31 @@
+Kista
+
+2017-03-22T14
+
+Möte med kund
+
+Obligatoriska funktioner:
+
+- Skapa en display som visar användarens status eller plats, även tid och datum
+  då användaren är på plats nästa gång
+- Ska kunna nås från en webbapplikation
+- Ska gå att lägga upp och ta bort meddelanden som syns på displayen
+- Stödja svenska tecken
+- Hemsida
+
+Frivilliga funktioner:
+
+- Två-vägs kommunikation
+- Inhämta meddelande som ligger på displayen
+- Användare med lösenord på webbapplikationen
+- Mobilapp (android?)
+- Synka med Googlecal.
+- Synka med KTH-växel
+- Historik över meddelanden
+- Visa datum och tid
+- Batteriläge, med backupp batteri för klocka
+- Sleepläge mellan 22-06
+- Nästa tunnelbaneavgång
+- Visa mönster för högtider och liknande.
+- Ljus och rörelsedetektor
+- Kommersialisering utav idén.

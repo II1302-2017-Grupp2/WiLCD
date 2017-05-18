@@ -1,0 +1,9 @@
+* Ansvarsfördelning
+
+| Person    | Ansvar                                          |
+|-----------+-------------------------------------------------|
+| Teo       | Arkitekt                                        |
+| Henrik    | Kund-/kravansvarig, arbetsmiljö                 |
+| Yobart    | Testansvarig                                    |
+| Sebastian | Projektledare, etik och hållbarhet/jämställdhet |
+| Alla      | Utvecklingsansvarig                             |

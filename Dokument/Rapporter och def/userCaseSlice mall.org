@@ -1,0 +1,11 @@
+[[file:Slice.png]]
+
+\pagebreak
+
+Skapa mall i LaTeX för kursrapporten
+
+Implementera ett referenshanteringsverktyg
+
+Skriva inledning
+
+Innehållsförteckning (automatiserad)
