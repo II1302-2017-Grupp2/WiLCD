@@ -4,12 +4,13 @@
 target
 Dokument/protokoll/*.tex
 Dokument/protokoll/*.pdf
-Dokument/**/*.toc
-Dokument/**/*.log
-Dokument/**/*.synctex.gz
-Dokument/**/*.aux
-Dokument/**/*.bbl
-Dokument/**/*.blg
-Dokument/**/*.dvi
+*.toc
+*.log
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.out
 Dokument/Rapporter och def/latexExempel.pdf
 Dokument/Rapporter och def/IEEEtran/Kursrapport.pdf
