@@ -2,14 +2,14 @@
 *~
 .#.*
 target
-docs/protokoll/*.tex
-docs/protokoll/*.pdf
-docs/**/*.toc
-docs/**/*.log
-docs/**/*.synctex.gz
-docs/**/*.aux
-docs/**/*.bbl
-docs/**/*.blg
-docs/**/*.dvi
-docs/Rapporter och def/latexExempel.pdf
-docs/Rapporter och def/IEEEtran/Kursrapport.pdf
+Dokument/protokoll/*.tex
+Dokument/protokoll/*.pdf
+Dokument/**/*.toc
+Dokument/**/*.log
+Dokument/**/*.synctex.gz
+Dokument/**/*.aux
+Dokument/**/*.bbl
+Dokument/**/*.blg
+Dokument/**/*.dvi
+Dokument/Rapporter och def/latexExempel.pdf
+Dokument/Rapporter och def/IEEEtran/Kursrapport.pdf
