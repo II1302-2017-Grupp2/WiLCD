@@ -12,5 +12,7 @@ Dokument/protokoll/*.pdf
 *.blg
 *.dvi
 *.out
+*.fdb_latexmk
+*.fls
 Dokument/Rapporter och def/latexExempel.pdf
 Dokument/Rapporter och def/IEEEtran/Kursrapport.pdf
