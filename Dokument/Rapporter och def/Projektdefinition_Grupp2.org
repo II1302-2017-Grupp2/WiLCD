@@ -18,6 +18,7 @@ som gör arbetet och akademin varifrån studenten kommer. Förändras projektet 
 så uppdateras och förankras projektdefinitionen.
 #+END_abstract
 
+
 * Dokumentversion
   :PROPERTIES:
   :UNNUMBERED: t
@@ -29,7 +30,10 @@ så uppdateras och förankras projektdefinitionen.
 | 2017-04-06 | Version 1.1 | Sebastian Heimlén     | Första revidering.             |
 | 2017-05-08 | Version 1.2 | Sebastian Heimlén     | Uppfräschning efter sprint #3. |
 | 2017-05-13 | Version 1.3 | Teo Klestrup Röijezon | Diverse layoutändringar        |
+| 2017-05-19 | Version 1.4 | Sebastian Heimlén     | Uppdatering efter sprint #4.   |
 
+
+\pagebreak
 #+TOC: headlines 4
 
 * Introduktion
@@ -226,16 +230,16 @@ så uppdateras och förankras projektdefinitionen.
    :CUSTOM_ID: personer-i-projektet
    :END:
 
-   | *Namn*                | *Kontaktuppgift och roll*                                 |
-   |-----------------------+-----------------------------------------------------------|
-   | Teo Klestrup Röijezon | [[mailto:teo@nullable.se][/teo@nullable.se/]], [[mailto:roijezon@kth.se][/roijezon@kth.se/]]                      |
-   |                       | Arkitekt och Utvecklingsansvarig.                         |
-   | Yobart Amino          | [[mailto:yobart@kth.se][/yobart@kth.se/]]                                           |
-   |                       | Testansvarig, arbetsmiljöansvarig                         |
-   | Henrik Björklund      | [[mailto:hebjo@kth.se][/hebjo@kth.se/]]                                            |
-   |                       | Kund-/kravansvarig, shoppingansvarig                      |
-   | Sebastian Heimlén     | [[mailto:heimlen@kth.se][/heimlen@kth.se/]]                                          |
-   |                       | Projektledare, etik och jämställdhetsansvarig             |
+   | *Namn*                | *Kontaktuppgift och roll*                     |
+   |-----------------------+-----------------------------------------------|
+   | Teo Klestrup Röijezon | [[mailto:teo@nullable.se][/teo@nullable.se/]], [[mailto:roijezon@kth.se][/roijezon@kth.se/]]          |
+   |                       | Arkitekt och Utvecklingsansvarig.             |
+   | Yobart Amino          | [[mailto:yobart@kth.se][/yobart@kth.se/]]                               |
+   |                       | Testansvarig, arbetsmiljöansvarig             |
+   | Henrik Björklund      | [[mailto:hebjo@kth.se][/hebjo@kth.se/]]                                |
+   |                       | Kund-/kravansvarig, shoppingansvarig          |
+   | Sebastian Heimlén     | [[mailto:heimlen@kth.se][/heimlen@kth.se/]]                              |
+   |                       | Projektledare, etik och jämställdhetsansvarig |
 
 ** Möten
    :PROPERTIES:
@@ -332,13 +336,6 @@ så uppdateras och förankras projektdefinitionen.
    :CUSTOM_ID: uppgiftsägaren
    :END:
 
-   Hur färdig måste eventuell produkt bli? Hur skall en inkrementell
-   utveckling ske för att uppgiftsägarens förväntningar skall uppfyllas så
-   bra som möjligt och tillräckligt? Vilka är de konkreta *resultatmålen*
-   som skall göra att *effektmålen* uppfylls?
-
-   //
-
    Vi planerar att använda oss av den agila projektmetodiken Scrum, en agil
    metodik går ut på att man i slutet av varje sprint förväntas ha en
    fungerande produkt, som sedan i vidkommande sprinter kan utvecklas, och
@@ -392,12 +389,6 @@ så uppdateras och förankras projektdefinitionen.
    :PROPERTIES:
    :CUSTOM_ID: kursmål-och-examensmål
    :END:
-
-   Hur kopplar projektet till examensarbetets (själv-) bedömande och
-   godkännande? Vilka är (projekt-) målen för att uppfylla akademins krav
-   för ett godkänt examensarbete?
-
-   //
 
    Projektet kopplas till kursens mål i och med att ett godkänt projekt är
    en stor del (4.5 hp) av kursen, och för att klara kursen måste vi få ett
@@ -619,17 +610,32 @@ så uppdateras och förankras projektdefinitionen.
   Arbetsschema, hur mycket tid skall användas och hur fördelar sig denna
   tid på projektets veckor?
 
-** Fas- och tidsplan
-   PROPERTIES:
-   :CUSTOM_ID: fas--och-tidsplan
-   :END:
+** Arbetsvolym och varaktighet
 
-   [[../GANTT.png]]
+   Detta projekt kommer genomföras under loppet av cirka tio veckor. Vår projektgrupp består
+   av fyra medlemmar, som alla ska lägga 180-200 timmar i projektet, därmed blir total arbetstid för
+   projektgruppen runt 800 timmar. Detta leder till att ungefärlig arbetsvolym för varje vecka är
+   20 timmar. Under dessa veckor ska dels en produkt tas fram, dokument som rör både produkten samt
+   projektet i sig skall skapas och en slutlig kursrapport ska skrivas.
+
+** Iterationsplan
 
    Denna bild visar iterationsplaneringen för detta
    projekt, projektet består av 5 iterationer som samtliga består av olika
-   iterationsmål och varierar något i längd, klicka denna länk för att se
-   projektplaneringen i full storlek.
+   iterationsmål och varierar något i längd.
+   [[../GANTT.png]]
+** Projekttriangel
+
+   Projekttriangeln består som bekant av 3 hörn, kostnad, tid och kvalitét. (Projektmallar.se)
+   I detta projekt har vi en hård deadline, eftersom projektet genomförs i samband med en kurs. Detta medför
+   att projektets varaktighet är hårt kontrollerad, vår arbetstid är också begränsad till runt
+   180-200 timmar, men arbetstiden är mer flexibel då gruppen vid motgångar kan jobba övertid
+   för att ro projektet i land.\\
+   \\Projektets budget är ej så flexibel, då kursen består av många
+   projektgrupper som alla ska dela på kursens tillgångar. Den stora flexibiliteten i projekttriangeln
+   ligger i kvaliten, då grundkraven för produkten är små så är det här gruppen kommmer att behöva
+   bortprioritera i de fall vi hamnar efter och känner att vi håller på att gå utanför projekttriangeln.
+
 
 * Intressenter
   :PROPERTIES:
@@ -726,14 +732,14 @@ så uppdateras och förankras projektdefinitionen.
   Behov av förstudie, inläsning, utbildning.
 
   #+ATTR_LATEX: :align 1 1 p{5cm} p{5cm}
-  |                    |           | <40>                                     | <40>                                     |
-  | Namn               | När?      | Varför?                                  | Beskrivning                              |
-  |--------------------+-----------+------------------------------------------+------------------------------------------|
-  | Git intro          | Sprint #1 | För att vi ska använda Git i kursen.     | En video-introduktion i Git som förklarar gruderna inom git, samt visar hur man sätter upp ett reposity och en wiki på webbsidan GitHub. |
-  | Handbok om Scrum, "Scrum and XP from the trenches" av Henrik Kniberg REFERENS BEHÖVS | Sprint #1 | För att vi ska jobba med Scrum i kursen. | En handbok som förklarar hur författaren jobbar med Scrum i skarpa IT-Projekt. Denna text skall ge oss en inblick i hur Scrum används och hur vi kan använda oss utav Scrum. |
-  | Handbok om KanBan, "Scrum and KanBan, get the best of both worlds" av Henrik Kniberg REFERENS BEHÖVS | Sprint #3 | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik | Läsa Handbok om KanBan och Scrum som finns på kurswebben. Detta för att få ytterliggare |
-  | Artikel om Essence REFERENS BEHÖVS| Sprint #3 | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet. |
-  | "Software Engineering" av Ian Sommerville REFERENS BEHÖVS | Sprint #1 | För att de tre första kapitlerna behandlar projektarbeten, främst inom mjukvaru-utveckling men samma principer gäller inom IT-projekt | De tre första kapitlerna ska läsas för att få mer information om IT-projekt |
+  |                                                                                                      |           | <40>                                     | <40>                                     |
+  | Namn                                                                                                 | När?      | Varför?                                  | Beskrivning                              |
+  |------------------------------------------------------------------------------------------------------+-----------+------------------------------------------+------------------------------------------|
+  | Git intro                                                                                            | Sprint #1 | För att vi ska använda Git i kursen.     | En video-introduktion i Git som förklarar gruderna inom git, samt visar hur man sätter upp ett reposity och en wiki på webbsidan GitHub. |
+  | Handbok om Scrum, "Scrum and XP from the trenches" av Henrik Kniberg (Kniberg, 2007)                 | Sprint #1 | För att vi ska jobba med Scrum i kursen. | En handbok som förklarar hur författaren jobbar med Scrum i skarpa IT-Projekt. Denna text skall ge oss en inblick i hur Scrum används och hur vi kan använda oss utav Scrum. |
+  | Handbok om KanBan, "Scrum and KanBan, get the best of both worlds" av Henrik Kniberg (Kniberg, 2010) | Sprint #3 | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik | Läsa Handbok om KanBan och Scrum som finns på kurswebben. Detta för att få ytterliggare |
+  | Artikel om Essence (Jacobson, 2016)                                                                  | Sprint #3 | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet. |
+  | "Software Engineering" av Ian Sommerville (Sommerville, 2010)                                        | Sprint #1 | För att de tre första kapitlerna behandlar projektarbeten, främst inom mjukvaru-utveckling men samma principer gäller inom IT-projekt | De tre första kapitlerna ska läsas för att få mer information om IT-projekt |
 
 * Appendix A - Referenser
   :PROPERTIES:
@@ -744,10 +750,20 @@ så uppdateras och förankras projektdefinitionen.
   Andersson, N., & Ekholm, A. (2002). Vetenskaplighet - Utvärdering av tre
   implementeringsprojekt inom IT Bygg &amp; Fastighet 2002.
 
-  Eklund, S. (2010). /Arbeta i projekt: individen, gruppen, ledaren/:
+  Eklund, S. (2014). /Arbeta i projekt: individen, gruppen, ledaren/:
   Studentlitteratur.
+
+  Jacobson, I & Spence, I & Seidewitz, E. (2016). Industrial-scale Agile: From Craft to Engineering. /Commun/ no. 12. ACM
+
+  Kniberg, H. (2007). /Scrum and XP from the Trenches/: C4Media.
+
+  Kniberg, H. (2010). /Kanban and Scrum - Making the Most of Both/: C4Media.
 
   Permana, Putu Adi Guna. 2015. “Scrum Method Implementation in a Software
   Development Project Management.” /International Journal of Advanced
   Computer Science and Applications (Ijacsa)/ 6 (9).
   doi:10.14569/IJACSA.2015.060927.
+
+  Projekttriangel - Projektmallar.se URL:http://www.projektmallar.se/projekttriangeln
+
+  Sommerville, I. (2010). /Software Engineering/: Addison-Wesley Publishing Company.
