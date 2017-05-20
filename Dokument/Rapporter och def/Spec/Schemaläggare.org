@@ -1,0 +1,58 @@
+#+TITLE: Displaimer Teknisk Dokumentation: Schemaläggare
+#+OPTIONS: toc:nil
+#+AUTHOR: Teo Klestrup Röijezon
+#+LANGUAGE: sv
+# Svenska rubriker
+#+LATEX_HEADER: \usepackage[swedish]{babel}
+
+#+BEGIN_abstract
+Schemaläggaren är komponenten i systemet som kommunicerar med displayenheten, och
+bestämmer vad som ska visas när. Detta dokument behandlar först det [[#interface][externa gränssnittet]], och
+sedan [[#implementation][implementationen]].
+#+END_abstract
+
+#+TOC: headlines 4
+
+\pagebreak
+
+* Gränssnitt
+  :PROPERTIES:
+  :CUSTOM_ID: interface
+  :END:
+
+** Mot Displayenheten
+   Schemaläggaren lyssnar på TCP-porten 9797, och använder ett textbaserat format, kodat enligt ISO 8859-1.
+   Varje rad är ett paket, där första tecknet är indikerar paketets typ, och resten är paketets
+   innehåll. För närvarande är följande typer definierade:
+
+   | Typ | Innehåll                                                                                                                                   |
+   |-----+--------------------------------------------------------------------------------------------------------------------------------------------|
+   | M   | Ett nytt meddelande att visa på displayenheten                                                                                             |
+   | T   | Den nuvarande tiden[fn::I den lokala tidszonen, för närvarande alltid Europe/Stockholm.], används för att kalibrera displayenhetens klocka |
+   
+   All mottagen text ignoreras, och det är tillåtet att ansluta flera gånger. Alla meddelanden skickas
+   till alla klienter.
+
+** Mot Systemet
+   Det rekommenderade gränssnittet är via schemaläggarens implementation av MessageUpdater,
+   med följande viktiga metoder:
+
+   | Metod           | Beskrivning                                                                 |
+   |-----------------+-----------------------------------------------------------------------------|
+   | scheduleMessage | Planerar att ett meddelande ska visas                                       |
+   | deleteMessage   | Raderar ett meddelande, förutsatt att användaren har tillstånd att göra det |
+   | getMessage      | Hämta det aktuella meddelandet som visas                                    |
+
+   Om detta gränssnitt används så hålls schemaläggaren automatiskt uppdaterad.
+
+*** TODO Prioritering av Meddelanden
+
+*** TODO Hantering av Upprepade Meddelanden
+
+*** TODO Direkt Databasåtkomst
+    Om större kontroll behövs så 
+
+* TODO Implementation
+  :PROPERTIES:
+  :CUSTOM_ID: implementation
+  :END:
