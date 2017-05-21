@@ -21,7 +21,7 @@
 %% Legal Notice:
 %% This code is offered as-is without any warranty either expressed or
 %% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% FITNESS FOR A PARTICULAR PURPOSE!
 %% User assumes all risk.
 %% In no event shall the IEEE or any contributor to this code be liable for
 %% any damages or losses, including, but not limited to, incidental,
@@ -59,7 +59,9 @@
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
 \usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
 \usepackage[pdftex]{graphicx}
+\usepackage[pdfborder={0 0 0}]{hyperref}
 \graphicspath{{Images/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % correct bad hyphenation here
@@ -90,8 +92,8 @@
           \texttt{\textsuperscript{1}heimlen@kth.se}\\
           \texttt{\textsuperscript{2}hebjo@kth.se}\\
           \texttt{\textsuperscript{3}yobart@kth.se}\\
-          \texttt{\textsuperscript{4}teo@nullable.se}
-         } 
+          \texttt{\textsuperscript{4}teo@nullable.se, roijezon@kth.se}
+         }
     }
 
 % make the title area
@@ -126,12 +128,12 @@ Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra pr
 \\
 Efter att ha sanktionerat denna definition av vad en bra projektmetod är blir det betydligt enklare och tydligare att resonera kring den övergripande frågeställningen.
 \subsection{Undersökningsstrategi/lösningsstrategi}
-Strategien för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen genomfört ett litet IT-projekt. Inom detta projekt testas ett antal förvalda projektmetoder och varje medlem har tagit en specifik roll i projektet. Det är sedan varje medlems uppgift att inom denna roll experimentellt under projektets gång samla in information och intryck om vilka projektmetoder som fungerar bra och varför inom den specifika roll medlemmen besitter. Dessa intryck ska sedan analyseras och slutsatser skall dras, och det är dessa analyser och slutsatser som denna rapport avser avhandla.
+Strategin för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen genomfört ett litet IT-projekt. Inom detta projekt testas ett antal förvalda projektmetoder och varje medlem har tagit en specifik roll i projektet. Det är sedan varje medlems uppgift att inom denna roll experimentellt under projektets gång samla in information och intryck om vilka projektmetoder som fungerar bra och varför inom den specifika roll medlemmen besitter. Dessa intryck ska sedan analyseras och slutsatser skall dras, och det är dessa analyser och slutsatser som denna rapport avser avhandla.
 
 \subsection{Relaterade arbeten}
 
 \subsection{Avgränsningar}
-Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och samtliga grupper utför samma projektuppdrag. 
+Teorierna i denna rapport avgränsas genom att endast vissa förvalda projektmetoder tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och samtliga grupper utför samma projektuppdrag.
 
 \section{Teori och ingenjörspraxis} \label{sec:teori}
 Detta kapitel listar och i viss mån beskriver teorier och ingenjörspraxis som använts i undersökningen. Det finns två underkapitel, Litteraturstudie och Förstudie.
@@ -189,7 +191,7 @@ Resultatet av förstudien är att metoderna, som anges i följande kapitel, har 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=3in]{forslagsprintbacklog}
-% where an .eps filename suffix will be assumed under latex, 
+% where an .eps filename suffix will be assumed under latex,
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
 \caption{Föreslaget Exempel på en intern sida för projektgruppen.}
@@ -199,7 +201,7 @@ Resultatet av förstudien är att metoderna, som anges i följande kapitel, har 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=3in]{forslagproductbacklog}
-% where an .eps filename suffix will be assumed under latex, 
+% where an .eps filename suffix will be assumed under latex,
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
 \caption{Föreslaget Exempel på en public sida för projektgruppen.}
@@ -223,7 +225,7 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=2.5in]{invmethod}
-% where an .eps filename suffix will be assumed under latex, 
+% where an .eps filename suffix will be assumed under latex,
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
 \caption{Undersökningsmetod för ``Vad är en bra projektmetod för små IT-projekt?''.}
@@ -320,7 +322,7 @@ Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de
 %  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
 %\bibitem{}
-  
+
 %\end{thebibliography}
 
 \nocite{*}
@@ -329,5 +331,3 @@ Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de
 
 % that's all folks
 \end{document}
-
-

@@ -6,6 +6,7 @@
 #+LATEX_HEADER: \addtolength{\textheight}{4cm}
 #+LATEX_HEADER: \addtolength{\hoffset}{-2.5cm}
 #+LATEX_HEADER: \addtolength{\voffset}{-2.5cm}
+#+LATEX_HEADER: \usepackage{pdfpages}
 #+STARTUP: align
 
 #+BEGIN_abstract
@@ -509,6 +510,12 @@ så uppdateras och förankras projektdefinitionen.
     rapporten skapas via att teori inhämtas för att sedan metod utarbetas
     och resultatet framarbetas ifrån tidigare insamlade teorier och metoder.
 
+    Slutligen sker en undersökning i samband med projektet som skall besvara frågeställningen
+    "Vad är en bra projektmetod för små IT-projekt". För denna undersökning använder vi en metod
+    som är baserad på studier som gjorts av Andersson och Ekholm och finns tillgänglig i deras
+    rapport "Vetenskaplighet - Utvärdering av tre implementeringsprojek inom IT Bygg & Fastighet 2002" (Andersson, 2002).
+    Eftersom denna undersökningsmetod är förankrad i vetenskaplighet på så sätt så är förhoppningen att
+    även undersökningen och de resultat som undersökningen frambringar skall ha förankring i vetenskaplighet.
 ** Hållbarhetsaspekter
    :PROPERTIES:
    :CUSTOM_ID: hållbarhetsaspekter
@@ -562,10 +569,6 @@ så uppdateras och förankras projektdefinitionen.
    :CUSTOM_ID: arbetsmiljöaspekter
    :END:
 
-*** Kopplat till projektgenomförande
-
-*** Kopplat till produkt som utvecklas och dess användning
-
     Projektet genomförs till stora delar digitalt, där dokument sparas
     och organiseras på GitHub och scrumtavlan finns tillgänglig på
     Trello. Detta leder till att vi minimerar användandet av papper och
@@ -599,17 +602,6 @@ så uppdateras och förankras projektdefinitionen.
   :CLASS:    Heading1NoBreak
   :END:
 
-  Ange arbetsvolym, projektets varaktighet, översiktlig fas och
-  tidsindelning, flexibilitet i ”projekttriangeln”- projektåtagande
-  (resurser/kostnad-varaktighet(tid)-funktionalitet) mm.
-
-  Översiktligt Gantt-schema med faser och milstolpar?
-
-  Projekttriangeln, var ligger flexibiliteten i detta projekt?
-
-  Arbetsschema, hur mycket tid skall användas och hur fördelar sig denna
-  tid på projektets veckor?
-
 ** Arbetsvolym och varaktighet
 
    Detta projekt kommer genomföras under loppet av cirka tio veckor. Vår projektgrupp består
@@ -622,20 +614,21 @@ så uppdateras och förankras projektdefinitionen.
 
    Denna bild visar iterationsplaneringen för detta
    projekt, projektet består av 5 iterationer som samtliga består av olika
-   iterationsmål och varierar något i längd.
-   [[../GANTT.png]]
+   iterationsmål och varierar något i längd. Se Appendix B där iterationsplanen i form av ett Gantt-schema finns.
+   [[../Iterationsplanering.png]]
 ** Projekttriangel
 
    Projekttriangeln består som bekant av 3 hörn, kostnad, tid och kvalitét. (Projektmallar.se)
    I detta projekt har vi en hård deadline, eftersom projektet genomförs i samband med en kurs. Detta medför
    att projektets varaktighet är hårt kontrollerad, vår arbetstid är också begränsad till runt
    180-200 timmar, men arbetstiden är mer flexibel då gruppen vid motgångar kan jobba övertid
-   för att ro projektet i land.\\
-   \\Projektets budget är ej så flexibel, då kursen består av många
+   för att ro projektet i land.
+   
+   Projektets budget är ej så flexibel, då kursen består av många
    projektgrupper som alla ska dela på kursens tillgångar. Den stora flexibiliteten i projekttriangeln
    ligger i kvaliten, då grundkraven för produkten är små så är det här gruppen kommmer att behöva
    bortprioritera i de fall vi hamnar efter och känner att vi håller på att gå utanför projekttriangeln.
-
+   [[../projekttriangeln.png]]
 
 * Intressenter
   :PROPERTIES:
@@ -650,7 +643,7 @@ så uppdateras och förankras projektdefinitionen.
   | Uppdragsgivare | Anders Sjögren       | Få en fungerande slutprodukt innan deadline | På ett planerat och strukturerat sätt utveckla samt leverera slutprodukten innan deadline. |
   | Projektgrupp   |                      | Genom att genomföra ett planerat och strukturerat arbete lära sig mer och projektmetodik och få mer erfarenhet inom projektarbete för att förbereda inför kommande arbetsliv samt examensjobb. | Noga planera upp arbetet och strukturera detta planerande genom att skriva utförliga dokument som täcker all nödvändig information som krävs för att genomföra projektet på ett tillfredsställande sätt och samtidigt få mer kunskap kring projekt samt projektmetoder. |
   | Skola          | Kungliga Tekniska Högskolan | Att utbilda kompetenta ingenjörer och/eller forskare som sedan kan ta mark på arbetsmarknaden. | Genom att genomföra kursen till den grad att studenten får ett tillfredsställande betyg i denna kurs, likt alla andra kurser, på så sätt att studenten är attraktiv på arbetsmarknaden och därmed kan få ett jobb. |
-
+\pagebreak
 * Riskanalys
   :PROPERTIES:
   :CUSTOM_ID: riskanalys
@@ -658,7 +651,7 @@ så uppdateras och förankras projektdefinitionen.
   :END:
 
   Nedan beskrivs identifierade risker som finns i sprint 1 och 2, se
-  appendix B för riskanalys av sprint 3 och 4.
+  appendix C för riskanalys av sprint 3, 4 och 5.
 
   #+ATTR_LATEX: :align 1 p{4cm} p{6cm} p{5cm}
   |    | <30>                           | <30>                           | <30>                           |
@@ -702,7 +695,7 @@ så uppdateras och förankras projektdefinitionen.
   | Kretskort            | Bengt Molin             | Cirka 100 :-           | Det kretskort som ska användas för att koppla displayen till Raspberry Pi. |
   | E-ink display        | Anders Sjögren          | Cirka 500:- inkl frakt | En större display som använder bläck för att visa innehåll, denna display drar mindre ström och är lite roligare att hålla på med, planen är att gå över från frimärksdisplayen till denna och använda frimärksdisplayen för debug meddelanden etc. |
   | Raspberry Pi v.3     | Lånas av Anders Sjögren | Fanns redan inköpt     | Den Raspberry Pi som skall driva projektet, webbapplikationen skall köras på denna rasp och den ska vara kopplad via WiFi till displayen. |
-
+\pagebreak
 * Dokumentplan
   :PROPERTIES:
   :CUSTOM_ID: dokumentplan
@@ -722,7 +715,7 @@ så uppdateras och förankras projektdefinitionen.
   | Vision                         | Nej                            | -                               | Vår vision över projektet, skrivs i början av projektet och beskriver hur och varför vi ska genomföra projektet. |
   | Kursrapport                    | Ja                             | Varje vecka from. Iteration 2-3 | Kursrapporten som ska lämnas in i slutet av kursen. |
   | Tekniska specifikationer för olika komponenter i systemet (fyra stycken) | Nej, men ska dock skrivas i period 4 och 5 | -                               | Tekniska specifikationer som beskriver komponenter i systemet mer i detalj så att läsare antingen kan lära sig hur systemet fungerar eller få mer information så att de kan vidareutveckla systemet. (Upp till författaren att välja på vilken nivå specifikationen ska läggas) |
-
+\pagebreak
 * Utbildningsplan
   :PROPERTIES:
   :CUSTOM_ID: utbildningsplan
@@ -731,7 +724,7 @@ så uppdateras och förankras projektdefinitionen.
 
   Behov av förstudie, inläsning, utbildning.
 
-  #+ATTR_LATEX: :align 1 1 p{5cm} p{5cm}
+  #+ATTR_LATEX: :align p{3cm} p{3cm} p{3cm} p{7cm}
   |                                                                                                      |           | <40>                                     | <40>                                     |
   | Namn                                                                                                 | När?      | Varför?                                  | Beskrivning                              |
   |------------------------------------------------------------------------------------------------------+-----------+------------------------------------------+------------------------------------------|
@@ -740,7 +733,7 @@ så uppdateras och förankras projektdefinitionen.
   | Handbok om KanBan, "Scrum and KanBan, get the best of both worlds" av Henrik Kniberg (Kniberg, 2010) | Sprint #3 | Vi ska utöver Scrum även ha hört talas/ha lite kunskap om KanBan, som är en annan projektmetodik | Läsa Handbok om KanBan och Scrum som finns på kurswebben. Detta för att få ytterliggare |
   | Artikel om Essence (Jacobson, 2016)                                                                  | Sprint #3 | Vi använder oss av Essence, som är ett hjälpmedel i form av kort samt tabeller som används i mjukvaru-utveckling | Läsa in sig på Essence då detta är något vi bestämt oss för att delvis tillämpa i projektet. |
   | "Software Engineering" av Ian Sommerville (Sommerville, 2010)                                        | Sprint #1 | För att de tre första kapitlerna behandlar projektarbeten, främst inom mjukvaru-utveckling men samma principer gäller inom IT-projekt | De tre första kapitlerna ska läsas för att få mer information om IT-projekt |
-
+\pagebreak
 * Appendix A - Referenser
   :PROPERTIES:
   :CUSTOM_ID: appendix-a---referenser
@@ -767,3 +760,35 @@ så uppdateras och förankras projektdefinitionen.
   Projekttriangel - Projektmallar.se URL:http://www.projektmallar.se/projekttriangeln
 
   Sommerville, I. (2010). /Software Engineering/: Addison-Wesley Publishing Company.
+* Appendix B - Iterationsplan
+\includepdf[pages=-]{../GANTT.pdf}
+
+* Appendix C - Riskanalys sprint 3,4,5
+  Utöver tidigare risker som fanns i sprint 1 och 2 så noteras här ytterliggare risker som kan uppstå i sprint 3, 4 och 5.
+
+
+  #+ATTR_LATEX: :align 1 p{4cm} p{6cm} p{5cm}
+  |    | <30>                           | <30>                           | <30>                           |
+  | ID | Risk                           | Förebyggande åtgärd            | Åtgärder vid riskutfall        |
+  |----+--------------------------------+--------------------------------+--------------------------------|
+  | R1 | Hårdvara går sönder            | Vara försiktig med hårdvaran generellt, men även ha backup hårdvara, i vårat fall ett discoverykort och en extra display, så att i de fall hårdvara går sönder vi kan byta ut till motsvarande hårdvara. | I de fall hårdvara går sönder får vi byta ut hårdvaran mot extra-hårdvara, i det väldigt sällsynta fall att backup-hårdvara går söndereta till sin bästa förmåga hemifrån för att påskynda tillfrisknad samt undvika att sprida sjukdom till resterande gruppmedlemmar. får vi köpa ny hårdvara, eventuellt för egen budget. |
+  | R2 | Strul med framework för webbapplikation | Läsa på ordentligt om frameworket så att vi vet hur det fungerar och hur det skall implementeras på ett korrekt sätt. | Ha en nödlösning där vi byter till ett annat framework eller skriver ett eget/kör utan framework. |
+  | R3 | Problem med att "builda" applikationen på Raspberry Pi | Se till att den kod och de frameworks etc. är anpassade och fungerar på Raspian som är det operativsystem vi kör på raspen.ntörer som historiskt är kända för att uppfylla leveranskrav. | Det finns två akutlösningar, antingen byter vi OS i Raspberry Pi, detta är troligtvis enklare och mindre krävande, dock kan det bli problem att hitta ett OS som koden fungerar i. Den andra lösningen är att vi byter framework/de delar som ej fungerar på Raspian, detta skulle dock leda till mer jobb då det antagligen är jobbigare att skriva om koden för applikationen än att installera om raspen. |
+  | R4 | Någon hackar vår Raspberry Pi och börjar använda den för saker som den ej ska användas för | Skapa ett starkt lösenord så att den ej går att hacka. | Stänga av den och installera om hela raspen. |
+  | R5 | Rapporten blir ej klar i tid, då någon/några medlemmar ej hinner skriva klart sina delar. | Se till att börja med rapporten i god tid och att samtliga medlemmar jobbar på med skrivandet. | Finns ingen akutlösning, det skulle vara om man av någon anledning får dispans och kan lämna in efter deadline. |
+  | R6 | Strul med rapportdisposition eller referenshantering | Tidigt i projektet bestämma i vilket "verktyg" vi ska skriva rapporten, samt vilket referenssystem vi skall använda, och bygga upp en mall i detta system. | Det finns ingen akutlösning för detta, vilket gör det ännu viktigare att faktiskt göra arbetet i god tid. |
+  | R7 | Problem så att prototyp inte kan demoas under sprintdemo | Se till att testa systemet och prototypen ordentligt innan demo och frysa produkten efter testning så att ingenting konstigt kan hända. | Om produkten inte kan demoas på rätt sätt så får demo genomföras till den bästa förmåga. Tanken bakom demot och produkten får förklaras och det som kan visas får visas.  |
+
+** Riskbedömning
+
+   +----------------+--------------------------+---------------+
+   |                |     Hög sannolikhet      |               |
+   +----------------+--------+--------+--------+---------------+
+   |                |        |        |        |               |
+   |                +--------+--------+--------+               |
+   | Liten Påverkan |        |R7      |R1, R3  | Stor påverkan |
+   |                +--------+--------+--------+               |
+   |                |   R4   |R2, R6  |R5      |               |
+   +----------------+--------+--------+--------+---------------+
+   |                |     Låg sannolikhet      |               |
+   +----------------+--------------------------+---------------+
