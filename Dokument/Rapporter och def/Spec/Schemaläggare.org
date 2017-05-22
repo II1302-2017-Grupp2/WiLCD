@@ -29,6 +29,11 @@
 Schemaläggaren är komponenten i systemet som kommunicerar med displayenheten, och
 bestämmer vad som ska visas när. Detta dokument behandlar först det [[#interface][externa gränssnittet]], och
 sedan [[#implementation][implementationen]].
+
+Dokumentet är riktat mot en någorlunda teknisk person som antingen skriver en egen displayenhet,
+vill använda API:t för att schemalägga meddelanden, eller som ska underhålla schemaläggaren i
+framtiden. Dessutom är kapitlen om [[#dependencies][beroenden]] och [[#startup][uppstart]] relevanta för någon som ska underhålla
+servern i produktion.
 #+END_abstract
 
 #+TOC: headlines 4
@@ -41,6 +46,10 @@ sedan [[#implementation][implementationen]].
   :END:
 
 ** Beroenden
+   :PROPERTIES:
+   :CUSTOM_ID: dependencies
+   :END:
+
    Schemaläggaren kräver att du har en Java 8 (eller nyare) JVM[fn::Java Virtual Machine],
    och [[https://libsodium.org][Sodium]] installerade. För att kunna kompilera behöver du
    också ha en JDK[fn::Java Developer Kit], [[https://scala.sbt.org][SBT]], och [[https://nodejs.org][Node.js]]
