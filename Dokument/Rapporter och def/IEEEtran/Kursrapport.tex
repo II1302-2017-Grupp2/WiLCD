@@ -51,7 +51,7 @@
 
 
 
-\documentclass[conference]{IEEEtran}
+\documentclass[conference,a4paper]{IEEEtran}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -61,8 +61,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
 \usepackage[pdftex]{graphicx}
-\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{hyperref}
+\usepackage{pdfpages}
 \usepackage{float}
+\usepackage{pax}
 \graphicspath{{Images/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % correct bad hyphenation here
@@ -375,6 +377,18 @@ Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de
 %% \nocite{*}
 \bibliographystyle{IEEEtran}
 \bibliography{sources}
+
+\appendices
+\section{Teknisk Specifikation: Schemaläggare}
+Se nästa sida.
+% Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
+% med sista sidan av rapporten
+\newpage
+\null%
+\newpage
+% Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
+% länkar fortfarande fungerar
+\includepdf[pages=-]{../Spec/Schemalaggare}
 
 % that's all folks
 \end{document}
