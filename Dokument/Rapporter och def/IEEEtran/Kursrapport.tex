@@ -57,7 +57,9 @@
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
-% \documentclass[conference]{../sty/IEEEtran}
+\usepackage{color, colortbl}
+\usepackage[table]{xcolor}
+\usepackage{tabu}
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
 \usepackage[pdftex]{graphicx}
@@ -65,6 +67,19 @@
 \usepackage{pdfpages}
 \usepackage{float}
 \usepackage{pax}
+\usepackage{array}
+
+\definecolor{Gray}{gray}{0.9}
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip0\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+%
 \graphicspath{{Images/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % correct bad hyphenation here
@@ -391,6 +406,27 @@ Management definieras enligt Essence [Referens] som en administrativ och organis
 %\hline
 %\end{tabular}
 %\end{table}
+
+\begin{center}
+	\small
+	\centering
+	\begin{tabu} to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \thickhline
+    \taburowcolors[1]1{Gray..Gray}
+    \multicolumn{4}{"c|}{"Keep"} \\
+    \thickhline
+    "Keep" & Motivation & Förbättringar & Referenser \\
+    \thickhline
+    \taburowcolors[1]1{white..white}
+    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv\\
+    \thickhline
+    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär \\
+    \thickhline
+    Projekttavla & Projekttavlan fungerar som en tydlig \\
+    \thickhline
+    \end{tabu}
+\end{center}
+
 \section{Analys / Förbättringsförslag} \label{sec:analys}
 
 \section{Diskussion} \label{sec:disk}
