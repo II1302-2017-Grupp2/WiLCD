@@ -62,6 +62,7 @@
 \usepackage[swedish]{babel}
 \usepackage[pdftex]{graphicx}
 \usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{float}
 \graphicspath{{Images/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % correct bad hyphenation here
@@ -110,27 +111,30 @@
 \IEEEpeerreviewmaketitle
 
 \section{Om detta dokument och undersökning}
-Detta dokument är ett försök att på ett vetenskapligt sätt undersöka projektmetoder inom små IT-projekt. Dokumentet är också delvis en träning på att skriva vetenskapliga rapporter och en övning inför examensarbetet. Dokumentet riktar sig mot akademin och specifikt mot kursens examinator som kommer att utvärdera rapporten enligt ''Blooms taxonomi'' \cite{krathwohl10}.\\
-\\
-Rapportens disposition är som följer. Sektion \ref{sec:intro} introducerar rapporten. Sektion \ref{sec:teori} redovisar bakomliggande teori och ingenjörspraxis. Sektion \ref{sec:under} redovisar vår undersökningsmetod. Sektion \ref{sec:genom} beskriver genomförandet. Sektion \ref{sec:res} redovisar resultatet av undersökningen. I sektion \ref{sec:analys} analyseras undersökningen och eventuella förbättringsförslag lämnas. I sektion \ref{sec:disk} diskuteras undersökningen och resultatet av undersökningen. Sektion \ref{sec:slutord} innehåller slutord. \\
-\\
-Detta dokuments trovärdighet anses vara hög, då undersökningsmetoden som använts är förankrad i Anderssons och Ekholms rapport som avhandlar vetenskaplighet i IT-projekt \cite{Andersson02}, vilket i sin tur leder till att resultaten är framtagna på ett vetenskapligt sätt. De projektmetoder vi undersöker är erkända och välanvanda inom IT-projekt, och dokumentet refererar till erkända böcker, tidsskrifter samt vetenskapliga texter. Dessa egenskaper bygger tillsammans upp projektets trovärdighet och vi tror att en likadan undersökning med lika många deltagare och samma förutsättningar skulle komma fram till liknande slutsatser som vi har gjort.
+Detta dokument är ett försök att på ett vetenskapligt sätt undersöka projektmetoder inom små IT-projekt. Dokumentet är också delvis en träning på att skriva vetenskapliga rapporter och en övning inför examensarbetet. Dokumentet riktar sig mot akademin och specifikt mot kursens examinator som kommer att utvärdera rapporten enligt ''Blooms taxonomi'' \cite{krathwohl10}.
+
+Rapportens disposition är som följer. Sektion \ref{sec:intro} introducerar rapporten. Sektion \ref{sec:teori} redovisar bakomliggande teori och ingenjörspraxis. Sektion \ref{sec:under} redovisar vår undersökningsmetod. Sektion \ref{sec:genom} beskriver genomförandet. Sektion \ref{sec:res} redovisar resultatet av undersökningen. I sektion \ref{sec:analys} analyseras undersökningen och eventuella förbättringsförslag lämnas. I sektion \ref{sec:disk} diskuteras undersökningen och resultatet av undersökningen. Sektion \ref{sec:slutord} innehåller slutord.
+
+Detta dokuments trovärdighet anses vara hög, då undersökningsmetoden som använts är förankrad i Anderssons och Ekholms rapport som avhandlar vetenskaplighet i IT-projekt \cite{Andersson02}, vilket i sin tur leder till att resultaten är framtagna på ett vetenskapligt sätt. De projektmetoder vi undersöker är erkända och välanvanda inom IT-projekt, och dokumentet refererar till erkända böcker, tidsskrifter samt vetenskapliga texter. Dessa egenskaper bygger tillsammans upp projektets trovärdighet och vi är övertygade om att en likadan undersökning med lika många deltagare och samma förutsättningar skulle komma fram till så gott som samma slutsatser som vi har gjort.
 
 \section{Introduktion} \label{sec:intro}
 
 \subsection{Bakgrund}
-Detta dokument är en del av examinationen i kursen ''Projekt och projektmetoder'' i vilket studenter i små grupper genomför ett IT-projekt som innefattar både hårdvara, mjukvara, datornätverk samt elektronik. Syftet med att genomföra projektet är att undersöka samt analysera olika projektmetoder, dessa analyser ska sedan diskuteras och framföras i denna rapport för att kunna besvara frågeställningen ''Vad är en bra projektmetod för små IT-projekt''.\\
-\\
+Detta dokument är en del av examinationen i kursen ''Projekt och projektmetoder'' i vilket studenter i små grupper genomför ett IT-projekt som innefattar både hårdvara, mjukvara, datornätverk samt elektronik. Syftet med att genomföra projektet är att undersöka samt analysera olika projektmetoder, dessa analyser ska sedan diskuteras och framföras i denna rapport för att kunna besvara frågeställningen ''Vad är en bra projektmetod för små IT-projekt''.
+
 Kursens syfte är att fördjupa studenternas kunskap inom projektmetodik och skall fungera som en förberedelse inför både examensarbete samt det fortsatta arbetslivet efter examen. Kursen projektgrupper består av både data- samt elektrostudenter, och tanken bakom detta är att studenter från de olika programmen har olika expertisområden, vilket leder till att olika studenter har olika ansvarsområden inom projektgruppen, ett mål med kursen är att projektgruppen tillsammans ska utvecklas och dela med sig av sin kunskap, vilket leder till att samtliga medlemmar ytterliggare utvecklas på en personlig nivå.
 
 \subsection{Problemformulering}
-Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra projektmetod för små IT-projekt?''. För att besvara denna frågeställning måste gruppen först undersöka samt komma överens om vad en bra projektmetod är. En vettig utgångspunkt för detta är projekt-triangeln \cite[s. 128-129]{Eklund14}. En bra projektmetod kan då beskrivas som en metod där projektgruppen på ett strukturerat och planerat vis tar fram en produkt som tillfredställer kundens krav och ej överskrider projektets budget. Den utvecklar gärna också projektgruppens effektivitet och sammarbetsförmåga under arbetets gång. En bra projektmetod även innefattar hjälpmedel som underlättar och förbättrar arbetsgången och tillåter projektgruppen att snabbt och ofta ändra arbetssätt, arbetsbörda och/eller förväntat resultatet av projektarbetet.\\
-\\
+Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra projektmetod för små IT-projekt?''. För att besvara denna frågeställning måste gruppen först undersöka samt komma överens om vad en bra projektmetod är. En vettig utgångspunkt för att beskriva detta är Eklunds åtagandetriangel \cite[s. 128-129]{Eklund14}.
+
+En bra projektmetod kan då beskrivas som en metod där projektgruppen på ett strukturerat och planerat vis tar fram en produkt som tillfredställer kundens krav och ej överskrider projektets budget vad gäller tid och kostnad. Den innefattar även hjälpmedel som underlättar och förbättrar arbetsgången och tillåter projektgruppen att snabbt och ofta ändra arbetssätt, arbetsbörda och/eller förväntat resultatet av projektarbetet, då skiftande krav och oförutsedda problem är en vanlig företeelse i IT-projekt som måste hanteras när de dyker upp.
+
 Efter att ha sanktionerat denna definition av vad en bra projektmetod är blir det betydligt enklare och tydligare att resonera kring den övergripande frågeställningen.
 \subsection{Undersökningsstrategi/lösningsstrategi}
 Strategin för att undersöka och hitta svar till denna frågeställning har varit att genomföra en fallstudie i vilken projektgruppen genomfört ett litet IT-projekt. Inom detta projekt testas en variant på Scrum-metoden, med mindre inslag från Kanban, och varje medlem har tagit en specifik roll i projektet. Det är sedan varje medlems uppgift att inom denna roll experimentellt under projektets gång samla in information och intryck om vilka projektmetoder som fungerar bra och varför inom den specifika roll medlemmen besitter. Dessa intryck ska sedan analyseras och slutsatser skall dras, och det är dessa analyser och slutsatser som denna rapport avser avhandla.
 
 \subsection{Relaterade arbeten}
+Inga relaterade arbeten har hittats.
 
 \subsection{Avgränsningar}
 Teorierna i denna rapport avgränsas genom att endast Scrum-metoden tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och samtliga grupper utför samma projektuppdrag.
@@ -142,7 +146,7 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 
 \noindent \textbf{Övergripande källor för hela projektet}
 \begin{itemize}
-\item Boken \textit{Software Engineering} av Ian Sommerville \cite{Sommerville10}.
+\item Boken \textit{Software Engineering} av Ian Sommerville \cite[kap. 1,2,3]{Sommerville10}.
 \\
 \item Handboken \textit{Scrum and XP from the Trenches} av Henrik Kniberg \cite{Kniberg07}.
 \\
@@ -185,11 +189,14 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 \end{itemize}
 
 \subsection{Förstudie}
-Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas. Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figur \ref{forslagsprintbacklog} och \ref{forslagproductbacklog}. Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
-Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
+Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas.
+
+\subsection{Föreslagen ansats}
+Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats som studenterna själva får välja att använda rakt av eller modifiera till sitt tycke. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figur \ref{forslagsprintbacklog}, \ref{forslagriktigsprint}, \ref{forslagproductbacklog} och \ref{forslagriktigproduct}.
+
 \subsubsection{Anslagstavla}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=3in]{forslagsprintbacklog}
 % where an .eps filename suffix will be assumed under latex,
@@ -199,15 +206,39 @@ Resultatet av förstudien är att metoderna, som anges i följande kapitel, har 
 \label{forslagsprintbacklog}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{forslagriktigsprint}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+\DeclareGraphicsExtensions.
+\caption{Demonstration av den föreslagna interna sidan för projektgruppen.}
+\label{forslagriktigsprint}
+\end{figure}
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=3in]{forslagproductbacklog}
 % where an .eps filename suffix will be assumed under latex,
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 \DeclareGraphicsExtensions.
-\caption{Föreslaget Exempel på en public sida för projektgruppen.}
+\caption{Föreslaget Exempel på en publik sida för projektgruppen.}
 \label{forslagproductbacklog}
 \end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{forslagriktigproduct}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+\DeclareGraphicsExtensions.
+\caption{Demonstration av den föreslagna publika sidan för projektgruppen.}
+\label{forslagriktigproduct}
+\end{figure}
+
+\subsection{Vald ansats}
+Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
+Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
 
 \subsubsection{Scruminspirerade projektaktiviteter (vald ansats)}
 
@@ -218,12 +249,24 @@ Resultatet av förstudien är att metoderna, som anges i följande kapitel, har 
 Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna är valda och specificerade så att de skall kunna ge svar på ett antal följdfrågor som identifierats i denna undersökning. Först anges frågorna och sedan följer metodbeskrivning.
 \subsection{Frågor att besvara i undersökningen}
 
+\begin{enumerate}
+
+\item Hur skall man bedöma/redovisa om en delprojektmetod eller praktik är bra?
+
+\item Hur kan man kategorisera, välja, och namnge projektmetoder (projektpraktiker) och (verklighetsbeskrivning) så att diskussionen om dito blir begreppsmässigt konsisten för ingenjörer inom IT-området (s.k. ontologi?).
+
+\item Vilka ansvarsroller skall användas som ansats i projektet?
+
+\item Vad består ett projekt av och vilka metoder/praxis skall användas, undersökas och bedömmas? Vilken ansats skall göras?
+
+\end{enumerate}
+
 \subsection{Metodbeskrivning}
 
 \textbf{Metod 1: Undersökningsmetod}
 
 %Exempel på hur man lägger in en bild
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=2.5in]{invmethod}
 % where an .eps filename suffix will be assumed under latex,
@@ -235,7 +278,10 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 
 \textbf{Metod 2: Begrepp}\\
 \\
-Begrepp som används följer om möjligt OMGs standard Essence \cite{Jacobson13}.
+Då det inom detta område saknas en tydlig nomenklatur då många företag och projektgrupper använder samma begrepp med olika betydelse är det viktigt att tydligt definiera rapportens begreppsvärld.
+
+Begrepp som används kommer om möjligt följa OMGs \cite{OMG} standard Essence - Kernel and Language for Software Engineering Methods \cite{Jacobson13}.
+
 Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de engelska begreppen att fritt översättas till svenska då risken för missförstånd anses liten.
 \section{Genomförande} \label{sec:genom}
 \textbf{NEDAN VISAS GENERELL LAYOUT FÖR DE ENSKILDA DELARNA, SKRIV SOM LÖPANDE TEXT}
