@@ -265,3 +265,6 @@ servern i produktion.
 ** System med Flera Displayenheter
    Just nu krävs det en isolerad schemaläggare per displayenhet, om de inte alltid ska visa samma
    innehåll.
+
+** Förbjudna tecken
+   Nyradstecknet[fn::Line Feed/LF/0x0A] är reserverat, och kan därför inte användas i meddelanden.
