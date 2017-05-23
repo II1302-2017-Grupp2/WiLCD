@@ -38,8 +38,6 @@ servern i produktion.
 
 #+TOC: headlines 4
 
-\pagebreak
-
 * Gränssnitt
   :PROPERTIES:
   :CUSTOM_ID: interface
@@ -247,3 +245,23 @@ servern i produktion.
 
     - MessageUpdaterNoop :: Minimal MessageUpdater som kan användas vid tester utan att behöva en
          PostgreSQL-databas. Den bahandlas inte i detta dokument.
+
+* Kända Brister
+
+** Säkerhet
+   Ingen kryptering eller auktorisering på applikationslagret sker mellan displayenheten och
+   schemaläggaren. I stället förutsätts det att displayenheten är ansluten till schemaläggaren
+   via ett isolerat och krypterat nätverk.
+
+   Dessutom sker det idag ingen auktorisering av displayenheten, utan det förutsätts att
+   extern åtkomst blockeras via en brandvägg.
+
+** Översättning och Internationella Marknader
+   All text skickas över standarden ISO 8859-1 som tyvärr inte täcker hela Unicode, men som
+   är enklare att implementera eftersom alla tecken har en fast bredd. Skulle produkten
+   användas utanför norden eller den engelsktalande världen så skulle en en övergång till
+   exempelvis UTF-8 eller UCS-16 vara nödvändig.
+
+** System med Flera Displayenheter
+   Just nu krävs det en isolerad schemaläggare per displayenhet, om de inte alltid ska visa samma
+   innehåll.
