@@ -68,6 +68,7 @@
 \usepackage{float}
 \usepackage{pax}
 \usepackage{array}
+\usepackage{dblfloatfix}
 
 \definecolor{Gray}{gray}{0.9}
 
@@ -412,9 +413,9 @@ Management definieras enligt Essence [Referens] som en administrativ och organis
 %\end{tabular}
 %\end{table}
 
-\begin{center}
+\begin{table}[H]
 	\small
-	\centering
+  \centering
 	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Keep & Motivation & Förbättringar & Referenser \TBstrut \\
@@ -426,7 +427,7 @@ Management definieras enligt Essence [Referens] som en administrativ och organis
     Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
     \hline
   \end{tabular}
-\end{center}
+\end{table}
 
 \section{Analys / Förbättringsförslag} \label{sec:analys}
 
