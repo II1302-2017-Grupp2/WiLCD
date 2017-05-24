@@ -136,7 +136,7 @@ Detta dokuments trovärdighet anses vara hög, då undersökningsmetoden som anv
 \subsection{Bakgrund}
 Detta dokument är en del av examinationen i kursen ''Projekt och projektmetoder'' i vilket studenter i små grupper genomför ett IT-projekt som innefattar både hårdvara, mjukvara, datornätverk samt elektronik. Syftet med att genomföra projektet är att undersöka samt analysera olika projektmetoder, dessa analyser ska sedan diskuteras och framföras i denna rapport för att kunna besvara frågeställningen ''Vad är en bra projektmetod för små IT-projekt''.
 
-Kursens syfte är att fördjupa studenternas kunskap inom projektmetodik och skall fungera som en förberedelse inför både examensarbete samt det fortsatta arbetslivet efter examen. Kursen projektgrupper består av både data- samt elektrostudenter, och tanken bakom detta är att studenter från de olika programmen har olika expertisområden, vilket leder till att olika studenter har olika ansvarsområden inom projektgruppen, ett mål med kursen är att projektgruppen tillsammans ska utvecklas och dela med sig av sin kunskap, vilket leder till att samtliga medlemmar ytterliggare utvecklas på en personlig nivå.
+Kursens syfte är att fördjupa studenternas kunskap inom projektmetodik och skall fungera som en förberedelse inför både examensarbete samt det fortsatta arbetslivet efter examen. Kursens projektgrupper består av både data- samt elektrostudenter, och tanken bakom detta är att studenter från de olika programmen har olika expertisområden, vilket leder till att olika studenter har olika ansvarsområden inom projektgruppen, ett mål med kursen är att projektgruppen tillsammans ska utvecklas och dela med sig av sin kunskap, vilket leder till att samtliga medlemmar ytterliggare utvecklas på en personlig nivå.
 
 \subsection{Problemformulering}
 Den övergripande frågeställningen är som tidigare nämnt ''Vad är en bra projektmetod för små IT-projekt?''. För att besvara denna frågeställning måste gruppen först undersöka samt komma överens om vad en bra projektmetod är. En vettig utgångspunkt för att beskriva detta är Eklunds åtagandetriangel \cite[s. 128-129]{Eklund14}.
@@ -168,6 +168,8 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 \\
 \item Artikeln \textit{Industrial Scale Agile, from Craft to Engineering} av Ivar Jacobson, Ian Spence och Ed Seidewitz \cite{Jacobson16}.
 \\
+\item Webbsidan \textit{Essence Kernel} av Ivar Jacobson \cite{ivarjacobson2017}.
+\\
 \end{itemize}
 
 \noindent \textbf{Kundrepresentant}
@@ -186,9 +188,11 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 \noindent \textbf{Utvecklare}\\
 \indent Denna roll existerar i projektet, men det har ej varit en del av undersökningen och vi utelämnar därför rollen ur rapporten.\\
 \\
-\noindent \textbf{Testare}
+\noindent \textbf{Testare (Yobart Amino)}
 \begin{itemize}
-\item lista av källor
+\item  \textit{Software Engineering}, Ian Sommerville \cite[kap.1-3,8]{Sommerville10}. De här kapitlen berör teststrategier och testplaner.
+\item \textit{Test och kvalitetssäkring av IT-system}, Ulf Eriksson \cite{eriksson_2008}.  Berör olika tekniker, arbetssätt och verktyg för testning.
+\\
 \\
 \end{itemize}
 
@@ -698,7 +702,19 @@ Fullständiga tabeller finns i bilagor.
   \end{tabular}
 \end{table}
 
-\section{Teknisk Specifikation: Schemaläggare}
+\section{Formella Dokument}
+Se nästa sida.
+% Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
+% med sista sidan av rapporten
+\newpage
+\null%
+\newpage
+% Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
+% länkar fortfarande fungerar
+\includepdf[pages=-]{../../Arkitektur/Arkitektur}
+\includepdf[pages=-]{../Vision}
+
+\section{Tekniska Specifikationer}
 Se nästa sida.
 % Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
 % med sista sidan av rapporten

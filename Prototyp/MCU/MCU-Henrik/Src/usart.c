@@ -66,209 +66,209 @@ int8_t ESP_WaitForMsg(char *msg, uint8_t loop);
 int8_t ESP_WaitForMsg_Timeout(char *msg, int timeout);
 
 void ESP_Init() {
-	uartEspPos = 0;
-	uartDebugPos = 0;
-	HAL_GPIO_WritePin(ESP_RESET_GPIO_Port, ESP_RESET_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(ESP_ENABLE_GPIO_Port, ESP_ENABLE_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(ESP_GPIO0_GPIO_Port, ESP_GPIO0_Pin, GPIO_PIN_SET); // ESP GPIO0 LOW = reprogramming mode
-	HAL_Delay(2000);
-	HAL_UART_Receive_DMA(&HUART_ESP, uartEspBuf, 2);
+  uartEspPos = 0;
+  uartDebugPos = 0;
+  HAL_GPIO_WritePin(ESP_RESET_GPIO_Port, ESP_RESET_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(ESP_ENABLE_GPIO_Port, ESP_ENABLE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(ESP_GPIO0_GPIO_Port, ESP_GPIO0_Pin, GPIO_PIN_SET); // ESP GPIO0 LOW = reprogramming mode
+  HAL_Delay(2000);
+  HAL_UART_Receive_DMA(&HUART_ESP, uartEspBuf, 2);
 #ifdef HUART_DEBUG
-	HAL_UART_Receive_DMA(&HUART_DEBUG, uartDebugBuf, 2);
+  HAL_UART_Receive_DMA(&HUART_DEBUG, uartDebugBuf, 2);
 #endif
-	HAL_GPIO_WritePin(ESP_ENABLE_GPIO_Port, ESP_ENABLE_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(ESP_RESET_GPIO_Port, ESP_RESET_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(ESP_ENABLE_GPIO_Port, ESP_ENABLE_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(ESP_RESET_GPIO_Port, ESP_RESET_Pin, GPIO_PIN_SET);
 
-	UART_DebugLog("Wi-Fi Booting");
-	if (ESP_WaitForMsg_Timeout(espReadyMsg, 4000) != 1) {
-		UART_DebugLog("Wi-Fi Boot Timeout, Resetting MCU...");
-		HAL_Delay(1000);
-		HAL_NVIC_SystemReset();
-	}
-	/*UART_DebugLog("Wi-Fi Resetting");
-	ESP_SendCommand("AT+RESTORE"); // Factory reset
-	ESP_WaitForMsg(espReadyMsg, 1);*/
-	ESP_SendCommand("AT+RFPOWER=5"); // Send ASAP to prevent brownout
-	UART_DebugLog("Wi-Fi Configuring");
-	ESP_SendCommand("AT+SLEEP=0"); // Don't you dare sleep
-	ESP_SendCommand("AT");
-	ESP_SendCommand("ATE0"); // Disable command echo
-	ESP_SendCommand("AT+CIPMUX=0");
-	ESP_SendCommand("AT+CWMODE_CUR=1");
+  UART_DebugLog("Wi-Fi Booting");
+  if (ESP_WaitForMsg_Timeout(espReadyMsg, 4000) != 1) {
+    UART_DebugLog("Wi-Fi Boot Timeout, Resetting MCU...");
+    HAL_Delay(1000);
+    HAL_NVIC_SystemReset();
+  }
+  /*UART_DebugLog("Wi-Fi Resetting");
+  ESP_SendCommand("AT+RESTORE"); // Factory reset
+  ESP_WaitForMsg(espReadyMsg, 1);*/
+  ESP_SendCommand("AT+RFPOWER=5"); // Send ASAP to prevent brownout
+  UART_DebugLog("Wi-Fi Configuring");
+  ESP_SendCommand("AT+SLEEP=0"); // Don't you dare sleep
+  ESP_SendCommand("AT");
+  ESP_SendCommand("ATE0"); // Disable command echo
+  ESP_SendCommand("AT+CIPMUX=0");
+  ESP_SendCommand("AT+CWMODE_CUR=1");
 
-	UART_DebugLog("Wi-Fi Connecting");
-	if (ESP_SendCommand("AT+CWJAP_CUR=\""WIFI_SSID"\",\""WIFI_PSK"\"") == 0) {
-		UART_DebugLog("Wi-Fi Failed");
-		HAL_NVIC_SystemReset();
-	}
-	UART_DebugLog("Wi-Fi TCP Connecting");
-	ESP_SendCommand_NoWait("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797");
-	if (ESP_WaitForOk_Timeout(3000) != 1) {
-		UART_DebugLog("Wi-Fi TCP Failed");
-		HAL_NVIC_SystemReset();
-	}
-	ESP_SendCommand("AT+SLEEP=1"); // Allow sleeping
-	UART_DebugLog("Wi-Fi Connected");
+  UART_DebugLog("Wi-Fi Connecting");
+  if (ESP_SendCommand("AT+CWJAP_CUR=\""WIFI_SSID"\",\""WIFI_PSK"\"") == 0) {
+    UART_DebugLog("Wi-Fi Failed");
+    HAL_NVIC_SystemReset();
+  }
+  UART_DebugLog("Wi-Fi TCP Connecting");
+  ESP_SendCommand_NoWait("AT+CIPSTART=\"TCP\",\"10.254.254.1\",9797");
+  if (ESP_WaitForOk_Timeout(3000) != 1) {
+    UART_DebugLog("Wi-Fi TCP Failed");
+    HAL_NVIC_SystemReset();
+  }
+  ESP_SendCommand("AT+SLEEP=1"); // Allow sleeping
+  UART_DebugLog("Wi-Fi Connected");
 }
 
 uint16_t ESP_ReadLine(uint8_t *buf) {
-	int j = 0;
-	uint8_t eolFound = 0;
-	for (uint16_t i = espReceiveBufferLo; i != espReceiveBufferHi; i = (i + 1) % ESP_BUF_SIZE) {
-		if (espReceiveBuffer[i] == '\r' || espReceiveBuffer[i] == '\n') {
-			eolFound = 1;
-			espReceiveBufferLo = (i + 1) % sizeof(espReceiveBuffer);
-		} else if (eolFound) {
-			break;
-		} else {
-			buf[j] = espReceiveBuffer[i];
-			++j;
-		}
-	}
-	if (eolFound) {
-		if (j == 6 && strncmp((char *)buf, "CLOSED", j) == 0) {
-			UART_DebugLog("ESP DISCONNECTED, RESETTING MCU...");
-			HAL_NVIC_SystemReset();
-		}
-		return j;
-	} else {
-		return 0;
-	}
+  int j = 0;
+  uint8_t eolFound = 0;
+  for (uint16_t i = espReceiveBufferLo; i != espReceiveBufferHi; i = (i + 1) % ESP_BUF_SIZE) {
+    if (espReceiveBuffer[i] == '\r' || espReceiveBuffer[i] == '\n') {
+      eolFound = 1;
+      espReceiveBufferLo = (i + 1) % sizeof(espReceiveBuffer);
+    } else if (eolFound) {
+      break;
+    } else {
+      buf[j] = espReceiveBuffer[i];
+      ++j;
+    }
+  }
+  if (eolFound) {
+    if (j == 6 && strncmp((char *)buf, "CLOSED", j) == 0) {
+      UART_DebugLog("ESP DISCONNECTED, RESETTING MCU...");
+      HAL_NVIC_SystemReset();
+    }
+    return j;
+  } else {
+    return 0;
+  }
 }
 
 int8_t ESP_WaitForMsg(char *msg, uint8_t loop) {
-	int msgLen = strlen(msg);
-	int errLen = strlen(espErrorMsg);
-	int failLen = strlen(espFailMsg);
-	uint8_t buf[ESP_BUF_SIZE];
-	do {
-		int recvLen = ESP_ReadLine(buf);
-		if (recvLen >= 1 && buf[0] == '+') {
+  int msgLen = strlen(msg);
+  int errLen = strlen(espErrorMsg);
+  int failLen = strlen(espFailMsg);
+  uint8_t buf[ESP_BUF_SIZE];
+  do {
+    int recvLen = ESP_ReadLine(buf);
+    if (recvLen >= 1 && buf[0] == '+') {
 #ifdef HUART_DEBUG
-			HAL_UART_Transmit(&HUART_DEBUG, buf, recvLen, 1000);
-			UART_DebugLog("");
+      HAL_UART_Transmit(&HUART_DEBUG, buf, recvLen, 1000);
+      UART_DebugLog("");
 #endif
-		}
-		if (recvLen == msgLen && strncmp(msg, (char *)buf, msgLen) == 0) {
-			return 1;
-		}
-		if ((recvLen == errLen && strncmp(espErrorMsg, (char *)buf, errLen) == 0)
-				|| (recvLen == failLen && strncmp(espFailMsg, (char *)buf, failLen) == 0)) {
+    }
+    if (recvLen == msgLen && strncmp(msg, (char *)buf, msgLen) == 0) {
+      return 1;
+    }
+    if ((recvLen == errLen && strncmp(espErrorMsg, (char *)buf, errLen) == 0)
+        || (recvLen == failLen && strncmp(espFailMsg, (char *)buf, failLen) == 0)) {
 #ifdef HUART_DEBUG
-			HAL_UART_Transmit(&HUART_DEBUG, buf, recvLen, 1000);
-			UART_DebugLog("");
+      HAL_UART_Transmit(&HUART_DEBUG, buf, recvLen, 1000);
+      UART_DebugLog("");
 #endif
-			return 0;
-		}
-	} while(loop);
-	return -1;
+      return 0;
+    }
+  } while(loop);
+  return -1;
 }
 
 int8_t ESP_WaitForMsg_Timeout(char *msg, int timeout) {
-	int step = 10;
-	for (int i = 0; i < timeout / step; i++) {
-		int8_t gotOk = ESP_WaitForMsg(msg, 0);
-		if (gotOk >= 0) {
-			return gotOk;
-		}
-		HAL_Delay(step);
-	}
-	return -1;
+  int step = 10;
+  for (int i = 0; i < timeout / step; i++) {
+    int8_t gotOk = ESP_WaitForMsg(msg, 0);
+    if (gotOk >= 0) {
+      return gotOk;
+    }
+    HAL_Delay(step);
+  }
+  return -1;
 }
 
 int8_t ESP_WaitForOk() {
-	return ESP_WaitForMsg(espOkMsg, 1);
+  return ESP_WaitForMsg(espOkMsg, 1);
 }
 
 int8_t ESP_WaitForOk_Timeout(int timeout) {
-	return ESP_WaitForMsg_Timeout(espOkMsg, timeout);
+  return ESP_WaitForMsg_Timeout(espOkMsg, timeout);
 }
 
 void ESP_SendCommand_NoWait(char *msg) {
-	HAL_UART_Transmit(&HUART_ESP, (uint8_t *)msg, strlen(msg), 1000);
-	HAL_UART_Transmit(&HUART_ESP, (uint8_t *)"\r\n", 2, 1000);
+  HAL_UART_Transmit(&HUART_ESP, (uint8_t *)msg, strlen(msg), 1000);
+  HAL_UART_Transmit(&HUART_ESP, (uint8_t *)"\r\n", 2, 1000);
 }
 
 int8_t ESP_SendCommand(char *msg) {
-	ESP_SendCommand_NoWait(msg);
-	return ESP_WaitForOk();
+  ESP_SendCommand_NoWait(msg);
+  return ESP_WaitForOk();
 }
 
 int16_t ESP_TCP_ReadLine(uint8_t *buf) {
-	uint8_t headerBuf[strlen(espIpDataMsg)+1];
-	uint16_t headerLen = 0;
-	uint16_t i = espReceiveBufferLo;
-	for (; i != espReceiveBufferHi && headerLen < 5; i = (i + 1) % ESP_BUF_SIZE) {
-		if (espReceiveBuffer[i] == '\r' || espReceiveBuffer[i] == '\n') {
-			continue;
-		}
+  uint8_t headerBuf[strlen(espIpDataMsg)+1];
+  uint16_t headerLen = 0;
+  uint16_t i = espReceiveBufferLo;
+  for (; i != espReceiveBufferHi && headerLen < 5; i = (i + 1) % ESP_BUF_SIZE) {
+    if (espReceiveBuffer[i] == '\r' || espReceiveBuffer[i] == '\n') {
+      continue;
+    }
 
-		headerBuf[headerLen] = espReceiveBuffer[i];
-		++headerLen;
-	}
-	headerBuf[headerLen] = 0;
-	if (headerLen >= 1 && headerBuf[0] != '+') {
-		return -1;
-	}
-	if (headerLen != 5 || strncmp(espIpDataMsg, (char *)headerBuf, strlen(espIpDataMsg)) != 0) {
-		return 0;
-	}
-	uint16_t len = 0;
-	for (; i != espReceiveBufferHi && espReceiveBuffer[i] != ':'; i = (i + 1) % ESP_BUF_SIZE) {
-		len = (len * 10) + (espReceiveBuffer[i] - '0');
-	}
-	if (i == espReceiveBufferHi) {
-		return 0;
-	}
-	++i;
-	uint16_t copied = 0;
-	for (; i != espReceiveBufferHi && copied < len; i = (i + 1) % ESP_BUF_SIZE) {
-		buf[copied] = espReceiveBuffer[i];
-		++copied;
-	}
-	if (copied == len) {
-		espReceiveBufferLo = i;
-		return len;
-	} else {
-		return 0;
-	}
+    headerBuf[headerLen] = espReceiveBuffer[i];
+    ++headerLen;
+  }
+  headerBuf[headerLen] = 0;
+  if (headerLen >= 1 && headerBuf[0] != '+') {
+    return -1;
+  }
+  if (headerLen != 5 || strncmp(espIpDataMsg, (char *)headerBuf, strlen(espIpDataMsg)) != 0) {
+    return 0;
+  }
+  uint16_t len = 0;
+  for (; i != espReceiveBufferHi && espReceiveBuffer[i] != ':'; i = (i + 1) % ESP_BUF_SIZE) {
+    len = (len * 10) + (espReceiveBuffer[i] - '0');
+  }
+  if (i == espReceiveBufferHi) {
+    return 0;
+  }
+  ++i;
+  uint16_t copied = 0;
+  for (; i != espReceiveBufferHi && copied < len; i = (i + 1) % ESP_BUF_SIZE) {
+    buf[copied] = espReceiveBuffer[i];
+    ++copied;
+  }
+  if (copied == len) {
+    espReceiveBufferLo = i;
+    return len;
+  } else {
+    return 0;
+  }
 }
 
 void ESP_SleepUntilMessage() {
-	if (espReceiveBufferHi == espReceiveBufferLo) {
-		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFE);
-		__WFI();
-		HAL_Delay(200);
-	}
+  if (espReceiveBufferHi == espReceiveBufferLo) {
+    HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFE);
+    __WFI();
+    HAL_Delay(200);
+  }
 }
 
 void UART_DebugLog(char *msg) {
 #ifdef HUART_DEBUG
-	HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)msg, strlen(msg), 1000);
-	HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
+  HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)msg, strlen(msg), 1000);
+  HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
 #endif
-	Display_Str(msg);
+  Display_Str(msg);
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
-	HAL_UART_RxCpltCallback(huart);
+  HAL_UART_RxCpltCallback(huart);
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	__HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
-	uint8_t value = 0;
-	if (huart->Instance == HUART_ESP.Instance) {
-		value = uartEspBuf[uartEspPos];
-		uartEspPos = (uartEspPos + 1) % 2;
-	}
+  __HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
+  uint8_t value = 0;
+  if (huart->Instance == HUART_ESP.Instance) {
+    value = uartEspBuf[uartEspPos];
+    uartEspPos = (uartEspPos + 1) % 2;
+  }
 #ifdef HUART_DEBUG
-	else if (huart->Instance == HUART_DEBUG.Instance) {
-		value = uartDebugBuf[uartDebugPos];
-		uartDebugPos = (uartDebugPos + 1) % 2;
-	}
+  else if (huart->Instance == HUART_DEBUG.Instance) {
+    value = uartDebugBuf[uartDebugPos];
+    uartDebugPos = (uartDebugPos + 1) % 2;
+  }
 #endif
-	espReceiveBuffer[espReceiveBufferHi] = value;
-	espReceiveBufferHi = (espReceiveBufferHi + 1) % ESP_BUF_SIZE;
+  espReceiveBuffer[espReceiveBufferHi] = value;
+  espReceiveBufferHi = (espReceiveBufferHi + 1) % ESP_BUF_SIZE;
 }
 
 /* USER CODE END 0 */
