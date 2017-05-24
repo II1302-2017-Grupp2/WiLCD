@@ -71,6 +71,11 @@
 
 \definecolor{Gray}{gray}{0.9}
 
+% Från https://tex.stackexchange.com/a/126542
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}       % "top" strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}} % "bottom" strut
+\newcommand{\TBstrut}{\Tstrut\Bstrut} % top&bottom struts
+
 \makeatletter
 \newcommand{\thickhline}{%
     \noalign {\ifnum 0=`}\fi \hrule height 1pt
@@ -310,7 +315,7 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 \end{enumerate}
 
 \subsection{Metodbeskrivning}
-Den centrala metoden i undersökningen är att avgöra om olika valda projekt-praktiker och arbetssätt är ”bra” och om de bidrar till att göra hela projektprocessen bra. Åstadkommer/skapar projektet rätt saker och konstrueras lösningar på bästa sätt? 
+Den centrala metoden i undersökningen är att avgöra om olika valda projekt-praktiker och arbetssätt är ”bra” och om de bidrar till att göra hela projektprocessen bra. Åstadkommer/skapar projektet rätt saker och konstrueras lösningar på bästa sätt?
 
 Metoden för att samla data i denna fråga blir induktiv då erfarenheten i gruppen är ytterst liten. Arbetssättet blir att efterhand som projektet fortskrider så förs bedömningsområden som anses vitala och bedömningskriterier in i en tabell kontinuerligt. Tabellen, se kapitel ”Resultat”, dess innehåll och dess utformning förbättras också hela tiden.\\
 \\
@@ -372,7 +377,7 @@ Projektledarrollen innehåller egentligen två delar - leadership och management
 
 Leadership definieras enligt Essence [Referens] som en roll som skall inspirera och motivera projektgruppen för att de på ett framgångsrikt sätt skall kunna genomföra projektet i enlighet med kraven.
 
-Management definieras enligt Essence [Referens] som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång. 
+Management definieras enligt Essence [Referens] som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång.
 
 
 \subsection{Kundrepresentant}
@@ -410,21 +415,17 @@ Management definieras enligt Essence [Referens] som en administrativ och organis
 \begin{center}
 	\small
 	\centering
-	\begin{tabu} to \columnwidth {"X[l]"X[l]"X[l]"l|}
-    \thickhline
-    \taburowcolors[1]1{Gray..Gray}
-    \multicolumn{4}{"c|}{"Keep"} \\
-    \thickhline
-    "Keep" & Motivation & Förbättringar & Referenser \\
-    \thickhline
-    \taburowcolors[1]1{white..white}
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv\\
-    \thickhline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär \\
-    \thickhline
-    Projekttavla & Projekttavlan fungerar som en tydlig \\
-    \thickhline
-    \end{tabu}
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    \hline
+    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    \hline
+    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    \hline
+  \end{tabular}
 \end{center}
 
 \section{Analys / Förbättringsförslag} \label{sec:analys}
