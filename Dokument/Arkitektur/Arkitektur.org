@@ -9,6 +9,7 @@
 #+LATEX_HEADER: \usepackage[swedish]{babel}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{svg}
+#+LATEX_HEADER: \usepackage{minted}
 #+LATEX_HEADER: \definecolor{ownership-blue}{HTML}{00AAFF}
 #+LATEX_HEADER: \definecolor{ownership-red}{HTML}{FF5555}
 #+STARTUP: align
@@ -24,7 +25,9 @@
 
   (org-babel-do-load-languages
    (quote org-babel-load-languages)
-   (quote ((emacs-lisp . t)
+   (quote ((scala . t)
+           (sql . t)
+           (emacs-lisp . t)
            (ditaa . t)
            (plantuml . t))))
 #+END_SRC
@@ -119,18 +122,69 @@ för Displaimer (tidigare känd som WiLCD).
    Vi följer [[http://docs.scala-lang.org/style/][Scalas officiella stilguide]], med följande undantag:
 
    - Filer med flera klasser (se [[#slick-models]] för det främsta fallet) är namngivna
-     efter den primära klassen, och börjar fortfarande på stor bokstav.
+     efter den primära klassen, och börjar fortfarande på stor bokstav
    - Det klassas fortfarande som rent ("pure") att orsaka en läsfråga till databasen,
-     eller att skapa en Future, så länge dess innehåll också är rent.
+     eller att skapa en Future, så länge dess innehåll också är rent
+   - En explicit typdefinition krävs för publika metoder och fält
+     - Gäller ej för Slick-kolumndefinitioner
 
    Dessutom delar vi upp viktiga funktionalitetsområden i "tjänster", så att
    användargränssnittet i webbapplikationen t.ex. inte blir beroende av några detaljer
    i databasen.
 
-*** TODO Databasmodeller
+*** Databasmodeller
     :PROPERTIES:
     :CUSTOM_ID: slick-models
     :END:
+
+    För varje databastabell har vi i allmänt tre klasser, som ligger i samma fil. Om vi
+    exempelvis ska komma åt tabellen /nouns/ så skapar vi tre klasser i filen Noun.scala:
+
+    - Klassen Noun, en "case class" som innehåller tabelldefinitionen
+      - ID-kolumner utelämnas, ärv i stället från HasId och implementera IdType
+    - Klassen Nouns, en [[http://slick.lightbend.com/doc/3.2.0/gettingstarted.html#schema][Slick-tabelldefinition]]
+      - Utelämna ID-kolumner, ärv i stället från IdTable[T], definiera metoden all som
+        motsvarande * i vanliga tabeller, och definiera * som (id, all)
+    - Objektet Nouns, en innehåller en TableQuery vid namn tq, samt vanliga frågor
+
+    Till exempel, för den följande tabellen:
+
+    #+BEGIN_SRC sql :engine postgresql
+      CREATE TABLE nouns(
+             id SERIAL PRIMARY KEY,
+             foo TEXT NOT NULL,
+             bar INTEGER
+      )
+    #+END_SRC
+
+    Skulle Noun.scala kunna se ut som följer:
+
+    #+BEGIN_SRC scala
+      package models
+
+      import models.PgProfile.api._
+
+      case class Noun(foo: String, bar: Option[Int]) extends HasId {
+        override type IdType = Long
+      }
+
+      class Nouns(tag: Tag) extends IdTable[Noun](tag, "nouns") {
+        def foo = column[String]("foo")
+        def bar = column[Option[Int]]("bar")
+
+        def all = (foo, bar) <> (Noun.tupled, Noun.unapply)
+
+        overrid def * : ProvenShape[WithId[Noun]] =
+          (id, all) <> ((WithId.apply[Noun] _).tupled, WithId.unapply[Noun])
+      }
+
+      object Nouns {
+        private[models] def tq = TableQuery[Nouns]
+
+        def find(id: Id[Noun]): Query[Noun, WithId[Noun], Seq] =
+          tq.filter(_.id === id)
+      }
+    #+END_SRC
 
 ** Rust
    Vi följer [[https://github.com/rust-lang-nursery/fmt-rfcs/blob/master/guide/guide.md][Rusts officiella stilguide]], och rustfmt används för att automatiskt formatera
@@ -141,7 +195,7 @@ för Displaimer (tidigare känd som WiLCD).
 
    - 2 mellanrum för indentering
    - Alla globala definitioner (funktioner, typer, globala variabler, konstanter) börjar
-     med modulens namn.
+     med modulens namn
    - PascalCase för funktionsnamn, med _ mellan och efter moduler, exempelvis Epaper_Init
      - Funktioner som är interna i en modul börjar med _, exempelvis _Epaper_Transmit_Byte
    - camelCase för typer och variabelnamn
