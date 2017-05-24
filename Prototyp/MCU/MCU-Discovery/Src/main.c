@@ -109,32 +109,32 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uint8_t buf[ESP_BUF_SIZE];
-	  int16_t len;
-	  if ((len = ESP_TCP_ReadLine(buf)) > 0) {
+    uint8_t buf[ESP_BUF_SIZE];
+    int16_t len;
+    if ((len = ESP_TCP_ReadLine(buf)) > 0) {
 #ifdef HUART_DEBUG
-		  HAL_UART_Transmit(&HUART_DEBUG, buf, len, 1000);
-		  HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
+      HAL_UART_Transmit(&HUART_DEBUG, buf, len, 1000);
+      HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
 #endif
 
-		  switch(buf[0]) {
-		  case 'M':
-			  Display_Strn(buf+1, len-1);
-			  Epaper_MessageCard_Display(buf+1, len-1);
-			  break;
-		  case 'T':
-			  setDateTime(buf+1, len-1);
-			  break;
-		  }
-	  } else if (len == -1 && (len = ESP_ReadLine(buf)) != 0) {
+      switch(buf[0]) {
+      case 'M':
+        Display_Strn(buf+1, len-1);
+        Epaper_MessageCard_Display(buf+1, len-1);
+        break;
+      case 'T':
+        setDateTime(buf+1, len-1);
+        break;
+      }
+    } else if (len == -1 && (len = ESP_ReadLine(buf)) != 0) {
 #ifdef HUART_DEBUG
-		  HAL_UART_Transmit(&HUART_DEBUG, buf, len, 1000);
-		  HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
+      HAL_UART_Transmit(&HUART_DEBUG, buf, len, 1000);
+      HAL_UART_Transmit(&HUART_DEBUG, (uint8_t *)"\r\n", 2, 1000);
 #endif
-		  Display_Strn(buf, len);
-	  } else {
-		  ESP_SleepUntilMessage();
-	  }
+      Display_Strn(buf, len);
+    } else {
+      ESP_SleepUntilMessage();
+    }
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */

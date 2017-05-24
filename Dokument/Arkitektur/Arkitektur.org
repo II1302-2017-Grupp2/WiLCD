@@ -1,0 +1,157 @@
+#+TITLE: Displaimer Arkitektur
+#+AUTHOR: Teo Klestrup Röijezon
+#+OPTIONS: toc:nil ':t ^:nil
+#+LANGUAGE: sv
+#+LATEX_HEADER: \addtolength{\textwidth}{5cm}
+#+LATEX_HEADER: \addtolength{\textheight}{4cm}
+#+LATEX_HEADER: \addtolength{\hoffset}{-2.5cm}
+#+LATEX_HEADER: \addtolength{\voffset}{-2.5cm}
+#+LATEX_HEADER: \usepackage[swedish]{babel}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{svg}
+#+LATEX_HEADER: \definecolor{ownership-blue}{HTML}{00AAFF}
+#+LATEX_HEADER: \definecolor{ownership-red}{HTML}{FF5555}
+#+STARTUP: align
+
+#+BEGIN_SRC emacs-lisp :exports results :results silent
+  (setq org-ditaa-jar-path "../lib/ditaa.jar"
+        org-plantuml-jar-path "../lib/plantuml.jar"
+        org-latex-listings 'minted
+        org-latex-pdf-process
+        '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "%latex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+  (org-babel-do-load-languages
+   (quote org-babel-load-languages)
+   (quote ((emacs-lisp . t)
+           (ditaa . t)
+           (plantuml . t))))
+#+END_SRC
+
+#+BEGIN_abstract
+Detta dokument beskriver den övergripande arkitekturen
+för Displaimer (tidigare känd som WiLCD).
+#+END_abstract
+
+#+TOC: headlines 4
+
+* Dokumentets Syfte och Innehåll
+  Syftet med detta dokument är att förklara vilka komponenter som
+  Displaimer innehåller, hur de kommunicerar, samt vad som lett
+  till dessa beslut.
+
+  Detta dokument behandlar även allmänna kodkonventioner, men
+  /inte/ detaljsyrning för hur varje komponent är implementerad.
+
+* Struktur
+  Projektet är primärt uppdelat i schemaläggaren, webbplatsen, samt
+  displayenheten, sammankopplade enligt följande diagram:
+
+  #+BEGIN_SRC plantuml :file Arkitektur.png
+  hide empty members
+  hide circle
+  class "Kontrollenhet (Raspberry Pi)" as rpi #00aaff
+  class "Databas (PostgreSQL)" as databas #00aaff
+  class Webbapp #00aaff
+  class Schemaläggare #00aaff
+
+  class "Typsnittskompilator" as binfontify #00aaff
+  class "Typsnitt (WiLCD Sans)" as typsnitt #ff5555
+
+  class "Displayenhet (STM32F3)" as mcu #ff5555
+  class "Wi-Fi-modul (ESP8266)" as esp #ff5555
+  class "Display OLED" as oled #ff5555
+  class "Display E-Ink" as eink #ff5555
+  class "Realtidsklocka" #ff5555
+
+  Internet -- Router
+  Router - rpi : Ethernet
+  Nätaggregat <.. rpi
+
+  rpi *.. databas
+  rpi *.. Webbapp
+  rpi *.. Schemaläggare
+
+  Webbapp ..> databas
+  Webbapp ..> Schemaläggare
+  databas <. Schemaläggare
+
+  rpi - esp: Wi-Fi
+  esp ..> Schemaläggare : TCP
+
+  esp <. mcu : UART
+  Batteri <.. mcu
+  Realtidsklocka <.. mcu
+  mcu ..> oled : I²C (Debug)
+  mcu ..> eink : SPI
+
+  oled ..> typsnitt
+  eink ..> typsnitt
+  binfontify <- typsnitt
+  #+END_SRC
+
+  \colorbox{ownership-blue}{Blåmarkerade} områden ansvaras främst av Teo Klestrup Röijezon och Sebastian
+  Heimlén, och \colorbox{ownership-red}{rödmarkerade} områden ansvaras främst av Yobart Amino och Henrik
+  Björklund. Andra delar är användarens ansvar att tillhandahålla.
+
+  Webbappen låter primärt användare skriva meddelanden som displayen ska visa, samt även
+  användare schemalägga meddelanden att visa senare, dessa skickas till schemaläggaren.
+  Dessutom har den ett användarsystem, för att begränsa vem som kan ändra meddelandet.
+
+  Schemaläggaren kommunicerar med displayenheten (via ESP8266-modulen) och bestämmer vilket
+  meddelande som ska visas. Dessutom används den som källa för att kalibrera displayenhetens
+  klocka.
+
+  Databasen används som primär sanningskälla för båda dessa.
+
+  Displayenheten har till ansvar att ta emot och visa meddelanden, samt hålla den visuella
+  klockan uppdaterad. Meddelandet och det nuvarande klockslaget visas på E-Ink-displayen.
+  Felsökningsmeddelanden skickas till OLED-displayen (endast ikopplad under felsökning).
+
+  Typsnittskompilatorn kompilerar vårat typsnitt ("WiLCD Sans") till motsvarande C-kod.
+
+* Kodkonventioner
+  Webbappen och schemaläggaren är skrivna i Scala, typsnittskompilatorn är skriven i Rust,
+  och displayenhetens firmware är skriven i C. Varje av dessa har egna konventioner.
+
+** Scala
+   Vi följer [[http://docs.scala-lang.org/style/][Scalas officiella stilguide]], med följande undantag:
+
+   - Filer med flera klasser (se [[#slick-models]] för det främsta fallet) är namngivna
+     efter den primära klassen, och börjar fortfarande på stor bokstav.
+   - Det klassas fortfarande som rent ("pure") att orsaka en läsfråga till databasen,
+     eller att skapa en Future, så länge dess innehåll också är rent.
+
+   Dessutom delar vi upp viktiga funktionalitetsområden i "tjänster", så att
+   användargränssnittet i webbapplikationen t.ex. inte blir beroende av några detaljer
+   i databasen.
+
+*** TODO Databasmodeller
+    :PROPERTIES:
+    :CUSTOM_ID: slick-models
+    :END:
+
+** Rust
+   Vi följer [[https://github.com/rust-lang-nursery/fmt-rfcs/blob/master/guide/guide.md][Rusts officiella stilguide]], och rustfmt används för att automatiskt formatera
+   koden.
+
+** C
+   Vi följer i allmänt följande regler:
+
+   - 2 mellanrum för indentering
+   - Alla globala definitioner (funktioner, typer, globala variabler, konstanter) börjar
+     med modulens namn.
+   - PascalCase för funktionsnamn, med _ mellan och efter moduler, exempelvis Epaper_Init
+     - Funktioner som är interna i en modul börjar med _, exempelvis _Epaper_Transmit_Byte
+   - camelCase för typer och variabelnamn
+   - SCREAMING_SNAKE_CASE för makron och konstanter
+   - Öppnande måsvingar ({) är inte på en ny rad, men företräds alltid av ett mellanrum
+     - Stängande måsvingar (}) är på en ny rad om det inte följs av en else-sats
+   - Vid inbyggda satser (som for eller if) är det ett mellanrum mellan namnet och den
+     öppnande parantesen ("("), exempelvis "if (1) {"
+     - Detta gäller ej vid vanliga funktionsanrop eller indexering
+   - Måsvingar används /alltid/ vid inbyggda satser som tar ett block (som for eller if),
+     även om bara en sats följer
+     - Detta gäller ej vid loopar utan satser, det är tillåtet att skriva
+       "while (!ready);"
