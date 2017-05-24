@@ -48,7 +48,7 @@ för Displaimer (tidigare känd som WiLCD).
   Projektet är primärt uppdelat i schemaläggaren, webbplatsen, samt
   displayenheten, sammankopplade enligt följande diagram:
 
-  #+BEGIN_SRC plantuml :file Arkitektur.png
+  #+BEGIN_SRC plantuml :file Arkitektur.eps
   hide empty members
   hide circle
   class "Kontrollenhet (Raspberry Pi)" as rpi #00aaff

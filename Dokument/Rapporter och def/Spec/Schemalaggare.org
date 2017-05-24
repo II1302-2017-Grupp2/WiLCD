@@ -123,7 +123,7 @@ servern i produktion.
       +---------------------------+                 +--------------+
       | messages                  |                 | users        |
       |---------------------------|                 |--------------|
-      | id:            SERIAL     |         +------>+ id:   SERIAL |
+      | id:            SERIAL     |         +-------> id:   SERIAL |
       |----                       |         |       |----          |
       | created_by:    INTEGER    +---------+       +--------------+
       | display_from:  TIMESTAMP  |
@@ -155,7 +155,7 @@ servern i produktion.
     Vid åtkomst från Scala rekommenderas det att återanvända tabelldefinitionerna i paketet "models", i
     stället för att skriva SQL-frågor för hand.
 
-    #+BEGIN_SRC plantuml :file schemalaggare_databas_seq.png
+    #+BEGIN_SRC plantuml :file schemalaggare_databas_seq.eps
     actor Användare
     participant Schemaläggare
     database Databas
