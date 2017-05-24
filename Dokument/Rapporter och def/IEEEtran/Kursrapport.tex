@@ -703,7 +703,19 @@ Management definieras enligt Essence [Referens] som en administrativ och organis
   \end{tabular}
 \end{table}
 
-\section{Teknisk Specifikation: Schemaläggare}
+\section{Formella Dokument}
+Se nästa sida.
+% Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
+% med sista sidan av rapporten
+\newpage
+\null%
+\newpage
+% Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
+% länkar fortfarande fungerar
+\includepdf[pages=-]{../../Arkitektur/Arkitektur}
+\includepdf[pages=-]{../Vision}
+
+\section{Tekniska Specifikationer}
 Se nästa sida.
 % Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
 % med sista sidan av rapporten
