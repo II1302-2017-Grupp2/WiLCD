@@ -410,6 +410,72 @@ Under hela projektgenomförandet agerade Scrum med inslag av KanBan som huvudmet
 
 Kniberg \cite{Kniberg07} förespråkar stories medan Jacobson \cite{Jacobson11} förespråkar use-cases. Jag ser fördelar i båda metoderna och valde därför att kombinera dessa, då jag anser att use-cases och stories går lite hand i hand, men use-cases har födelen att det på ett strukturerat sätt går att dela upp dem i mindre delar i form av slices. Denna kombination har gett gruppen möjlighet att nyttja typiska delar av Scrum så som story points, burn-down charts och tasks, men på samma gång få stabiliteten ifrån Essence och dela upp arbetet på ett väldigt elegant sätt genom use-cases och slices. De delar av projektet som ej kunnat kopplas till något use-case har blivit så kallade ``tech-stories'' som helt enkelt är en metod för att hantera overhead, vilket är ofrånkomligt i ett projekt där en del av projektet avhandlar lärandet av projektmetodiker, som så är fallet i denna kurs.
 
+\subsection{Arkitekt (Teo Klestrup Röijezon)}
+Arkitektrollen handlar om att analysera kundens krav, och att sedan kunna bygga en
+bred teknisk plan som uppfyller dem. Denna roll handlar dock inte om hur varje
+komponent fungerar internet, utan snarare om hur de samarbetar och tillsammans
+uppfyller kraven.
+
+Utifrån kundrepresentatens krav delade jag upp lösningen i olika komponenter
+med respektive ansvarsfördelning och ritade ett arkitekturdiagram (se Figur
+\ref{architecture-logical}). Sedan reviderades arkitekturen vid behov mellan
+varje sprint. Diagrammet är baserat på den logiska modellen från
+``4+1-metoden''\cite{Kruchten95}, men använder vanlig UML-notation, och innehåller
+även viss information uppdelningen mellan fysiska maskiner, samt om våran
+ansvarsfördelning (genom färgkodning).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{../../Arkitektur/Arkitektur-eps-converted-to.pdf}
+\caption{Vår Logiska Arkitektur}
+\label{architecture-logical}
+\end{figure}
+
+En annan inspirationskälla har varit Anders Sjögrens exempel (se
+\ref{architecture-logical-sjoegren}), men jämfört med det så har våran
+modell färre detaljer om komponenterna är implementerade, eftersom vi
+ansåg att det skulle bli för komplicerat, speciellt med tanke på spridningen
+av våra komponenter.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{homeautomation-logisk}
+\caption{Anders Sjögrens Exempel på Logisk Arkitektur\cite{SjoegrenHALogisk}}
+\label{architecture-logical-sjoegren}
+\end{figure}
+
+I stället flyttades dessa detaljer till separata diagram per komponent, exempelvis
+modellererar Figur \ref{architecture-webside-class} våran webbsida utifrån
+Jim Conallens system\cite{Conallen99}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{../../Arkitektur/Webbsida_UML.pdf}
+\caption{Vår Logiska Arkitektur}
+\label{architecture-webside-class}
+\end{figure}
+
+Våran arkitektur har varit relativt konsekvent under projektet, förutom att den
+från början inte visade att vi behövde utveckla ett typsnitt, samt att vi inte
+hade räknat med att byta skärm.
+
+För framtida projekt så anser jag att den övergripande arkitekturen fungerade bra,
+och var lagom detaljerad, men att de detaljerade diagrammen (exempelvis för webbsidan)
+inte hade ett stort extra värde över själva koden utan bara tillförde ännu ett dokument
+att uppdatera vid ändringar. Dock varierar värdet självklart beroende på gruppens storlek.
+
+Dessutom verkar inte Conallens system\cite{Conallen99} välanpassat för moderna, mer dynamiska,
+sidor, men det har inte varit ett problem i vårat fall. 
+
+Ett annat mindre problem har varit att vi har varierat mycket mellan olika modelleringsverktyg.
+Från början använde jag Umbrello\cite{Umbrello} eftersom det var integrerat i KDE, men gick efter
+en del frustration över till UMLet\cite{UMLet}, före jag till slut började använda
+PlantUML\cite{PlantUML} eftersom den använder ett textbaserat format som är enkelt för människor att ändra.
+
+Dessa övergångar visade tyvärr att standardiseringen mellan dessa verktyg är, snällt sagt, dålig,
+vilket innebar att varje övergång gav ett val mellan att göra om alla diagram för hand, eller att
+ha dokumentationen utspridd i ännu ett filformat.
+
 \subsection{Kundrepresentant}
 
 \section{Resultat} \label{sec:res}
