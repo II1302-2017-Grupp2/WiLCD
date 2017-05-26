@@ -106,7 +106,7 @@ servern i produktion.
    | Metod           | Beskrivning                                                                      |
    |-----------------+----------------------------------------------------------------------------------|
    | scheduleMessage | Planerar att ett meddelande ska visas                                            |
-   | deleteMessage   | Raderar ett ntUML packages on your system.                                       |
+   | deleteMessage   | Raderar ett schemalagt meddelande.                                               |
    | getMessage      | Hämta det aktuella meddelandet som visas                                         |
    | getNextMessage  | Nästa meddelande som ska visas[fn::Det finns ingen garanti för att detta meddelande någonsin kommer visas, använd bara detta för att gissa när displayen behöver uppdateras] |
 
