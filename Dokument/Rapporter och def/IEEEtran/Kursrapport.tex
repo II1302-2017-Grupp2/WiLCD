@@ -477,38 +477,28 @@ ha dokumentationen utspridd i ännu ett filformat.
 \subsection{Kundrepresentant}
 
 \section{Resultat} \label{sec:res}
-Tabellen nedan listar bedömda ”områden” och subjektiv värdering gentemot deras bidrag till Åstadkommer/skapar projektet rätt saker (validitet) och konstrueras lösningar på bästa sätt (reliabilitet)? Alternativa arbetssätt och delprojektmetoder anges också.
+Nedan listas de punkter som ska behållas (Keep), testas (Try) och som har varit problem (Problem), de har sammanställts utifrån de retrospektivmöten som gruppen har hållit i slutet av varje sprint. 
 
-Fullständiga tabeller finns i bilagor.
+De innehåller även förslag på förbättringar som kan implementeras i framtida projekt samt idéer som kan tänkas komma till nytta både för att förbättra framtida projekt och undvika problem.
 
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{1.5cm}|p{2.3cm}|p{1.5cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Keep & Motivation & Förbättringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Scrum-metodik  & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvärdering. Scrum ger även ett arbetssätt som inte är toppstyrt och lämpar sig väl i små projekt  & & Kniberg \cite{Kniberg07} \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Modiferad Kanban tavla & Ger en tydlig bild över hur arbetet fortlöper, då varje task kan följas från "Checked out" till "Done" & Eventuellt kan det läggas till plats för sätta tasks som den ansvarige behöver hjälp med & Sommerville \cite{Sommerville10}, Kniberg \cite{Kniberg10} \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Virtuell tavla & Övergången till en virtuell tavla, i Trello, skapade en lättare platform för att planera och ha kontroll över projektet. Då det inte gick att vara på plats vid den fysiska tavlan alltid. & Integrera en fysisk tavla med den virtuella, kanske via en projekt eller annan utrustning & \TBstrut \\
     \hline
-  \end{tabular}
-\end{table}
-
-\begin{table}[H]
-	\small
-  \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    User stories, User slices, User tasks & User stories hjälpte att skapa en tydlig struktur i arbetet, hur de olika delarna av systemet hängde ihop  & I små projekt fungerade det bra att endast ha en övergripande Story, och få antal slices, för att i ställe fokusera på små tasks, 1-3 Story points långa. & Jacobson \cite{Jacobson11]} \TBstrut \\
     \hline
-    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    Budgetering av story points & Genom att arbeta med små tasks, gav det oss möjligheten att precis budgetera att ungefär hur lång tid varje del skulle ta. Detta hjälpte oss att få en stadig burndown som visade hur projektet gick&  & \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
-    \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
-    \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Trello & Som en virtuell platform fungerade Trello bra, både för lägga upp tasks och test& Viss förbättring att involvera User slices i Trello kunde ha implementerats  & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -516,16 +506,30 @@ Fullständiga tabeller finns i bilagor.
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{1.9cm}|p{2cm}|p{1.7cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Try & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+    Riskbedömning & Ökad riskbedömning inklusive alternativ om en bit av systemet skulle visas ej fungera till sprintens slut. & För att skapa ett stabilt projekt som kan hantera motgångar bättre& \TBstrut \\
+    \hline
+    Automatiserade tester & Automatisera de tester som går. & Detta för att minska belastningen på testansvarig& \TBstrut \\
+    \hline
+
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.9cm}|p{1.7cm}|p{2.2cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Riskbedömning & Skapa alternativa idéer om problem skulle uppstå &  Riskbedömningen har under projektet inte jämt haft någon handlingsplan om problem skulle ha dykt upp& \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Teststrukturer &Skapa tydlig teststruktur tidigt i projektet &Teststrukturen under de första sprintarna var inte så genom arbetad och utvecklad, men blev under sista sprinten bättre.  & \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
-    \hline
+
   \end{tabular}
 \end{table}
 
