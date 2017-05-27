@@ -1,5 +1,5 @@
 #+TITLE: Displaimer Teknisk Dokumentation: Schemaläggare
-#+OPTIONS: toc:nil ':t
+#+OPTIONS: toc:nil ':t ^:nil
 #+AUTHOR: Teo Klestrup Röijezon <teo@nullable.se>
 #+LANGUAGE: sv
 # Svenska rubriker
@@ -8,8 +8,8 @@
 #+LATEX_HEADER: \usepackage{minted}
 
 #+BEGIN_SRC emacs-lisp :exports results :results silent
-  (setq org-ditaa-jar-path "ditaa.jar"
-        org-plantuml-jar-path "plantuml.jar"
+  (setq org-ditaa-jar-path "../../lib/ditaa.jar"
+        org-plantuml-jar-path "../../lib/plantuml.jar"
         org-latex-listings 'minted
         org-latex-pdf-process
         '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
@@ -106,7 +106,7 @@ servern i produktion.
    | Metod           | Beskrivning                                                                      |
    |-----------------+----------------------------------------------------------------------------------|
    | scheduleMessage | Planerar att ett meddelande ska visas                                            |
-   | deleteMessage   | Raderar ett ntUML packages on your system.                                       |
+   | deleteMessage   | Raderar ett schemalagt meddelande.                                               |
    | getMessage      | Hämta det aktuella meddelandet som visas                                         |
    | getNextMessage  | Nästa meddelande som ska visas[fn::Det finns ingen garanti för att detta meddelande någonsin kommer visas, använd bara detta för att gissa när displayen behöver uppdateras] |
 
@@ -123,7 +123,7 @@ servern i produktion.
       +---------------------------+                 +--------------+
       | messages                  |                 | users        |
       |---------------------------|                 |--------------|
-      | id:            SERIAL     |         +------>+ id:   SERIAL |
+      | id:            SERIAL     |         +-------> id:   SERIAL |
       |----                       |         |       |----          |
       | created_by:    INTEGER    +---------+       +--------------+
       | display_from:  TIMESTAMP  |
@@ -155,7 +155,7 @@ servern i produktion.
     Vid åtkomst från Scala rekommenderas det att återanvända tabelldefinitionerna i paketet "models", i
     stället för att skriva SQL-frågor för hand.
 
-    #+BEGIN_SRC plantuml :file schemalaggare_databas_seq.png
+    #+BEGIN_SRC plantuml :file schemalaggare_databas_seq.eps
     actor Användare
     participant Schemaläggare
     database Databas
@@ -189,13 +189,13 @@ servern i produktion.
     :CUSTOM_ID: message-priority
     :END:
     Meddelanden prioriteras genom att ta alla meddelanden, filtrera bort alla
-    som inte är aktuella (display\textunderscore{}from har inte hänt än, eller display\textunderscore{}until
-    har redan hänt), och sedan väljs meddelandet med högst display\textunderscore{}from.
+    som inte är aktuella (display_from har inte hänt än, eller display_until
+    har redan hänt), och sedan väljs meddelandet med högst display_from.
 
 *** Hantering av Upprepade Meddelanden
     Innan meddelanden hämtas så gör vi först en sökning efter meddelanden där occurrence inte är Once,
-    och där display\textunderscore{}from redan har passerat. Dessa meddelanden kopieras framåt i tiden
-    (display\textunderscore{}from och display\textunderscore{}until ökas båda med t.ex. 1 dag för Daily),
+    och där display_from redan har passerat. Dessa meddelanden kopieras framåt i tiden
+    (display_from och display_until ökas båda med t.ex. 1 dag för Daily),
     och för det gamla meddelandet ändras sedan occurrence till Once. För att undvika att meddelanden dubbleras
     så låses dessa rader under operationen.
 
@@ -204,9 +204,9 @@ servern i produktion.
     :CUSTOM_ID: display-auto-updates
     :END:
     Schemaläggaren försöker att automatiskt uppdatera displayen när det aktuella meddelandet ändras.
-    Detta sker genom att titta på det nuvarande meddelandets display\textunderscore{}until, och nästa
+    Detta sker genom att titta på det nuvarande meddelandets display_until, och nästa
     meddelandes (dvs meddelandet efter det nuvarande enligt [[#message-priority]])
-    display\textunderscore{}from, och schemalägga en Refresh för den tidigare av de två händelserna.
+    display_from, och schemalägga en Refresh för den tidigare av de två händelserna.
 
     Därför måste en manuell Refresh skickas om nästa ändring planeras om till att ske tidigare. Det behövs
     tekniskt sett inte ifall ändringen i stället senareläggs, men det rekommenderas ändå att skicka

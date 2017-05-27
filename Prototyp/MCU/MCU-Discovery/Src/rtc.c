@@ -39,11 +39,11 @@
 #include "epaper.h"
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
-	Epaper_MessageCard_Update();
+  Epaper_MessageCard_Update();
 }
 
 void HAL_RTCEx_AlarmBEventCallback(RTC_HandleTypeDef *hrtc) {
-	HAL_NVIC_SystemReset();
+  HAL_NVIC_SystemReset();
 }
 /* USER CODE END 0 */
 

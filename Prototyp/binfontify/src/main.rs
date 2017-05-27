@@ -6,26 +6,24 @@ use std::str::{Lines, FromStr};
 
 #[derive(Debug)]
 struct Character {
-    bytes: Vec<u8>
+    bytes: Vec<u8>,
 }
 
 #[derive(Debug)]
 struct Font {
-    chars: HashMap<char, Character>
+    chars: HashMap<char, Character>,
 }
 
 impl Character {
     fn from_txtfont_lines(txtchar: &mut Lines, length: Option<u8>) -> Character {
-        let mut font_char = Character {
-            bytes: vec![]
-        };
+        let mut font_char = Character { bytes: vec![] };
         if let Some(length) = length {
             font_char.bytes.resize(length as usize, 0);
         }
         for i in 0..8 {
             let line = match txtchar.next() {
                 Some(x) => x,
-                None => break
+                None => break,
             };
             for (j, chr) in line.chars().enumerate() {
                 while j >= font_char.bytes.len() {
@@ -34,10 +32,10 @@ impl Character {
                 font_char.bytes[j] |= match chr {
                     ' ' => 0,
                     '.' => 1,
-                    _ => panic!("Invalid font character '{}', ' ' or '.' allowed", chr)
+                    _ => panic!("Invalid font character '{}', ' ' or '.' allowed", chr),
                 } << i;
             }
-        };
+        }
         if let Some(length) = length {
             assert_eq!(font_char.bytes.len(), length as usize);
         }
@@ -65,9 +63,7 @@ impl Character {
 
 impl Font {
     fn from_txtfont(txtfont: &str) -> Font {
-        let mut font = Font {
-            chars: HashMap::new()
-        };
+        let mut font = Font { chars: HashMap::new() };
 
         let mut lines = txtfont.lines();
         loop {
@@ -77,7 +73,7 @@ impl Font {
                 let chr = chars.next().unwrap();
                 let length = match chars.as_str() {
                     "" => None,
-                    len => Some(u8::from_str(len).unwrap())
+                    len => Some(u8::from_str(len).unwrap()),
                 };
                 font.chars.insert(chr, Character::from_txtfont_lines(&mut lines, length));
             } else {

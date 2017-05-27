@@ -3,7 +3,8 @@ use std::io::{Read, Write};
 use std::str::FromStr;
 
 enum Mode {
-    Client, Server
+    Client,
+    Server,
 }
 
 impl Mode {
@@ -11,7 +12,7 @@ impl Mode {
         match str {
             "client" => Ok(Mode::Client),
             "server" => Ok(Mode::Server),
-            _ => Err(io::Error::new(io::ErrorKind::InvalidInput, "Invalid mode"))
+            _ => Err(io::Error::new(io::ErrorKind::InvalidInput, "Invalid mode")),
         }
     }
 }
@@ -19,7 +20,7 @@ impl Mode {
 struct Args {
     mode: Mode,
     tty_path: String,
-    port: u16
+    port: u16,
 }
 
 impl Args {
@@ -35,7 +36,7 @@ impl Args {
         Ok(Args {
             mode: mode,
             tty_path: tty_path,
-            port: port
+            port: port,
         })
     }
 }
@@ -76,7 +77,7 @@ fn main() {
             for sock in listener.incoming() {
                 proxy_tty_sock(sock.unwrap(), &args.tty_path);
             }
-        },
+        }
         Mode::Client => {
             let sock = net::TcpStream::connect(sock_addr).unwrap();
             proxy_tty_sock(sock, &args.tty_path);

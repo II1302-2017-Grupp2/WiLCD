@@ -4,6 +4,7 @@
 target
 Dokument/protokoll/*.tex
 Dokument/protokoll/*.pdf
+_minted-*
 *.toc
 *.log
 *.synctex.gz

@@ -40,10 +40,10 @@
 volatile uint8_t tim_10us_trig = 0;
 
 void Wait_10us() {
-	TIM2->SR &= ~TIM_SR_UIF; // Reset UIF
-	HAL_TIM_Base_Start(&htim2);
-	HAL_TIM_OnePulse_Start(&htim2, TIM_CHANNEL_1);
-	while ((TIM2->SR & TIM_SR_UIF) == 0x0);
+  TIM2->SR &= ~TIM_SR_UIF; // Reset UIF
+  HAL_TIM_Base_Start(&htim2);
+  HAL_TIM_OnePulse_Start(&htim2, TIM_CHANNEL_1);
+  while ((TIM2->SR & TIM_SR_UIF) == 0x0);
 }
 
 /* USER CODE END 0 */

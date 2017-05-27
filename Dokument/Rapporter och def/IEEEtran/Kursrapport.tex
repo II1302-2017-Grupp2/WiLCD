@@ -171,9 +171,10 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 \\
 \end{itemize}
 
-\noindent \textbf{Kundrepresentant}
+\noindent \textbf{Kundrepresentant (Henrik Björklund}
 \begin{itemize}
-\item lista av källor
+\item \textit{Software Engineering} av Ian Sommerville \cite[kap. 4]{Sommerville10}. Dessa kapitel behandlar kravspecifikationer.
+\item \textit{USE-CASE 2.0 The Guide to Succeeding with Use Cases} av Ivar Jacobson, Ian Spence, Kurt Bittner \cite{Jacobson11}. En guide hur kravhantering kan ske.
 \\
 \end{itemize}
 
@@ -195,7 +196,7 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 \\
 \end{itemize}
 
-\noindent \textbf{Ledning och styrning (Sebastian Heimlén)}
+\noindent \textbf{Projektledare (Sebastian Heimlén)}
 \begin{itemize}
 \item \textit{Software Engineering} av Ian Sommerville \cite[kap. 22,23,26]{Sommerville10}. Dessa kapitel behandlar projektmetodik.
 \\
@@ -210,6 +211,8 @@ Enligt undersökningsstrategin så skall någon projektmetod prövas i ett prakt
 
 \subsection{Föreslagen ansats}
 Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats som studenterna själva får välja att använda rakt av eller modifiera till sitt tycke. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figur \ref{forslagsprintbacklog}, \ref{forslagriktigsprint}, \ref{forslagproductbacklog} och \ref{forslagriktigproduct}.
+
+Den angivna ansatsen innehöll en tavla med två sidor, där ena sidan, den interna, använde sig av en modiferad Kanban metodik, där olika uppgifter kunde följas i vilka stader dom var i, samt hjälpmedel för att se hur projektet fortlöpte (Burndown), även plats för arkitekturen och test fanns på ena sidan. Den andra publika sidan innehöll officiella dokument som förklade vision hos produkten, samt andra hjälp dokument. Även en övergripande User stories enligt \cite{Jacobson11} samt färdiga slices presenterades där för kund och andra intressenter att se. Samt dokument som visade planeringen utav tid och milstoplar i form av ett GANTT-diagram fanns på den publika sidan.
 
 \subsubsection{Anslagstavla}
 
@@ -266,6 +269,9 @@ Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten s�
 \subsection{Vald ansats}
 Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
 Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
+Den slutgiltiga tavlan som då växte fram bestod utav en intern sida där Kanban utformningen från den förslagna ansatsen behölls, dock så migrerades stora delar av User case och tillhörande stories och task till Trello. En utvecklad version av User storyn som publicerades på den publika sidan placerades här, med mera noggran teknisk beskrivning, för att hjälpa utvecklingsteamet att skapa en bättre bild hur produktens alla delar samverkade.
+
+Den publika sidan blev uppdelad i huvudsakligen två delar, där formella dokument om kursrapporten publicerades samt de formella dokument om produkten placerads även här. Viss användning av projektets planering visades på den publika sidan som ett GANTT-diagram, men valda milstoplar, samt ett kort från Ivar Jacobson \cite{Jacobson11} där besökare lätt kunde se hur arbetet hade fortlöpte i hänsyn till ett antal olika faktorer, så som produkten, teamdynamiken samt de komersiella delarna.
 
 \begin{figure}[H]
 \centering
@@ -367,77 +373,178 @@ I följande kapitel redovisas viktiga beslut, förändringar och anpassningar so
 \item Återkoppla till litteratur och referera.
 \end{enumerate}
 
-\subsection{Projektledning (Sebastian Heimlén)}
+\subsection{Kundrepresentant (Henrik Björklund)}
+Kundrepresantrollen hade två huvudsakliga ansvarsområden, de var att vara länken mellan gruppen och beställaren, kunden, samt vara ansvarig för att kundens önskemål och krav tydlig förmedlades till gruppen. Detta skedde genom i början av projektet nogrann dokumentering vad kunden hade för visioner, detta utmynnade i ett visionsdokument, med produkten och vilka de grundläggande kraven kunden hade på produkten.
+
+För att samla alla kraven så skapades ett kravdokument enligt MoSCoW-principen (Must have, Should have, Could have, and Won't have), för att förtydliga dessa delar så prövades det att användas Use Cases och Use Stories enligt Use Case 2.0 \cite{Jacobson11}, där även ett Use Case diagram (se figur \ref{uc-diagram}) skapades för både produkten och kursrapporten.
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{PrimarUC}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+\DeclareGraphicsExtensions.
+\caption{Slutgiltig Use Case diagram}
+\label{uc-diagram}
+\end{figure}
+
+Use Case diagramet delar upp på ett tydligt sätt de funktionella kraven och de icke funktionella kraven som Sommerville \cite{Sommerville10} tycker att det är viktigt att särskilja mellan, dock så tas inte icke funktionella krav så som säkerhet för produkten upp i Use Case diagramet. 
+
+Use Casen i sin tur delades upp i Use Slices enligt \cite{Jacobson11}, där teorin säger att varje slice ska vara väl avvägd så projektet kan fortlöpa parallellt. I projektets senare sprintar nr:3 och nr:4 blev dock fokuset mera på att skapa flera tasks till varje sprint, så vi fick ett ytterst uppstrukturerad arbetsflöde, där varje task kunde skapas oberoende av de andra, dock ej jämt testas oberoende. Vilket ledde till att burndownen blev ett viktigt verktyg för att se hur budgeten följdes. Dessa metoder att skapa Use Case diagram och dela upp vare Case i Slices och Tasks visades fungera bra för ett litet IT-projekt då det visasdes bli ytterst agilt.
+
+Delar som uppleveds att de gjorde projketet mindre agilt och tidskrävande var viss dokumentation i form av visionsdokumentet som krävde en del omarbetning allt eftersom kravbilden från kunden blev tydligare, detta nämns även i Sommerville \cite{Sommerville10} att dokument helst i agila projekt tenderar att snabbt bli utdaterade och verkningslösa.
+
+Saker som kan förbättras är att i ett framtida projekt ska kundansvarige idealt ha kontakt med kund innan projektgruppen sammanställs för att både kunna tillsätta optimal kompetens samt så kund-/och kravansvarig har tid att planera och tillsammans med kunden sammanställa de grundläggande kraven för produkten och projektet.
+
+De verktyg som var väl behjälpliga för rollen som kund-/och kravansvarig, var Use Case 2.0 \cite{Jacobson11} tänket samt verktyg så som LucidCharts och Trello för skapa Use Case diagram och sätta upp strukturen med Cases, Slices och Tasks. 
+
+\subsection{Arkitekt (Teo Klestrup Röijezon)}
+Arkitektrollen handlar om att analysera kundens krav, och att sedan kunna bygga en
+bred teknisk plan som uppfyller dem. Denna roll handlar dock inte om hur varje
+komponent fungerar internt, utan snarare om hur de samarbetar och tillsammans
+uppfyller kraven.
+
+Utifrån kundrepresentatens krav delade jag upp lösningen i olika komponenter
+med respektive ansvarsfördelning och ritade ett arkitekturdiagram (se Figur
+\ref{architecture-logical}). Sedan reviderades arkitekturen vid behov mellan
+varje sprint. Diagrammet är baserat på den logiska modellen från
+``4+1-metoden''\cite{Kruchten95}, men använder vanlig UML-notation, och innehåller
+även viss information uppdelningen mellan fysiska maskiner, samt om våran
+ansvarsfördelning (genom färgkodning).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{../../Arkitektur/Arkitektur-eps-converted-to.pdf}
+\caption{Vår Logiska Arkitektur}
+\label{architecture-logical}
+\end{figure}
+
+En annan inspirationskälla har varit Anders Sjögrens exempel (se
+\ref{architecture-logical-sjoegren}), men jämfört med det så har våran
+modell färre detaljer om komponenterna är implementerade, eftersom vi
+ansåg att det skulle bli för komplicerat, speciellt med tanke på spridningen
+av våra komponenter.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{homeautomation-logisk}
+\caption{Anders Sjögrens Exempel på Logisk Arkitektur\cite{SjoegrenHALogisk}}
+\label{architecture-logical-sjoegren}
+\end{figure}
+
+I stället flyttades dessa detaljer till separata diagram per komponent, exempelvis
+modellererar Figur \ref{architecture-webside-class} våran webbsida utifrån
+Jim Conallens system\cite{Conallen99}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{../../Arkitektur/Webbsida_UML.pdf}
+\caption{Arkitektur För Webbsidan}
+\label{architecture-webside-class}
+\end{figure}
+
+Våran arkitektur har varit relativt konsekvent under projektet, förutom att den
+från början inte visade att vi behövde utveckla ett typsnitt, samt att vi inte
+hade räknat med att byta skärm.
+
+För framtida projekt så anser jag att den övergripande arkitekturen fungerade bra,
+och var lagom detaljerad, men att de detaljerade diagrammen (exempelvis för webbsidan)
+inte hade ett stort extra värde över själva koden utan bara tillförde ännu ett dokument
+att uppdatera vid ändringar. Dock varierar värdet självklart beroende på gruppens storlek.
+
+Dessutom verkar inte Conallens system\cite{Conallen99} välanpassat för moderna, mer dynamiska,
+sidor, men det har inte varit ett problem i vårat fall. 
+
+Ett annat mindre problem har varit att vi har varierat mycket mellan olika modelleringsverktyg.
+Från början använde jag Umbrello\cite{Umbrello} eftersom det var integrerat i KDE, men gick efter
+en del frustration över till UMLet\cite{UMLet}, före jag till slut började använda
+PlantUML\cite{PlantUML} eftersom den använder ett textbaserat format som är enkelt för människor att ändra.
+
+Dessa övergångar visade tyvärr att standardiseringen mellan dessa verktyg är, snällt sagt, dålig,
+vilket innebar att varje övergång gav ett val mellan att göra om alla diagram för hand, eller att
+ha dokumentationen utspridd i ännu ett filformat.
+
+\subsection{Testansvarig}
+
+\subsection{Projektledare (Sebastian Heimlén)}
 Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
 
-Leadership definieras enligt Essence [Referens] som en roll som skall inspirera och motivera projektgruppen för att de på ett framgångsrikt sätt skall kunna genomföra projektet i enlighet med kraven.
+Leadership definieras enligt Essence \cite{ivarjacobson2017} som en roll som skall inspirera och motivera projektgruppen för att de på ett framgångsrikt sätt skall kunna genomföra projektet i enlighet med kraven.
 
-Management definieras enligt Essence [Referens] som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång.
+Management definieras enligt Essence \cite{ivarjacobson2017} som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång.
 
+För att kunna leda en projektgrupp krävs det att projektledaren har koll på målet med projektet, vad som krävs för att nå målet och hur projektgruppen ligger till. Det är viktigt att ha en bra helhetsbild av projektet och en överblick över gruppen så att projektledaren kan ta snabba beslut i de fall där projektet börjar hamna snett. Projektgenomförandet bestod av ett antal iterationer där fokus låg på att hitta en lagom nivå att leda på, planera upp följande iterationer och dess mål och samtidigt stödja och vara en bidragande faktor i arbetet att producera produkten. De prövade ansatserna som utvärderats i projektet är:
 
-\subsection{Kundrepresentant}
+\begin{itemize}
+\item Projektdefinition (Eklund \cite[s. 137-146]{Eklund14})
+\item Projekt/iterationsplan Gantt
+\item Scrum (Kniberg \cite{Kniberg07})
+  \begin{itemize}
+    \item ``Scrumboard''
+	  \item ``Stories''
+    \item ``Tech Stories''
+    \item ``Story points''
+    \item ``Backlog''
+\end{itemize}
+\item Use-Case 2.0 (Jacobson \cite{Jacobson11})
+	\begin{itemize}
+	\item ``Use-Case''
+  \item ``Use-Case Slice''
+  \end{itemize}
+\item KanBan (Kniberg \cite{Kniberg10})
+\end{itemize}
+
+\noindent \textbf{Projektdefinition och projektplan}\\
+\\
+Det första som skedde i början av projektet var att projektdefinition och projektplan skrevs, helt i enlighet med Eklund \cite[s. 138-139]{Eklund14} och Sommerville \cite[s. 619]{Sommerville10} som bägge poängterar värdet av att i starten av projektet göra en grovplan över projektets olika delar, då det är av största vikt som projektledare att planera upp projektet. Undersökningsmetodens första och andra cykel visade att denna ansats spelade en vital i att hålla projektet strukturerat och projektplanen har kontinuerligt uppdaterats och manipulerats därefter, för att möta skiftande krav och oförutsedda problem. Projektdefinition och projektplan följer i stora drag den föreslagna ansatsen.\\
+\\
+\textbf{Scrum, use case och stories}\\
+\\
+I de två första iterationerna nyttjade gruppen Scrum i kombination med stories, story points, burn down chart och tasks som Kniberg \cite{Kniberg07} förespråkat. Undersökningsmetodens första och andra cykel visade att detta fungerade bra, men att det var något svårt att koppla uppgifter till användarkrav och det blev lite väl mycket ad-hoc. I början av sprint tre blev gruppen introducerad till Jacobsons use-cases \cite{Jacobson11}. Fördelar sågs i båda metoder men use-cases gav mer kontroll då de gick att dela upp i slices på ett strukturerat sätt och då skapa tillräckligt små arbetsuppgifter som gick att lösa inom en iteration, och därför prövades use-case metoden tillsammans med stories i iteration tre. I samband med detta så började ett närmare sammarbete mellan projektledare och kravansvarig då båda parter arbetade med use-cases, men på olika sätt. Projektledare för att organisera arbetet och kravansvarig för att fånga krav. Detta samarbete rönte framgång och i undersökningscykel tre och fyra visade det sig att gruppen arbetat sig igenom fler storypoints än i de tidigare iterationerna, även fast arbetstiden var kortare.
+
+En stor anledning till detta tros vara det konkreta samarbetet mellan projektledare och kravansvarig, och detta gjordes möjligt tack vare att båda parter använde use-cases till sitt förfogande. Denna konstellation av metoder tillät projektgruppen att fortsätta jobba med stories, story points, burn down charts och tasks, men även integrera Essence \cite{Jacobson13} i form av use-cases i arbetet och på så ha en tydlig standard att stå på.
+
+De uppgifter som ej gick att koppla till något användarkrav, till exempel overhead från kursen, lades i så kallade ``tech-stories''. Undersökningen visade att detta är ett bra sätt att hantera overhead, dock är det ett illa men, då en helst undviker uppgifter som ej verkar mot kundens krav.
 
 \subsection{Testansvarig}
 Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på program- och hårdvaran. 
 
 \section{Resultat} \label{sec:res}
+I detta avsnitt så kommer projektets olika resultat avhandlas, med en uppdelning hur metodiken har framlöpt med hjälp av regelbundna retrospektivmöten samt vart ansvarsområdes egna resultatdelar.
 
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+\subsection{Kundrepresentant}
+
+\subsection{Arkitekt}
+
+\subsection{Testansvarig}
+
+\subsection{Projektledning}
+
+\subsection{Keep, Try, Problem}
+Nedan listas de punkter som ska behållas (Keep), testas (Try) och som har varit problem (Problem), de har sammanställts utifrån de retrospektivmöten som gruppen har hållit i slutet av varje sprint. 
+
+De innehåller även förslag på förbättringar som kan implementeras i framtida projekt samt idéer som kan tänkas komma till nytta både för att förbättra framtida projekt och undvika problem.
 
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{1.5cm}|p{2.3cm}|p{1.5cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Keep & Motivation & Förbättringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Scrum-metodik  & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvärdering. Scrum ger även ett arbetssätt som inte är toppstyrt och lämpar sig väl i små projekt  & & Kniberg \cite{Kniberg07} \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Modiferad Kanban tavla & Ger en tydlig bild över hur arbetet fortlöper, då varje task kan följas från "Checked out" till "Done" & Eventuellt kan det läggas till plats för sätta tasks som den ansvarige behöver hjälp med & Sommerville \cite{Sommerville10}, Kniberg \cite{Kniberg10} \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Virtuell tavla & Övergången till en virtuell tavla, i Trello, skapade en lättare platform för att planera och ha kontroll över projektet. Då det inte gick att vara på plats vid den fysiska tavlan alltid. & Integrera en fysisk tavla med den virtuella, kanske via en projekt eller annan utrustning & \TBstrut \\
     \hline
-  \end{tabular}
-\end{table}
-
-\begin{table}[H]
-	\small
-  \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    Use stories, Use slices, Use tasks & Use stories hjälpte att skapa en tydlig struktur i arbetet, hur de olika delarna av systemet hängde ihop  & I små projekt fungerade det bra att endast ha en övergripande Story, och få antal slices, för att i ställe fokusera på små tasks, 1-3 Story points långa. & Jacobson \cite{Jacobson11} \TBstrut \\
     \hline
-    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    Budgetering av story points & Genom att arbeta med små tasks, gav det oss möjligheten att precis budgetera att ungefär hur lång tid varje del skulle ta. Detta hjälpte oss att få en stadig burndown som visade hur projektet gick&  & \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
-    \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
-    \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Trello & Som en virtuell platform fungerade Trello bra, både för lägga upp tasks och test& Viss förbättring att involvera Use slices i Trello kunde ha implementerats  & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -445,26 +552,56 @@ Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{1.9cm}|p{2cm}|p{1.7cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Try & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+    Riskbedömning & Ökad riskbedömning inklusive alternativ om en bit av systemet skulle visas ej fungera till sprintens slut. & För att skapa ett stabilt projekt som kan hantera motgångar bättre& \TBstrut \\
+    \hline
+    Automatiserade tester & Automatisera de tester som går. & Detta för att minska belastningen på testansvarig& \TBstrut \\
+    \hline
+
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.9cm}|p{1.7cm}|p{2.2cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Riskbedömning & Skapa alternativa idéer om problem skulle uppstå &  Riskbedömningen har under projektet inte jämt haft någon handlingsplan om problem skulle ha dykt upp& \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Teststrukturer &Skapa tydlig teststruktur tidigt i projektet &Teststrukturen under de första sprintarna var inte så genom arbetad och utvecklad, men blev under sista sprinten bättre.  & \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
-    \hline
+
   \end{tabular}
 \end{table}
 
 \section{Analys / Förbättringsförslag} \label{sec:analys}
+
+\subsection{Kundrepresentant (Henrik Björklund)}
+
+\subsection{Arkitekt (Teo Klestrup Röijezon)}
+
+\subsection{Testansvarig (Yobart Amino)}
+
+\subsection{Projektledare (Sebastian Heimlén)}
 
 \section{Diskussion} \label{sec:disk}
 
 \subsection{Metoddiskussion}
 
 \subsection{Resultatdiskussion}
+
+\subsubsection{Kundrepresentant (Henrik Björklund)}
+
+\subsubsection{Arkitekt (Teo Klestrup Röijezon)}
+
+\subsubsection{Testansvarig (Yobart Amino)}
+
+\subsubsection{Projektledare (Sebastian Heimlén)}
 
 \subsection{Bidrag till vetenskaplighet, ingenjörserfarenhet (studenterfarenhet?)}
 
@@ -656,19 +793,18 @@ Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité
   \end{tabular}
 \end{table}
 
-\subsection{Ledning och Styrning (Sebastian Heimlén)}
+\subsection{Keep, Try, Skip - Projektledare (Sebastian Heimlén)}
+
+Denna bilaga tar upp resultat som jag i min roll som projektledare tagit fram under undersökningen. Resultaten kommer främst att handla om delar av projektet som är specifika för min roll, men även lite mer allmäna delar kring IT-projekt som utvecklas med hjälp av dessa projektmetoder som vi använt/utvärderat.
+
+\textbf{1) Iteration 1}
+
 \begin{table}[H]
 	\small
   \centering
 	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
     Keep & Motivation & Förbättringar & Referenser \TBstrut \\
-    \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
-    \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
-    \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -680,11 +816,11 @@ Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité
     \hline
     Problem & Try what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Det finns ingen projektplan eller projektdefinition. & Börja planera upp projektet genom att skapa en projektplan och skriv en projektdefinition. & En grovplan över projektet är vitalt för att projektet skall kunna fortlöpa inom ramarna för Eklunds åtagandetriangel. & \cite[s. 128]{Eklund14}, \cite[s. 72]{Sommerville10} \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Gruppen har precis träffats, och vet ej hur de andra medlemmarna jobbar och/eller hur ambitiösa de är. & Försök lära känna varandra lite, känna av hur de olika medlemmarna jobbar och deras styrkor och svagheter. & Gruppdynamik och moral är väldigt viktigt i projektgrupper, speciellt tidigt i projektet då det annars finns risk att sprickor i gruppen är fördärvliga för hela projektet. & \cite[kap. 7]{Eklund14}. \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Oklart hur hårt en måste leda. & Lite som förra punkten, jag måste känna av hur självständiga och ambitiösa gruppen är, för att på så sätt se hur hårt jag måste hålla i tyglarna. & En projektledare brukar oftast inte finnas i en projektgrupp som jobbar med Scrum, då tanken med Scrum är att samtliga medlemmar ska kunna agera lite ledare och tillsammans fatta beslut som gynnar gruppen, det är därför viktigt att inte gå in för hårt i ledarrollen, men samtidigt leda tillräckligt hårt så att inte medlemmar slutar att jobba, detta är väldigt beroende på vilken typ av grupp som projektet består av. & \cite[s. 73-74]{Sommerville10}. \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -696,16 +832,144 @@ Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité
     \hline
     Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+  \end{tabular}
+\end{table}
+
+\textbf{Iteration 2}
+
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Den goda grupp- och arbetsmoralen & Arbetet har gått väldigt bra och gruppen kommer bra överrens och jobbar bra tillsammans. En bra arbetsmoral är väldigt viktig i projektarbeten, ju längre projektet varar, desto viktigare är det att gruppen ej känner irritation mot varandra. &  & \TBstrut \\
+    \hline
+    Fortsätta hålla projetplaneringen aktuell & Det är viktigt i detta projekt att de olika iterationerna planeras upp så att gruppen vet vad som skall göras i varje iteration, detta leder till att alla har koll på vad som måste ske för att hålla sig inom ramarna för projektet. & & \TBstrut \\
+    \hline
+    Scrumtavlan & Scrumtavlan ger en bra överblick över projektet och tillåter samtliga medlemmar att se hur projektet ligger till & Testa att använda Trello för KanBan delen av vår interna sprint backlog, detta för att medlemmar som ej befinner sig vid tavlan skall kunna ta del av vilka tasks som jobbas på och vem som gör vad i projektet, också enklare att hantera än pappersark på en tavla som står publikt i skolan. & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
 
-\section{Teknisk Specifikation: Schemaläggare}
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+     Dålig budgetering av story points & Tydligare Scrum-möte som leder till bättre budgetering för stories. & Första sprinten hade vi inte en jättebra budgetering för story points vilket ledde till att vi fick färre points gjorda än vad som var planerat. & \TBstrut \\
+    \hline
+    Folk anländer sent till arbetspassen vilket leder till inställda möten. & Bli bättre på att bestämma när vi skall träffas, och se till att alla är där i tid. & Morgonmötena är viktiga delar av projektet, för att få en överblick över hur projektet ligger till och att saker blir gjorda i rätt takt. & \TBstrut \\  
+    \hline
+    - &  Testa mer Sommerville inspirerad ledarstil. & Efter att ha känt av i sprint \#1 kom jag fram till att gruppen jobbar på bra och ambitiöst utan att jag ska behöva styra så mycket, därför backar jag ett steg bakåt, håller uppsikt över projektet och ser till att mål blir uppfyllda, agerar lite av scrummaster vid mötena men låter annars medlemmarna ta beslut och välja arbetsuppgifter etc. & \TBstrut \\
+    \hline
+    Något ostrukturerat och ospårbart med bara stories. & Testa att komplettera stories med use-cases som kopplas till användarkrav och kan delas upp i slices för att dela upp arbetet i mindre beståndsdelar. & Use-cases och slices kan kopplas till ett användarkrav som kan kopplas till ett Use-case diagram och det blir tydligt vad man uppfyller när man klarar av en task. Vi går också från lite mer ad-hoc till att faktiskt göra ett mer ingenjörsmässigt arbete. & \cite{Jacobson16}, \cite{ivarjacobson2017} \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\textbf{Iteration 3}
+
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Trello & Trello var ett väldigt bra tillskott till projektet och har använts mer och mer, då det ger en väldigt dynamiskt och enkel tavla som kan användas även när man ej är närvarande i skolan, checklistor och liknande finns tillgängliga vilket har använts för use-cases, test-cases etc. & Försöka implementera ännu mer av sprint backlogen på Trello, så att ännu mer av scrumboardet finns tillgängligt online. & \TBstrut \\
+    \hline
+    Alfa-tillstånd & Alfautvärdering ger projektledning och gruppen en bra bild över projektets situation och vad som behöver göras härnäst. & Utvärdera projektets framgångar ännu oftare än vad vi gjorde i detta projekt, Alfa-tillstånd är något som skulle kunna tas upp åtminstone på ett möte varje vecka, så att gruppen kan följa dess utveckling. & \cite{ivarjacobson2017} \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+   Testningen inför scrumdemo var inte tillräckligt. & Testa prototypen mer utförligt i framtiden, så att det inte blir några överraskningar vid demo av produkten. & Testningen är en viktig del av produktframtagning, och det är väldigt viktigt att allting går rätt till då man visar vad man åstadkommit hittils för kunden, för att behålla kundens förtroende och finansiering. & \TBstrut \\ 
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\textbf{Iteration 4}
+
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvärdering av projektet där kunden får bra insyn i utvecklingen. & Ha en tavla som är privat till sättet så att folk ej kan förstöra eller påverka tavlan. I vårt fall så stod tavlan ute i korridoren på KTH och därför ritade folk och frågade även om de fick sudda ut hela tavlan vid ett tillfälle, detta var en av anledningarna till att vi gick mer och mer ifrån tavlan och istället gick över till Trello & \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{Formella Dokument}
+Se nästa sida.
+% Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
+% med sista sidan av rapporten
+\newpage
+\null%
+\newpage
+% Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
+% länkar fortfarande fungerar
+\includepdf[pages=-]{../../Arkitektur/Arkitektur}
+\includepdf[pages=-]{../Vision}
+\includepdf[pages=-]{../Projektdefinition_Grupp2}
+
+\section{Tekniska Specifikationer}
 Se nästa sida.
 % Bryt sidan ordentligt, annars överlappar sista sista sidan av den inkluderade pdfen
 % med sista sidan av rapporten
@@ -715,6 +979,8 @@ Se nästa sida.
 % Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
 % länkar fortfarande fungerar
 \includepdf[pages=-]{../Spec/Schemalaggare}
+\includepdf[pages=-]{../Spec/TD_PCB}
+\includepdf[pages=-]{../Spec/Webbapp}
 
 % that's all folks
 \end{document}
