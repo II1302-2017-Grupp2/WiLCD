@@ -374,45 +374,8 @@ I följande kapitel redovisas viktiga beslut, förändringar och anpassningar so
 \item Återkoppla till litteratur och referera.
 \end{enumerate}
 
-\subsection{Projektledning (Sebastian Heimlén)}
-Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
-
-Leadership definieras enligt Essence [Referens] som en roll som skall inspirera och motivera projektgruppen för att de på ett framgångsrikt sätt skall kunna genomföra projektet i enlighet med kraven.
-
-Management definieras enligt Essence [Referens] som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång.
-
-För att kunna leda en projektgrupp krävs det att projektledaren har koll på målet med projektet, vad som krävs för att nå målet och hur projektgruppen ligger till. Det är viktigt att ha en bra helhetsbild av projektet och en överblick över gruppen så att projektledaren kan ta snabba beslut i de fall där projektet börjar hamna snett. Projektgenomförandet bestod av ett antal iterationer där fokus låg på att hitta en lagom nivå att leda på, planera upp följande iterationer och dess mål och samtidigt stödja och vara en bidragande faktor i arbetet att producera produkten. De prövade ansatserna som utvärderats i projektet är:
-
-\begin{itemize}
-\item Projektdefinition (Eklund \cite[s. 137-146]{Eklund14})
-\item Projekt/iterationsplan Gantt
-\item Scrum (Kniberg \cite{Kniberg07})
-  \begin{itemize}
-    \item ``Scrumboard''
-	  \item ``Stories''
-    \item ``Tech Stories''
-    \item ``Story points''
-    \item ``Backlog''
-\end{itemize}
-\item Use-Case 2.0 (Jacobson \cite{Jacobson11})
-	\begin{itemize}
-	\item ``Use-Case''
-  \item ``Use-Case Slice''
-  \end{itemize}
-\item KanBan (Kniberg \cite{Kniberg10})
-\end{itemize}
-
-\noindent \textbf{Projektdefinition och projektplan}\\
-\\
-Det första som skedde i början av projektet var att projektdefinition och projektplan skrevs, helt i enlighet med Eklund \cite[s. 138-139]{Eklund14} och Sommerville \cite[s. 619]{Sommerville10} som bägge poängterar värdet av att i starten av projektet göra en grovplan över projektets olika delar, då det är av största vikt som projektledare att planera upp projektet. Undersökningsmetodens första och andra cykel visade att denna ansats spelade en vital i att hålla projektet strukturerat och projektplanen har kontinuerligt uppdaterats och manipulerats därefter, för att möta skiftande krav och oförutsedda problem. Projektdefinition och projektplan följer i stora drag den föreslagna ansatsen.\\
-\\
-\textbf{Scrum, use case och stories}\\
-\\
-I de två första iterationerna nyttjade gruppen Scrum i kombination med stories, story points, burn down chart och tasks som Kniberg \cite{Kniberg07} förespråkat. Undersökningsmetodens första och andra cykel visade att detta fungerade bra, men att det var något svårt att koppla uppgifter till användarkrav och det blev lite väl mycket ad-hoc. I början av sprint tre blev gruppen introducerad till Jacobsons use-cases \cite{Jacobson11}. Fördelar sågs i båda metoder men use-cases gav mer kontroll då de gick att dela upp i slices på ett strukturerat sätt och då skapa tillräckligt små arbetsuppgifter som gick att lösa inom en iteration, och därför prövades use-case metoden tillsammans med stories i iteration tre. I samband med detta så började ett närmare sammarbete mellan projektledare och kravansvarig då båda parter arbetade med use-cases, men på olika sätt. Projektledare för att organisera arbetet och kravansvarig för att fånga krav. Detta samarbete rönte framgång och i undersökningscykel tre och fyra visade det sig att gruppen arbetat sig igenom fler storypoints än i de tidigare iterationerna, även fast arbetstiden var kortare.
-
-En stor anledning till detta tros vara det konkreta samarbetet mellan projektledare och kravansvarig, och detta gjordes möjligt tack vare att båda parter använde use-cases till sitt förfogande. Denna konstellation av metoder illät projektgruppen att fortsätta jobba med stories, story points, burn down charts och tasks, men även integrera Essence \cite{Jacobson13} i form av use-cases i arbetet och på så ha en tydlig standard att stå på.
-
-De uppgifter som ej gick att koppla till något användarkrav, till exempel overhead från kursen, lades i så kallade ``tech-stories''. Undersökningen visade att detta är ett bra sätt att hantera overhead, dock är det ett illa men, då en helst undviker uppgifter som ej verkar mot kundens krav.
+\subsection{Kundrepresentant}
+Kundrepresantrollen hade två huvudsakliga ansvarsområden, de var att vara länken mellan gruppen och beställaren, kunden, samt vara ansvarig för att kundens önskemål och krav tydlig förmedlades till gruppen. Detta skedde genom i början av projektet nogrann dokumentering vad kunden hade för visioner, detta utmynnade i ett visionsdokument, med produkten och vilka de grundläggande kraven kunden hade på produkten.
 
 \subsection{Arkitekt (Teo Klestrup Röijezon)}
 Arkitektrollen handlar om att analysera kundens krav, och att sedan kunna bygga en
@@ -480,9 +443,47 @@ Dessa övergångar visade tyvärr att standardiseringen mellan dessa verktyg är
 vilket innebar att varje övergång gav ett val mellan att göra om alla diagram för hand, eller att
 ha dokumentationen utspridd i ännu ett filformat.
 
-\subsection{Kundrepresentant}
-
 \subsection{Testansvarig}
+
+\subsection{Projektledning (Sebastian Heimlén)}
+Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
+
+Leadership definieras enligt Essence \cite{Jacobson13} som en roll som skall inspirera och motivera projektgruppen för att de på ett framgångsrikt sätt skall kunna genomföra projektet i enlighet med kraven.
+
+Management definieras enligt Essence \cite{Jacobson13} som en administrativ och organiserande roll vars uppgifter är att koordinera, planera samt spåra arbetet i projektet, för att se till rätt saker blir gjorda vid rätt tillfällen för att maximera projektetes chans till framgång.
+
+För att kunna leda en projektgrupp krävs det att projektledaren har koll på målet med projektet, vad som krävs för att nå målet och hur projektgruppen ligger till. Det är viktigt att ha en bra helhetsbild av projektet och en överblick över gruppen så att projektledaren kan ta snabba beslut i de fall där projektet börjar hamna snett. Projektgenomförandet bestod av ett antal iterationer där fokus låg på att hitta en lagom nivå att leda på, planera upp följande iterationer och dess mål och samtidigt stödja och vara en bidragande faktor i arbetet att producera produkten. De prövade ansatserna som utvärderats i projektet är:
+
+\begin{itemize}
+\item Projektdefinition (Eklund \cite[s. 137-146]{Eklund14})
+\item Projekt/iterationsplan Gantt
+\item Scrum (Kniberg \cite{Kniberg07})
+  \begin{itemize}
+    \item ``Scrumboard''
+	  \item ``Stories''
+    \item ``Tech Stories''
+    \item ``Story points''
+    \item ``Backlog''
+\end{itemize}
+\item Use-Case 2.0 (Jacobson \cite{Jacobson11})
+	\begin{itemize}
+	\item ``Use-Case''
+  \item ``Use-Case Slice''
+  \end{itemize}
+\item KanBan (Kniberg \cite{Kniberg10})
+\end{itemize}
+
+\noindent \textbf{Projektdefinition och projektplan}\\
+\\
+Det första som skedde i början av projektet var att projektdefinition och projektplan skrevs, helt i enlighet med Eklund \cite[s. 138-139]{Eklund14} och Sommerville \cite[s. 619]{Sommerville10} som bägge poängterar värdet av att i starten av projektet göra en grovplan över projektets olika delar, då det är av största vikt som projektledare att planera upp projektet. Undersökningsmetodens första och andra cykel visade att denna ansats spelade en vital i att hålla projektet strukturerat och projektplanen har kontinuerligt uppdaterats och manipulerats därefter, för att möta skiftande krav och oförutsedda problem. Projektdefinition och projektplan följer i stora drag den föreslagna ansatsen.\\
+\\
+\textbf{Scrum, use case och stories}\\
+\\
+I de två första iterationerna nyttjade gruppen Scrum i kombination med stories, story points, burn down chart och tasks som Kniberg \cite{Kniberg07} förespråkat. Undersökningsmetodens första och andra cykel visade att detta fungerade bra, men att det var något svårt att koppla uppgifter till användarkrav och det blev lite väl mycket ad-hoc. I början av sprint tre blev gruppen introducerad till Jacobsons use-cases \cite{Jacobson11}. Fördelar sågs i båda metoder men use-cases gav mer kontroll då de gick att dela upp i slices på ett strukturerat sätt och då skapa tillräckligt små arbetsuppgifter som gick att lösa inom en iteration, och därför prövades use-case metoden tillsammans med stories i iteration tre. I samband med detta så började ett närmare sammarbete mellan projektledare och kravansvarig då båda parter arbetade med use-cases, men på olika sätt. Projektledare för att organisera arbetet och kravansvarig för att fånga krav. Detta samarbete rönte framgång och i undersökningscykel tre och fyra visade det sig att gruppen arbetat sig igenom fler storypoints än i de tidigare iterationerna, även fast arbetstiden var kortare.
+
+En stor anledning till detta tros vara det konkreta samarbetet mellan projektledare och kravansvarig, och detta gjordes möjligt tack vare att båda parter använde use-cases till sitt förfogande. Denna konstellation av metoder tillät projektgruppen att fortsätta jobba med stories, story points, burn down charts och tasks, men även integrera Essence \cite{Jacobson13} i form av use-cases i arbetet och på så ha en tydlig standard att stå på.
+
+De uppgifter som ej gick att koppla till något användarkrav, till exempel overhead från kursen, lades i så kallade ``tech-stories''. Undersökningen visade att detta är ett bra sätt att hantera overhead, dock är det ett illa men, då en helst undviker uppgifter som ej verkar mot kundens krav.
 
 \section{Resultat} \label{sec:res}
 Nedan listas de punkter som ska behållas (Keep), testas (Try) och som har varit problem (Problem), de har sammanställts utifrån de retrospektivmöten som gruppen har hållit i slutet av varje sprint. 
