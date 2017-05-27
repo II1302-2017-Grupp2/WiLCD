@@ -116,9 +116,7 @@ så uppdateras och förankras projektdefinitionen.
      och granskning.
 
    -  *Referenser* -- detaljerad referenslista enligt APA, Vancouver eller
-     annat (APA kan vara bra så länge man skriver för man ser författaren
-     och förstår då vilken källa det handlar om medans Vancouver ger ett
-     nummer som inte säger något)
+     annat 
 
 * Projektöversikt -- bakgrund, syfte och mål
   :PROPERTIES:
@@ -777,7 +775,7 @@ så uppdateras och förankras projektdefinitionen.
   | R4 | Någon hackar vår Raspberry Pi och börjar använda den för saker som den ej ska användas för | Skapa ett starkt lösenord så att den ej går att hacka. | Stänga av den och installera om hela raspen. |
   | R5 | Rapporten blir ej klar i tid, då någon/några medlemmar ej hinner skriva klart sina delar. | Se till att börja med rapporten i god tid och att samtliga medlemmar jobbar på med skrivandet. | Finns ingen akutlösning, det skulle vara om man av någon anledning får dispans och kan lämna in efter deadline. |
   | R6 | Strul med rapportdisposition eller referenshantering | Tidigt i projektet bestämma i vilket "verktyg" vi ska skriva rapporten, samt vilket referenssystem vi skall använda, och bygga upp en mall i detta system. | Det finns ingen akutlösning för detta, vilket gör det ännu viktigare att faktiskt göra arbetet i god tid. |
-  | R7 | Problem så att prototyp inte kan demoas under sprintdemo | Se till att testa systemet och prototypen ordentligt innan demo och frysa produkten efter testning så att ingenting konstigt kan hända. | Om produkten inte kan demoas på rätt sätt så får demo genomföras till den bästa förmåga. Tanken bakom demot och produkten får förklaras och det som kan visas får visas.  |
+  | R7 | Problem så att prototyp inte kan demoas under sprintdemo | Se till att testa systemet och prototypen ordentligt innan demo och frysa produkten efter testning så att ingenting konstigt kan hända. | Om produkten inte kan demoas på rätt sätt så får demo genomföras till den bästa förmåga. Tanken bakom demot och produkten får förklaras och det som kan visas får visas. |
 
 ** Riskbedömning
 
