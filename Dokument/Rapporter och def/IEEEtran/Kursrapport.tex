@@ -36,7 +36,7 @@
 %% in the base LaTeX documentation of all distributions of LaTeX released
 %% 2003/12/01 or later.
 %% Retain all contribution notic
-%%es and credits.
+%och %es and credits.
 %% ** Modified files should be clearly indicated as such, including  **
 %% ** renaming them and changing author support contact information. **
 %%************************************************uppfylla*************************
@@ -210,11 +210,9 @@ I genomförandet av denna fallstudie har flera källor konsulterats, och i detta
 Enligt undersökningsstrategin så skall någon projektmetod prövas i ett praktiskt projekt och utifrån de erfarenheter som fås görs en värdering av använda metoder. Frågan är då vilken ansats av projektmetod som skall användas.
 
 \subsection{Föreslagen ansats}
-Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats som studenterna själva får välja att använda rakt av eller modifiera till sitt tycke. Projektmetoden framgår med god tydlighet av de arbetstavlor som definierats i ansatsen, se figur \ref{forslagsprintbacklog}, \ref{forslagriktigsprint}, \ref{forslagproductbacklog} och \ref{forslagriktigproduct}.
+Eftersom erfarenheten av projektarbete hos studenterna i denna kurs är liten så fanns det ett färdigt förslag till ansats av projektmetod. Tidigare kursomgångar och lärarens förslag har mynnat ut i följande ansats som studenterna själva får välja att använda rakt av eller modifiera till sitt tycke.
 
-Den angivna ansatsen innehöll en tavla med två sidor, där ena sidan, den interna, använde sig av en modiferad Kanban metodik, där olika uppgifter kunde följas i vilka stader dom var i, samt hjälpmedel för att se hur projektet fortlöpte (Burndown), även plats för arkitekturen och test fanns på ena sidan. Den andra publika sidan innehöll officiella dokument som förklade vision hos produkten, samt andra hjälp dokument. Även en övergripande User stories enligt \cite{Jacobson11} samt färdiga slices presenterades där för kund och andra intressenter att se. Samt dokument som visade planeringen utav tid och milstoplar i form av ett GANTT-diagram fanns på den publika sidan.
-
-\subsubsection{Anslagstavla}
+Den givna ansatsen var en kombination av traditionell och agil projektmetodik. Den traditionella metodiken innefattade projektdefinition, visionsdokument samt en projektplan i form av ett Gantt schema som innehöll diverse milstolpar och fasindelningar. Fasindelningen bestod av de iterationer som Scrum-metodiken medförde. Scrum medför också att en ``Scrumboard'' nyttjas, förslag på hur denna kan se ut visas i figurerna \ref{forslagsprintbacklog}, \ref{forslagriktigsprint}, \ref{forslagproductbacklog} och \ref{forslagriktigproduct}. Förslag på hur en iteration med denna ansats skulle gå till visas i figur \ref{scruminspo}.
 
 \begin{figure}[H]
 \centering
@@ -269,9 +267,8 @@ Den angivna ansatsen innehöll en tavla med två sidor, där ena sidan, den inte
 \subsection{Vald ansats}
 Då litteraturstudie och kursteori i form av föreläsningar skett löpande under kursen så har projektgruppens egna förstudie gjort likaså. Detta har lett till att den föreslagna ansatsen iterativt förändrats och formats allt eftersom projektgruppens undersökning fortskridit.
 Resultatet av förstudien är att metoderna, som anges i följande kapitel, har valts för undersökningens genomförande.
-Den slutgiltiga tavlan som då växte fram bestod utav en intern sida där Kanban utformningen från den förslagna ansatsen behölls, dock så migrerades stora delar av User case och tillhörande stories och task till Trello. En utvecklad version av User storyn som publicerades på den publika sidan placerades här, med mera noggran teknisk beskrivning, för att hjälpa utvecklingsteamet att skapa en bättre bild hur produktens alla delar samverkade.
 
-Den publika sidan blev uppdelad i huvudsakligen två delar, där formella dokument om kursrapporten publicerades samt de formella dokument om produkten placerads även här. Viss användning av projektets planering visades på den publika sidan som ett GANTT-diagram, men valda milstoplar, samt ett kort från Ivar Jacobson \cite{Jacobson11} där besökare lätt kunde se hur arbetet hade fortlöpte i hänsyn till ett antal olika faktorer, så som produkten, teamdynamiken samt de komersiella delarna.
+Den valda ansatsen blev i stora drag väldigt lik den givna, de traditionella delarna behölls då de ansågs vara bra grundpelare för projektet, Scrum likaså. Den föreslagna tavlan hölls också till stora delar intakt, dock lades utrymme till för fler interna dokument så som arkitektur, use-case diagram och färdiga tasks. Då Use-Case 2.0 \cite{Jacobson11} nyttjades av gruppen integrerades även detta i ansatsen. Den valda ansatsen framgår tydligt av den givna ansatsen, Use-Case 2.0 och figurerna \ref{scruminspo}, \ref{varsprint} och \ref{varproduct}.
 
 \begin{figure}[H]
 \centering
@@ -292,11 +289,6 @@ Den publika sidan blev uppdelad i huvudsakligen två delar, där formella dokume
 \caption{Publik sida för projektgruppen (vald ansats) .}
 \label{varproduct}
 \end{figure}
-
-
-\subsubsection{Scruminspirerade projektaktiviteter (vald ansats)}
-
-
 
 % use section* for acknowledgment
 \section{Undersökningsmetoder} \label{sec:under}
@@ -333,7 +325,7 @@ Metoden för att samla data i denna fråga blir induktiv då erfarenheten i grup
 \label{undersokningsmetod}
 \end{figure}
 
-\textbf{Metod 2: Begrepp} Då det inom detta område saknas en tydlig nomenklatur då många företag och projektgrupper använder samma begrepp med olika betydelse är det viktigt att tydligt definiera rapportens begreppsvärld.
+\textbf{Metod 2: Begrepp} Då det inom detta område saknas en tydlig nomenklatur då många företag och projektgrupper använder samma begrepp med olika betydelse är det viktigt att tydligt definiera rapportens ontologi.
 
 Begrepp som används kommer om möjligt följa OMGs \cite{OMG} standard Essence - Kernel and Language for Software Engineering Methods \cite{Jacobson13}.
 
@@ -467,6 +459,7 @@ vilket innebar att varje övergång gav ett val mellan att göra om alla diagram
 ha dokumentationen utspridd i ännu ett filformat.
 
 \subsection{Testansvarig}
+Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på program- och hårdvaran. 
 
 \subsection{Projektledare (Sebastian Heimlén)}
 Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
@@ -507,9 +500,6 @@ I de två första iterationerna nyttjade gruppen Scrum i kombination med stories
 En stor anledning till detta tros vara det konkreta samarbetet mellan projektledare och kravansvarig, och detta gjordes möjligt tack vare att båda parter använde use-cases till sitt förfogande. Denna konstellation av metoder tillät projektgruppen att fortsätta jobba med stories, story points, burn down charts och tasks, men även integrera Essence \cite{Jacobson13} i form av use-cases i arbetet och på så ha en tydlig standard att stå på.
 
 De uppgifter som ej gick att koppla till något användarkrav, till exempel overhead från kursen, lades i så kallade ``tech-stories''. Undersökningen visade att detta är ett bra sätt att hantera overhead, dock är det ett illa men, då en helst undviker uppgifter som ej verkar mot kundens krav.
-
-\subsection{Testansvarig}
-Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på program- och hårdvaran. 
 
 \section{Resultat} \label{sec:res}
 I detta avsnitt så kommer projektets olika resultat avhandlas, med en uppdelning hur metodiken har framlöpt med hjälp av regelbundna retrospektivmöten samt vart ansvarsområdes egna resultatdelar.
@@ -595,14 +585,20 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
 
 \subsection{Resultatdiskussion}
 
-\subsubsection{Kundrepresentant (Henrik Björklund)}
+\noindent \textbf{Kundrepresentant (Henrik Björklund)}\\
+hh
+\\
 
-\subsubsection{Arkitekt (Teo Klestrup Röijezon)}
+\noindent \textbf{Arkitekt (Teo Klestrup Röijezon)}\\
+hh
+\\
 
-\subsubsection{Testansvarig (Yobart Amino)}
+\noindent \textbf{Testansvarig (Yobart Amino)}\\
+hh
+\\
 
-\subsubsection{Projektledare (Sebastian Heimlén)}
-Tidigare i rapporten avhandlades gruppens definition av en ``bra'' projektmetod, som i grund och botten handlar om att planera upp och strukturera projektet på ett sådant sätt så att arbetet hålls inom Eklunds åtagandetriangel \cite[s. 128-129]{Eklund14}, men på samma gång är tillräckligt amorft så att skiftande krav och oförutsedda problem kan hanteras. För att denna balansgång skall kunna uppfyllas är jag helt övertygad om att det krävs ett agilt arbetssätt, för endast med ett agilt arbetssätt kan projektet genomleva dessa faktorer. De korta iterationerna, den återkommande täta kontakten med uppdragsgivaren, att kunna ändra om krav helt från en iteration till nästa är detrimentalt för ett litet IT-projekt. Scrum kan detta och är därmed en bra projektmetod för ett litet IT-projekt, under hela undersökningen har Scrum legat stabilt i grunden och tillsammans med den projektplanering där projektets samtliga iterationer planerats upp givit gruppen den struktur som behövts för att genomföra projektet.
+\noindent \textbf{Projektledare (Sebastian Heimlén)}\\
+Tidigare i rapporten avhandlades gruppens definition av en ``bra'' projektmetod, som i grund och botten handlar om att planera upp och strukturera projektet på ett sådant sätt så att arbetet hålls inom Eklunds åtagandetriangel \cite[s. 128-129]{Eklund14}, men på samma gång är tillräckligt amorft så att skiftande krav och oförutsedda problem kan hanteras. För att denna balansgång skall kunna uppfyllas är jag helt övertygad om att det krävs ett agilt arbetssätt, för endast med ett agilt arbetssätt kan projektet genomleva dessa faktorer. De korta iterationerna, den återkommande täta kontakten med uppdragsgivaren, att kunna ändra om krav helt från en iteration till nästa är detrimentalt för ett litet IT-projekt. Scrum kan detta och är därmed en bra projektmetod för ett litet IT-projekt, under hela undersökningen har Scrum legat stabilt i grunden och tillsammans med den projektplanering där projektets samtliga iterationer planerats upp givit gruppen den struktur som behövts för att genomföra projektet. Scrum har i mitt tycke hög validitet i sm
 
 Visst, både stories och use-cases har prövats på och inom båda har det funnits fördelar, men under undersökningen märkte vi i gruppen att just detta val spelade mindre roll, om det tidigt i projektet skapas en vision och en projektplan så att kraven på produkten och en plan för när dessa krav skall uppfyllas inom projektet finns tillgängliga, så räcker det egentligen för dessa små IT-projekt, use-cases likväl som stories fungerar mer än väl för att utvecklarna i gruppen skall kunna börja arbetet. Jag kan mycket väl tänka mig att om arbetsomfattningen eller antalet medlemmar i gruppen ökade så skulle det krävas mer struktur och då ser jag att use-cases skulle spela en mycket stor roll, men i detta fall när projektet är aktivt i ungefär åtta till tio veckor och gruppen består av fyra medlemmar så bildar denna projektmetod en bra balans mellan planering och ad-hoc där gruppen kan jobba aktivt med utvecklingen utan att spendera onödigt mycket tid på planering, att kolla att alfa-tillstånd uppfylls etc.
 
