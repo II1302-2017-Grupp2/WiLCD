@@ -94,7 +94,7 @@ för Displaimer (tidigare känd som WiLCD).
   binfontify <- typsnitt
   #+END_SRC
   
-  #+BEGIN_SRC bash :exports results :results silent
+  #+BEGIN_SRC bash :exports results
   convert Arkitektur.eps Arkitektur.png
   #+END_SRC
 
