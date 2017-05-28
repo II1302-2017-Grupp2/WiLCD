@@ -583,11 +583,10 @@ Arbetsättet med Use-Cases speciellt gav projektet en tydlig och väldefinerad k
 
 I framtida projekt skulle nog det vara bra att inte skapa de traditionella dokumenten som Visions-dokument då de tar onödig tid ifrån utvecklingen, i alla fall i ett sådant litet IT-projekt, jag kan förstå meningen med Visions-dokumentet i ett större projekt så att kunden får en bra bild av att projektgruppen har förstått idén på samma sätt som kunden.
 
-
 \subsection{Arkitekt (Teo Klestrup Röijezon)}
-Jag anser att det var hjälpsamt att utgå ifrån en övergripande arkitektur, så att medlemmarna i gruppen kan arbeta relativt oberoende utan att trampa varandra på tårna. Däremot så verkade inte en detaljplanering av varje komponent vara särskilt hjälpsam.
+Vi använde främst en sammanslagning av den logiska och fysiska modellen från ``4+1''-systemet\cite{Kruchten95}, vilket var tillräckligt för vårat relativt lilla projekt. Detta verkade rimligt eftersom vi har relativt få fysiska fysiska enheter att dela upp projektet på, samt att varje fysisk enhet har egenskaper som påverkar vad som är lämpat för att köras vart.
 
-Dock kan detta självklart variera, och jag tror att värdet ökar markant för större grupper, men blir mindre med tiden, då medlemmarna blir mer vana att arbeta med varandra.
+I ett större projekt, eller ett projekt som skulle köras i en mer homogen driftmiljö, så skulle det eventuellt vara fördelaktigt att separera dessa.
 
 \subsection{Testansvarig (Yobart Amino)}
 För att alla ska vara på samma sida vad gäller hur testningen ska gå till så tycker jag det är viktigt att väldigt tidigt i projektets skede gå igenom hur testningen ska gå till. Här anser jag att vi kunde ha förbättrat oss eftersom vi bland annat var lite oense om automatiserade tester skulle användas eller inte. Jag som testansvarig skulle kunna ha varit mer tydlig i vad som skulle testas och hur. 
@@ -609,7 +608,9 @@ Dock så var skapandet av alla dokument enligt traditionell IT-utveckling som i 
 \\
 
 \noindent \textbf{Arkitekt (Teo Klestrup Röijezon)}\\
-hh
+Jag anser att det var hjälpsamt att utgå ifrån en övergripande arkitektur, så att medlemmarna i gruppen kan arbeta relativt oberoende utan att trampa varandra på tårna. Däremot så verkade inte en detaljplanering av varje komponent vara särskilt hjälpsam.
+
+Dock kan detta självklart variera, och jag tror att värdet ökar markant för större grupper, men blir mindre med tiden, då medlemmarna blir mer vana att arbeta med varandra.
 \\
 
 \noindent \textbf{Testansvarig (Yobart Amino)}\\
@@ -698,7 +699,7 @@ Då detta är första iterationen så finns det inget som kan behållas (Keep)
     \hline
    Use Case diagram & Use Case diagramet illustrerar på ett bra sätt hur användaren ska använda produkten & Kan vidareutvecklas & \cite{Jacobson11} \TBstrut \\
     \hline
-    Visionsdokumentet & Ett bra sätt för kunden att se hur produkten kan förväntas bli &  & \cite{Sommerville10} \TBstrut \\
+    Visions-dokumentet & Ett bra sätt för kunden att se hur produkten kan förväntas bli &  & \cite{Sommerville10} \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
