@@ -93,6 +93,10 @@ för Displaimer (tidigare känd som WiLCD).
   eink ..> typsnitt
   binfontify <- typsnitt
   #+END_SRC
+  
+  #+BEGIN_SRC bash :exports results
+  convert Arkitektur.eps Arkitektur.png
+  #+END_SRC
 
   \colorbox{ownership-blue}{Blåmarkerade} områden ansvaras främst av Teo Klestrup Röijezon och Sebastian
   Heimlén, och \colorbox{ownership-red}{rödmarkerade} områden ansvaras främst av Yobart Amino och Henrik
