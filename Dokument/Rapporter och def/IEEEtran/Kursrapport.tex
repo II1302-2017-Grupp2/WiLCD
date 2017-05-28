@@ -458,8 +458,23 @@ Dessa övergångar visade tyvärr att standardiseringen mellan dessa verktyg är
 vilket innebar att varje övergång gav ett val mellan att göra om alla diagram för hand, eller att
 ha dokumentationen utspridd i ännu ett filformat.
 
-\subsection{Testansvarig}
-Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på program- och hårdvaran. 
+\subsection{Testansvarig (Yobart Amino)}
+Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på mjuk- och hårdvara. Testarrollen inom Scrum innebär färdigheter vad gäller testdriven utveckling, manuella tester samt automatiska tester både för white-box och black-box strukturer. En testare ska kunna identifiera vilka tester ett system ska gå igenom för att styra utvecklingen framåt samtidigt som systemet verifieras att fungera korrekt\cite{ivarjacobson2017}. 
+
+För varje sprint som genomfördes under projektets gång skapades ett Test Case för varje Use Slice. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{UserTestExempel}
+\caption{Exempel på ett Test Case hämtat från \cite{ivarjacobson2017}}
+\label{test-case}
+\end{figure}
+
+Figuren ovan visar ett exempel på hur ett Test Case kan se ut på framsidan, i det här fallet för att testa en tidigare kod på prototypkorten som utvecklades. På baksidan kortet fanns det en tydlig punktlista som beskrev hur det specifika Test Caset skulle uppfyllas. När en punkt var testad av en utvecklare markerades den med en grön prick. Detta möjligjorde att på ett tydligt sätt kunna se vad som hade testats för den delen av projektet och vad som kvarstod att testas. När alla punkter var markerade gröna för ett Test Case, flyttades releventa delar på den interna sidan av tavlan från "Checked out" till "Test". Därefter kördes ett demo av testerna och Test Caset konstaterades vara färdigt. 
+Utöver dessa metoder lades en Post-It lapp bredvid den aktuella arkitekturen på tavlan. Denna lapp markerade tydligt vilken del av arkitekturen Test Caset berörde. En grön prick på lappen visade att testet var redo för demo och en röd prick visade att det fanns ytterligare tester att genomföra. 
+Detta sätt att testa en produkt fungerade bra i ett litet IT-projekt men jag kan föreställa mig att det blir betydligt svårare utan automatiserade tester i ett större IT-projekt. 
+Något som kan rekommenderas i framtida projekt, som förenklade uppföljandet av tester ytterligare var Trello. Under sprint 3-4 kopierades varje Test Case till Trello och där var det väldigt enkelt att följa testutvecklingen för sprinten. 
+
 
 \subsection{Projektledare (Sebastian Heimlén)}
 Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
