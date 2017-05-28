@@ -458,8 +458,23 @@ Dessa övergångar visade tyvärr att standardiseringen mellan dessa verktyg är
 vilket innebar att varje övergång gav ett val mellan att göra om alla diagram för hand, eller att
 ha dokumentationen utspridd i ännu ett filformat.
 
-\subsection{Testansvarig}
-Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på program- och hårdvaran. 
+\subsection{Testansvarig (Yobart Amino)}
+Att testa tidigt och regelbundet är viktigt för att säkerställa bra kvalité och resultat på mjuk- och hårdvara. Testarrollen inom Scrum innebär färdigheter vad gäller testdriven utveckling, manuella tester samt automatiska tester både för white-box och black-box strukturer. En testare ska kunna identifiera vilka tester ett system ska gå igenom för att styra utvecklingen framåt samtidigt som systemet verifieras att fungera korrekt\cite{ivarjacobson2017}. 
+
+För varje sprint som genomfördes under projektets gång skapades ett Test Case för varje Use Slice. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{UserTestExempel}
+\caption{Exempel på ett Test Case hämtat från \cite{ivarjacobson2017}}
+\label{test-case}
+\end{figure}
+
+Figuren ovan visar ett exempel på hur ett Test Case kan se ut på framsidan, i det här fallet för att testa en tidigare kod på prototypkorten som utvecklades. På baksidan kortet fanns det en tydlig punktlista som beskrev hur det specifika Test Caset skulle uppfyllas. När en punkt var testad av en utvecklare markerades den med en grön prick. Detta möjliggjorde att på ett tydligt sätt kunna se vad som hade testats för den delen av projektet och vad som kvarstod att testas. När alla punkter var markerade gröna för ett Test Case, flyttades relevanta delar på den interna sidan av tavlan från "Checked out" till "Test". Därefter kördes ett demo av testerna och Test Caset konstaterades vara färdigt. 
+Utöver dessa metoder lades en Post-It lapp bredvid den aktuella arkitekturen på tavlan. Denna lapp markerade tydligt vilken del av arkitekturen Test Caset berörde. En grön prick på lappen visade att testet var redo för demo och en röd prick visade att det fanns ytterligare tester att genomföra. 
+Detta sätt att testa en produkt fungerade bra i ett litet IT-projekt men jag kan föreställa mig att det blir betydligt svårare utan automatiserade tester i ett större IT-projekt. 
+Något som kan rekommenderas i framtida projekt, som förenklade uppföljandet av tester ytterligare var Trello. Under sprint 3-4 kopierades varje Test Case till Trello och där var det väldigt enkelt att följa testutvecklingen för sprinten. 
+
 
 \subsection{Projektledare (Sebastian Heimlén)}
 Projektledarrollen innehåller egentligen två delar - leadership och management. Dessa två delar har i detta projekt slagits ihop och innehas av en person.
@@ -566,8 +581,13 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
 \subsection{Kundrepresentant (Henrik Björklund)}
 
 \subsection{Arkitekt (Teo Klestrup Röijezon)}
+Jag anser att det var hjälpsamt att utgå ifrån en övergripande arkitektur, så att medlemmarna i gruppen kan arbeta relativt oberoende utan att trampa varandra på tårna. Däremot så verkade inte en detaljplanering av varje komponent vara särskilt hjälpsam.
+
+Dock kan detta självklart variera, och jag tror att värdet ökar markant för större grupper, men blir mindre med tiden, då medlemmarna blir mer vana att arbeta med varandra.
 
 \subsection{Testansvarig (Yobart Amino)}
+För att alla ska vara på samma sida vad gäller hur testningen ska gå till så tycker jag det är viktigt att väldigt tidigt i projektets skede gå igenom hur testningen ska gå till. Här anser jag att vi kunde ha förbättrat oss eftersom vi bland annat var lite oense om automatiserade tester skulle användas eller inte. Jag som testansvarig skulle kunna ha varit mer tydlig i vad som skulle testas och hur. 
+Annars anser jag att testerna fungerade som de skulle och produktens mål blev uppfyllt efter alla tester, som också blev godkända.
 
 \subsection{Projektledare (Sebastian Heimlén)}
 
@@ -586,7 +606,10 @@ hh
 \\
 
 \noindent \textbf{Testansvarig (Yobart Amino)}\\
-hh
+Eftersom detta IT-projekt var så litet vad gäller tid och antal gruppmedlemmar så fungerade det bra att testa olika delar utan automatiserade tester. Om det hade varit en större Scrum-grupp så kommer det säkerligen behövas flera olika metoder att testa produkten, däribland automatiserade tester. Metoden som vi använde tycker jag fungerade bra. Det var i viss mån brist på testdefinitioner och Test Cases, speciellt i början av projektet. Vad detta berodde på tror jag var oklarheter angående hur testning skulle ske samt vad som skulle testas. Detta strukturerades senare upp och blev bättre med tiden, särskilt mot slutet av projektet. Trello hjälpte en hel del med testerna då det blev betydligt lättare att följa upp testerna samt att definiera de för varje Use Slice. 
+
+Arkitektur-delen av tavlan med alla Post-It lappar fungerade utmärkt då det blev enkelt att se vilka delar av projektet som behövde testas ytterligare. Det blev också, på grund av färgkodningen, enkelt att se vad som var färdigtestat och redo för demo.   
+Jag har tagit lärdom av detta projekt och i framtida projekt kommer jag säkerligen att använda mig av kunskaperna jag fått av att vara testansvarig. 
 \\
 
 \noindent \textbf{Projektledare (Sebastian Heimlén)}\\
@@ -1066,6 +1089,7 @@ Se nästa sida.
 % länkar fortfarande fungerar
 \includepdf[pages=-]{../Spec/Schemalaggare}
 \includepdf[pages=-]{../Spec/TD_PCB}
+\includepdf[pages=-]{../Spec/dispspec}
 \includepdf[pages=-]{../Spec/Webbapp}
 
 % that's all folks
