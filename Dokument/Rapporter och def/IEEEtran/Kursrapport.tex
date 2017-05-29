@@ -39,7 +39,7 @@
 %och %es and credits.
 %% ** Modified files should be clearly indicated as such, including  **
 %% ** renaming them and changing author support contact information. **
-%%************************************************uppfylla*************************
+%%*************************************************************************
 
 
 % *** Authors should verify (and, if needed, correct) their LaTeX system  ***
@@ -116,12 +116,12 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-  this is an abstract.
-
-  \textbf{\textit{keywords} - with keywords}
+  Vi har utfört ett ett litet IT-projekt med Scrum-metoden, för att försöka utvärdera den, samt hitta förbättringspotential.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
+
+\tableofcontents
 
 \section{Om detta dokument och undersökning}
 Detta dokument är ett försök att på ett vetenskapligt sätt undersöka projektmetoder inom små IT-projekt. Dokumentet är också delvis en träning på att skriva vetenskapliga rapporter och en övning inför examensarbetet. Dokumentet riktar sig mot akademin och specifikt mot kursens examinator som kommer att utvärdera rapporten enligt ''Blooms taxonomi'' \cite{krathwohl10}.
@@ -597,7 +597,11 @@ Arbetsmetoden där först en kravspecification skapades, som sedan mynnade ut i 
 \section{Diskussion} \label{sec:disk}
 
 \subsection{Metoddiskussion}
-Här diskutteras gemensamt metodvalet.
+Metoden som valdes illusteras väl av figur \ref{undersokningsmetod} har fungerat väl för detta projekt, då det som skulle undersökas var "Vad är en bra projektmetod för små IT-projekt". Denna valda metod gav en bra arbetsstruktur för att undersöka denna fråga, då vid varje iteration hölls det ett retrospektivmöte då erfarenheterna från sprinten samlades in och utvädrerades samt lärdomar av dessa togs.
+
+Även frågor om reliabilitet och validitet behöver besvaras för att kunna utvädera detta projekt. Validiteten borde kunna anses vara relativ hög, då det som mättes är gruppen själva och våra erfarenheter och personliga utveckling. Dock så faller reliabiliteten en del då detta projekt mycket består av subjektiva bedömningar från ett antal individer, således kan det vara svårt att återskapa de resultat vi har kommit fram till annat än på ett generellt sätt.
+
+
 \subsection{Resultatdiskussion}
 
 \noindent \textbf{Kundrepresentant (Henrik Björklund)}\\
@@ -630,7 +634,7 @@ Då denna undersökning har bedrivits på en väldigt grundläggande nivå då v
 
 Denna undersökning har dock givit gruppens medlemmar en större ingenjörserfarenhet såväl som studenterfarenhet då detta projekt tillsammans med denna undersökning har verkat förberedande för det kommande examensarbetet som kommer bedrivas under längre tid och på en djupare nivå.
 \section{Slutord} \label{sec:slutord}
-Eventuella slutord?
+Projektet var lärorikt och det var intressant att vi fick blanda ihop de två programmen TIEDB och TIDAB. Det kändes som att projektet sammanfattade all den kompentens vi samlat ihop under båda programmens gång. Den projektmetod vi använde fungerade väl och vi fick klart en produkt som tillfredställde de uppsatta kraven. 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
@@ -1180,9 +1184,9 @@ Se nästa sida.
 \newpage
 % Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
 % länkar fortfarande fungerar
-\includepdf[pages=-]{../../Arkitektur/Arkitektur}
-\includepdf[pages=-]{../Vision}
-\includepdf[pages=-]{../Projektdefinition_Grupp2}
+\includepdf[pages=-,addtotoc={1,subsection,2,Arkitektur,fd-arkitektur}]{../../Arkitektur/Arkitektur}
+\includepdf[pages=-,addtotoc={1,subsection,2,Vision,fd-vision}]{../Vision}
+\includepdf[pages=-,addtotoc={1,subsection,2,Projektdefinition,fd-projektdef}]{../Projektdefinition_Grupp2}
 
 \section{Tekniska Specifikationer}
 Se nästa sida.
@@ -1193,10 +1197,11 @@ Se nästa sida.
 \newpage
 % Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
 % länkar fortfarande fungerar
-\includepdf[pages=-]{../Spec/Schemalaggare}
-\includepdf[pages=-]{../Spec/TD_PCB}
-\includepdf[pages=-]{../Spec/dispspec}
-\includepdf[pages=-]{../Spec/Webbapp}
+\includepdf[pages=-,addtotoc={1,subsection,2,Schemaläggare,spec-schemalaggare}]{../Spec/Schemalaggare}
+\includepdf[pages=-,addtotoc={1,subsection,2,Kretskort,spec-pcb}]{../Spec/TD_PCB}
+\includepdf[pages=-,addtotoc={1,subsection,2,Display,spec-display}]{../Spec/dispspec}
+\includepdf[pages=-,addtotoc={1,subsection,2,Webbapp,spec-webbapp}]{../Spec/Webbapp}
+\includepdf[pages=-,addtotoc={1,subsection,2,Tester,spec-test}]{../../Testspecifikation/Testspecifikation}
 
 % that's all folks
 \end{document}
