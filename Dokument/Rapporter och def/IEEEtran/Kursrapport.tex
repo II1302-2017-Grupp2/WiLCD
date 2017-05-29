@@ -579,11 +579,14 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
 \section{Analys / Förbättringsförslag} \label{sec:analys}
 
 \subsection{Kundrepresentant (Henrik Björklund)}
+Arbetsättet med Use-Cases speciellt gav projektet en tydlig och väldefinerad kravhantering, samt gav kunden genom Use-Case diagramet en tydlig bild av hur produkten skulle fungera.
+
+I framtida projekt skulle nog det vara bra att inte skapa de traditionella dokumenten som Visions-dokument då de tar onödig tid ifrån utvecklingen, i alla fall i ett sådant litet IT-projekt, jag kan förstå meningen med Visions-dokumentet i ett större projekt så att kunden får en bra bild av att projektgruppen har förstått idén på samma sätt som kunden.
 
 \subsection{Arkitekt (Teo Klestrup Röijezon)}
-Jag anser att det var hjälpsamt att utgå ifrån en övergripande arkitektur, så att medlemmarna i gruppen kan arbeta relativt oberoende utan att trampa varandra på tårna. Däremot så verkade inte en detaljplanering av varje komponent vara särskilt hjälpsam.
+Vi använde främst en sammanslagning av den logiska och fysiska modellen från ``4+1''-systemet\cite{Kruchten95}, vilket var tillräckligt för vårat relativt lilla projekt. Detta verkade rimligt eftersom vi har relativt få fysiska fysiska enheter att dela upp projektet på, samt att varje fysisk enhet har egenskaper som påverkar vad som är lämpat för att köras vart.
 
-Dock kan detta självklart variera, och jag tror att värdet ökar markant för större grupper, men blir mindre med tiden, då medlemmarna blir mer vana att arbeta med varandra.
+I ett större projekt, eller ett projekt som skulle köras i en mer homogen driftmiljö, så skulle det eventuellt vara fördelaktigt att separera dessa.
 
 \subsection{Testansvarig (Yobart Amino)}
 För att alla ska vara på samma sida vad gäller hur testningen ska gå till så tycker jag det är viktigt att väldigt tidigt i projektets skede gå igenom hur testningen ska gå till. Här anser jag att vi kunde ha förbättrat oss eftersom vi bland annat var lite oense om automatiserade tester skulle användas eller inte. Jag som testansvarig skulle kunna ha varit mer tydlig i vad som skulle testas och hur. 
@@ -594,21 +597,26 @@ Annars anser jag att testerna fungerade som de skulle och produktens mål blev u
 \section{Diskussion} \label{sec:disk}
 
 \subsection{Metoddiskussion}
-
+Här diskutteras gemensamt metodvalet.
 \subsection{Resultatdiskussion}
 
 \noindent \textbf{Kundrepresentant (Henrik Björklund)}\\
-hh
+Då frågeställningen var "Vad är en bra projektmetod för små IT-projekt" så kan jag för rollen som Kund- och kravansvarig se att vissa metoder som användes under projektet var mera lämpande än andra. De metoder som kändes som de bidrog mest till ett agilt arbetssätt som gav ett bra sätt att visa både för kunden vad som vi skulle skapa, utifrån dennes önskemål, samt vilka krav som skulle förmedlas till utvecklingsteamet, var Use-Case metodiken \cite{Jacobson11}.
+Där Use Case med tillhörande diagram och andra verktyg varit ett bra sätt att få in kravhanteringen i projektet i ett tidigt skede, samt med diagramet lättare kommunicera med kunden att både kund och projektteam hade samma syn på vart projektet var på väg mot för lösning.
+
+Dock så var skapandet av alla dokument enligt traditionell IT-utveckling som i Sommerville \cite{Sommerville10} ett hinder i ett litet IT-projekt då det krävde mycket arbete i de två första sprintarna, vilket nog skulle ha skapats i ett tidigare skede om det hade varit en "riktig" produkt, innan utvecklingsteamet var anlitat och igångsatt för arbete.
 \\
 
 \noindent \textbf{Arkitekt (Teo Klestrup Röijezon)}\\
-hh
+Jag anser att det var hjälpsamt att utgå ifrån en övergripande arkitektur, så att medlemmarna i gruppen kan arbeta relativt oberoende utan att trampa varandra på tårna. Däremot så verkade inte en detaljplanering av varje komponent vara särskilt hjälpsam.
+
+Dock kan detta självklart variera, och jag tror att värdet ökar markant för större grupper, men blir mindre med tiden, då medlemmarna blir mer vana att arbeta med varandra.
 \\
 
 \noindent \textbf{Testansvarig (Yobart Amino)}\\
 Eftersom detta IT-projekt var så litet vad gäller tid och antal gruppmedlemmar så fungerade det bra att testa olika delar utan automatiserade tester. Om det hade varit en större Scrum-grupp så kommer det säkerligen behövas flera olika metoder att testa produkten, däribland automatiserade tester. Metoden som vi använde tycker jag fungerade bra. Det var i viss mån brist på testdefinitioner och Test Cases, speciellt i början av projektet. Vad detta berodde på tror jag var oklarheter angående hur testning skulle ske samt vad som skulle testas. Detta strukturerades senare upp och blev bättre med tiden, särskilt mot slutet av projektet. Trello hjälpte en hel del med testerna då det blev betydligt lättare att följa upp testerna samt att definiera de för varje Use Slice. 
 
-Arkitektur-delen av tavlan med alla Post-It lappar fungerade utmärkt då det blev enkelt att se vilka delar av projektet som behövde testas ytterligare. Det blev också, på grund av färgkodningen, enkelt att se vad som var färdigtestat och redo för demo.   
+Arkitektur-delen av tavlan med alla Post-It lappar fungerade utmärkt då det blev enkelt att se vilka delar av projektet som behövde testas ytterligare. Det blev också, på grund av färgkodningen, enkelt att se vad som var färdigtestat och redo för demo. Annars tycker jag att appliceringen av testmetdodiken som framställts under kursens gång har fungerat bra.  
 Jag har tagit lärdom av detta projekt och i framtida projekt kommer jag säkerligen att använda mig av kunskaperna jag fått av att vara testansvarig. 
 \\
 
@@ -620,7 +628,7 @@ Både stories såväl som Use-Case 2.0 har använts i konjunktion med Scrum, dä
 \subsection{Bidrag till vetenskaplighet, ingenjörserfarenhet (studenterfarenhet?)}
 
 \section{Slutord} \label{sec:slutord}
-
+Eventuella slutord?
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
@@ -691,7 +699,7 @@ Då detta är första iterationen så finns det inget som kan behållas (Keep)
     \hline
    Use Case diagram & Use Case diagramet illustrerar på ett bra sätt hur användaren ska använda produkten & Kan vidareutvecklas & \cite{Jacobson11} \TBstrut \\
     \hline
-    Visionsdokumentet & Ett bra sätt för kunden att se hur produkten kan förväntas bli &  & \cite{Sommerville10} \TBstrut \\
+    Visions-dokumentet & Ett bra sätt för kunden att se hur produkten kan förväntas bli &  & \cite{Sommerville10} \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -854,6 +862,11 @@ Då i detta stadie produkten är färdig och uppfyller de grundläggande kraven 
 
 
 \subsection{Testare (Yobart Amino)}
+Här kommer jag gå igenom mina erfarenheter och synpunkter ur min synpunkt som testansvarig. I varje sprint kommer det gås igenom vad som ska behållas (Keep), vad som kunnde bli bättre (Try) samt vad som inte var så bra (Problem).
+
+\textbf{1) Iteration 1}
+
+
 \begin{table}[H]
 	\small
   \centering
@@ -861,11 +874,11 @@ Då i detta stadie produkten är färdig och uppfyller de grundläggande kraven 
     \hline
     Keep & Motivation & Förbättringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Tavlan & Tavlan visar tydligt vad som ska göras och hur projektet ligger till &  &\TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Grupp-rollerna & Grupprollerna är fördelade mellan gruppmedlemmarna och alla verkar nöjda med sina roller &  & \TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Arbets-moralen & Arbetet går fort framåt & Mer uppdelat arbete bland gruppmedlemmarna & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -875,13 +888,43 @@ Då i detta stadie produkten är färdig och uppfyller de grundläggande kraven 
   \centering
 	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
-    Problem & Try what? & Motiveringar & Referenser \TBstrut \\
+    Try & Try what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Göra klart kravdokument & Skriva klart kravspecifikation och projektdefinition & Oklart vad som ska göras & \TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
+    Burndown & Göra en burndown för nästa sprint & Så det blir tydligare att se hur mycket som ska göras &\TBstrut \\
     \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Projekttavla & Strukturera upp tavlan & Så att det blir tydligare att se projektsprinten & \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\textbf{2) Iteration 2}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Arbetsmoralen & Arbetet går fort framåt & Mer uppdelat arbete bland gruppmedlemmarna &\TBstrut \\
+    \hline
+    Use Slices & Bra sätt att veta vad som ska göras &  & \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Try & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+    Burndown och Story Points & Tydligare Story Points för en förbättrad burndown & Överskattat hur mycket en Story Point ska vara värd på burdownen som gör det svårare att beräkna på burndownen & \TBstrut \\
+    \hline
+    Trello & Prova Trello för nästa sprint & Prova Trello så allt pappersarbete på tavlan minskar och projektet blir tydligare & \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
@@ -893,14 +936,75 @@ Då i detta stadie produkten är färdig och uppfyller de grundläggande kraven 
     \hline
     Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
     \hline
-    Use-Cases \& Slices & Use-Cases är fångar in krav på ett intuitiv & & \TBstrut \\
+    Tester & Förbättra Test Case korten & Göra Test Case kort så det tydligt framgår vilka tester som ska genomföras &\TBstrut \\
     \hline
-    Scrum & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvär & & \TBstrut \\
-    \hline
-    Projekttavla & Projekttavlan fungerar som en tydlig & & \TBstrut \\
+    Tidsplanering & Gruppmedlemmar anländer sent & Gruppmedlemmar måste börja komma i tid så möten inte ställs in& \TBstrut \\
     \hline
   \end{tabular}
 \end{table}
+
+\textbf{3) Iteration 3}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Trello & Trello fungerar utmärkt för att underlätta arbetet vad gäller Use Slices och Test Slices &  &\TBstrut \\
+    \hline
+    Story Points & Fortsätta med fyra timmar för en Story Point &  & \TBstrut \\
+    \hline
+    Burndown & Bra burndown-arbete då vi hinner med antal Story Points för sprinten & Antal Story Points kanske underskattas lite och bör tänkas på inför nästa sprint & \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Try & Try what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+    Trello & Flytta över mer av arbetet till trello & Eftersom Trello fungerar så bra så tycker jag vi ska flytta över mer av arbetet dit & \TBstrut \\
+    \hline
+    Projekttavla & Strukturera upp tavlan & Så att det blir tydligare att se projektsprinten & \TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
+    \hline
+    Produktdemo & Testa prototypen innan demo så det fungerar i framtida demos & Prototypen fungerade inte inför demot så det är viktigt att testa så allt fungerar som det ska innan produktdemo &\TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\textbf{4) Iteration 4}
+
+
+\begin{table}[H]
+	\small
+  \centering
+	\begin{tabular}{|p{1.5cm}|p{2cm}|p{1.8cm}|p{1.5cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+    \hline
+    Keep & Motivation & Förbättringar & Referenser \TBstrut \\
+    \hline
+    Scrum & Scrum är en bra projektmetod för IT-projekt eftersom arbetsgången är tydliig och iterativ. &  &\TBstrut \\
+    \hline
+   Trello & Trello fungerar utmärkt för att underlätta arbetet vad gäller Use Slices och Test Slices &  &\TBstrut \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
 
 \subsection{Keep, Try, Skip - Projektledare (Sebastian Heimlén)}
 
