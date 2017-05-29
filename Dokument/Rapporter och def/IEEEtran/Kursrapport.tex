@@ -1182,9 +1182,9 @@ Se nästa sida.
 \newpage
 % Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
 % länkar fortfarande fungerar
-\includepdf[pages=-]{../../Arkitektur/Arkitektur}
-\includepdf[pages=-]{../Vision}
-\includepdf[pages=-]{../Projektdefinition_Grupp2}
+\includepdf[pages=-,addtotoc={1,subsection,2,Arkitektur,fd-arkitektur}]{../../Arkitektur/Arkitektur}
+\includepdf[pages=-,addtotoc={1,subsection,2,Vision,fd-vision}]{../Vision}
+\includepdf[pages=-,addtotoc={1,subsection,2,Projektdefinition,fd-projektdef}]{../Projektdefinition_Grupp2}
 
 \section{Tekniska Specifikationer}
 Se nästa sida.
@@ -1195,10 +1195,10 @@ Se nästa sida.
 \newpage
 % Kör pdfannotextractor (del av TeXLive) på varje inkluderad pdf så att
 % länkar fortfarande fungerar
-\includepdf[pages=-]{../Spec/Schemalaggare}
-\includepdf[pages=-]{../Spec/TD_PCB}
-\includepdf[pages=-]{../Spec/dispspec}
-\includepdf[pages=-]{../Spec/Webbapp}
+\includepdf[pages=-,addtotoc={1,subsection,2,Schemaläggare,spec-schemalaggare}]{../Spec/Schemalaggare}
+\includepdf[pages=-,addtotoc={1,subsection,2,Kretskort,spec-pcb}]{../Spec/TD_PCB}
+\includepdf[pages=-,addtotoc={1,subsection,2,Display,spec-display}]{../Spec/dispspec}
+\includepdf[pages=-,addtotoc={1,subsection,2,Webbapp,spec-webbapp}]{../Spec/Webbapp}
 
 % that's all folks
 \end{document}
