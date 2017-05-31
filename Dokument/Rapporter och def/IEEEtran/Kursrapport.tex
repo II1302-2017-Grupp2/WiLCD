@@ -117,6 +117,10 @@
 % in the abstract
 \begin{abstract}
   Projektmetodik inom IT är ett hett ämne med ständig utveckling. Då flertalet mer eller mindre vetertagna metoder existerar och ett beständigt flöde av nya metodiker introduceras är det svårt att besvara frågan ``Vad är en bra projektmetod för små IT-projekt''. Denna rapport redovisar en undersökning som studenter i kursen II1302 på KTH genomfört för att försöka besvara denna fråga. 
+
+Rapporten samlar in relevanta teorier och testar en vald undersökningsmetod för att försöka besvara frågeställningen om den är bära för detta projekt. Resultat och analys utförs både i avseende på hela gruppen och medlemmarnas respektive roller.
+
+Gruppen kan efter utväderat den insamlade datat att metoden och teorierna som har använts passar väl med vissa undantag till ett projekt av denna typ. 
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -149,12 +153,12 @@ Strategin för att undersöka och hitta svar till denna frågeställning har var
 Inga relaterade arbeten har hittats.
 
 \subsection{Avgränsningar}
-Teorierna i denna rapport avgränsas genom att endast Scrum-metoden tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och samtliga grupper utför samma projektuppdrag.
+Teorierna i denna rapport avgränsas genom att endast Scrum-metoden tas upp, samt relativa teorier om dessa metoder. Dessa teorier begränsas till stor del av givna artiklar och dokument med viss komplimenterande dokument. Utöver detta så avgränsas också teorierna då projektet genomförs i en studiemiljö i grupper av studenter och att samtliga grupper utför samma projektuppdrag.
 
 \section{Teori och ingenjörspraxis} \label{sec:teori}
 Detta kapitel listar och i viss mån beskriver teorier och ingenjörspraxis som använts i undersökningen. Det finns två underkapitel, Litteraturstudie och Förstudie.
 \subsection{Litteraturstudie}
-I genomförandet av denna fallstudie har flera källor konsulterats, och i detta kapitel anges dessa källor. Förutom de källor som anges finns förmodligen andra, och möjligtvis bättre, källor som ej konsulterats.\\
+I genomförandet av denna fallstudie har flera källor konsulterats, och i detta kapitel anges dessa källor.\\
 
 \noindent \textbf{Övergripande källor för hela projektet}
 \begin{itemize}
@@ -301,7 +305,7 @@ Detta kapitel beskriver vilka metoder som använts i undersökningen. Metoderna 
 \end{enumerate}
 
 \subsection{Metodbeskrivning}
-Den centrala metoden i undersökningen är att avgöra om olika valda projekt-praktiker och arbetssätt är ”bra” och om de bidrar till att göra hela projektprocessen bra. Åstadkommer/skapar projektet rätt saker och konstrueras lösningar på bästa sätt?
+Den centrala metoden i undersökningen är att avgöra om olika valda projekt-praktiker och arbetssätt är ”bra” och hurvida de bidrar till att förbättra hela projektprocessen. Åstadkommer/skapar projektet rätt saker och konstrueras lösningar på bästa sätt?
 
 Metoden för att samla data i denna fråga blir induktiv då erfarenheten i gruppen är ytterst liten. Arbetssättet blir att efterhand som projektet fortskrider så förs bedömningsområden som anses vitala och bedömningskriterier in i en tabell kontinuerligt. Tabellen, se kapitel ”Resultat”, dess innehåll och dess utformning förbättras också hela tiden.\\
 \\
@@ -348,7 +352,7 @@ Följande bilder listar illustrativt centrala begrepp. I denna artikel kommer de
 I följande kapitel redovisas viktiga beslut, förändringar och anpassningar som gjorts i projektmetod, projektpraktiker, värderingar, beslut mm som gjorts under studiens genomförande.
 
 \subsection{Kundrepresentant (Henrik Björklund)}
-Kundrepresantrollen hade två huvudsakliga ansvarsområden, de var att vara länken mellan gruppen och beställaren, kunden, samt vara ansvarig för att kundens önskemål och krav tydlig förmedlades till gruppen. Detta skedde genom i början av projektet nogrann dokumentering vad kunden hade för visioner, detta utmynnade i ett visionsdokument, med produkten och vilka de grundläggande kraven kunden hade på produkten.
+Kundrepresantrollen hade två huvudsakliga ansvars-områden, de var att vara länken mellan gruppen och beställaren, kunden, samt vara ansvarig för att kundens önskemål och krav tydlig förmedlades till gruppen. Detta skedde genom att i början av projektet noggrant dokumentera vad kunden hade för visioner, detta utmynnade i ett visionsdokument, med ett första utkast hur produkten skulle bli och vilka de grundläggande kraven kunden hade på produkten.
 
 För att samla alla kraven så skapades ett kravdokument enligt MoSCoW-principen (Must have, Should have, Could have, and Won't have), för att förtydliga dessa delar så prövades det att användas Use Cases och Use Stories enligt Use Case 2.0 \cite{Jacobson11}, där även ett Use Case diagram (se figur \ref{uc-diagram}) skapades för både produkten och kursrapporten.
 
@@ -364,9 +368,9 @@ För att samla alla kraven så skapades ett kravdokument enligt MoSCoW-principen
 \label{uc-diagram}
 \end{figure}
 
-Use Case diagramet delar upp på ett tydligt sätt de funktionella kraven och de icke funktionella kraven som Sommerville \cite{Sommerville10} tycker att det är viktigt att särskilja mellan, dock så tas inte icke funktionella krav så som säkerhet för produkten upp i Use Case diagramet. 
+Use Case-diagramet delar upp på ett tydligt sätt de funktionella kraven och de icke funktionella kraven som Sommerville \cite{Sommerville10} tycker att det är viktigt att särskilja mellan, dock så tas inte icke funktionella krav så som säkerhet för produkten upp i Use Case diagramet. 
 
-Use Casen i sin tur delades upp i Use Slices enligt \cite{Jacobson11}, där teorin säger att varje slice ska vara väl avvägd så projektet kan fortlöpa parallellt. I projektets senare sprintar nr:3 och nr:4 blev dock fokuset mera på att skapa flera tasks till varje sprint, så vi fick ett ytterst uppstrukturerad arbetsflöde, där varje task kunde skapas oberoende av de andra, dock ej jämt testas oberoende. Vilket ledde till att burndownen blev ett viktigt verktyg för att se hur budgeten följdes. Dessa metoder att skapa Use Case diagram och dela upp vare Case i Slices och Tasks visades fungera bra för ett litet IT-projekt då det visasdes bli ytterst agilt.
+Use Casen i sin tur delades upp i Use Slices enligt \cite{Jacobson11}, där teorin säger att varje slice ska vara väl avvägd så projektet kan fortlöpa parallellt. I projektets senare sprintar 3 och 4 blev dock fokuset mera på att skapa flera tasks till varje sprint, så vi fick ett ytterst uppstrukturerat arbetsflöde, där varje task kunde skapas oberoende av de andra, dock ej jämt testas oberoende. Vilket ledde till att burndownen blev ett viktigt verktyg för att se hur budgeten följdes. Dessa metoder att skapa Use Case diagram och dela upp varje Case i Slices och Tasks visades fungera bra för ett litet IT-projekt då det visasdes bli ytterst agilt.
 
 Delar som uppleveds att de gjorde projketet mindre agilt och tidskrävande var viss dokumentation i form av visionsdokumentet som krävde en del omarbetning allt eftersom kravbilden från kunden blev tydligare, detta nämns även i Sommerville \cite{Sommerville10} att dokument helst i agila projekt tenderar att snabbt bli utdaterade och verkningslösa.
 
@@ -488,7 +492,7 @@ För att kunna leda en projektgrupp krävs det att projektledaren har koll på m
 
 \noindent \textbf{Projektdefinition och projektplan}\\
 \\
-Det första som skedde i början av projektet var att projektdefinition och projektplan skrevs, helt i enlighet med Eklund \cite[s. 138-139]{Eklund14} och Sommerville \cite[s. 619]{Sommerville10} som bägge poängterar värdet av att i starten av projektet göra en grovplan över projektets olika delar, då det är av största vikt som projektledare att planera upp projektet. Undersökningsmetodens första och andra cykel visade att denna ansats spelade en vital i att hålla projektet strukturerat och projektplanen har kontinuerligt uppdaterats och manipulerats därefter, för att möta skiftande krav och oförutsedda problem. Projektdefinition och projektplan följer i stora drag den föreslagna ansatsen.\\
+Det första som skedde i början av projektet var att projektdefinition och projektplan skrevs, helt i enlighet med Eklund \cite[s. 138-139]{Eklund14} och Sommerville \cite[s. 619]{Sommerville10} som båda poängterar värdet av att i starten av projektet göra en grovplan över projektets olika delar, då det är av största vikt som projektledare att planera upp projektet. Undersökningsmetodens första och andra cykel visade att denna ansats spelade en vital i att hålla projektet strukturerat och projektplanen har kontinuerligt uppdaterats och manipulerats därefter, för att möta skiftande krav och oförutsedda problem. Projektdefinition och projektplan följer i stora drag den föreslagna ansatsen.\\
 \\
 \textbf{Scrum, use case och stories}\\
 \\
@@ -515,7 +519,7 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
     \hline
     Scrum-metodik  & Scrum organiserar IT-arbete på ett sätt som passar många utvecklare och beställare. Den iterativa processen tillåter kontinuerlig utvärdering. Scrum ger även ett arbetssätt som inte är toppstyrt och lämpar sig väl i små projekt  & & Kniberg \cite{Kniberg07} \TBstrut \\
     \hline
-    Modiferad Kanban tavla & Ger en tydlig bild över hur arbetet fortlöper, då varje task kan följas från "Checked out" till "Done" & Eventuellt kan det läggas till plats för sätta tasks som den ansvarige behöver hjälp med & Sommerville \cite{Sommerville10}, Kniberg \cite{Kniberg10} \TBstrut \\
+    Modiferad Kanban tavla & Ger en tydlig bild över hur arbetet fortlöper, då varje task kan följas från "Checked out"\, till  "Done" & Eventuellt kan det läggas till plats för sätta tasks som den ansvarige behöver hjälp med & Sommerville \cite{Sommerville10}, Kniberg \cite{Kniberg10} \TBstrut \\
     \hline
     Virtuell tavla & Övergången till en virtuell tavla, i Trello, skapade en lättare platform för att planera och ha kontroll över projektet. Då det inte gick att vara på plats vid den fysiska tavlan alltid. & Integrera en fysisk tavla med den virtuella, kanske via en projekt eller annan utrustning & \TBstrut \\
     \hline
@@ -531,13 +535,13 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.9cm}|p{2cm}|p{1.7cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{2.0cm}|p{2.5cm}|p{2.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
-    Try & Try what? & Motiveringar & Referenser \TBstrut \\
+    Try & Try what? & Motiveringar \TBstrut \\
     \hline
-    Riskbedömning & Ökad riskbedömning inklusive alternativ om en bit av systemet skulle visas ej fungera till sprintens slut. & För att skapa ett stabilt projekt som kan hantera motgångar bättre& \TBstrut \\
+    Riskbedömning & Ökad riskbedömning inklusive alternativ om en bit av systemet skulle visas ej fungera till sprintens slut. & För att skapa ett stabilt projekt som kan hantera motgångar bättre \TBstrut \\
     \hline
-    Automatiserade tester & Automatisera de tester som går. & Detta för att minska belastningen på testansvarig& \TBstrut \\
+    Automatiserade tester & Automatisera de tester som går. & Detta för att minska belastningen på testansvarig \TBstrut \\
     \hline
 
   \end{tabular}
@@ -546,13 +550,13 @@ De innehåller även förslag på förbättringar som kan implementeras i framti
 \begin{table}[H]
 	\small
   \centering
-	\begin{tabular}{|p{1.9cm}|p{1.7cm}|p{2.2cm}|p{1.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
+	\begin{tabular}{|p{2.0cm}|p{2.5cm}|p{2.2cm}|} % to \columnwidth {"X[l]"X[l]"X[l]"l|}
     \hline
-    Problem & Skip or replace what? & Motiveringar & Referenser \TBstrut \\
+    Problem & Skip or replace what? & Motiveringar  \TBstrut \\
     \hline
-    Riskbedömning & Skapa alternativa idéer om problem skulle uppstå &  Riskbedömningen har under projektet inte jämt haft någon handlingsplan om problem skulle ha dykt upp& \TBstrut \\
+    Riskbedömning & Skapa alternativa idéer om problem skulle uppstå &  Riskbedömningen har under projektet inte jämt haft någon handlingsplan om problem skulle ha dykt upp \TBstrut \\
     \hline
-    Teststrukturer &Skapa tydlig teststruktur tidigt i projektet &Teststrukturen under de första sprintarna var inte så genom arbetad och utvecklad, men blev under sista sprinten bättre.  & \TBstrut \\
+    Teststrukturer &Skapa tydlig teststruktur tidigt i projektet &Teststrukturen under de första sprintarna var inte så genomarbetad och utvecklad, men blev under sista sprinten bättre.  \TBstrut \\
     \hline
 
   \end{tabular}
@@ -616,7 +620,7 @@ Då denna undersökning har bedrivits på en väldigt grundläggande nivå då v
 
 Denna undersökning har dock givit gruppens medlemmar en större ingenjörserfarenhet såväl som studenterfarenhet då detta projekt tillsammans med denna undersökning har verkat förberedande för det kommande examensarbetet som kommer bedrivas under längre tid och på en djupare nivå.
 \section{Slutord} \label{sec:slutord}
-Projektet var lärorikt och det var intressant att vi fick blanda ihop de två programmen TIEDB och TIDAB. Det kändes som att projektet sammanfattade all den kompentens vi samlat ihop under båda programmens gång. Den projektmetod vi använde fungerade väl och vi fick klart en produkt som tillfredställde de uppsatta kraven. 
+Projektet var lärorikt och det var intressant att vi fick blanda de två programmen TIEDB och TIDAB. Det kändes som att projektet sammanfattade all den kompentens vi samlat ihop under båda programmens gång. Den projektmetod vi använde fungerade väl och vi fick klart en produkt som tillfredställde de uppsatta kraven. 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
